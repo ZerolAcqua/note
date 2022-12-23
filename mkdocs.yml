@@ -8,6 +8,8 @@ theme:
   font:
     code: Roboto Mono
   name: material
+  # logo: images/favicon.png # logo
+  # favicon: images/favicon.png  # favicon
   palette:
     scheme: slate
     primary: black
@@ -83,6 +85,7 @@ extra_javascript:
   # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
 extra_css:
   - https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css
+  - stylesheets/extra.css
 
 nav:
   - "主页": index.md
@@ -95,6 +98,7 @@ nav:
       - "UAV": 
         - "基于物探飞行模式的正射影像快速制作": paper/RS/UAV/1.md
         - "A combined image matching method for Chinese optical satellite imagery": paper/RS/UAV/2.md
+        - "南极无人机摄影测量论文概览": paper/RS/UAV/3.md
   - 课程:
     - "摄影测量":
       - "近景摄影测量": course/Photogrammetry/近景摄影测量.md

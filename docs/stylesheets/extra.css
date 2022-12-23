@@ -1,0 +1,12 @@
+@font-face{
+    font-family: 'ZCOOL KuaiLe';
+    src: url('https://unpkg.com/zerolacqua-assets/fonts/zcool-happy.ttf');  
+  }
+  
+body {
+    --md-text-font: 'ZCOOL KuaiLe';
+}
+
+.md-content{
+    font-family: 'Noto Serif Simplified Chinese';
+}
