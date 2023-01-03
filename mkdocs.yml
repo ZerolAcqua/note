@@ -112,8 +112,8 @@ nav:
       - "遥感图像解译": course/RS/遥感图像解译.md
     - "others": 
       - "逻辑学导论": course/others/逻辑学导论.md
-  - "编程":
-    - "C++": programming/cplusplus.md
-    - "Rust": programming/rust.md
-    - "Julia": programming/julia.md    
-    - "Git": programming/git.md
+  # - "编程":
+  #   - "C++": programming/cplusplus.md
+  #   - "Rust": programming/rust.md
+  #   - "Julia": programming/julia.md    
+  #   - "Git": programming/git.md
