@@ -106,8 +106,8 @@ nav:
       - "数字摄影测量": course/Photogrammetry/数字摄影测量.md
     - "GIS":
       - "GIS 可视化": course/GIS/GIS可视化技术.md
-    # - "CS":
-    #   - "多媒体技术": course/CS/多媒体技术.md
+    - "CS":
+      - "多媒体技术": course/CS/多媒体技术.md
     - "RS":
       - "遥感图像解译": course/RS/遥感图像解译.md
     - "others": 
