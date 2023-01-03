@@ -99,7 +99,7 @@ nav:
         - "基于物探飞行模式的正射影像快速制作": paper/RS/UAV/1.md
         - "A combined image matching method for Chinese optical satellite imagery": paper/RS/UAV/2.md
         - "南极无人机摄影测量论文概览": paper/RS/UAV/3.md
-  - 课程:
+  - "课程":
     - "摄影测量":
       - "近景摄影测量": course/Photogrammetry/近景摄影测量.md
       - "卫星摄影测量": course/Photogrammetry/卫星摄影测量.md
@@ -112,3 +112,8 @@ nav:
       - "遥感图像解译": course/RS/遥感图像解译.md
     - "others": 
       - "逻辑学导论": course/others/逻辑学导论.md
+  - "编程":
+    - "C++": programming/cplusplus.md
+    - "Rust": programming/rust.md
+    - "Julia": programming/julia.md    
+    - "Git": programming/git.md

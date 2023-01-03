@@ -5,7 +5,7 @@ status: new
 !!! abstract
     翻了翻这一卷里的文章，深度学习、神经网络的相关内容还是占主要部分，人工智能果然是发展潮流啊。
 
-### 文章一
+## 文章一
 
 > <i>Robust point clouds registration with point-to-point</i> $l_p$ <i>distance constraints  in large-scale metrology </i>
 >
@@ -26,7 +26,7 @@ LSM 中使用的配准方法可以分为三种：
 - 定义起始点云与目标点云之间的距离函数
 - 定义一个鲁棒的函数减少离群点的影响
 
-### 文章二
+## 文章二
 
 > <i>Improvements in GPR-SAR imaging focusing and detection capabilities of UAV-mounted GPR systems</i>
 >
