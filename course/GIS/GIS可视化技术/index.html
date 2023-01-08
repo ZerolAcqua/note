@@ -1,0 +1,2358 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://note.zerolacqua.top/course/GIS/GIS%E5%8F%AF%E8%A7%86%E5%8C%96%E6%8A%80%E6%9C%AF/">
+      
+      
+        <link rel="prev" href="../../Photogrammetry/%E6%95%B0%E5%AD%97%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/">
+      
+      
+        <link rel="next" href="../../CS/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.2">
+    
+    
+      
+        <title>GIS 可视化 - 丘卡的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.f56500e0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="丘卡的笔记本" class="md-header__button md-logo" aria-label="丘卡的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            丘卡的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GIS 可视化
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ZerolAcqua/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZerolAcqua/note
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      主页
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../paper/ISPRS/" class="md-tabs__link">
+        论文
+      </a>
+    </li>
+  
+
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Photogrammetry/%E8%BF%91%E6%99%AF%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-tabs__link md-tabs__link--active">
+        课程
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../programming/cplusplus/" class="md-tabs__link">
+        编程
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="丘卡的笔记本" class="md-nav__button md-logo" aria-label="丘卡的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    丘卡的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ZerolAcqua/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZerolAcqua/note
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        主页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          论文
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="论文" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          论文
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_1">
+          期刊
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="期刊" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          期刊
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_1" type="checkbox" id="__nav_2_1_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../paper/ISPRS/">ISPRS</a>
+          
+            <label for="__nav_2_1_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="ISPRS" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_1_1">
+          <span class="md-nav__icon md-icon"></span>
+          ISPRS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/ISPRS/Volume%20189/" class="md-nav__link">
+        Vol.189
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2">
+          RS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RS" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          RS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_1" type="checkbox" id="__nav_2_2_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_2_1">
+          UAV
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="UAV" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          UAV
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/RS/UAV/1/" class="md-nav__link">
+        基于物探飞行模式的正射影像快速制作
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/RS/UAV/2/" class="md-nav__link">
+        A combined image matching method for Chinese optical satellite imagery
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/RS/UAV/3/" class="md-nav__link">
+        南极无人机摄影测量论文概览
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          课程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="课程" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          课程
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          摄影测量
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="摄影测量" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          摄影测量
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Photogrammetry/%E8%BF%91%E6%99%AF%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        近景摄影测量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Photogrammetry/%E5%8D%AB%E6%98%9F%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        卫星摄影测量
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Photogrammetry/%E6%95%B0%E5%AD%97%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        数字摄影测量
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          GIS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="GIS" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          GIS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          GIS 可视化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        GIS 可视化
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-brainstorming" class="md-nav__link">
+    1 Brainstorming
+  </a>
+  
+    <nav class="md-nav" aria-label="1 Brainstorming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visualization-data-in-various-methods" class="md-nav__link">
+    Visualization data in various methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#potential-application-fields" class="md-nav__link">
+    Potential application fields
+  </a>
+  
+    <nav class="md-nav" aria-label="Potential application fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 地球自然环境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 社会经济
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 战争疾病灾害
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nan" class="md-nav__link">
+    NAN
+  </a>
+  
+    <nav class="md-nav" aria-label="NAN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11_1" class="md-nav__link">
+    1.1 什么数据可以可视化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12_1" class="md-nav__link">
+    1.2 如何表达数据
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-course-introduction" class="md-nav__link">
+    2 Course Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-geovisualization-related-concepts" class="md-nav__link">
+    3 Geovisualization Related Concepts
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Geovisualization Related Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-scientific-visualization" class="md-nav__link">
+    3.1 Scientific Visualization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-information-visualization" class="md-nav__link">
+    3.2 information Visualization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-data-visualization" class="md-nav__link">
+    3.3 Data Visualization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-geovisualization" class="md-nav__link">
+    3.4 Geovisualization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-history-of-visualization" class="md-nav__link">
+    3.5 History of Visualization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-geovisualization-research" class="md-nav__link">
+    4 Geovisualization Research
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-geovisualization-challenges" class="md-nav__link">
+    5 Geovisualization Challenges
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_3">
+          CS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CS" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          CS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+        多媒体技术
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_4">
+          RS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RS" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          RS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RS/%E9%81%A5%E6%84%9F%E5%9B%BE%E5%83%8F%E8%A7%A3%E8%AF%91/" class="md-nav__link">
+        遥感图像解译
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" type="checkbox" id="__nav_3_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3_5">
+          others
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="others" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_5">
+          <span class="md-nav__icon md-icon"></span>
+          others
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/%E9%80%BB%E8%BE%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        逻辑学导论
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          编程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="编程" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          编程
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cplusplus/" class="md-nav__link">
+        C++
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/rust/" class="md-nav__link">
+        Rust
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/julia/" class="md-nav__link">
+        Julia
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/git/" class="md-nav__link">
+        Git
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-brainstorming" class="md-nav__link">
+    1 Brainstorming
+  </a>
+  
+    <nav class="md-nav" aria-label="1 Brainstorming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#visualization-data-in-various-methods" class="md-nav__link">
+    Visualization data in various methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#potential-application-fields" class="md-nav__link">
+    Potential application fields
+  </a>
+  
+    <nav class="md-nav" aria-label="Potential application fields">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 地球自然环境
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 社会经济
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 战争疾病灾害
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nan" class="md-nav__link">
+    NAN
+  </a>
+  
+    <nav class="md-nav" aria-label="NAN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11_1" class="md-nav__link">
+    1.1 什么数据可以可视化
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12_1" class="md-nav__link">
+    1.2 如何表达数据
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-course-introduction" class="md-nav__link">
+    2 Course Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-geovisualization-related-concepts" class="md-nav__link">
+    3 Geovisualization Related Concepts
+  </a>
+  
+    <nav class="md-nav" aria-label="3 Geovisualization Related Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-scientific-visualization" class="md-nav__link">
+    3.1 Scientific Visualization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-information-visualization" class="md-nav__link">
+    3.2 information Visualization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-data-visualization" class="md-nav__link">
+    3.3 Data Visualization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-geovisualization" class="md-nav__link">
+    3.4 Geovisualization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-history-of-visualization" class="md-nav__link">
+    3.5 History of Visualization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-geovisualization-research" class="md-nav__link">
+    4 Geovisualization Research
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-geovisualization-challenges" class="md-nav__link">
+    5 Geovisualization Challenges
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h1>
+<h3 id="1-brainstorming">1 Brainstorming<a class="headerlink" href="#1-brainstorming" title="Permanent link">&para;</a></h3>
+<ul>
+<li>从定性到 <strong>定量的表达</strong> （<code>quanlitative descripion</code>）</li>
+<li>表格的表达，不适合人脑的理解</li>
+<li>可视化是为了支持人类的信息获取、分析</li>
+</ul>
+<h4 id="visualization-data-in-various-methods">Visualization data in various methods<a class="headerlink" href="#visualization-data-in-various-methods" title="Permanent link">&para;</a></h4>
+<ul>
+<li>更好的对比</li>
+<li>更生动有趣</li>
+<li>类比（网站流量图与地铁线路图）</li>
+<li>流向图</li>
+<li>立体化，潜在的规则</li>
+<li>三个层次</li>
+<li>真实世界</li>
+<li>真实世界的信息</li>
+<li>
+<p>提取真实世界中感兴趣的信息</p>
+</li>
+<li>
+<p>推荐书目 <strong><em>Spatial Analysis</em></strong></p>
+</li>
+</ul>
+<h4 id="potential-application-fields">Potential application fields<a class="headerlink" href="#potential-application-fields" title="Permanent link">&para;</a></h4>
+<h5 id="11">1.1 地球自然环境<a class="headerlink" href="#11" title="Permanent link">&para;</a></h5>
+<ul>
+<li>风场图</li>
+<li>地形</li>
+<li>河流湖泊</li>
+</ul>
+<h5 id="12">1.2 社会经济<a class="headerlink" href="#12" title="Permanent link">&para;</a></h5>
+<ul>
+<li>选举</li>
+<li>绕城高速</li>
+<li>飞机航线客运量</li>
+<li>饮食习惯</li>
+<li>政府债务占比</li>
+<li>计算机设备出口额</li>
+<li>富豪</li>
+</ul>
+<h5 id="13">1.3 战争疾病灾害<a class="headerlink" href="#13" title="Permanent link">&para;</a></h5>
+<ul>
+<li>一战二战</li>
+<li>霍乱地图</li>
+<li>新冠疫情</li>
+</ul>
+<h4 id="nan">NAN<a class="headerlink" href="#nan" title="Permanent link">&para;</a></h4>
+<h5 id="11_1">1.1 什么数据可以可视化<a class="headerlink" href="#11_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li>1D</li>
+<li>2D</li>
+<li>3D（高程、时间……）</li>
+<li>时空</li>
+<li>多维</li>
+<li>动态</li>
+</ul>
+<h5 id="12_1">1.2 如何表达数据<a class="headerlink" href="#12_1" title="Permanent link">&para;</a></h5>
+<h3 id="2-course-introduction">2 Course Introduction<a class="headerlink" href="#2-course-introduction" title="Permanent link">&para;</a></h3>
+<ul>
+<li>主要内容</li>
+<li>数据可视化（一维、二维、三维、多维）</li>
+<li>
+<p>词汇</p>
+</li>
+<li>
+<p>教材</p>
+</li>
+<li><em>Geographic Visualization: Concepts, Tolls and Applications</em></li>
+<li>
+<p><em>Exploring Geovisualization</em></p>
+</li>
+<li>
+<p>课程结构</p>
+</li>
+<li>课程时间安排</li>
+<li>可视化实习课<ul>
+<li>自己的实验结果（word文档）</li>
+</ul>
+</li>
+<li>可视化 GIS 系统设计方案<ul>
+<li>如交通、管理、环境等等</li>
+</ul>
+</li>
+<li>课堂分组展示</li>
+<li>测试<ul>
+<li>开卷考试</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-geovisualization-related-concepts">3 Geovisualization Related Concepts<a class="headerlink" href="#3-geovisualization-related-concepts" title="Permanent link">&para;</a></h3>
+<h4 id="31-scientific-visualization">3.1 Scientific Visualization<a class="headerlink" href="#31-scientific-visualization" title="Permanent link">&para;</a></h4>
+<ul>
+<li>是计算机图形学的子集</li>
+<li>分支</li>
+<li>计算机动画<ul>
+<li>动作捕捉</li>
+</ul>
+</li>
+<li>计算机模拟<ul>
+<li>工业模拟</li>
+<li>神经网络可视化</li>
+</ul>
+</li>
+<li>信息可视化</li>
+<li>接口技术</li>
+<li>表面渲染</li>
+<li>体积渲染</li>
+<li>体积可视化</li>
+</ul>
+<h4 id="32-information-visualization">3.2 information Visualization<a class="headerlink" href="#32-information-visualization" title="Permanent link">&para;</a></h4>
+<ul>
+<li>示例</li>
+<li>文件、线条</li>
+<li>图书</li>
+<li>网络关系</li>
+<li>网络攻击</li>
+<li>特殊方法与技术</li>
+<li>进化分支图</li>
+<li>超树图</li>
+<li>热力图</li>
+<li>平行坐标图（寻找分类的属性）</li>
+<li>树图</li>
+<li>多维标度法（MDS）</li>
+<li>散点图</li>
+<li>甘特图（Gantt Chart）</li>
+<li></li>
+<li>……</li>
+<li>应用</li>
+<li>科学研究</li>
+<li>数字图书馆</li>
+<li>数据挖掘</li>
+<li>信息图形学</li>
+<li>经济数据分析</li>
+<li>市场研究</li>
+<li>制造产品控制</li>
+<li>犯罪地图</li>
+</ul>
+<h4 id="33-data-visualization">3.3 Data Visualization<a class="headerlink" href="#33-data-visualization" title="Permanent link">&para;</a></h4>
+<ul>
+<li>用图形展示那些对手工处理而言过于复杂的数据</li>
+<li>综合多个领域进行解译</li>
+</ul>
+<h4 id="34-geovisualization">3.4 Geovisualization<a class="headerlink" href="#34-geovisualization" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>缩写</p>
+</li>
+<li>
+<p>ICA ( International Cartographic Association )</p>
+</li>
+<li>
+<p>EDA（探索性数据分析）</p>
+</li>
+<li>
+<p>GI（地理信息）</p>
+</li>
+<li>
+<p>HCI（人机交互）</p>
+</li>
+</ul>
+<h4 id="35-history-of-visualization">3.5 History of Visualization<a class="headerlink" href="#35-history-of-visualization" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>16<sup>th</sup>：精确地观察测量地表</p>
+</li>
+<li>
+<p>17<sup>th</sup>：解析几何、误差理论、概率论</p>
+</li>
+<li>18<sup>th</sup> &amp; 19<sup>th</sup>：人口统计</li>
+<li>1975</li>
+<li>计算机</li>
+<li>高维数据可视化</li>
+</ul>
+<h3 id="4-geovisualization-research">4 Geovisualization Research<a class="headerlink" href="#4-geovisualization-research" title="Permanent link">&para;</a></h3>
+<ul>
+<li>表达方面</li>
+<li>传统与新型的表达方式</li>
+<li>大规模、多模式时空（spatio-temporal）数据集</li>
+<li>可视化与计算机的一体融合</li>
+<li>接口问题</li>
+<li>移动端</li>
+<li>团队协作</li>
+<li>认知与使用问题</li>
+</ul>
+<h3 id="5-geovisualization-challenges">5 Geovisualization Challenges<a class="headerlink" href="#5-geovisualization-challenges" title="Permanent link">&para;</a></h3>
+<ul>
+<li>实践和多模型</li>
+<li>
+<p>数据量的增长</p>
+</li>
+<li>
+<p>团队协作</p>
+</li>
+<li>
+<p>以人为中心的方法</p>
+</li>
+</ul>
+<h1 id="section-a-geovisualization-in-context-perspectives-from-related-disciplines">Section A Geovisualization in Context Perspectives from Related Disciplines<a class="headerlink" href="#section-a-geovisualization-in-context-perspectives-from-related-disciplines" title="Permanent link">&para;</a></h1>
+<h2 id="nan_1">NAN<a class="headerlink" href="#nan_1" title="Permanent link">&para;</a></h2>
+<h3 id="1">1 可视数据探索的益处<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>增强需要的元素，消除干扰的元素</li>
+</ul>
+<h3 id="2">2 数据可视化的关键<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>对异质和噪声数据的处理</li>
+<li>直观</li>
+</ul>
+<h3 id="4">4 可视化数据挖掘技术的分类<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>三个维度：要可视化的数据、可视化技术、交互技术</li>
+</ul>
+<h3 id="5">5 可视化数据的类型<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>一维：随时间变化的数据</p>
+</li>
+<li>
+<p>二维：地理数据</p>
+</li>
+<li>
+<p>多维：表格</p>
+</li>
+<li>
+<p>文本&amp;超文本：多媒体可能需要降维，文本使用标签云</p>
+</li>
+<li>
+<p>分层数据&amp;图：环图、超树图、社会网络分析（Social Network）</p>
+</li>
+<li>
+<p>算法与软件可视化</p>
+</li>
+</ul>
+<h3 id="6">6 可视化技术<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<h4 id="61">6.1 几何变换表达<a class="headerlink" href="#61" title="Permanent link">&para;</a></h4>
+<ul>
+<li>找到感兴趣的变换方式</li>
+<li>常用的坐标系</li>
+<li>笛卡尔坐标系<ul>
+<li>散点图</li>
+<li>柱状图</li>
+<li>线图</li>
+</ul>
+</li>
+<li>极坐标系<ul>
+<li>雷达图</li>
+<li>玫瑰图</li>
+<li>环图</li>
+</ul>
+</li>
+<li>平行坐标系<ul>
+<li>平行坐标图</li>
+</ul>
+</li>
+<li>散点图</li>
+<li>可应用于多维、大规模数据情况中</li>
+<li>特点<ul>
+<li>变量间的趋势</li>
+<li>异常点</li>
+<li>趋势的形状（变量关系指对幂）</li>
+<li>相关性及其强弱</li>
+</ul>
+</li>
+<li>
+<p>改进优化</p>
+<ul>
+<li>2D -&gt; 3D</li>
+<li>颜色等</li>
+<li>散点图矩阵（与散点图之间的取舍）</li>
+</ul>
+</li>
+<li>
+<p>直方图</p>
+</li>
+<li>反映数据的分布</li>
+<li>茎叶图</li>
+<li>类似于直方图</li>
+<li>箱线图</li>
+<li>异常值会被绘制为上下限外的独立点</li>
+<li>
+<p>非参数的</p>
+</li>
+<li>
+<p>剖面图</p>
+</li>
+<li>平行坐标图</li>
+<li>坐标轴的数据范围不一定从0开始</li>
+<li>注意调整<ul>
+<li>坐标轴的排序</li>
+<li>坐标轴的大小方向</li>
+<li>坐标轴的标度</li>
+</ul>
+</li>
+<li>局限性<ul>
+<li>每个维度只能与两个维度比较</li>
+<li>改进为3维</li>
+</ul>
+</li>
+</ul>
+<h4 id="62">6.2 符号化表达<a class="headerlink" href="#62" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Simply Faces</p>
+</li>
+<li>
+<p>星图</p>
+</li>
+<li>与雷达图很像</li>
+<li>雷达会叠置多个对象</li>
+<li>色彩图</li>
+<li>TileBars</li>
+</ul>
+<h4 id="63">6.3 像素密集表达<a class="headerlink" href="#63" title="Permanent link">&para;</a></h4>
+<ul>
+<li>目的和适合领域</li>
+</ul>
+<p>目的</p>
+<ul>
+<li>大规模数据</li>
+<li>多维数据</li>
+</ul>
+<p>适合于</p>
+<ul>
+<li>
+<p>探测模式</p>
+</li>
+<li>
+<p>提取隐藏信息</p>
+</li>
+<li>
+<p>关键技术</p>
+</li>
+<li>递归模式技术<ul>
+<li>希尔伯特曲线、Z字曲线</li>
+</ul>
+</li>
+<li>圆周分段技术</li>
+<li>问题和改进</li>
+<li>问题<ul>
+<li>数据量大、维度多</li>
+<li>难以找到感兴趣的东西</li>
+</ul>
+</li>
+<li>改进<ul>
+<li>色彩映射</li>
+<li>像素排列</li>
+<li>希尔伯特曲线、Z字曲线</li>
+<li>子窗口形状</li>
+<li>维度排列</li>
+<li>相似的维度，尽量相邻</li>
+</ul>
+</li>
+<li>关键应用</li>
+<li>增长矩阵</li>
+<li>像柱图</li>
+<li>文献指纹</li>
+<li>像素地图<ul>
+<li>真实地图的近似结果，存在畸变</li>
+<li>如何描述学生在校园中的轨迹？</li>
+</ul>
+</li>
+</ul>
+<h4 id="64">6.4 堆叠表达<a class="headerlink" href="#64" title="Permanent link">&para;</a></h4>
+<ul>
+<li>对维度的堆叠</li>
+</ul>
+<h3 id="7">7 对地理空间数据的可视化数据挖掘<a class="headerlink" href="#7" title="Permanent link">&para;</a></h3>
+<h4 id="71">7.1 可视化策略<a class="headerlink" href="#71" title="Permanent link">&para;</a></h4>
+<ul>
+<li>2.5D</li>
+<li>地统计图</li>
+<li>数据量大，会存在问题</li>
+</ul>
+<h4 id="72">7.2 快速像素地图技术<a class="headerlink" href="#72" title="Permanent link">&para;</a></h4>
+<ul>
+<li>二维核密度估计</li>
+<li>基于核密度估计的三维聚类</li>
+<li>格网分片输出</li>
+</ul>
+<h4 id="73">7.3 制图技术<a class="headerlink" href="#73" title="Permanent link">&para;</a></h4>
+<h3 id="8">8 交互技术<a class="headerlink" href="#8" title="Permanent link">&para;</a></h3>
+<h4 id="81">8.1 动态投影<a class="headerlink" href="#81" title="Permanent link">&para;</a></h4>
+<ul>
+<li>一种自动导航式操作</li>
+</ul>
+<h4 id="82">8.2 交互式过滤<a class="headerlink" href="#82" title="Permanent link">&para;</a></h4>
+<ul>
+<li>选择和视图强化的结合</li>
+</ul>
+<h4 id="83">8.3 缩放<a class="headerlink" href="#83" title="Permanent link">&para;</a></h4>
+<h4 id="84">8.4 畸变<a class="headerlink" href="#84" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>概述</p>
+</li>
+<li>
+<p>强调突出</p>
+</li>
+<li>
+<p>双曲和球面畸变</p>
+</li>
+<li>
+<p>焦点（关注点）+上下文（整体）</p>
+</li>
+<li>
+<p>原因：显示空间是有限的，减轻认知负担</p>
+</li>
+<li>
+<p>基础技术</p>
+</li>
+<li>
+<p>透视墙</p>
+<ul>
+<li>前方的墙是焦点信息</li>
+</ul>
+</li>
+<li>文档棱镜<ul>
+<li>如excel表格</li>
+</ul>
+</li>
+<li>双曲线空间</li>
+<li>
+<p>鱼眼视图</p>
+<ul>
+<li>对角线鱼眼：景观</li>
+<li>圆周鱼眼：小空间</li>
+</ul>
+</li>
+<li>
+<p>应用</p>
+</li>
+<li>
+<p>结论</p>
+</li>
+<li>
+<p>畸变不总是坏事，它是数据可视化和分析强有力的工具</p>
+</li>
+<li>
+<p>要保持空间关系的一致性</p>
+</li>
+</ul>
+<h4 id="85">8.5 关联更新技术<a class="headerlink" href="#85" title="Permanent link">&para;</a></h4>
+<ul>
+<li>为了克服单一可视化技术的不足</li>
+</ul>
+<h4 id="86">8.6 地理信息科学中多种分类<a class="headerlink" href="#86" title="Permanent link">&para;</a></h4>
+<ul>
+<li>为了克服单一可视化技术的不足</li>
+</ul>
+<h3 id="9">9 总结<a class="headerlink" href="#9" title="Permanent link">&para;</a></h3>
+<h2 id="nan_2">NAN<a class="headerlink" href="#nan_2" title="Permanent link">&para;</a></h2>
+<h3 id="1_1">1  从数据的任务分类<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<h4 id="11_2">1.1<a class="headerlink" href="#11_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>时间数据是典型的有起讫的数据，还可能存在重叠</li>
+<li>多维数据</li>
+<li>层次化数据</li>
+<li>网络数据</li>
+</ul>
+<h4 id="12_2">1.2<a class="headerlink" href="#12_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>全局任务</li>
+<li>缩放任务</li>
+<li>过滤任务</li>
+<li>按需求提供细节</li>
+<li>
+<p>关联任务</p>
+</li>
+<li>
+<p>历史任务</p>
+</li>
+<li>提取和报告数据</li>
+</ul>
+<h3 id="2_1">2 到通用使用性<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>挑战</li>
+<li>数据量大</li>
+<li>用户类型多</li>
+</ul>
+<h4 id="21">2.1 提高通用使用性<a class="headerlink" href="#21" title="Permanent link">&para;</a></h4>
+<h4 id="23">2.3<a class="headerlink" href="#23" title="Permanent link">&para;</a></h4>
+<h4 id="24">2.4 解决硬盘多样性问题<a class="headerlink" href="#24" title="Permanent link">&para;</a></h4>
+<h4 id="25">2.5 解决视觉缺陷用户的需求<a class="headerlink" href="#25" title="Permanent link">&para;</a></h4>
+<ul>
+<li>色盲色弱</li>
+<li>低视和视盲</li>
+</ul>
+<h3 id="3">3 总结<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<h2 id="_1">工具之外：可视化支持整个过程<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">介绍<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="1_2">1 当今地理可视化工具的优与劣<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h3>
+<h3 id="2_2">2 地理信息科学活动更详细的流程<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
+<h3 id="3_1">3 不同种类推理的可视化支持<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<h3 id="4_1">4 总结发现<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>定义框架</li>
+<li>采用开放系统，避免多平台的问题</li>
+<li>协调各组件</li>
+</ul>
+<h3 id="5_1">5 结论<a class="headerlink" href="#5_1" title="Permanent link">&para;</a></h3>
+<h1 id="section-b-creating-instruments-for-ideation-software-approaches-to-geovisualization-perspectives">Section B Creating Instruments for Ideation Software Approaches to Geovisualization Perspectives<a class="headerlink" href="#section-b-creating-instruments-for-ideation-software-approaches-to-geovisualization-perspectives" title="Permanent link">&para;</a></h1>
+<h2 id="nan_3">NAN<a class="headerlink" href="#nan_3" title="Permanent link">&para;</a></h2>
+<h3 id="1_3">1<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h3>
+<h4 id="11_3">1.1 介绍<a class="headerlink" href="#11_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>为什么需要新的可视化技术？</li>
+<li>新的数据类型和质量要求 </li>
+<li>新的任务</li>
+<li>用户需要是变化的</li>
+<li>协作</li>
+</ul>
+<h4 id="12_3">1.2 技术方面<a class="headerlink" href="#12_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>计算机在可视化方面的优势</li>
+<li>最小代价呈现最多数据</li>
+</ul>
+<h4 id="13_1">1.3 数据<a class="headerlink" href="#13_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>静态</li>
+<li>随时间变化的</li>
+<li>离散</li>
+<li>连续</li>
+</ul>
+<h4 id="14">1.4 任务<a class="headerlink" href="#14" title="Permanent link">&para;</a></h4>
+<ul>
+<li>知识的重要性</li>
+</ul>
+<h4 id="15">1.5 用户<a class="headerlink" href="#15" title="Permanent link">&para;</a></h4>
+<ul>
+<li>用户的知识技能水平</li>
+</ul>
+<h4 id="16">1.6 不同领域的专业人员<a class="headerlink" href="#16" title="Permanent link">&para;</a></h4>
+<h4 id="17">1.7 互操作性<a class="headerlink" href="#17" title="Permanent link">&para;</a></h4>
+<h3 id="2_3">2 统计数据探索与地理信息可视化<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h3>
+<h4 id="21_1">2.1<a class="headerlink" href="#21_1" title="Permanent link">&para;</a></h4>
+<h4 id="22">2.2 探索性统计<a class="headerlink" href="#22" title="Permanent link">&para;</a></h4>
+<ul>
+<li>ESDA</li>
+<li>定量描述空间自相关</li>
+<li>莫兰散点图</li>
+</ul>
+<h4 id="23_1">2.3 数据探索的技术<a class="headerlink" href="#23_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>表达精度</li>
+<li>坐标系统</li>
+</ul>
+<h4 id="24_1">2.4<a class="headerlink" href="#24_1" title="Permanent link">&para;</a></h4>
+<h4 id="25_1">2.5 交互技术<a class="headerlink" href="#25_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>选择与关联高亮</li>
+<li>重新排序</li>
+<li>
+<p>属性、坐标轴、分类</p>
+</li>
+<li>
+<p>重新表达</p>
+</li>
+<li>细节多少？</li>
+<li>目的</li>
+<li>询问？</li>
+</ul>
+<h4 id="26">2.6 软件工具<a class="headerlink" href="#26" title="Permanent link">&para;</a></h4>
+<h4 id="27">2.7 开发环境<a class="headerlink" href="#27" title="Permanent link">&para;</a></h4>
+<h4 id="28">2.8 大数据<a class="headerlink" href="#28" title="Permanent link">&para;</a></h4>
+<h3 id="3_2">3<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h3>
+<h4 id="31">3.1 介绍<a class="headerlink" href="#31" title="Permanent link">&para;</a></h4>
+<h4 id="32">3.2 层次绘图方法<a class="headerlink" href="#32" title="Permanent link">&para;</a></h4>
+<ul>
+<li>雷达层次布局</li>
+</ul>
+<h4 id="33">3.3<a class="headerlink" href="#33" title="Permanent link">&para;</a></h4>
+<h4 id="34">3.4<a class="headerlink" href="#34" title="Permanent link">&para;</a></h4>
+<h4 id="35">3.5 优化美学标准<a class="headerlink" href="#35" title="Permanent link">&para;</a></h4>
+<h4 id="36">3.6 三维绘图<a class="headerlink" href="#36" title="Permanent link">&para;</a></h4>
+<h4 id="37">3.7 绘制<a class="headerlink" href="#37" title="Permanent link">&para;</a></h4>
+<h3 id="4_2">4 用多重关联视图探索可视化<a class="headerlink" href="#4_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>轻量级视图</li>
+</ul>
+<h4 id="41">4.1 当今探索可视化的主题<a class="headerlink" href="#41" title="Permanent link">&para;</a></h4>
+<h4 id="42">4.2 探索的策略<a class="headerlink" href="#42" title="Permanent link">&para;</a></h4>
+<ul>
+<li>替换</li>
+<li>不利于回溯</li>
+<li>复制</li>
+<li>出现重复信息</li>
+<li>不是轻量的</li>
+<li>叠置</li>
+<li>需要可叠置</li>
+<li>能叠置叠置，不能叠置复制</li>
+</ul>
+<h4 id="43">4.3 多重关联视图<a class="headerlink" href="#43" title="Permanent link">&para;</a></h4>
+<ul>
+<li>多种信息需要关联和协调</li>
+<li>选择、导航</li>
+<li>关联方法</li>
+<li>Snap</li>
+<li>MVC</li>
+</ul>
+<h4 id="44">4.4 关联与协调概念<a class="headerlink" href="#44" title="Permanent link">&para;</a></h4>
+<h4 id="45">4.5 关联与视图的管理<a class="headerlink" href="#45" title="Permanent link">&para;</a></h4>
+<ul>
+<li>时间换空间</li>
+<li>让用户理解视图、数据间的关联</li>
+</ul>
+<h3 id="5_2">5<a class="headerlink" href="#5_2" title="Permanent link">&para;</a></h3>
+<h4 id="51">5.1 背景<a class="headerlink" href="#51" title="Permanent link">&para;</a></h4>
+<h4 id="52">5.2 移动轨迹的交互可视化<a class="headerlink" href="#52" title="Permanent link">&para;</a></h4>
+<ul>
+<li>表达移动属性</li>
+<li>累积</li>
+<li>方向</li>
+<li>点密度</li>
+<li>强调时间组分</li>
+<li>时空查询</li>
+</ul>
+<h4 id="53">5.3 流向图<a class="headerlink" href="#53" title="Permanent link">&para;</a></h4>
+<ul>
+<li>空间距离和流向关系在GIS中描述工具的缺乏</li>
+<li>分类</li>
+<li>径向流向图</li>
+<li>网络流向图</li>
+<li>分布流向图</li>
+<li>动态流向图</li>
+<li>发挥作用</li>
+<li>量化：长度、宽度</li>
+<li>线的捆绑</li>
+<li>控制格网</li>
+<li>
+<p>表达密度和方向</p>
+</li>
+<li>
+<p>结果表达</p>
+</li>
+<li>色彩可以表达方向、距离信息</li>
+<li>好的流向图</li>
+<li>智能畸变</li>
+<li>合并目的地相同的边</li>
+<li>智能路线规划</li>
+<li>层次分支结构</li>
+<li>线性、对数宽度展示</li>
+</ul>
+<h4 id="54">5.4 连续表面的数据概要<a class="headerlink" href="#54" title="Permanent link">&para;</a></h4>
+<ul>
+<li>时空点云</li>
+<li>第三维表现时间，不是通常意义上的三维</li>
+<li>
+<p>问题：</p>
+<ul>
+<li>数据过多，密集、遮挡问题 ——使用密度面</li>
+</ul>
+</li>
+<li>
+<p>表面特征网络</p>
+</li>
+</ul>
+<h3 id="6_1">6<a class="headerlink" href="#6_1" title="Permanent link">&para;</a></h3>
+<h4 id="61-scope-and-perspective">6.1 scope and perspective<a class="headerlink" href="#61-scope-and-perspective" title="Permanent link">&para;</a></h4>
+<h4 id="62_1">6.2 相关工作<a class="headerlink" href="#62_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>地图动画</li>
+<li>对时空过程的展现</li>
+</ul>
+<h4 id="63_1">6.3 数据和任务分类<a class="headerlink" href="#63_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>分布形式：离散、连续</li>
+<li>存在性变化</li>
+<li>空间属性变化</li>
+<li>专题属性变化</li>
+</ul>
+<h4 id="64_1">6.4 时间控制与动态地图展示<a class="headerlink" href="#64_1" title="Permanent link">&para;</a></h4>
+<h4 id="65">6.5 瞬时事件的可视化<a class="headerlink" href="#65" title="Permanent link">&para;</a></h4>
+<ul>
+<li>选取某个时段</li>
+<li>聚焦某个地点</li>
+<li>选取特定属性</li>
+</ul>
+<h4 id="66">6.6 物体移动的可视化<a class="headerlink" href="#66" title="Permanent link">&para;</a></h4>
+<ul>
+<li>快照</li>
+<li>移动历史</li>
+<li>时间窗口</li>
+</ul>
+<h4 id="67">6.7 变化的专题数据可视化<a class="headerlink" href="#67" title="Permanent link">&para;</a></h4>
+<h2 id="gis">GIS中的可视化<a class="headerlink" href="#gis" title="Permanent link">&para;</a></h2>
+<h3 id="1_4">1 空间查询的可视化<a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>属性查询</p>
+</li>
+<li>
+<p>图形查询</p>
+</li>
+<li>
+<p>点线面</p>
+</li>
+<li>
+<p>空间位置、空间关系查询</p>
+</li>
+<li>
+<p>缓冲区查询</p>
+</li>
+<li>
+<p>ESDA</p>
+</li>
+<li>
+<p>ESDA method</p>
+</li>
+<li>
+<p>直方图</p>
+</li>
+<li>
+<p>核密度图</p>
+</li>
+<li>QQ图<ul>
+<li>比较分布形状</li>
+<li>属性之间</li>
+<li>数据与理论值</li>
+<li>非参数</li>
+<li>Voronoi图</li>
+<li>denaunay三角网的共轭图形</li>
+<li>一个单元格只有一个种子点</li>
+<li>趋势分析</li>
+<li>变异函数</li>
+</ul>
+</li>
+</ul>
+<h3 id="3_3">3 克里金插值<a class="headerlink" href="#3_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>最优线性无偏估计</li>
+<li>距离小于变程时存在空间相关性</li>
+<li>要求</li>
+<li>不能优化突变和断线</li>
+<li>正态分布：直方图、QQ图</li>
+<li>静态数据：Voronoi图</li>
+<li>不要有显著的趋势：趋势分析</li>
+<li>山地到平原不适合</li>
+</ul>
+<h1 id="section-c">Section C<a class="headerlink" href="#section-c" title="Permanent link">&para;</a></h1>
+<h2 id="nan_4">NAN<a class="headerlink" href="#nan_4" title="Permanent link">&para;</a></h2>
+<h3 id="1_5">1 可视化工具<a class="headerlink" href="#1_5" title="Permanent link">&para;</a></h3>
+<h4 id="11_4">1.1 数据可视化工具<a class="headerlink" href="#11_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Google Charts</li>
+<li>Echarts </li>
+<li>Highcharts</li>
+</ul>
+<h4 id="12_4">1.2 地理可视化工具<a class="headerlink" href="#12_4" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>GML 会有数据膨胀问题</p>
+</blockquote>
+<ul>
+<li>Leaflet</li>
+<li>Kartograph</li>
+<li>WebGL</li>
+<li>Cesium</li>
+<li>Three.js</li>
+</ul>
+<h3 id="2_4">2 可视化的三维问题<a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h3>
+<h4 id="21_2">2.1 虚拟环境科学<a class="headerlink" href="#21_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>为何使用三维进行可视化</li>
+<li>额外的展示空间</li>
+<li>展示额外的数据变量</li>
+<li>更接近熟悉的真实世界</li>
+<li>解决符号的遮挡问题</li>
+</ul>
+<h4 id="22_1">2.2 三维可视展现的特点<a class="headerlink" href="#22_1" title="Permanent link">&para;</a></h4>
+<h4 id="23_2">2.3 三维视图的一些问题<a class="headerlink" href="#23_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>符号遮挡问题的解决方法</li>
+<li>对象消除</li>
+<li>对象替换</li>
+<li>符号透明化</li>
+<li>符号阴影</li>
+<li>视角变换</li>
+<li>MLV</li>
+</ul>
+<h4 id="24_2">2.4 虚拟现实<a class="headerlink" href="#24_2" title="Permanent link">&para;</a></h4>
+<h4 id="25_2">2.5 计算机图形学的发展<a class="headerlink" href="#25_2" title="Permanent link">&para;</a></h4>
+<h3 id="3_4">3<a class="headerlink" href="#3_4" title="Permanent link">&para;</a></h3>
+<h4 id="31_1">3.1 虚拟环境科学<a class="headerlink" href="#31_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>虚拟空间与虚拟环境的区别</p>
+</li>
+<li>
+<p>3D建模</p>
+</li>
+<li>层次细节模型</li>
+</ul>
+<h4 id="32_1">3.2 分类<a class="headerlink" href="#32_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>从真实世界到抽象</li>
+<li>静止、动态和实时应用</li>
+<li>听觉呈现</li>
+<li>声音和噪声</li>
+<li>BIM 建筑信息模型</li>
+<li>互操作性</li>
+<li>BIM与GIS融合</li>
+<li>ETL</li>
+<li>3D图形<ul>
+<li>有属性和元数据信息的丢失</li>
+</ul>
+</li>
+<li>数据交互变化应用到应用的客户端整合</li>
+<li>可视化城市与可视化地球</li>
+<li>洪水淹没分析</li>
+<li>虚拟社会空间</li>
+<li>数字孪生城市</li>
+</ul>
+<h2 id="_3">高维信息可视化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1_6">1 高维数据<a class="headerlink" href="#1_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>存在的问题</p>
+</li>
+<li>
+<p>大数据问题</p>
+</li>
+<li>
+<p>过多的属性变量（独立或相关的）</p>
+</li>
+<li>
+<p>可视化方法</p>
+</li>
+<li>
+<p>扩展图表的维度</p>
+<ul>
+<li>
+<p>点可视化</p>
+</li>
+<li>
+<p>散点图矩阵</p>
+</li>
+<li>
+<p>线可视化</p>
+</li>
+<li>
+<p>线图</p>
+</li>
+<li>
+<p>平行坐标图</p>
+</li>
+<li>
+<p>星图、雷达图</p>
+</li>
+<li>
+<p>区域可视化</p>
+</li>
+<li>
+<p>文档棱镜</p>
+</li>
+<li>树图</li>
+<li>
+<p>像素密度</p>
+</li>
+<li>
+<p>基于样本的</p>
+</li>
+<li>
+<p>多个子图</p>
+</li>
+</ul>
+</li>
+<li>
+<p>减少数据的维度</p>
+</li>
+</ul>
+<h2 id="2_5">2 扩展图表的维度<a class="headerlink" href="#2_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li>图表重置</li>
+<li>
+<p>使用交互工具</p>
+</li>
+<li>
+<p>MLV</p>
+</li>
+</ul>
+<h3 id="3_5">3 减少数据的维度<a class="headerlink" href="#3_5" title="Permanent link">&para;</a></h3>
+<h4 id="31_2">3.1 主成分分析法<a class="headerlink" href="#31_2" title="Permanent link">&para;</a></h4>
+<h4 id="32_2">3.2 多维标度法<a class="headerlink" href="#32_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>非线性降维方法</li>
+</ul>
+<h4 id="33_1">3.3 自组织映射<a class="headerlink" href="#33_1" title="Permanent link">&para;</a></h4>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.tooltips", "content.tabs.link", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      
+        <script src="https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+      
+        <script src="../../../js/katex.js"></script>
+      
+    
+  </body>
+</html>
