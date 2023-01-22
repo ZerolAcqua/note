@@ -117,3 +117,6 @@ nav:
     - "Rust": programming/rust.md
     - "Julia": programming/julia.md    
     - "Git": programming/git.md
+  - "杂项":
+    - "CVPR": 
+      - "云台旋转角换算": misc/cvpr/云台旋转角换算.md
