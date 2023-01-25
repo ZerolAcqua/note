@@ -100,18 +100,22 @@ nav:
         - "A combined image matching method for Chinese optical satellite imagery": paper/RS/UAV/2.md
         - "南极无人机摄影测量论文概览": paper/RS/UAV/3.md
   - "课程":
-    - "摄影测量":
-      - "近景摄影测量": course/Photogrammetry/近景摄影测量.md
-      - "卫星摄影测量": course/Photogrammetry/卫星摄影测量.md
-      - "数字摄影测量": course/Photogrammetry/数字摄影测量.md
-    - "GIS":
-      - "GIS 可视化": course/GIS/GIS可视化技术.md
-    - "CS":
-      - "多媒体技术": course/CS/多媒体技术.md
-    - "RS":
-      - "遥感图像解译": course/RS/遥感图像解译.md
-    - "others": 
-      - "逻辑学导论": course/others/逻辑学导论.md
+    - "专业相关":
+      - "摄影测量":
+        - "近景摄影测量": course/Photogrammetry/近景摄影测量.md
+        - "卫星摄影测量": course/Photogrammetry/卫星摄影测量.md
+        - "数字摄影测量": course/Photogrammetry/数字摄影测量.md
+      - "GIS":
+        - "GIS 可视化": course/GIS/GIS可视化技术.md
+      - "RS":
+        - "遥感图像解译": course/RS/遥感图像解译.md
+      - "测绘":
+        - "大地测量学": course/geomatics/大地测量学.md
+    - "专业之外":
+      - "CS":
+        - "多媒体技术": course/CS/多媒体技术.md
+      - "others": 
+        - "逻辑学导论": course/others/逻辑学导论.md
   - "编程":
     - "C++": programming/cplusplus.md
     - "Rust": programming/rust.md
