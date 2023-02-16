@@ -122,5 +122,5 @@ nav:
     - "Julia": programming/julia.md    
     - "Git": programming/git.md
   - "杂项":
-    - "CVPR": 
+    - "摄影测量": 
       - "云台旋转角换算": misc/photogrammetry/云台旋转角换算.md
