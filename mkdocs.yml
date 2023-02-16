@@ -123,4 +123,4 @@ nav:
     - "Git": programming/git.md
   - "杂项":
     - "CVPR": 
-      - "云台旋转角换算": misc/cvpr/云台旋转角换算.md
+      - "云台旋转角换算": misc/photogrammetry/云台旋转角换算.md
