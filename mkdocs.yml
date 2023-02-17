@@ -105,6 +105,7 @@ nav:
         - "近景摄影测量": course/Photogrammetry/近景摄影测量.md
         - "卫星摄影测量": course/Photogrammetry/卫星摄影测量.md
         - "数字摄影测量": course/Photogrammetry/数字摄影测量.md
+        - "解析摄影测量": course/Photogrammetry/解析摄影测量.md
       - "GIS":
         - "GIS 可视化": course/GIS/GIS可视化技术.md
       - "RS":
