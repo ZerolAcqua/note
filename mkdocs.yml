@@ -79,12 +79,12 @@ markdown_extensions:
       generic: true
 
 extra_javascript:
-  - https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js
+  - js/katex.min.js
   - js/katex.js
   # - https://polyfill.io/v3/polyfill.min.js?features=es6
   # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
 extra_css:
-  - https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css
+  - stylesheets/katex.min.css
   - stylesheets/extra.css
 
 nav:
