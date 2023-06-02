@@ -28,7 +28,7 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 744 ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
           chmod 744 ~/.ssh
       - name: Add SSH known hosts
         run: |
