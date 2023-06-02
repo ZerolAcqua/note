@@ -5,8 +5,7 @@
 
 
 !!! abstract 
-    若要用标题，可以加上"标题参数"
-    
+
     [样式测试](https://squidfunk.github.io/mkdocs-material/reference/formatting/#configuration)
 
 
@@ -14,6 +13,8 @@
 ## 注记
 
 支持 attention, caution, danger, error, hint, important, note, tip, and warning
+
+若要用标题，可以在 attention 等后面加上"标题参数"。如：`!!! abstract "标题"`
 
 1. 只有图标
 
