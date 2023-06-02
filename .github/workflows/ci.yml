@@ -26,6 +26,6 @@ jobs:
           ref: gh-pages 
       - name: Sync Repository
         run: |
-          git remote add origin ${{ secrets.SERVER_IP }}/personal/repo/note.git
-          git push origin gh-pages:gh-pages
+          git remote add myserver ${{ secrets.SERVER_IP }}/personal/repo/note.git
+          git push myserver gh-pages:gh-pages
           
