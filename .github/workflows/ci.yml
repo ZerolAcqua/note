@@ -29,6 +29,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+          chmod 700 ~/.ssh
       - name: Add SSH known hosts
         run: |
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
@@ -37,4 +38,6 @@ jobs:
         run: |
           git remote add myserver ssh://${{secrets.SERVER_USERNAME}}@${{ secrets.SERVER_IP }}/personal/repo/note.git
           git push myserver gh-pages:gh-pages
+      - name: Remove SSH directory
+        run: rm -rf ~/.ssh
           
