@@ -34,5 +34,3 @@ jobs:
             export ALL_PROXY=${{ secrets.SERVER_PROXY }}
             cd /personal/repo/note.git
             git pull
-            
-            
