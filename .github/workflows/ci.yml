@@ -29,6 +29,10 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+      - name: Add SSH known hosts
+        run: |
+          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
       - name: Sync Repository
         run: |
           git remote add myserver ssh://${{secrets.SERVER_USERNAME}}@${{ secrets.SERVER_IP }}/personal/repo/note.git
