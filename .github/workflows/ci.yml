@@ -31,4 +31,6 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            export ALL_PROXY=${{ secrets.SERVER_PROXY }}
+            cd ./personal/repo/note.git
             git pull
