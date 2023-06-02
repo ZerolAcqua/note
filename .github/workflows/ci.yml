@@ -16,3 +16,16 @@ jobs:
           python-version: 3.x
       - run: pip install mkdocs-material 
       - run: mkdocs gh-deploy --force
+  Sync:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages 
+      - name: Sync Repository
+        run: |
+          git remote add origin ${{ secrets.SERVER_IP }}/personal/repo/note.git
+          git push origin gh-pages:gh-pages
+          
