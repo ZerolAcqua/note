@@ -96,9 +96,12 @@ nav:
         - "Vol.189": paper/ISPRS/Volume 189.md
     - "RS": 
       - "UAV": 
-        - "基于物探飞行模式的正射影像快速制作": paper/RS/UAV/1.md
-        - "A combined image matching method for Chinese optical satellite imagery": paper/RS/UAV/2.md
-        - "南极无人机摄影测量论文概览": paper/RS/UAV/3.md
+        - "基于物探飞行模式的正射影像快速制作": paper/RS/UAV/基于物探飞行模式的正射影像快速制作.md
+        - "A combined image matching method for Chinese optical satellite imagery": paper/RS/UAV/中国光学卫星影像匹配融合方法.md
+        - "南极无人机摄影测量论文概览": paper/RS/UAV/南极无人机摄影测量论文概览.md
+    - "CV":
+      - "特征匹配": 
+        - "LBD 线特征描述算法": paper/CV/特征匹配/LBD线特征描述算法.md
   - "课程":
     - "专业相关":
       - "摄影测量":
