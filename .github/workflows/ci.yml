@@ -1,5 +1,6 @@
 name: ci 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master 
@@ -34,3 +35,4 @@ jobs:
             export ALL_PROXY=${{ secrets.SERVER_PROXY }}
             cd /personal/repo/note
             git pull
+            git reset --hard origin/gh-pages
