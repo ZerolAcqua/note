@@ -3,12 +3,10 @@ status: new
 ---
 
 
-## 推荐网站
-[pcottle/learnGitBranching: An interactive git visualization and tutorial. Aspiring students of git can use this app to educate and challenge themselves towards mastery of git! (github.com)](https://github.com/pcottle/learnGitBranching)
+## 参考资料
+- [pcottle/learnGitBranching: An interactive git visualization and tutorial. Aspiring students of git can use this app to educate and challenge themselves towards mastery of git! (github.com)](https://github.com/pcottle/learnGitBranching)
 
-## *Progit*
-
-[书籍下载链接](https://github.com/progit/progit2-zh/releases/download/2.1.62/progit.pdf)
+- [Progit 下载链接](https://github.com/progit/progit2-zh/releases/download/2.1.62/progit.pdf)
 
 ### 第一章 起步
 #### 版本控制

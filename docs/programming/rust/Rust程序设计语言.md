@@ -2,47 +2,12 @@
 status: new
 ---
 
-## 准备
-
-### 推荐博客
-
-[Rust日志记录 - Rust入门秘籍 (junmajinlong.com)](https://rust-book.junmajinlong.com/ch102/tracing.html)
-
-### 如何使用 vscode 配置 rust 环境
-
-手摸手教你之Windows配置Rust开发环境 - 知乎 (zhihu.com)
-    
-- 下载 rustup-init.exe
-
-- 配置环境变量（包含镜像源）
-  
- |  环境变量    |   作用（或值）   |
- | ---- | ---- |
- |   RUSTUP_HOME   |  rustup 的目录    |
- |  CARGO_HOME    |   cargo 的目录   |
- |   %CARGO_HOME%\bin   |  cargo 的 bin 目录，理论上可以自动生成    |
- |   RUSTUP_DIST_SERVER   |   https://mirrors.tuna.tsinghua.edu.cn/rustup   |
- | RUSTUP_UPDATE_ROOT  | https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup |
-
-- 运行 rustup-init.exe
-- 修改 crate 的镜像源
-
-    在 %CARGO_HOME% 下新建 config 文件并加入相关内容
-
-- vscode 中安装相关拓展即可使用
-
-    Rust 那个官方拓展好像不太行，建议用 rust-analyzer
-
-
-
-## 《Rust 程序设计语言》
-
 !!! warning
     施工中！！！
 
 > [书籍下载链接](https://kaisery.github.io/trpl-zh-cn/Rust%20%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80%20%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%E7%89%88.pdf)
 
-### 第一章 入门
+## 第一章 入门
 
 - 运行 Rust 程序
     - Rust 是预编译静态类型语言
@@ -54,7 +19,7 @@ status: new
     - cargo check
 
 
-### 第二章 猜数游戏
+## 第二章 猜数游戏
 - 准备新项目
 
 - 处理猜测（处理输入）
@@ -108,7 +73,7 @@ status: new
     - ***parse()*** 返回 ***Result 类型*** 可使用 ***match*** 处理
 
 
-### 第三章 常见编程概念
+## 第三章 常见编程概念
 - 关键字 
 - 变量和可变性
     - 常量 ***const***
@@ -176,7 +141,7 @@ status: new
 
 
 
-### 第四章 认识所有权
+## 第四章 认识所有权
 - 什么是所有权
     - 栈与堆
     
@@ -254,7 +219,7 @@ status: new
 	- 其他类型的 slice
 
 
-### 第五章 使用结构体组织相关联的数据
+## 第五章 使用结构体组织相关联的数据
 - 结构体的定义和实例化
     - 定义结构体，需要使用 ***struct*** 关键字
     - 为了从结构体中获取某个特定的值，可以使用点号
@@ -264,19 +229,19 @@ status: new
             - *let user2 = User { email: String::from("another@example.com"),..user1};*
     - 使用没有命名字段的元组结构体来创建不同的类型
 <!-- 
-### 第六章 枚举和模式匹配
-### 第七章 使用包、Crate 和模块管理不断增长的项目 
-### 第八章 常见集合 
-### 第九章 错误处理 
-### 第十章 泛型、Trait 和生命周期 
-### 第十一章 编写自动化测试 
-### 第十二章 一个 I/O 项目：构建一个命令行程序 
-### 第十三章 Rust 中的函数式语言功能：迭代器与闭包 
-### 第十四章 进一步认识 Cargo 和 Crate.io 
-### 第十五章 智能指针 
-### 第十六章 无畏开发 
-### 第十七章 Rust 的面向对象特性 
-### 第十八章 模式与模式匹配 
-### 第十九章 高级特征 
-### 第二十章 最后的项目：构建多线程 web server  -->
+## 第六章 枚举和模式匹配
+## 第七章 使用包、Crate 和模块管理不断增长的项目 
+## 第八章 常见集合 
+## 第九章 错误处理 
+## 第十章 泛型、Trait 和生命周期 
+## 第十一章 编写自动化测试 
+## 第十二章 一个 I/O 项目：构建一个命令行程序 
+## 第十三章 Rust 中的函数式语言功能：迭代器与闭包 
+## 第十四章 进一步认识 Cargo 和 Crate.io 
+## 第十五章 智能指针 
+## 第十六章 无畏开发 
+## 第十七章 Rust 的面向对象特性 
+## 第十八章 模式与模式匹配 
+## 第十九章 高级特征 
+## 第二十章 最后的项目：构建多线程 web server  -->
 

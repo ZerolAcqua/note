@@ -118,10 +118,16 @@ nav:
       - "others": 
         - "逻辑学导论": course/others/逻辑学导论.md
   - "编程":
-    - "C++": programming/cplusplus.md
-    - "Rust": programming/rust.md
-    - "Julia": programming/julia.md    
-    - "Git": programming/git.md
+    - "C++": 
+      - "C++标准中值得使用的功能🍭": programming/cpp/C++标准中值得使用的功能.md
+    - "Rust": 
+      - "准备工作": programming/rust/准备工作.md
+      - "Rust 程序设计语言": programming/rust/Rust程序设计语言.md
+    - "Julia": 
+      - "准备工作": programming/julia/准备工作.md
+      - "Julia Data Science": programming/julia/Julia_Data_Science.md
+    - "Git": 
+      - "Progit": programming/git/progit.md
   - "杂项":
     - "摄影测量": 
       - "云台旋转角换算": misc/photogrammetry/云台旋转角换算.md
