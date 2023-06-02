@@ -7,25 +7,30 @@ on:
 permissions:
   contents: write
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: 3.x
-      - run: pip install mkdocs-material 
-      - run: mkdocs gh-deploy --force
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - uses: actions/setup-python@v4
+#         with:
+#           python-version: 3.x
+#       - run: pip install mkdocs-material 
+#       - run: mkdocs gh-deploy --force
   Sync:
-    needs: deploy
+#     needs: deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
           ref: gh-pages 
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
       - name: Sync Repository
         run: |
-          git remote add myserver ${{ secrets.SERVER_IP }}/personal/repo/note.git
+          git remote add myserver ssh://${{secrets.SERVER_USERNAME}}@${{ secrets.SERVER_IP }}/personal/repo/note.git
           git push myserver gh-pages:gh-pages
           
