@@ -36,7 +36,7 @@ jobs:
           chmod 744 ~/.ssh/known_hosts
       - name: Sync Repository
         run: |
-          git remote add myserver ssh://${{secrets.SERVER_USERNAME}}@${{ secrets.SERVER_IP }}/personal/repo/note.git
+          git remote add myserver git://${{ secrets.SERVER_IP }}/personal/repo/note.git
           git push myserver gh-pages:gh-pages
       - name: Remove SSH directory
         run: rm -rf ~/.ssh
