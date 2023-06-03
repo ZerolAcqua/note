@@ -34,5 +34,4 @@ jobs:
           script: |
             export ALL_PROXY=${{ secrets.SERVER_PROXY }}
             cd /personal/repo/note
-            git reset --hard origin/gh-pages
-            git --work-tree=/personal/note --git-dir=/personal/repo/note/.git checkout -f gh-pages
+            git checkout gh-pages
