@@ -34,5 +34,7 @@ jobs:
           script: |
             export ALL_PROXY=${{ secrets.SERVER_PROXY }}
             cd /personal/repo/note
+            find  /personal/note -type f ! -name ".htaccess" ! -name ".user.ini" -delete
+            find  /personal/note -type d -empty -delete
             git fetch origin
             git --work-tree=/personal/note --git-dir=/personal/repo/note/.git checkout -f origin/gh-pages
