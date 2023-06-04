@@ -11,7 +11,7 @@ status: inprogress
 
 
 !!! info "相关论文"
-	[An efficient and robust line segment matching approach based on LBD descriptor and pairwise geometric consistency](https://doi.org/10.1016/j.jvcir.2013.05.006)
+	[Structure-from-Motion Revisited](https://doi.org/10.1109/CVPR.2016.445)
 
 
 ## 摘要 
@@ -49,7 +49,7 @@ SfM 是从不同视角拍摄的图像的投影中重建三维结构的过程。�
 
 $$E=\sum_j\rho_j(\|\pi(\mathrm{P}_c,\mathrm{X}_k)-\mathrm{x}_j\|^2_2))$$
 
-*Levenberg-Marquardt* 方法【58，26】是解决光束法平差问题的方法。光束法平差问题中的参数结构特殊，可利用 *舒尔补* 技巧【8】，即先解算简化的相机参数，然后通过反代法更新点的参数。这种方案通常更高效，因为相机的数量通常比点的数量少。解算方程组有两种选择：精确解法和非精确的迭代算法。精确方法通过将方程组存储和分解为稠密或稀疏矩阵【13, 38】来解决，其空间复杂度为 $\mathcal{O}(N^2_P)$，时间复杂度为 $\mathcal{O}(N^3_P)$ 。非精确方法通常通过使用迭代方法（例如*预条件共轭梯度法*，PCG）来近似解算方程组，其时间和空间复杂度为 $\mathcal{O}(N_P)$ 【4, 63】。直接算法适用于少数几百个相机的情况，但在大规模场景中成本过高。虽然稀疏直接方法可以大大减少稀疏问题的复杂度，但对于大规模非结构化的照片集合来说，由于连接图通常更密集，它们的使用是不可行的【54, 4】。在这种情况下，间接算法是首选方法。特别是对于互联网照片，光束法平差花费了大量时间来优化许多近似重复的图像。在第 4.5 节中，我们提出了一种方法来识别和参数化高度重叠的图像，以实现对密集图像集合的高效光束法平差。
+*Levenberg-Marquardt* 方法【58，26】是解决光束法平差问题的方法。光束法平差问题中的参数结构特殊，可利用 *舒尔补* 技巧【8】，即先解算简化的相机参数，然后通过反代法更新点的参数。这种方案通常更高效，因为相机的数量通常比点的数量少。解算方程组有两种选择：精确解法和非精确的迭代算法。精确方法通过将方程组存储和分解为稠密或稀疏矩阵【13, 38】来解决，其空间复杂度为 $\mathcal{O}(N^2_P)$，时间复杂度为 $\mathcal{O}(N^3_P)$ 。非精确方法通常通过使用迭代方法（例如 *预条件共轭梯度法* ，PCG）来近似解算方程组，其时间和空间复杂度为 $\mathcal{O}(N_P)$ 【4, 63】。直接算法适用于少数几百个相机的情况，但在大规模场景中成本过高。虽然稀疏直接方法可以大大减少稀疏问题的复杂度，但对于大规模非结构化的照片集合来说，由于连接图通常更密集，它们的使用是不可行的【54, 4】。在这种情况下，间接算法是首选方法。特别是对于互联网照片，光束法平差花费了大量时间来优化许多近似重复的图像。在第 4.5 节中，我们提出了一种方法来识别和参数化高度重叠的图像，以实现对密集图像集合的高效光束法平差。
 
 ## 3 挑战
 
@@ -73,7 +73,7 @@ $$E=\sum_j\rho_j(\|\pi(\mathrm{P}_c,\mathrm{X}_k)-\mathrm{x}_j\|^2_2))$$
 
 下一个最佳视角的候选图像是尚未注册的看到至少 $N_t > 0$ 个三角化点的图像。通过使用特征轨迹图，可以有效地实现对此统计数据的跟踪。对于互联网数据集，由于许多图像可能看到相同的结构，因此该图可以非常密集。因此，在重建的每一步中，有许多候选视角可供选择。Haner 等人提出的详尽的协方差传播方法是不可行的，因为需要为每个候选视角计算和分析协方差。我们提出的方法使用高效的多分辨率分析来近似他们基于不确定性的方法。
 
-我们必须同时跟踪每个候选图像中可见点的数量和分布。可见点更多且更均匀地分布应导致更高的得分 $\mathcal{S}$【31】，这样具有更好条件的可见点配置的图像将首先进行注册。为实现这一目标，我们将图像离散化为一个固定大小的网格，每个维度有 $K_l$ 个箱子。每个单元格有两种不同的状态：*空*和*满*。在重建过程中，当一个点在一个*空*单元格内变为可见时，该单元格的状态变为*满*，并且该图像的得分 $\mathcal{S}_i$ 增加权重 $w_l$。通过这种方案，我们量化可见点的数量。由于单元格只对总得分有贡献一次，我们更喜欢点的均匀分布，而不是点集聚在图像的一个部分（即只有少数单元格包含所有可见点）的情况。然而，如果可见点的数量为 $N_t\ll K^2_l$，这种方案可能无法很好地捕捉到点的分布，因为每个点很可能落入一个单独的单元格。因此，我们将前面描述的方法扩展到具有 $l=1\dots L$ 级的多分辨率金字塔，通过在每个相继的级别使用更高的分辨率 $K_l =2^l$ 来对图像进行分割。得分在所有级别上累积，使用分辨率相关的权重 $w_l = K^2_l$。这种数据结构及其得分可以在线上高效地更新。图 3 显示了不同配置的得分，第 5 节展示了使用该策略改善的重建的稳健性和准确性。
+我们必须同时跟踪每个候选图像中可见点的数量和分布。可见点更多且更均匀地分布应导致更高的得分 $\mathcal{S}$【31】，这样具有更好条件的可见点配置的图像将首先进行注册。为实现这一目标，我们将图像离散化为一个固定大小的网格，每个维度有 $K_l$ 个箱子。每个单元格有两种不同的状态：*空* 和 *满*。在重建过程中，当一个点在一个 *空* 单元格内变为可见时，该单元格的状态变为 *满*，并且该图像的得分 $\mathcal{S}_i$ 增加权重 $w_l$。通过这种方案，我们量化可见点的数量。由于单元格只对总得分有贡献一次，我们更喜欢点的均匀分布，而不是点集聚在图像的一个部分（即只有少数单元格包含所有可见点）的情况。然而，如果可见点的数量为 $N_t\ll K^2_l$，这种方案可能无法很好地捕捉到点的分布，因为每个点很可能落入一个单独的单元格。因此，我们将前面描述的方法扩展到具有 $l=1\dots L$ 级的多分辨率金字塔，通过在每个相继的级别使用更高的分辨率 $K_l =2^l$ 来对图像进行分割。得分在所有级别上累积，使用分辨率相关的权重 $w_l = K^2_l$。这种数据结构及其得分可以在线上高效地更新。图 3 显示了不同配置的得分，第 5 节展示了使用该策略改善的重建的稳健性和准确性。
 
 ### 4.3 鲁棒和高效的三角测量
 
@@ -154,3 +154,135 @@ $$E_g=\sum_j\rho_j=\left(\|\pi_g(\mathrm{G}_r,\mathrm{P}_c,\mathrm{X}_k)-\mathrm
 
 **致谢**。我们感谢 J. Heinly 和 T. Price 的校对工作。我们还要感谢 C. Sweeney 为 *Theia* 实验的制作。本研究部分得到了 NSF No. IIS1349074、No. CNS-1405847和MITRE 公司的支持。
 
+
+## 参考文献
+
+??? info "References"
+
+	[1] S. Agarwal, Y. Furukawa, N. Snavely, I. Simon, B. Curless, S. Seitz, and R. Szeliski. "Building Rome in a Day." ICCV, 2009.
+
+	[2] S. Agarwal, K. Mierle, and Others. "Ceres Solver." http://ceres-solver.org.
+
+	[3] S. Agarwal, N. Snavely, and S. Seitz. "Fast algorithms for L∞ problems in multiview geometry." CVPR, 2008.
+
+	[4] S. Agarwal, N. Snavely, S. Seitz, and R. Szeliski. "Bundle adjustment in the large." ECCV, 2010.
+
+	[5] C. Aholt, S. Agarwal, and R. Thomas. "A QCQP Approach to Triangulation." ECCV, 2012.
+
+	[6] P. Beardsley, P. Torr, and A. Zisserman. "3D model acquisition from extended image sequences." 1996.
+
+	[7] C. Beder and R. Steffen. "Determining an initial image pair for fixing the scale of a 3D reconstruction from an image sequence." Pattern Recognition, 2006.
+
+	[8] D. C. Brown. "A solution to the general problem of multiple station analytical stereotriangulation." 1958.
+
+	[9] M. Brown, G. Hua, and S. Winder. "Discriminative learning of local image descriptors." IEEE PAMI, 2011.
+
+	[10] M. Bujnak, Z. Kukelova, and T. Pajdla. "A general solution to the P4P problem for a camera with an unknown focal length." CVPR, 2008.
+
+	[11] L. Carlone, P. Fernandez Alcantarilla, H.-P. Chiu, Z. Kira, and F. Dellaert. "Mining structure fragments for smart bundle adjustment." BMVC, 2014.
+
+	[12] S. Chen, Y. F. Li, J. Zhang, and W. Wang. "Active Sensor Planning for Multiview Vision Tasks." 2008.
+
+	[13] Y. Chen, T. A. Davis, W. W. Hager, and S. Rajamanickam. "Algorithm 887: Cholmod, supernodal sparse Cholesky factorization and update/downdate." ACM TOMS, 2008.
+
+	[14] D. Crandall, A. Owens, N. Snavely, and D. P. Huttenlocher. "Discrete-Continuous Optimization for Large-Scale Structure from Motion." CVPR, 2011.
+
+	[15] L. de Agapito, E. Hayman, and I. Reid. "Self-calibration of a rotating camera with varying intrinsic parameters." BMVC, 1998.
+
+	[16] F. Dellaert, S. Seitz, C. E. Thorpe, and S. Thrun. "Structure from motion without correspondence." CVPR.
+
+	[17] E. Dunn and J.-M. Frahm. "Next best view planning for active model improvement." BMVC, 2009.
+
+	[18] M. A. Fischler and R. C. Bolles. "Random sample consensus: a paradigm for model fitting with applications to image analysis and automated cartography." ACM, 1981.
+
+	[19] A. Fitzgibbon and A. Zisserman. "Automatic camera recovery for closed or open image sequences." ECCV, 1998.
+
+	[20] J.-M. Frahm, P. Fite-Georgel, D. Gallup, T. Johnson, R. Raguram, C. Wu, Y.-H. Jen, E. Dunn, B. Clipp, S. Lazebnik, and M. Pollefeys. "Building Rome on a Cloudless Day." ECCV, 2010.
+
+	[21] J.-M. Frahm and M. Pollefeys. "RANSAC for (quasi-) degenerate data (QDEGSAC)." CVPR, 2006.
+
+	[22] X.-S. Gao, X.-R. Hou, J. Tang, and H.-F. Cheng. "Complete solution classification for the perspective-three-point problem." IEEE PAMI, 2003.
+
+	[23] R. Gherardi, M. Farenzena, and A. Fusiello. "Improving the efficiency of hierarchical structure-and-motion." CVPR, 2010.
+
+	[24] S. Haner and A. Heyden. "Covariance propagation and next best view planning for 3D reconstruction." ECCV, 2012.
+
+	[25] R. Hartley and F. Schaffalitzky. "L∞ minimization in geometric reconstruction problems." CVPR, 2004.
+
+	[26] R. Hartley and A. Zisserman. "Multiple view geometry in computer vision." 2003.
+
+	[27] R. I. Hartley and P. Sturm. "Triangulation." 1997.
+
+	[28] M. Havlena and K. Schindler. "Vocmatch: Efficient multiview correspondence for structure from motion." ECCV, 2014.
+
+	[29] J. Heinly, E. Dunn, and J.-M. Frahm. "Comparative evaluation of binary features." ECCV.
+
+	[30] J. Heinly, J. L. Schönberger, E. Dunn, and J.-M. Frahm. "Reconstructing the World* in Six Days *(As Captured by the Yahoo 100 Million Image Dataset)." CVPR, 2015.
+
+	[31] A. Irschara, C. Zach, J.-M. Frahm, and H. Bischof. "From structure-from-motion point clouds to fast location recognition." CVPR, 2009.
+
+	[32] L. Kang, L. Wu, and Y.-H. Yang. "Robust multi-view L2 triangulation via optimal inlier selection and 3D structure refinement." Pattern Recognition, 2014.
+
+	[33] A. Kushal and S. Agarwal. "Visibility based preconditioning for bundle adjustment." CVPR, 2012.
+
+	[34] V. Lepetit, F. Moreno-Noguer, and P. Fua. "EPnP: An accurate O(n) solution to the PnP problem." IJCV, 2009.
+
+	[35] H. Li. "A practical algorithm for L∞ triangulation with outliers." CVPR, 2007.
+
+	[36] Y. Li, N. Snavely, and D. P. Huttenlocher. "Location recognition using prioritized feature matching." ECCV, 2010.
+
+	[37] Y. Lou, N. Snavely, and J. Gehrke. "MatchMiner: Efficient Spanning Structure Mining in Large Image Collections." ECCV, 2012.
+
+	[38] M. I. Lourakis and A. A. Argyros. "SBA: A software package for generic sparse bundle adjustment." ACM TOMS, 2009.
+
+	[39] D. G. Lowe. "Distinctive image features from scale-invariant keypoints." IJCV, 2004.
+
+	[40] F. Lu and R. Hartley. "A fast optimal algorithm for L2 triangulation." ACCV, 2007.
+
+	[41] C. McGlone, E. Mikhail, and J. Bethel. "Manual of photogrammetry." 1980.
+
+	[42] R. Mohr, L. Quan, and F. Veillon. "Relative 3D reconstruction using multiple uncalibrated images." IJR, 1995.
+
+	[43] K. Ni, D. Steedly, and F. Dellaert. "Out-of-core bundle adjustment for large-scale 3D reconstruction." ICCV, 2007.
+
+	[44] C. Olsson, A. Eriksson, and R. Hartley. "Outlier removal using duality." CVPR, 2010.
+
+	[45] M. Pollefeys, D. Nister, J.-M. Frahm, A. Akbarzadeh, P. Mordohai, B. Clipp, C. Engels, D. Gallup, S.-J. Kim, P. Merrell, et al. "Detailed real-time urban 3D reconstruction from video." IJCV, 2008.
+
+	[46] M. Pollefeys, L. Van Gool, M. Vergauwen, F. Verbiest, K. Cornelis, J. Tops, and R. Koch. "Visual modeling with a hand-held camera." IJCV, 2004.
+
+	[47] F. Schaffalitzky and A. Zisserman. "Multi-view matching for unordered image sets, or How do I organize my holiday snaps?" ECCV, 2002.
+
+	[48] J. L. Schönberger, A. C. Berg, and J.-M. Frahm. "Efficient two-view geometry classification." GCPR, 2015.
+
+	[49] J. L. Schönberger, A. C. Berg, and J.-M. Frahm. "PAIGE: PAirwise Image Geometry Encoding for Improved Efficiency in Structure-from-Motion." CVPR, 2015.
+
+	[50] J. L. Schönberger, D. Ji, J.-M. Frahm, F. Radenović, O. Chum, and J. Matas. "From Dusk Till Dawn: Modeling in the Dark." CVPR, 2016.
+
+	[51] J. L. Schönberger, F. Radenović, O. Chum, and J.-M. Frahm. "From Single Image Query to Detailed 3D Reconstruction." CVPR, 2015.
+
+	[52] N. Snavely. "Scene reconstruction and visualization from internet photo collections." PhD thesis, 2008.
+
+	[53] N. Snavely, S. Seitz, and R. Szeliski. "Photo tourism: exploring photo collections in 3D." ACM TOG, 2006.
+
+	[54] N. Snavely, S. Seitz, and R. Szeliski. "Skeletal graphs for efficient structure from motion." CVPR, 2008.
+
+	[55] C. Sweeney. "Theia multiview geometry library: Tutorial & reference." http://theia-sfm.org.
+
+	[56] C. Sweeney, T. Sattler, T. Hollerer, M. Turk, and M. Pollefeys. "Optimizing the viewing graph for structure-from-motion." CVPR, 2015.
+
+	[57] P. H. Torr. "An assessment of information criteria for motion model selection." CVPR, 1997.
+
+	[58] B. Triggs, P. F. McLauchlan, R. I. Hartley, and A. Fitzgibbon. "Bundle adjustment: a modern synthesis." 2000.
+
+	[59] T. Tuytelaars and K. Mikolajczyk. "Local invariant feature detectors: a survey." CGV, 2008.
+
+	[60] T. Weyand, C.-Y. Tsai, and B. Leibe. "Fixing wtfs: Detecting image matches caused by watermarks, timestamps, and frames in internet photos." WACV, 2015.
+
+	[61] K. Wilson and N. Snavely. "Robust global translations with 1dsfm." ECCV, 2014.
+
+	[62] C. Wu. "Towards linear-time incremental structure from motion." 3DV, 2013.
+
+	[63] C. Wu, S. Agarwal, B. Curless, and S. Seitz. "Multicore bundle adjustment." CVPR, 2011.
+
+	[64] E. Zheng and C. Wu. "Structure from motion using structureless resection." ICCV, 2015.
