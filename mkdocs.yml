@@ -112,7 +112,8 @@ nav:
       - "特征匹配": 
         - "LBD 线特征描述算法": paper/CV/特征匹配/LBD线特征描述算法.md
       - "SfM":
-        - "SfM 回顾": paper/CV/SfM/Structure-from-Motion_Revisited.md
+        - "基于分层聚类树的 SfM ": paper/CV/SfM/Structure-and-motion_pipeline_on_a_hierarchical_cluster_tree.md
+        - "SfM 回顾（Colmap）": paper/CV/SfM/Structure-from-Motion_Revisited.md
   - "课程":
     - "专业相关":
       - "摄影测量":

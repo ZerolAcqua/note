@@ -152,7 +152,7 @@ $$E_g=\sum_j\rho_j=\left(\|\pi_g(\mathrm{G}_r,\mathrm{P}_c,\mathrm{X}_k)-\mathrm
 
 本文提出了一种 SfM 算法，克服了关键挑战，迈向通用的 SfM 系统。算法的提出组件在完整性、鲁棒性、精度和效率方面改进了现有技术的水平。针对具有挑战性的大规模数据集进行了全面的实验，展示了各个组件和整个系统的性能。整个算法以开源实现的形式向公众发布。
 
-**致谢**。我们感谢 J. Heinly 和 T. Price 的校对工作。我们还要感谢 C. Sweeney 为 *Theia* 实验的制作。本研究部分得到了 NSF No. IIS1349074、No. CNS-1405847和MITRE 公司的支持。
+**致谢**。我们感谢 J. Heinly 和 T. Price 的校对工作。我们还要感谢 C. Sweeney 为 *Theia* 实验的制作。本研究部分得到了 NSF No. IIS1349074、No. CNS-1405847 和 MITRE 公司的支持。
 
 
 ## 参考文献
