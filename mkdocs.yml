@@ -135,6 +135,7 @@ nav:
   - "编程":
     - "C++": 
       - "C++标准中值得使用的功能🍭": programming/cpp/C++标准中值得使用的功能.md
+      - "Effective Modern C++": programming/cpp/Effective_Modern_C++.md
     - "Rust": 
       - "准备工作": programming/rust/准备工作.md
       - "Rust 程序设计语言": programming/rust/Rust程序设计语言.md
