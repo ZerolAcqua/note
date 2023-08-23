@@ -1,12 +1,6 @@
 ---
 title: 【论文翻译】Structure-from-Motion Revisited
 date: 2023-05-29 21:29:09
-excerpt: SfM
-tags: 
-- CV/SfM
-- 文献类型/综述
-rating: ⭐⭐⭐
-status: inprogress
 ---
 
 

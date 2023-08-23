@@ -1,11 +1,6 @@
 ---
 title: Structure-and-motion pipeline on a hierarchical cluster tree
 date: 2023-06-12 19:17:09
-excerpt: 分层式 SfM，还好它的利用树的思路还不太一样。
-tags: 
-- CV/SfM
-rating: ⭐⭐⭐
-status: complete
 ---
 
 
