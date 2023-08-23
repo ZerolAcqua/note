@@ -112,8 +112,12 @@ nav:
       - "特征匹配": 
         - "LBD 线特征描述算法": paper/CV/特征匹配/LBD线特征描述算法.md
       - "SfM":
-        - "基于分层聚类树的 SfM ": paper/CV/SfM/Structure-and-motion_pipeline_on_a_hierarchical_cluster_tree.md
         - "SfM 回顾（Colmap）": paper/CV/SfM/Structure-from-Motion_Revisited.md
+        - "用于高效 SfM 的骨架图": paper/CV/SfM/Skeletal_graphs_for_efficient_structure_from_motion.md
+        - "基于分层聚类树的 SfM ": paper/CV/SfM/Structure-and-motion_pipeline_on_a_hierarchical_cluster_tree.md
+        - "提高分层 SfM 效率": paper/CV/SfM/Improving_the_efficiency_of_hierarchical_structure-and-motion.md
+
+
   - "课程":
     - "专业相关":
       - "摄影测量":

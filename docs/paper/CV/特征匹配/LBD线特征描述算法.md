@@ -16,8 +16,8 @@ status: complete
 
 	[【论文阅读】An efficient and robust line segment matching approach based on LBD descriptor 高斯金字塔在哪篇论文中被提出 林北不要忍了的博客 - CSDN 博客](https://blog.csdn.net/weixin_43849505/article/details/123313314)
 
-!!! info "相关论文"
-	[An efficient and robust line segment matching approach based on LBD descriptor and pairwise geometric consistency](https://doi.org/10.1016/j.jvcir.2013.05.006)
+!!! info "论文链接"
+	原文：Lilian Zhang, Reinhard Koch. [An efficient and robust line segment matching approach based on LBD descriptor and pairwise geometric consistency](https://doi.org/10.1016/j.jvcir.2013.05.006)
 
 ## 介绍
 ### 相关工作

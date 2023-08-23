@@ -9,8 +9,8 @@ status: complete
 ---
 
 
-!!! info "相关论文"
-	[Structure-and-motion pipeline on a hierarchical cluster tree](https://doi.org/10.1109/ICCVW.2009.5457435)
+!!! info "论文链接"
+	原文：Riccardo Gherardi, Michela Farenzena, Andrea Fusiello. [Structure-and-motion pipeline on a hierarchical cluster tree](https://doi.org/10.1109/ICCVW.2009.5457435)
 
 
 ## 摘要

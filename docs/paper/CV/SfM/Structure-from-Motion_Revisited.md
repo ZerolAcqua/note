@@ -10,8 +10,8 @@ status: inprogress
 ---
 
 
-!!! info "相关论文"
-	[Structure-from-Motion Revisited](https://doi.org/10.1109/CVPR.2016.445)
+!!! info "论文链接"
+	原文：Johannes L. Schonberger, Jan-Michael Frahm. [Structure-from-Motion Revisited](https://doi.org/10.1109/CVPR.2016.445)
 
 
 ## 摘要 
