@@ -119,6 +119,7 @@ nav:
         - "线性时间的增量式 SfM（VisualSFM）": paper/CV/SfM/Towards_Linear-Time_Incremental_Structure-from-Motion.md
         - "通过互联网影像重建世界（Bundler）": paper/CV/SfM/Modeling_the_World_from_Internet_Photo_Collections.md
         - "相片旅行：在三维世界中浏览相片": paper/CV/SfM/Photo_Tourism_Exploring_Photo_Collections_in_3D.md 
+        - "一天建成罗马": paper/CV/SfM/Building_Rome_in_a_Day.md
 
   - "课程":
     - "专业相关":
