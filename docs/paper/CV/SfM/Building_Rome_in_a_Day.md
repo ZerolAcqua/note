@@ -7,6 +7,8 @@ status: new
 !!! info "论文链接"
 	原文：Sameer Agarwal, Noah Snavely, Ian Simon, Steven M Seitz, Richard Szeliski. [Building Rome in a Day](https://doi.org/10.1109/ICCV.2009.5459148)
 
+	关联：Noah Snavely, Steven M. Seitz, Richard Szeliski. [Modeling the World from Internet Photo Collections](https://doi.org/10.1007/s11263-007-0107-3)
+
 !!! warning "注意"
     由 claude 和 chatgpt 翻译整理
 
