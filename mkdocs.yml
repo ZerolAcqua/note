@@ -78,6 +78,20 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
 
+plugins:
+  # - markmap:
+      # base_path: docs
+      # encoding: utf-8
+      # file_extension: .mm.md
+      # d3_version: "7"
+      # lib_version: 0.15.3
+      # view_version: 0.15.3
+  - markmap:
+      # disable the default assets first
+      d3_version: ''
+      lib_version: ''
+      view_version: ''
+
 extra_javascript:
   # 使用 katex
   # - javascripts/katex.js
@@ -92,6 +106,12 @@ extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.zerolacqua.top/npm/mathjax/es5/tex-mml-chtml.js
+
+  # 使用 markmap
+  - https://unpkg.com/d3@7/dist/d3.min.js
+  - https://unpkg.com/markmap-lib@0.15.3/dist/browser/index.js
+  - https://unpkg.com/markmap-view@0.15.3/dist/browser/index.js
+
 extra_css:
   - stylesheets/katex.min.css
   - stylesheets/extra.css

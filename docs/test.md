@@ -97,6 +97,35 @@
 
     ```
 
+## markmap
+
+{!mindmap.mm.md!}
+
+    
+```markdown
+    ```markmap
+        # Root
+
+        ## Branch 1
+
+        * Branchlet 1a
+        * Branchlet 1b
+
+        ## Branch 2
+
+        * Branchlet 2a
+        * Branchlet 2b
+    ``` 
+``` 
+
+或，引入文件：
+
+```markdown
+    {!mindmap.mm.md!}
+
+
+<!-- -->
+
 ## 恢复测试
 
 测试测试
