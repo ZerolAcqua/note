@@ -103,26 +103,26 @@
 
     
 ```markdown
-    ```markmap
-        # Root
+```markmap
+    # Root
 
-        ## Branch 1
+    ## Branch 1
 
-        * Branchlet 1a
-        * Branchlet 1b
+    * Branchlet 1a
+    * Branchlet 1b
 
-        ## Branch 2
+    ## Branch 2
 
-        * Branchlet 2a
-        * Branchlet 2b
-    ``` 
+    * Branchlet 2a
+    * Branchlet 2b
+``` 
 ``` 
 
 或，引入文件：
 
 ```markdown
-    {!mindmap.mm.md!}
-
+{!mindmap.mm.md!}
+```
 
 <!-- -->
 
