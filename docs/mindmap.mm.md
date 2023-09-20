@@ -1,3 +1,7 @@
+---
+markmap:
+    colorFreezeLevel: 2
+---
 
 # Root
 

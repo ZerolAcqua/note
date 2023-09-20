@@ -99,32 +99,45 @@
 
 ## markmap
 
+=== "效果"
+
 {!mindmap.mm.md!}
 
+
+??? note
     
-```markdown
-```markmap
-    # Root
+    ```markdown
+        ```markmap
+        ---
+        markmap:
+            colorFreezeLevel: 2
+        ---
+            # Root
 
-    ## Branch 1
+            ## Branch 1
 
-    * Branchlet 1a
-    * Branchlet 1b
+            * Branchlet 1a
+            * Branchlet 1b
 
-    ## Branch 2
+            ## Branch 2
 
-    * Branchlet 2a
-    * Branchlet 2b
-``` 
-``` 
+            * Branchlet 2a
+            * Branchlet 2b
+        ```  
+    ```
 
-或，引入文件：
+    或，直接引入文件：
 
-```markdown
-{!mindmap.mm.md!}
-```
+    ```markdown
 
-<!-- -->
+    <!-- 请删除"\" -->
+    \{!mindmap.mm.md!\}
+
+    ``` 
+
+
+
+
 
 ## 恢复测试
 
