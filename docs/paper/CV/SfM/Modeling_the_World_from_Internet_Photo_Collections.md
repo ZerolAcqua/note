@@ -1,4 +1,5 @@
 ---
+title: Modeling the World from Internet Photo Collections
 date: 2023-08-25 21:25:09
 status: new
 ---

@@ -1,5 +1,5 @@
 ---
-title: 【论文翻译】Image Matching from Handcrafted to Deep Features A Survey
+title: Image Matching from Handcrafted to Deep Features A Survey
 status: new
 ---
 
