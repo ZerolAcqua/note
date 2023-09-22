@@ -103,7 +103,7 @@ extra_javascript:
   # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
 
   # 使用 mathjax
-  - javascripts/mathjax.js
+  # - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.zerolacqua.top/npm/mathjax/es5/tex-mml-chtml.js
 
