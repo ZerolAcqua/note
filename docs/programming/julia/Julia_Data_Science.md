@@ -1,5 +1,5 @@
 ---
-status: new
+
 ---
 
 [Welcome - Julia Data Science (julialang.org)](https://cn.julialang.org/JuliaDataScience/)
