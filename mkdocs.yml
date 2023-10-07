@@ -141,6 +141,7 @@ nav:
         - "相片旅行：在三维世界中浏览相片": paper/CV/SfM/Photo_Tourism_Exploring_Photo_Collections_in_3D.md 
         - "一天建成罗马": paper/CV/SfM/Building_Rome_in_a_Day.md
         - "从人工特征到深度特征的图像匹配调查": paper/CV/SfM/Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey.md
+        - "大规模无人机影像的高效 SfM": paper/CV/SfM/Efficient_structure_from_motion_for_large-scale_UAV_images_A_review_and_a_comparison_of_SfM_tools.md
 
   - "课程":
     - "专业相关":
