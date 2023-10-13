@@ -131,6 +131,7 @@ nav:
     - "CV":
       - "特征匹配": 
         - "LBD 线特征描述算法": paper/CV/特征匹配/LBD线特征描述算法.md
+        - "从人工特征到深度特征的图像匹配调查": paper/CV/SfM/Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey.md
       - "SfM":
         - "SfM 回顾（Colmap）": paper/CV/SfM/Structure-from-Motion_Revisited.md
         - "用于高效 SfM 的骨架图": paper/CV/SfM/Skeletal_graphs_for_efficient_structure_from_motion.md
@@ -140,8 +141,8 @@ nav:
         - "通过互联网影像重建世界（Bundler）": paper/CV/SfM/Modeling_the_World_from_Internet_Photo_Collections.md
         - "相片旅行：在三维世界中浏览相片": paper/CV/SfM/Photo_Tourism_Exploring_Photo_Collections_in_3D.md 
         - "一天建成罗马": paper/CV/SfM/Building_Rome_in_a_Day.md
-        - "从人工特征到深度特征的图像匹配调查": paper/CV/SfM/Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey.md
         - "大规模无人机影像的高效 SfM": paper/CV/SfM/Efficient_structure_from_motion_for_large-scale_UAV_images_A_review_and_a_comparison_of_SfM_tools.md
+        - "多核光束法平差": paper/CV/SfM/Multicore_Bundle_Adjustment.md
 
   - "课程":
     - "专业相关":
@@ -159,6 +160,7 @@ nav:
     - "专业之外":
       - "CS":
         - "多媒体技术": course/CS/多媒体技术.md
+        - "南大计算机系统 PA": course/CS/南大计算机系统PA.md
       - "others": 
         - "逻辑学导论": course/others/逻辑学导论.md
   - "编程":
