@@ -1,7 +1,6 @@
 ---
 title: Towards Linear-Time Incremental Structure from Motion
 date: 2023-08-22 20:47:31
-status: new
 ---
 
 !!! info "论文链接"

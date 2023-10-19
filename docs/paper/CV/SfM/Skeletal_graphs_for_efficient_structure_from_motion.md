@@ -1,7 +1,6 @@
 ---
 title: Skeletal graphs for efficient structure from motion
 date: 2023-08-22 20:47:31
-status: new
 ---
 
 

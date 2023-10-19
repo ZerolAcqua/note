@@ -1,7 +1,6 @@
 ---
 title: "Photo Tourism: Exploring Photo Collections in 3D"
 date: 2023-08-27 16:55:47
-status: new
 ---
 
 

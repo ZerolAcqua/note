@@ -1,7 +1,7 @@
 ---
 title: Building Rome in a Day
 date: 2023-08-29 12:24:46
-status: new
+
 ---
 
 !!! info "论文链接"
