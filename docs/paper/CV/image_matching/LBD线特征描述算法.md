@@ -6,7 +6,6 @@ tags:
 - CV/特征描述
 - CV/线特征
 rating: ⭐⭐⭐
-status: complete
 ---
 
 !!! note "参考网页"
