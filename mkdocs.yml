@@ -131,7 +131,7 @@ nav:
     - "CV":
       - "图像匹配": 
         - "LBD 线特征描述算法": paper/CV/image_matching/LBD线特征描述算法.md
-        - "从人工特征到深度特征的图像匹配调查": paper\CV\image_matching\Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey.md
+        - "从人工特征到深度特征的图像匹配调查": paper/CV/image_matching/Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey.md
       - "SfM":
         - "SfM 回顾（Colmap）": paper/CV/SfM/Structure-from-Motion_Revisited.md
         - "用于高效 SfM 的骨架图": paper/CV/SfM/Skeletal_graphs_for_efficient_structure_from_motion.md
