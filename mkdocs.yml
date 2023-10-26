@@ -144,6 +144,7 @@ nav:
         - "大规模无人机影像的高效 SfM": paper/CV/SfM/Efficient_structure_from_motion_for_large-scale_UAV_images_A_review_and_a_comparison_of_SfM_tools.md
         - "多核光束法平差": paper/CV/SfM/Multicore_Bundle_Adjustment.md
         - "基于 RANSAC 通用 Procrustes 分析的高效树状 SFM": paper/CV/SfM/Efficient_tree-structured_SfM_by_RANSAC_generalized_Procrustes_analysis.md
+        - "使用图分割的分治高效大规模 SfM": paper\CV\SfM\Divide_and_Conquer_Efficient_Large_Scale_Structure_from_Motion_Using_Graph_Partitioning.md
 
   - "课程":
     - "专业相关":
