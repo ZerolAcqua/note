@@ -2,6 +2,8 @@
 title: Image Matching from Handcrafted to Deep Features A Survey
 ---
 
+# Image Matching from Handcrafted to Deep Features A Survey
+
 !!! info "论文链接"
 	原文：Jiayi Ma, Xingyu Jiang, Aoxiang Fan, Junjun Jiang, Junchi Yan. [Image Matching from Handcrafted to Deep Features: A Survey](https://doi.org/10.1007/s11263-020-01359-2)
 
@@ -466,5 +468,7 @@ Ramisa 等人（2011）结合了在全景图像中自动检测到的平均地标
 
 
 ## 思维导图
-[大纲形式](/paper\CV\image_matching\Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey.mm)
-{! paper\CV\image_matching\Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey.mm.md !}
+
+[大纲形式](/paper/CV/image_matching/Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey.mm)
+
+{! paper/CV/image_matching/Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey.mm.md !}

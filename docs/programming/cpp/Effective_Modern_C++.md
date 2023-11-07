@@ -2,6 +2,8 @@
 status: new
 ---
 
+# Effective Modern C++
+
 ## 前言
 
 [Effective Modern C++](https://cntransgroup.github.io/EffectiveModernCppChinese)

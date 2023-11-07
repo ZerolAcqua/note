@@ -3,6 +3,8 @@ title: Modeling the World from Internet Photo Collections
 date: 2023-08-25 21:25:09
 ---
 
+# Modeling the World from Internet Photo Collections
+
 !!! info "论文链接"
 	原文：Noah Snavely, Steven M. Seitz, Richard Szeliski. [Modeling the World from Internet Photo Collections](https://doi.org/10.1007/s11263-007-0107-3)
 
@@ -13,11 +15,11 @@ date: 2023-08-25 21:25:09
 	- https://zhuanlan.zhihu.com/p/75685722
 	- https://blog.csdn.net/Adam_DOGG/article/details/118462643
 
-### 1 Introduction
+## 1 Introduction
 
 计算机视觉领域，一个关键的问题就是配准，即找出两个图像间的对应关系它们在一个公共的 3D 坐标系下的相对位姿问题。
 
-### 2 Previous Work
+## 2 Previous Work
 
 ### 2.1 Feature Correspondence
 
@@ -39,11 +41,11 @@ The field of image-based rendering (IBR) is devoted to the problem of synthesizi
 
 如何组织图片的研究已经存在很多方法了，大多数方法使用元数据，比如关键字、摄影师、时间等作为一个基本的图像组织结构。另一种方法就是标注，标注的好处是特征的对应关可以更好的得到保证，并且可以在图像间具体的物体和区域上传递标注。与大多数 AR 方法不作者使用 2D 图像标注在图像间传递。
 
-### 3 Overview
+## 3 Overview
 
 三维重建最大的挑战是从数以百计、数以千计的不同视角、光照、天气条件、分辨率等的图片集中匹配并重建三维信息。作者使用当前计算机视觉中的两个重要的突破，即特征匹配和 SfM。作者的工作的一个关键特性就是可以自动的在图像间传递标注，因此一个图像中的物体信息可以被传播到所有包含该物体的其他图像中。
 
-### 4 Reconstructing Cameras and Sparse Geometry  重建与粗几何
+## 4 Reconstructing Cameras and Sparse Geometry  重建与粗几何
 
 本文的方法不依赖于相机或其他设配来提供位姿、方位或几个信息，相反，而是通过使用计算机视觉技术从图片中获得这些信息。首先是在所有的图像中提取特征点，然后在图像对中匹配特征点，最后使用迭代优化的方法获得相机参数。
 

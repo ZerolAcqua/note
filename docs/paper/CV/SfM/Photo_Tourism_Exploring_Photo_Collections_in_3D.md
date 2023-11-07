@@ -3,6 +3,7 @@ title: "Photo Tourism: Exploring Photo Collections in 3D"
 date: 2023-08-27 16:55:47
 ---
 
+# Photo Tourism: Exploring Photo Collections in 3D
 
 !!! info "论文链接"
 	原文：Noah Snavely, Steven M. Seitz, Richard Szeliski. [Photo Tourism: Exploring Photo Collections in 3D](http://phototour.cs.washington.edu/Photo_Tourism.pdf)
@@ -81,7 +82,7 @@ date: 2023-08-27 16:55:47
 
 我们首先估计一对相机的参数。这对初始相机应该有大量匹配，但基线也应该足够大，以使观测点的 3D 位置估计良好。因此，我们选择匹配数量最多的图像对，同时它们的匹配不能很好地由单应变换建模（以避免退化情况）。
 
-接下来，我们将另一个相机添加到优化中。我们选择观测到最多已估计 3D 位置点的相机，并使用直接线性变换(DLT)技术在 RANSAC 过程中初始化新相机的外参。 DLT 还给出内参矩阵 K 的一个通用上三角矩阵估计。我们使用 K 和图像 EXIF 标签估计的焦距来初始化新相机的焦距（详见附录 A)。
+接下来，我们将另一个相机添加到优化中。我们选择观测到最多已估计 3D 位置点的相机，并使用直接线性变换(DLT)技术在 RANSAC 过程中初始化新相机的外参。 DLT 还给出内参矩阵 K 的一个通用上三角矩阵估计。我们使用 K 和图像 EXIF 标签估计的焦距来初始化新相机的焦距（详见附录 A）。
 
 最后，我们将新相机观测到的轨迹添加到优化中。如果一个轨迹被至少一个已恢复的相机观测，并且三角化该轨迹给出良好调节的位置估计，则添加该轨迹。这个过程对每一个相机逐一重复，直到没有剩余的相机观测任何已重建的 3D 点为止。为了在每次迭代中最小化目标函数，我们使用 Lourakis 和 Argyros 的稀疏捆绑调整库。在重建一个场景之后，我们可以可选地运行后处理步骤，使用 Schmid 和 Zisserman 的线段重建技术检测场景中的 3D 线段。
 

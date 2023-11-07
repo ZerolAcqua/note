@@ -3,6 +3,8 @@ title: Towards Linear-Time Incremental Structure from Motion
 date: 2023-08-22 20:47:31
 ---
 
+# Towards Linear-Time Incremental Structure from Motion
+
 !!! info "论文链接"
 	原文：Michela Farenzena, Andrea Fusiello, Riccardo Gherardi. [Towards Linear-Time Incremental Structure from Motion](https://doi.org/10.1109/3DV.2013.25)
 

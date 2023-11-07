@@ -8,6 +8,8 @@ tags:
 rating: ⭐⭐⭐
 ---
 
+# LBD 线特征描述算法
+
 !!! note "参考网页"
     [LBD算法 - Line Band Discriptor 描述符分析\_Xue Feng BUPT的博客-CSDN博客](https://blog.csdn.net/chishuideyu/article/details/78132093)
 

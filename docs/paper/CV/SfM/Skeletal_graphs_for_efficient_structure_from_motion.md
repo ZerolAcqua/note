@@ -3,6 +3,7 @@ title: Skeletal graphs for efficient structure from motion
 date: 2023-08-22 20:47:31
 ---
 
+# Skeletal graphs for efficient structure from motion
 
 !!! info "论文链接"
 	原文：Noah Snavely, Steven M. Seitz, Richard Szeliski. [Skeletal graphs for efficient structure from motion](https://doi.org/10.1109/CVPR.2008.4587678)

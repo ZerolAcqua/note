@@ -3,6 +3,7 @@ title: Efficient tree-structured SfM by RANSAC generalized Procrustes analysis
 status: new
 ---
 
+# Efficient tree-structured SfM by RANSAC generalized Procrustes analysis
 
 !!! info "论文链接"
 	Yisong Chen, Antoni B. Chan, Zhouchen Lin, Kenji Suzuki, Guoping Wang [Efficient tree-structured SfM by RANSAC generalized Procrustes analysis](https://linkinghub.elsevier.com/retrieve/pii/S1077314217300334

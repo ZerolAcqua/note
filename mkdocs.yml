@@ -119,10 +119,6 @@ extra_css:
 nav:
   - "主页": index.md
   - "论文":
-    - "期刊":
-      - "ISPRS": 
-        - paper/ISPRS/index.md
-        - "Vol.189": paper/ISPRS/Volume 189.md
     - "RS": 
       - "UAV": 
         - "基于物探飞行模式的正射影像快速制作": paper/RS/UAV/基于物探飞行模式的正射影像快速制作.md
@@ -153,8 +149,6 @@ nav:
         - "卫星摄影测量": course/Photogrammetry/卫星摄影测量.md
         - "数字摄影测量": course/Photogrammetry/数字摄影测量.md
         - "解析摄影测量": course/Photogrammetry/解析摄影测量.md
-      - "GIS":
-        - "GIS 可视化": course/GIS/GIS可视化技术.md
       - "RS":
         - "遥感图像解译": course/RS/遥感图像解译.md
       - "测绘":

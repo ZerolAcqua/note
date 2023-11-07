@@ -4,6 +4,7 @@ date: 2023-10-07 16:11:56
 status: new
 ---
 
+# Multicore Bundle Adjustment
 
 !!! info "论文链接"
 	原文：Changchang Wu, Sameer Agarwal, Brian Curless, Steven M. Seitz. [Multicore bundle adjustment](https://doi.org/10.1109/CVPR.2011.5995552)

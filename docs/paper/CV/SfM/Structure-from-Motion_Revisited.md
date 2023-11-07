@@ -3,6 +3,7 @@ title: Structure-from-Motion Revisited
 date: 2023-05-29 21:29:09
 ---
 
+# Structure-from-Motion Revisited
 
 !!! info "论文链接"
 	原文：Johannes L. Schonberger, Jan-Michael Frahm. [Structure-from-Motion Revisited](https://doi.org/10.1109/CVPR.2016.445)

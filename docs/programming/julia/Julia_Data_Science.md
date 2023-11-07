@@ -2,9 +2,12 @@
 
 ---
 
+
+# Julia Data Science
+
 [Welcome - Julia Data Science (julialang.org)](https://cn.julialang.org/JuliaDataScience/)
 
-### 第一章 前言
+## 第一章 前言
 
 - 什么是数据科学？
 - 数字素养
@@ -12,7 +15,7 @@
     - 可视化数据
 - 软件工程
 
-### 第二章 为什么选择 Julia
+## 第二章 为什么选择 Julia
 
 - 从未编过程
 - 有编程经验
@@ -30,7 +33,7 @@
     - 多重派发
 - Julia 应用案例
 
-### 第三章 Julia 基础
+## 第三章 Julia 基础
 
 - 开发环境
 - 语法

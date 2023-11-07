@@ -3,6 +3,7 @@ title: Structure-and-motion pipeline on a hierarchical cluster tree
 date: 2023-06-12 19:17:09
 ---
 
+# Structure-and-motion pipeline on a hierarchical cluster tree
 
 !!! info "论文链接"
 	原文：Riccardo Gherardi, Michela Farenzena, Andrea Fusiello. [Structure-and-motion pipeline on a hierarchical cluster tree](https://doi.org/10.1109/ICCVW.2009.5457435)

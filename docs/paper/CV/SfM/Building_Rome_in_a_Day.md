@@ -4,6 +4,8 @@ date: 2023-08-29 12:24:46
 
 ---
 
+# Building Rome in a Day
+
 !!! info "论文链接"
 	原文：Sameer Agarwal, Noah Snavely, Ian Simon, Steven M Seitz, Richard Szeliski. [Building Rome in a Day](https://doi.org/10.1109/ICCV.2009.5459148)
 

@@ -3,6 +3,7 @@ title: Improving the efficiency of hierarchical structure-and-motion
 date: 2023-08-22 20:47:31
 ---
 
+# Improving the efficiency of hierarchical structure-and-motion
 
 !!! info "论文链接"
 	原文：Riccardo Gherardi, Michela Farenzena, Andrea Fusiello. [Improving the efficiency of hierarchical structure-and-motion](https://doi.org/10.1109/CVPR.2010.5539782)
