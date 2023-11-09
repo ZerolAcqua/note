@@ -11,7 +11,7 @@ rating: ⭐⭐⭐
 # LBD 线特征描述算法
 
 !!! note "参考网页"
-    [LBD算法 - Line Band Discriptor 描述符分析\_Xue Feng BUPT的博客-CSDN博客](https://blog.csdn.net/chishuideyu/article/details/78132093)
+    [LBD 算法 - Line Band Discriptor 描述符分析\_Xue Feng BUPT 的博客-CSDN 博客](https://blog.csdn.net/chishuideyu/article/details/78132093)
 
 	[OpenCV: Binary descriptors for lines extracted from an image](https://docs.opencv.org/4.0.0-beta/dc/ddd/group__line__descriptor.html)
 

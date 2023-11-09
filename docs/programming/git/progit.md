@@ -25,9 +25,9 @@
 - Git 一般只添加数据
     - 很难使用 Git 从数据库中删除数据
 - 三种状态
-    - **已修改** 表示修改了文件，但还没保存到数据库中。 
-    - **已暂存** 表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。
-    - **已提交** 表示数据已经安全地保存在本地数据库中。
+    - **已修改**表示修改了文件，但还没保存到数据库中。 
+    - **已暂存**表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中。
+    - **已提交**表示数据已经安全地保存在本地数据库中。
 #### 安装与配置
 - Git 自带一个 git config 的工具来帮助设置控制 Git 外观和行为的配置变量。 这些变量存储在三个不同的位置。
     - **system**  /etc/gitconfig
@@ -58,7 +58,7 @@
 - 忽略文件
     - .gitignore 的文件，用于忽略文件
         
-        [Git忽略文件.gitignore详解_ThinkWon的博客-CSDN博客_gitignore](https://blog.csdn.net/ThinkWon/article/details/101447866)
+        [Git 忽略文件.gitignore 详解_ThinkWon 的博客-CSDN 博客_gitignore](https://blog.csdn.net/ThinkWon/article/details/101447866)
 
         - 所有空行或者以 # 开头的行都会被 Git 忽略。
         - 可以使用标准的 glob 模式匹配，它会递归地应用在整个工作区中。
@@ -487,7 +487,7 @@
 - 单个修订版本
     - 简短的 SHA-1
         - git show [SHA-1]
-        - SHA-1碰撞的几率非常小
+        - SHA-1 碰撞的几率非常小
     - 分支引用
         - 使用名叫 rev-parse 的 Git 探测工具，获取分支名称指向的提交的 SHA-1
             - git rev-parse topic1
@@ -823,7 +823,7 @@
             - git log --oneline --branches -- git.tgz
         - 重写某次提交之后的所有提交
             - git filter-branch
-            - 历史中将不再包含对那个文件的引用。但引用日志和你在 .git/refs/original 通过git filter-branch 添加的新引用中还存有对这个文件的引用，所以你必须移除它们然后重新打包数据库。在重新打包前需要移除任何包含指向那些旧提交的指针的文件
+            - 历史中将不再包含对那个文件的引用。但引用日志和你在 .git/refs/original 通过 git filter-branch 添加的新引用中还存有对这个文件的引用，所以你必须移除它们然后重新打包数据库。在重新打包前需要移除任何包含指向那些旧提交的指针的文件
 #### 环境变量 
 - 全局行为
 - 版本库位置
