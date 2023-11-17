@@ -79,13 +79,14 @@ markdown_extensions:
       generic: true
 
 plugins:
-  # - markmap:
-      # base_path: docs
-      # encoding: utf-8
-      # file_extension: .mm.md
-      # d3_version: "7"
-      # lib_version: 0.15.3
-      # view_version: 0.15.3
+  - search
+# - markmap:
+    # base_path: docs
+    # encoding: utf-8
+    # file_extension: .mm.md
+    # d3_version: "7"
+    # lib_version: 0.15.3
+    # view_version: 0.15.3
   - markmap:
       # disable the default assets first
       d3_version: ''
