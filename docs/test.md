@@ -1,7 +1,7 @@
 ---
-
+search:
+  exclude: true
 ---
-
 
 
 !!! abstract 
