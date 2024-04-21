@@ -16,7 +16,8 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install mkdocs==1.6.0
-      - run: pip install mkdocs-material #=9.2.3
+      - run: pip install mkdocs-material==9.2.3
+      - run: pip install mkdocs-material-extensions==1.1.1
       - run: pip install mkdocs-markmap
       - run: mkdocs gh-deploy --force
   Sync:
