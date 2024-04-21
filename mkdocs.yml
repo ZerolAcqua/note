@@ -38,7 +38,6 @@ theme:
     - search.suggest
     - toc.follow
 markdown_extensions:
-
   # Python Markdown
   - abbr
   - meta
@@ -65,12 +64,16 @@ markdown_extensions:
   - pymdownx.critic
   - pymdownx.snippets
   - pymdownx.magiclink
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.highlight:
@@ -80,18 +83,18 @@ markdown_extensions:
 
 plugins:
   - search
-# - markmap:
-    # base_path: docs
-    # encoding: utf-8
-    # file_extension: .mm.md
-    # d3_version: "7"
-    # lib_version: 0.15.3
-    # view_version: 0.15.3
+  # - markmap:
+  # base_path: docs
+  # encoding: utf-8
+  # file_extension: .mm.md
+  # d3_version: "7"
+  # lib_version: 0.15.3
+  # view_version: 0.15.3
   - markmap:
       # disable the default assets first
-      d3_version: ''
-      lib_version: ''
-      view_version: ''
+      d3_version: ""
+      lib_version: ""
+      view_version: ""
 
 extra_javascript:
   # 使用 katex
@@ -99,8 +102,8 @@ extra_javascript:
   # - javascripts/katex.min.js
   # - javascripts/auto-render.min.js
 
-  # - javascripts/katex.js 
-  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
+  # - javascripts/katex.js
+  # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
   # - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
 
   # 使用 mathjax
@@ -120,58 +123,59 @@ extra_css:
 nav:
   - "主页": index.md
   - "论文":
-    - "RS": 
-      - "UAV": 
-        - "基于物探飞行模式的正射影像快速制作": paper/RS/UAV/基于物探飞行模式的正射影像快速制作.md
-        - "A combined image matching method for Chinese optical satellite imagery": paper/RS/UAV/中国光学卫星影像匹配融合方法.md
-        - "南极无人机摄影测量论文概览": paper/RS/UAV/南极无人机摄影测量论文概览.md
-    - "CV":
-      - "图像匹配": 
-        - "LBD 线特征描述算法": paper/CV/image_matching/LBD线特征描述算法.md
-        - "从人工特征到深度特征的图像匹配调查": paper/CV/image_matching/Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey.md
-      - "SfM":
-        - "SfM 回顾（Colmap）": paper/CV/SfM/Structure-from-Motion_Revisited.md
-        - "用于高效 SfM 的骨架图": paper/CV/SfM/Skeletal_graphs_for_efficient_structure_from_motion.md
-        - "基于分层聚类树的 SfM ": paper/CV/SfM/Structure-and-motion_pipeline_on_a_hierarchical_cluster_tree.md
-        - "提高分层 SfM 效率": paper/CV/SfM/Improving_the_efficiency_of_hierarchical_structure-and-motion.md
-        - "线性时间的增量式 SfM（VisualSFM）": paper/CV/SfM/Towards_Linear-Time_Incremental_Structure-from-Motion.md
-        - "通过互联网影像重建世界（Bundler）": paper/CV/SfM/Modeling_the_World_from_Internet_Photo_Collections.md
-        - "相片旅行：在三维世界中浏览相片": paper/CV/SfM/Photo_Tourism_Exploring_Photo_Collections_in_3D.md 
-        - "一天建成罗马": paper/CV/SfM/Building_Rome_in_a_Day.md
-        - "大规模无人机影像的高效 SfM": paper/CV/SfM/Efficient_structure_from_motion_for_large-scale_UAV_images_A_review_and_a_comparison_of_SfM_tools.md
-        - "多核光束法平差": paper/CV/SfM/Multicore_Bundle_Adjustment.md
-        - "基于 RANSAC 通用 Procrustes 分析的高效树状 SFM": paper/CV/SfM/Efficient_tree-structured_SfM_by_RANSAC_generalized_Procrustes_analysis.md
-        - "使用图分割的分治高效大规模 SfM": paper/CV/SfM/Divide_and_Conquer_Efficient_Large_Scale_Structure_from_Motion_Using_Graph_Partitioning.md
+      - "RS":
+          - "UAV":
+              - "基于物探飞行模式的正射影像快速制作": paper/RS/UAV/基于物探飞行模式的正射影像快速制作.md
+              - "A combined image matching method for Chinese optical satellite imagery": paper/RS/UAV/中国光学卫星影像匹配融合方法.md
+              - "南极无人机摄影测量论文概览": paper/RS/UAV/南极无人机摄影测量论文概览.md
+      - "CV":
+          - "图像匹配":
+              - "LBD 线特征描述算法": paper/CV/image_matching/LBD线特征描述算法.md
+              - "从人工特征到深度特征的图像匹配调查": paper/CV/image_matching/Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey.md
+          - "SfM":
+              - "SfM 回顾（Colmap）": paper/CV/SfM/Structure-from-Motion_Revisited.md
+              - "用于高效 SfM 的骨架图": paper/CV/SfM/Skeletal_graphs_for_efficient_structure_from_motion.md
+              - "基于分层聚类树的 SfM ": paper/CV/SfM/Structure-and-motion_pipeline_on_a_hierarchical_cluster_tree.md
+              - "提高分层 SfM 效率": paper/CV/SfM/Improving_the_efficiency_of_hierarchical_structure-and-motion.md
+              - "线性时间的增量式 SfM（VisualSFM）": paper/CV/SfM/Towards_Linear-Time_Incremental_Structure-from-Motion.md
+              - "通过互联网影像重建世界（Bundler）": paper/CV/SfM/Modeling_the_World_from_Internet_Photo_Collections.md
+              - "相片旅行：在三维世界中浏览相片": paper/CV/SfM/Photo_Tourism_Exploring_Photo_Collections_in_3D.md
+              - "一天建成罗马": paper/CV/SfM/Building_Rome_in_a_Day.md
+              - "大规模无人机影像的高效 SfM": paper/CV/SfM/Efficient_structure_from_motion_for_large-scale_UAV_images_A_review_and_a_comparison_of_SfM_tools.md
+              - "多核光束法平差": paper/CV/SfM/Multicore_Bundle_Adjustment.md
+              - "基于 RANSAC 通用 Procrustes 分析的高效树状 SFM": paper/CV/SfM/Efficient_tree-structured_SfM_by_RANSAC_generalized_Procrustes_analysis.md
+              - "使用图分割的分治高效大规模 SfM": paper/CV/SfM/Divide_and_Conquer_Efficient_Large_Scale_Structure_from_Motion_Using_Graph_Partitioning.md
 
   - "课程":
-    - "专业相关":
-      - "摄影测量":
-        - "近景摄影测量": course/Photogrammetry/近景摄影测量.md
-        - "卫星摄影测量": course/Photogrammetry/卫星摄影测量.md
-        - "数字摄影测量": course/Photogrammetry/数字摄影测量.md
-        - "解析摄影测量": course/Photogrammetry/解析摄影测量.md
-      - "RS":
-        - "遥感图像解译": course/RS/遥感图像解译.md
-      - "测绘":
-        - "大地测量学": course/geomatics/大地测量学.md
-    - "专业之外":
-      - "CS":
-        - "多媒体技术": course/CS/多媒体技术.md
-        - "南大计算机系统 PA": course/CS/南大计算机系统PA.md
-      - "others": 
-        - "逻辑学导论": course/others/逻辑学导论.md
+      - "专业相关":
+          - "摄影测量":
+              - "近景摄影测量": course/Photogrammetry/近景摄影测量.md
+              - "卫星摄影测量": course/Photogrammetry/卫星摄影测量.md
+              - "数字摄影测量": course/Photogrammetry/数字摄影测量.md
+              - "解析摄影测量": course/Photogrammetry/解析摄影测量.md
+          - "RS":
+              - "遥感图像解译": course/RS/遥感图像解译.md
+          - "测绘":
+              - "大地测量学": course/geomatics/大地测量学.md
+      - "专业之外":
+          - "CS":
+              - "多媒体技术": course/CS/多媒体技术.md
+              - "南大计算机系统 PA": course/CS/南大计算机系统PA.md
+          - "others":
+              - "逻辑学导论": course/others/逻辑学导论.md
   - "编程":
-    - "C++": 
-      - "C++标准中值得使用的功能🍭": programming/cpp/C++标准中值得使用的功能.md
-      - "Effective Modern C++": programming/cpp/Effective_Modern_C++.md
-    - "Rust": 
-      - "准备工作": programming/rust/准备工作.md
-      - "Rust 程序设计语言": programming/rust/Rust程序设计语言.md
-    - "Julia": 
-      - "准备工作": programming/julia/准备工作.md
-      - "Julia Data Science": programming/julia/Julia_Data_Science.md
-    - "Git": 
-      - "Progit": programming/git/progit.md
+      - "C++":
+          - "C++标准中值得使用的功能🍭": programming/cpp/C++标准中值得使用的功能.md
+          - "Effective Modern C++": programming/cpp/Effective_Modern_C++.md
+          - "C++实现Headfirst设计模式": programming/cpp/head-first-design-pattern.md
+      - "Rust":
+          - "准备工作": programming/rust/准备工作.md
+          - "Rust 程序设计语言": programming/rust/Rust程序设计语言.md
+      - "Julia":
+          - "准备工作": programming/julia/准备工作.md
+          - "Julia Data Science": programming/julia/Julia_Data_Science.md
+      - "Git":
+          - "Progit": programming/git/progit.md
   - "杂项":
-    - "摄影测量": 
-      - "云台旋转角换算": misc/photogrammetry/云台旋转角换算.md
+      - "摄影测量":
+          - "云台旋转角换算": misc/photogrammetry/云台旋转角换算.md

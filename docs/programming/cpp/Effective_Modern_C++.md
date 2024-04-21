@@ -1,5 +1,5 @@
 ---
-status: new
+
 ---
 
 # Effective Modern C++
