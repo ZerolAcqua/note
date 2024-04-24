@@ -25,6 +25,7 @@ theme:
     # - header.autohide
     # - navigation.expand
     - content.tabs.link
+    - content.code.copy
     - navigation.indexes
     # - navigation.instant
     # - navigation.prune

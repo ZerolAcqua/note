@@ -11,8 +11,6 @@ status: new
 
 ### 会叫会飞的鸭子
 
-#### 类图与分析
-
 本节要实现一个 `Duck` 类，鸭子可以飞可以叫。但问题是：
 
 - 我们可能有不会飞的鸭子，甚至不会叫的鸭子
@@ -113,96 +111,96 @@ classDiagram
 
 那么这样就实现了鸭子类的功能。我们封装了变化。使用组合而不是继承，增加了代码的复用性，同时便于拓展。
 
-#### 代码拿来
+??? caution "代码拿来"
 
-```cpp
-// Strategy Pattern
+	```cpp
+	// Strategy Pattern
 
-#include <iostream>
-#include <memory>
-using namespace std;
+	#include <iostream>
+	#include <memory>
+	using namespace std;
 
-class FlyBehavior {
- public:
-  virtual void fly() = 0;
-};
+	class FlyBehavior {
+	public:
+	virtual void fly() = 0;
+	};
 
-class QuackBehavior {
- public:
-  virtual void quack() = 0;
-};
+	class QuackBehavior {
+	public:
+	virtual void quack() = 0;
+	};
 
-// abstract class
-class Duck {
- protected:
-  shared_ptr<FlyBehavior> flyBehavior;
-  shared_ptr<QuackBehavior> quackBehavior;
+	// abstract class
+	class Duck {
+	protected:
+	shared_ptr<FlyBehavior> flyBehavior;
+	shared_ptr<QuackBehavior> quackBehavior;
 
- public:
-  Duck() {}
-  virtual void display() = 0;
-  void performFly() { flyBehavior->fly(); }
-  void performQuack() { quackBehavior->quack(); }
-  void setFlyBehavior(shared_ptr<FlyBehavior> fb) { flyBehavior = fb; }
-  void setQuackBehavior(shared_ptr<QuackBehavior> qb) { quackBehavior = qb; }
-  void swim() { cout << "All ducks float, even decoys!" << endl; }
-};
+	public:
+	Duck() {}
+	virtual void display() = 0;
+	void performFly() { flyBehavior->fly(); }
+	void performQuack() { quackBehavior->quack(); }
+	void setFlyBehavior(shared_ptr<FlyBehavior> fb) { flyBehavior = fb; }
+	void setQuackBehavior(shared_ptr<QuackBehavior> qb) { quackBehavior = qb; }
+	void swim() { cout << "All ducks float, even decoys!" << endl; }
+	};
 
-class FlyWithWings : public FlyBehavior {
- public:
-  void fly() override { cout << "I'm flying!!" << endl; }
-};
-class FlyNoWay : public FlyBehavior {
- public:
-  void fly() override { cout << "I can't fly" << endl; }
-};
-class FlyRocketPowered : public FlyBehavior {
- public:
-  void fly() override { cout << "I'm flying with a rocket" << endl; }
-};
+	class FlyWithWings : public FlyBehavior {
+	public:
+	void fly() override { cout << "I'm flying!!" << endl; }
+	};
+	class FlyNoWay : public FlyBehavior {
+	public:
+	void fly() override { cout << "I can't fly" << endl; }
+	};
+	class FlyRocketPowered : public FlyBehavior {
+	public:
+	void fly() override { cout << "I'm flying with a rocket" << endl; }
+	};
 
-class Quack : public QuackBehavior {
- public:
-  void quack() override { cout << "Quack" << endl; }
-};
-class Squeak : public QuackBehavior {
- public:
-  void quack() override { cout << "Squeak" << endl; }
-};
-class muteQuack : public QuackBehavior {
- public:
-  void quack() override { cout << "<< Silence >>" << endl; }
-};
+	class Quack : public QuackBehavior {
+	public:
+	void quack() override { cout << "Quack" << endl; }
+	};
+	class Squeak : public QuackBehavior {
+	public:
+	void quack() override { cout << "Squeak" << endl; }
+	};
+	class muteQuack : public QuackBehavior {
+	public:
+	void quack() override { cout << "<< Silence >>" << endl; }
+	};
 
-class Mallard : public Duck {
- public:
-  Mallard() {
-    quackBehavior = make_shared<Quack>();
-    flyBehavior = make_shared<FlyWithWings>();
-  }
-  void display() override { cout << "I'm a real Mallard duck" << endl; }
-};
+	class Mallard : public Duck {
+	public:
+	Mallard() {
+		quackBehavior = make_shared<Quack>();
+		flyBehavior = make_shared<FlyWithWings>();
+	}
+	void display() override { cout << "I'm a real Mallard duck" << endl; }
+	};
 
-class ModelDuck : public Duck {
- public:
-  ModelDuck() {
-    flyBehavior = make_shared<FlyNoWay>();
-    quackBehavior = make_shared<Quack>();
-  }
-  void display() override { cout << "I'm a model duck" << endl; }
-};
+	class ModelDuck : public Duck {
+	public:
+	ModelDuck() {
+		flyBehavior = make_shared<FlyNoWay>();
+		quackBehavior = make_shared<Quack>();
+	}
+	void display() override { cout << "I'm a model duck" << endl; }
+	};
 
-int main() {
-  unique_ptr<Duck> mallard(make_unique<Mallard>());
-  mallard->performQuack();
-  mallard->performFly();
-  unique_ptr<Duck> model(make_unique<ModelDuck>());
-  model->performFly();
-  model->setFlyBehavior(make_shared<FlyRocketPowered>());
-  model->performFly();
-}
+	int main() {
+	unique_ptr<Duck> mallard(make_unique<Mallard>());
+	mallard->performQuack();
+	mallard->performFly();
+	unique_ptr<Duck> model(make_unique<ModelDuck>());
+	model->performFly();
+	model->setFlyBehavior(make_shared<FlyRocketPowered>());
+	model->performFly();
+	}
 
-```
+	```
 
 ### 总结
 
@@ -218,8 +216,6 @@ int main() {
 	定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖者都会收到通知并自动更新
 
 ### 气象站与气象展示板
-
-#### 类图与分析
 
 本节需要实现气象站与气象展示板的关系。气象站会定时更新气象数据，而气象展示板会显示最新的气象数据。
 
@@ -329,269 +325,263 @@ classDiagram
 
 ```
 
-#### 代码拿来
+??? caution "代码拿来"
 
-```cpp
-// observer pattern
+	```cpp
+	// observer pattern
 
-#include <algorithm>
-#include <iostream>
-#include <memory>
-#include <vector>
+	#include <algorithm>
+	#include <iostream>
+	#include <memory>
+	#include <vector>
 
-using namespace std;
+	using namespace std;
 
-class Subject;
-class Observer {
-public:
-  virtual void setSubject(shared_ptr<Subject> s) = 0;
-  virtual void removeSubject() = 0;
-  virtual void update(float temp, float humidity, float pressure) = 0;
-};
+	class Subject;
+	class Observer {
+	public:
+	virtual void setSubject(shared_ptr<Subject> s) = 0;
+	virtual void removeSubject() = 0;
+	virtual void update(float temp, float humidity, float pressure) = 0;
+	};
 
-class Subject {
-public:
-  virtual void registerObserver(shared_ptr<Observer> o) = 0;
-  virtual void removeObserver(shared_ptr<Observer> o) = 0;
-  virtual void notifyObservers() = 0;
-};
+	class Subject {
+	public:
+	virtual void registerObserver(shared_ptr<Observer> o) = 0;
+	virtual void removeObserver(shared_ptr<Observer> o) = 0;
+	virtual void notifyObservers() = 0;
+	};
 
-class DisplayElement {
-public:
-  virtual void display() = 0;
-};
+	class DisplayElement {
+	public:
+	virtual void display() = 0;
+	};
 
-class WeatherData : public Subject {
-private:
-  vector<shared_ptr<Observer>> observers;
-  float temperature;
-  float humidity;
-  float pressure;
+	class WeatherData : public Subject {
+	private:
+	vector<shared_ptr<Observer>> observers;
+	float temperature;
+	float humidity;
+	float pressure;
 
-public:
-  void registerObserver(shared_ptr<Observer> o) override {
-    observers.push_back(o);
-  }
-  void removeObserver(shared_ptr<Observer> o) override {
-    auto it = find(observers.begin(), observers.end(), o);
-    if (it != observers.end()) {
-      observers.erase(it);
-    }
-  }
-  void notifyObservers() override {
-    for (auto o : observers) {
-      o->update(temperature, humidity, pressure);
-    }
-  }
-  void measurementsChanged() { notifyObservers(); }
-  void setMeasurements(float temperature, float humidity, float pressure) {
-    this->temperature = temperature;
-    this->humidity = humidity;
-    this->pressure = pressure;
-    measurementsChanged();
-  }
-};
+	public:
+	void registerObserver(shared_ptr<Observer> o) override {
+		observers.push_back(o);
+	}
+	void removeObserver(shared_ptr<Observer> o) override {
+		auto it = find(observers.begin(), observers.end(), o);
+		if (it != observers.end()) {
+		observers.erase(it);
+		}
+	}
+	void notifyObservers() override {
+		for (auto o : observers) {
+		o->update(temperature, humidity, pressure);
+		}
+	}
+	void measurementsChanged() { notifyObservers(); }
+	void setMeasurements(float temperature, float humidity, float pressure) {
+		this->temperature = temperature;
+		this->humidity = humidity;
+		this->pressure = pressure;
+		measurementsChanged();
+	}
+	};
 
-class CurrentConditionsDisplay
-    : public Observer,
-      DisplayElement,
-      public enable_shared_from_this<CurrentConditionsDisplay> {
-private:
-  float temperature;
-  float humidity;
-  weak_ptr<Subject> weatherData; // actually, one observer can observe many
-                                 // subjects, but we don't implement it here
+	class CurrentConditionsDisplay
+		: public Observer,
+		DisplayElement,
+		public enable_shared_from_this<CurrentConditionsDisplay> {
+	private:
+	float temperature;
+	float humidity;
+	weak_ptr<Subject> weatherData; // actually, one observer can observe many
+									// subjects, but we don't implement it here
 
-public:
-  CurrentConditionsDisplay() = default;
-  ~CurrentConditionsDisplay() { removeSubject(); }
+	public:
+	CurrentConditionsDisplay() = default;
+	~CurrentConditionsDisplay() { removeSubject(); }
 
-  void setSubject(shared_ptr<Subject> s) override {
-    if (weatherData.lock() != nullptr) {
-      return;
-    }
-    weatherData = s;
-    s->registerObserver(shared_from_this());
-  }
+	void setSubject(shared_ptr<Subject> s) override {
+		if (weatherData.lock() != nullptr) {
+		return;
+		}
+		weatherData = s;
+		s->registerObserver(shared_from_this());
+	}
 
-  void removeSubject() override {
-    auto sptrWeatherData = weatherData.lock();
-    if (sptrWeatherData == nullptr) {
-      return;
-    }
-    sptrWeatherData->removeObserver(shared_from_this());
-    weatherData.reset();
-  }
+	void removeSubject() override {
+		auto sptrWeatherData = weatherData.lock();
+		if (sptrWeatherData == nullptr) {
+		return;
+		}
+		sptrWeatherData->removeObserver(shared_from_this());
+		weatherData.reset();
+	}
 
-  void update(float temperature, float humidity, float pressure) {
-    this->temperature = temperature;
-    this->humidity = humidity;
-    display();
-  }
-  void display() override {
-    std::cout << "Current conditions: " << temperature << "F degrees and "
-              << humidity << "% humidity" << std::endl;
-  }
-};
+	void update(float temperature, float humidity, float pressure) {
+		this->temperature = temperature;
+		this->humidity = humidity;
+		display();
+	}
+	void display() override {
+		std::cout << "Current conditions: " << temperature << "F degrees and "
+				<< humidity << "% humidity" << std::endl;
+	}
+	};
 
-class StatisticsDisplay : public Observer,
-                          DisplayElement,
-                          public enable_shared_from_this<StatisticsDisplay> {
-private:
-  float temperature;
-  float humidity;
-  weak_ptr<Subject> weatherData;
+	class StatisticsDisplay : public Observer,
+							DisplayElement,
+							public enable_shared_from_this<StatisticsDisplay> {
+	private:
+	float temperature;
+	float humidity;
+	weak_ptr<Subject> weatherData;
 
-public:
-  void setSubject(shared_ptr<Subject> s) override {
-    if (weatherData.lock() != nullptr) {
-      return;
-    }
-    weatherData = s;
-    s->registerObserver(shared_from_this());
-  }
+	public:
+	void setSubject(shared_ptr<Subject> s) override {
+		if (weatherData.lock() != nullptr) {
+		return;
+		}
+		weatherData = s;
+		s->registerObserver(shared_from_this());
+	}
 
-  void removeSubject() override {
-    auto sptrWeatherData = weatherData.lock();
-    if (sptrWeatherData == nullptr) {
-      return;
-    }
-    sptrWeatherData->removeObserver(shared_from_this());
-    weatherData.reset();
-  }
+	void removeSubject() override {
+		auto sptrWeatherData = weatherData.lock();
+		if (sptrWeatherData == nullptr) {
+		return;
+		}
+		sptrWeatherData->removeObserver(shared_from_this());
+		weatherData.reset();
+	}
 
-  void update(float temperature, float humidity, float pressure) {
-    this->temperature = temperature;
-    this->humidity = humidity;
-    display();
-  }
+	void update(float temperature, float humidity, float pressure) {
+		this->temperature = temperature;
+		this->humidity = humidity;
+		display();
+	}
 
-  void display() override {
-    std::cout << "Statistics: " << temperature << "F degrees and " << humidity
-              << "% humidity" << std::endl;
-  }
-};
+	void display() override {
+		std::cout << "Statistics: " << temperature << "F degrees and " << humidity
+				<< "% humidity" << std::endl;
+	}
+	};
 
-class ForecastDisplay : public Observer,
-                        DisplayElement,
-                        public enable_shared_from_this<ForecastDisplay> {
-private:
-  float temperature;
-  float humidity;
-  weak_ptr<Subject> weatherData;
+	class ForecastDisplay : public Observer,
+							DisplayElement,
+							public enable_shared_from_this<ForecastDisplay> {
+	private:
+	float temperature;
+	float humidity;
+	weak_ptr<Subject> weatherData;
 
-public:
-  void setSubject(shared_ptr<Subject> s) override {
-    if (weatherData.lock() != nullptr) {
-      return;
-    }
-    weatherData = s;
-    s->registerObserver(shared_from_this());
-  }
+	public:
+	void setSubject(shared_ptr<Subject> s) override {
+		if (weatherData.lock() != nullptr) {
+		return;
+		}
+		weatherData = s;
+		s->registerObserver(shared_from_this());
+	}
 
-  void removeSubject() override {
-    auto sptrWeatherData = weatherData.lock();
-    if (sptrWeatherData == nullptr) {
-      return;
-    }
-    sptrWeatherData->removeObserver(shared_from_this());
-    weatherData.reset();
-  }
+	void removeSubject() override {
+		auto sptrWeatherData = weatherData.lock();
+		if (sptrWeatherData == nullptr) {
+		return;
+		}
+		sptrWeatherData->removeObserver(shared_from_this());
+		weatherData.reset();
+	}
 
-  void update(float temperature, float humidity, float pressure) {
-    this->temperature = temperature;
-    this->humidity = humidity;
-    display();
-  }
+	void update(float temperature, float humidity, float pressure) {
+		this->temperature = temperature;
+		this->humidity = humidity;
+		display();
+	}
 
-  void display() override {
-    std::cout << "Forecast: " << temperature << "F degrees and " << humidity
-              << "% humidity" << std::endl;
-  }
-};
+	void display() override {
+		std::cout << "Forecast: " << temperature << "F degrees and " << humidity
+				<< "% humidity" << std::endl;
+	}
+	};
 
-class HeatIndexDisplay : public Observer,
-                         DisplayElement,
-                         public enable_shared_from_this<HeatIndexDisplay> {
-private:
-  float temperature;
-  float humidity;
-  weak_ptr<Subject> weatherData;
+	class HeatIndexDisplay : public Observer,
+							DisplayElement,
+							public enable_shared_from_this<HeatIndexDisplay> {
+	private:
+	float temperature;
+	float humidity;
+	weak_ptr<Subject> weatherData;
 
-public:
-  void setSubject(shared_ptr<Subject> s) override {
-    if (weatherData.lock() != nullptr) {
-      return;
-    }
-    weatherData = s;
-    s->registerObserver(shared_from_this());
-  }
+	public:
+	void setSubject(shared_ptr<Subject> s) override {
+		if (weatherData.lock() != nullptr) {
+		return;
+		}
+		weatherData = s;
+		s->registerObserver(shared_from_this());
+	}
 
-  void removeSubject() override {
-    auto sptrWeatherData = weatherData.lock();
-    if (sptrWeatherData == nullptr) {
-      return;
-    }
-    sptrWeatherData->removeObserver(shared_from_this());
-    weatherData.reset();
-  }
+	void removeSubject() override {
+		auto sptrWeatherData = weatherData.lock();
+		if (sptrWeatherData == nullptr) {
+		return;
+		}
+		sptrWeatherData->removeObserver(shared_from_this());
+		weatherData.reset();
+	}
 
-  void update(float temperature, float humidity, float pressure) {
-    this->temperature = temperature;
-    this->humidity = humidity;
-    display();
-  }
+	void update(float temperature, float humidity, float pressure) {
+		this->temperature = temperature;
+		this->humidity = humidity;
+		display();
+	}
 
-  void display() override {
-    std::cout << "Heat index is " << computeHeatIndex(temperature, humidity)
-              << std::endl;
-  }
+	void display() override {
+		std::cout << "Heat index is " << computeHeatIndex(temperature, humidity)
+				<< std::endl;
+	}
 
-private:
-  double computeHeatIndex(double t, double rh) {
-    double index =
-        (16.923 + 1.85212 * t + 5.37941 * rh - 0.100254 * t * rh +
-         0.00941695 * (t * t) + 0.00728898 * (rh * rh) +
-         0.000345372 * (t * t * rh) - 0.000814971 * (t * rh * rh) +
-         0.0000102102 * (t * t * rh * rh) - 0.000038646 * (t * t * t) +
-         0.0000291583 * (rh * rh * rh) + 0.00000142721 * (t * t * t * rh) +
-         0.000000197483 * (t * rh * rh * rh) -
-         0.0000000218429 * (t * t * t * rh * rh) +
-         0.000000000843296 * (t * t * rh * rh * rh) -
-         0.0000000000481975 * (t * t * t * rh * rh * rh));
-    return index;
-  }
-};
+	private:
+	double computeHeatIndex(double t, double rh) {
+		double index =
+			(16.923 + 1.85212 * t + 5.37941 * rh - 0.100254 * t * rh +
+			0.00941695 * (t * t) + 0.00728898 * (rh * rh) +
+			0.000345372 * (t * t * rh) - 0.000814971 * (t * rh * rh) +
+			0.0000102102 * (t * t * rh * rh) - 0.000038646 * (t * t * t) +
+			0.0000291583 * (rh * rh * rh) + 0.00000142721 * (t * t * t * rh) +
+			0.000000197483 * (t * rh * rh * rh) -
+			0.0000000218429 * (t * t * t * rh * rh) +
+			0.000000000843296 * (t * t * rh * rh * rh) -
+			0.0000000000481975 * (t * t * t * rh * rh * rh));
+		return index;
+	}
+	};
 
-int main() {
-  {
-    auto weatherData(make_shared<WeatherData>());
-    auto currentDisplay(make_shared<CurrentConditionsDisplay>());
-    auto statisticsDisplay(make_shared<StatisticsDisplay>());
-    auto forecastDisplay(make_shared<ForecastDisplay>());
-    auto heatIndexDisplay(make_shared<HeatIndexDisplay>());
+	int main() {
+	{
+		auto weatherData(make_shared<WeatherData>());
+		auto currentDisplay(make_shared<CurrentConditionsDisplay>());
+		auto statisticsDisplay(make_shared<StatisticsDisplay>());
+		auto forecastDisplay(make_shared<ForecastDisplay>());
+		auto heatIndexDisplay(make_shared<HeatIndexDisplay>());
 
-    weatherData->setMeasurements(80, 65, 30.4);
-    currentDisplay->setSubject(weatherData);
-    statisticsDisplay->setSubject(weatherData);
-    forecastDisplay->setSubject(weatherData);
-    heatIndexDisplay->setSubject(weatherData);
-    weatherData->setMeasurements(82, 70, 29.2);
-    currentDisplay->removeSubject();
-    weatherData->setMeasurements(78, 90, 29.2);
-  }
-  return 0;
-}
-```
+		weatherData->setMeasurements(80, 65, 30.4);
+		currentDisplay->setSubject(weatherData);
+		statisticsDisplay->setSubject(weatherData);
+		forecastDisplay->setSubject(weatherData);
+		heatIndexDisplay->setSubject(weatherData);
+		weatherData->setMeasurements(82, 70, 29.2);
+		currentDisplay->removeSubject();
+		weatherData->setMeasurements(78, 90, 29.2);
+	}
+	return 0;
+	}
+	```
+
 
 ### 总结
-
-设计原则
-
-- 封装变化
-- 多用组合，少用继承
-- 针对接口编程，不针对实现编程
-- 为了交互对象之间的松耦合设计而努力
 
 要点
 
@@ -600,6 +590,15 @@ int main() {
 - 观察者包含主题的一个引用可以更方便地取消订阅
 - 可以通过 `setChanged` 方法控制主题的通知频率，避免主题对数据变化太过敏感
 - 不应该依赖于通知的顺序
+
+设计原则
+
+- 封装变化
+- 多用组合，少用继承
+- 针对接口编程，不针对实现编程
+- 为了交互对象之间的松耦合设计而努力
+
+
 
 ## 装饰者模式
 
