@@ -96,6 +96,8 @@ plugins:
       d3_version: ""
       lib_version: ""
       view_version: ""
+  - mkdocs-jupyter:
+      execute: false
 
 extra_javascript:
   # 使用 katex
@@ -166,9 +168,9 @@ nav:
               - "逻辑学导论": course/others/逻辑学导论.md
   - "编程":
       - "C++":
-          - "C++标准中值得使用的功能🍭": programming/cpp/C++标准中值得使用的功能.md
+          - "C++ 标准中值得使用的功能🍭": programming/cpp/C++标准中值得使用的功能.md
           - "Effective Modern C++": programming/cpp/Effective_Modern_C++.md
-          - "C++实现Headfirst设计模式": programming/cpp/head-first-design-pattern.md
+          - "C++ 实现 Headfirst 设计模式": programming/cpp/head-first-design-pattern.md
       - "Rust":
           - "准备工作": programming/rust/准备工作.md
           - "Rust 程序设计语言": programming/rust/Rust程序设计语言.md
@@ -177,6 +179,8 @@ nav:
           - "Julia Data Science": programming/julia/Julia_Data_Science.md
       - "Git":
           - "Progit": programming/git/progit.md
+      - "Python":
+          - "文献计量": programming/python/bibliometrics.ipynb
   - "杂项":
       - "摄影测量":
           - "云台旋转角换算": misc/photogrammetry/云台旋转角换算.md
