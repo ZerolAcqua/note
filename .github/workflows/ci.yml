@@ -40,6 +40,8 @@ jobs:
           envs: REPO_PATH,NOTE_PATH
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            echo ${REPO_PATH}
+            echo ${NOTE_PATH}
             export ALL_PROXY=${{ secrets.SERVER_PROXY }}
             cd "${REPO_PATH}"
             find  "${NOTE_PATH}" -type f ! -name ".htaccess" ! -name ".user.ini" -delete
