@@ -24,9 +24,6 @@ jobs:
   Sync:
     needs: deploy
     runs-on: ubuntu-latest
-    env:
-      REPO_PATH: /personal/repo/note
-      NOTE_PATH: /personal/note
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -34,9 +31,13 @@ jobs:
           ref: gh-pages
       - name: Sync code
         uses: appleboy/ssh-action@master
+        env:
+          REPO_PATH: /personal/repo/note
+          NOTE_PATH: /personal/note
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
+          envs: REPO_PATH,NOTE_PATH
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             export ALL_PROXY=${{ secrets.SERVER_PROXY }}
