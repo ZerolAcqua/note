@@ -24,6 +24,9 @@ jobs:
   Sync:
     needs: deploy
     runs-on: ubuntu-latest
+    env:
+      REPO_PATH: /personal/repo/note
+      NOTE_PATH: /personal/note
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -37,8 +40,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             export ALL_PROXY=${{ secrets.SERVER_PROXY }}
-            cd /personal/repo/note
-            find  /personal/note -type f ! -name ".htaccess" ! -name ".user.ini" -delete
-            find  /personal/note -type d -empty -delete
+            cd "${REPO_PATH}"
+            find  "${NOTE_PATH}" -type f ! -name ".htaccess" ! -name ".user.ini" -delete
+            find  "${NOTE_PATH}" -type d -empty -delete
             git fetch origin
-            git --work-tree=/personal/note --git-dir=/personal/repo/note/.git checkout -f origin/gh-pages
+            git --work-tree="${NOTE_PATH}" --git-dir="${REPO_PATH}/.git" checkout -f origin/gh-pages
