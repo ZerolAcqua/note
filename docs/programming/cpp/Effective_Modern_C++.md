@@ -189,10 +189,10 @@
 	- 为重写函数加上 override
 	- 成员函数引用限定让我们可以区别对待左值对象和右值对象（即*this）
 ### 条款十三：优先考虑 const_iterator 而非 iterator
-- const_iterator 在 C++98 中会有很多问题，不如它的兄弟（译注：指 iterator）有用。最终，开发者们不再相信能加 const 就加它的教条，而是只在实用的地方加它，C++98 的 const_iterator 不是那么实用
+- const_iterator 在 C++98 中会有很多问题，不如它的兄弟（译注：指 iterator）有用。最终，开发者们不再相信能加 const 就加它的教条，而是只在实用的地方加它，C++98 的 `const_iterator` 不是那么实用
 - 由于标准化的疏漏，C++11 只添加了非成员函数 begin 和 end，但是没有添加 cbegin，cend，rbegin，rend，crbegin，crend。C++14 修订了这个疏漏。
 - 总结
-	- 优先考虑 const_iterator 而非 iterator
+	- 优先考虑 `const_iterator` 而非 iterator
 	- 在最大程度通用的代码中，优先考虑非成员函数版本的 begin，end，rbegin 等，而非同名成员函数
 ### 条款十四：如果函数不抛出异常请使用 noexcept
 - 只有在知晓移动不抛异常的情况下用 C++11 的移动操作替换 C++98 的复制操作才是安全的
@@ -263,10 +263,10 @@
 	- 一般来说没有办法告诉你指针是否变成了悬空指针（dangling pointers），即内存中不再存在指针所指之物。在对象销毁后指针仍指向它们就会产生悬空指针。
 - 智能指针
 	- C++11 中存在四种智能指针
-		- std::auto_ptr
-		- std::unique_ptr
-		- std::shared_ptr
-		- std::weak_ptr
+		- `std::auto_ptr`
+		- `std::unique_ptr`
+		- `std::shared_ptr`
+		- `std::weak_ptr`
 ### 条款十八：对于独占资源使用 std::unique_ptr
 - std::unique_ptr 是一种只可移动类型
 - 自定义删除器可以实现为函数或者 lambda 时，尽量使用 lambda

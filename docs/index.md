@@ -27,10 +27,12 @@ class AcquaTheUnicorn(Unicorn):
         self.personality = "Adorable with a touch of mischief"
     
     def introduce(self, visitor):
-        return f"Hello, dear {visitor}! I am Acqua, your loyal unicorn friend. They say I'm pretty good with water magic. 
+        return f"Hello, dear {visitor}! I am Acqua, your loyal unicorn friend. \
+			They say I'm pretty good with water magic. 
 
     def show_personality(self):
-        return f"{visitor}, don't be fooled by my petite size. I'm an adorable unicorn with a hint of mischief. Teehee! 💧"
+        return f"{visitor}, don't be fooled by my petite size. \
+			I'm an adorable unicorn with a hint of mischief. Teehee! 💧"
 
 # Initializing Acqua
 Acqua = AcquaTheUnicorn()
