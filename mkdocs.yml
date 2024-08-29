@@ -169,7 +169,7 @@ nav:
               - "音乐欣赏": course/others/音乐欣赏.md
   - "编程":
       - "C++":
-          - "C++ 标准中值得使用的功能🍭": programming/cpp/C++标准中值得使用的功能.md
+          - "现代 C++ 特性": programming/cpp/modern-cpp-features.md
           - "Effective Modern C++": programming/cpp/Effective_Modern_C++.md
           - "C++ 实现 Headfirst 设计模式": programming/cpp/head-first-design-pattern.md
       - "Rust":
