@@ -56,6 +56,7 @@ f(std::move(xr2)); // 调用 f(int&& x)
 非正式名称也叫*通用引用*。转发引用使用 `T&&` 语法创建，其中 `T` 是一个模板类型参数，或者使用 `auto&&`。这实现了*完美转发*：能够在保持其值类别（例如左值保持为左值，临时对象作为右值转发）的同时传递参数。
 
 转发引用允许引用根据类型绑定到左值或右值。转发引用遵循*引用折叠*规则：
+
 - `T& &` 变为 `T&`
 - `T& &&` 变为 `T&`
 - `T&& &` 变为 `T&`
@@ -190,17 +191,17 @@ add(1, 2.0); // == 3.0
 add(1.5, 1.5); // == 3.0
 ```
 
-上例中的尾置返回类型是表达式 `x + y` 的8声明类型*（参见 [`decltype`](#decltype) 部分）。例如，如果 `x` 是整数而 `y` 是双精度类型，则 `decltype(x + y)` 是双精度类型。因此，上述函数将根据表达式 `x + y` 所产生的类型来推导返回类型。注意，尾置返回类型可以访问其参数和 `this`（如果适用）。
+上例中的尾置返回类型是表达式 `x + y` 的*声明类型*（参见 [`decltype`](#decltype) 部分）。例如，如果 `x` 是整数而 `y` 是双精度类型，则 `decltype(x + y)` 是双精度类型。因此，上述函数将根据表达式 `x + y` 所产生的类型来推导返回类型。注意，尾置返回类型可以访问其参数和 `this`（如果适用）。
 
 #### Lambda 表达式（Lambda expressions）
 
 `lambda` 是一个未命名的函数对象，能够捕获当前作用域中的变量。它具有：一个*捕获列表*；一个可选的参数集（带有可选的尾置返回类型）；以及一个函数体。捕获列表的示例：
 
-* `[]` - 不捕获任何变量。
-* `[=]` - 通过值捕获当前作用域中的局部对象（局部变量，参数）。
-* `[&]` - 通过引用捕获当前作用域中的局部对象（局部变量，参数）。
-* `[this]` - 通过引用捕获 `this`。
-* `[a, &b]` - 通过值捕获对象 `a`，通过引用捕获对象 `b`。
+- `[]`：不捕获任何变量。
+- `[=]`：通过值捕获当前作用域中的局部对象（局部变量，参数）。
+- `[&]`：通过引用捕获当前作用域中的局部对象（局部变量，参数）。
+- `[this]`：通过引用捕获 `this`。
+- `[a, &b]`：通过值捕获对象 `a`，通过引用捕获对象 `b`。
 
 ```c++
 int x = 1;
@@ -739,8 +740,8 @@ R"delimiter(raw_characters)delimiter"
 
 其中：
 
-* `delimiter` 是一个可选的字符序列，由除了括号、反斜杠和空格以外的任何源字符组成。
-* `raw_characters` 是任何原始字符序列；不得包含结束序列 `")delimiter"`。
+- `delimiter` 是一个可选的字符序列，由除了括号、反斜杠和空格以外的任何源字符组成。
+- `raw_characters` 是任何原始字符序列；不得包含结束序列 `")delimiter"`。
 
 示例：
 
@@ -949,18 +950,18 @@ for (int& x : a) x *= 2; // a == { 2, 4, 6 }
 
 这些容器保持平均常数时间复杂度的搜索、插入和删除操作。为了实现常数时间复杂度，通过将元素哈希到桶中来牺牲顺序以换取速度。无序容器有四种：
 
-* `unordered_set`
-* `unordered_multiset`
-* `unordered_map`
-* `unordered_multimap`
+- `unordered_set`
+- `unordered_multiset`
+- `unordered_map`
+- `unordered_multimap`
 
 #### std::make_shared
 
 `std::make_shared` 是创建 `std::shared_ptr` 实例的推荐方法，原因如下：
 
-* 避免使用 `new` 操作符。
-* 避免在指定指针所持有的底层类型时重复代码。
-* 提供异常安全性。假设我们像这样调用函数 `foo`：
+- 避免使用 `new` 操作符。
+- 避免在指定指针所持有的底层类型时重复代码。
+- 提供异常安全性。假设我们像这样调用函数 `foo`：
 
 ```c++
 foo(std::shared_ptr<T>{new T{}}, function_that_throws(), std::shared_ptr<T>{new T{}});
@@ -972,7 +973,7 @@ foo(std::shared_ptr<T>{new T{}}, function_that_throws(), std::shared_ptr<T>{new 
 foo(std::make_shared<T>(), function_that_throws(), std::make_shared<T>());
 ```
 
-* 避免进行两次分配。当调用 `std::shared_ptr{ new T{} }` 时，我们需要为 `T` 分配内存，然后在共享指针中为控制块分配内存。
+- 避免进行两次分配。当调用 `std::shared_ptr{ new T{} }` 时，我们需要为 `T` 分配内存，然后在共享指针中为控制块分配内存。
 
 有关 `std::unique_ptr` 和 `std::shared_ptr` 的更多信息，请参见智能指针的部分。
 
@@ -1217,8 +1218,8 @@ std::chrono::duration_cast<std::chrono::minutes>(day).count(); // == 1440
 
 类模板 `std::integer_sequence` 表示一个编译时整数序列。在其之上构建了一些辅助类：
 
-* `std::make_integer_sequence<T, N>` - 创建一个从 `0` 到 `N - 1` 的序列，类型为 `T`。
-* `std::index_sequence_for<T...>` - 将模板参数包转换为一个整数序列。
+- `std::make_integer_sequence<T, N>`：创建一个从 `0` 到 `N - 1` 的序列，类型为 `T`。
+- `std::index_sequence_for<T...>`：将模板参数包转换为一个整数序列。
 
 将数组转换为元组：
 
@@ -1238,9 +1239,9 @@ decltype(auto) a2t(const std::array<T, N>& a) {
 
 `std::make_unique` 是创建 `std::unique_ptr` 实例的推荐方法，原因如下：
 
-* 避免使用 `new` 操作符。
-* 防止在指定指针持有的底层类型时重复代码。
-* 最重要的是，它提供了异常安全性。假设我们像这样调用函数 `foo`：
+- 避免使用 `new` 操作符。
+- 防止在指定指针持有的底层类型时重复代码。
+- 最重要的是，它提供了异常安全性。假设我们像这样调用函数 `foo`：
 
 ```c++
 foo(std::unique_ptr<T>{new T{}}, function_that_throws(), std::unique_ptr<T>{new T{}});
@@ -1301,8 +1302,8 @@ auto seq2 = my_integer_sequence<0, 1, 2>();
 
 折叠表达式通过一个二元运算符对模板参数包进行折叠。
 
-* 形如 `(... op e)` 或 `(e op ...)` 的表达式，其中 `op` 是一个折叠操作符，`e` 是一个未展开的参数包，称为*一元折叠*。
-* 形如 `(e1 op ... op e2)` 的表达式，其中 `op` 是折叠操作符，称为*二元折叠*。`e1` 或 `e2` 中的一个是未展开的参数包，但不能是两个都未展开。
+- 形如 `(... op e)` 或 `(e op ...)` 的表达式，其中 `op` 是一个折叠操作符，`e` 是一个未展开的参数包，称为*一元折叠*。
+- 形如 `(e1 op ... op e2)` 的表达式，其中 `op` 是折叠操作符，称为*二元折叠*。`e1` 或 `e2` 中的一个是未展开的参数包，但不能是两个都未展开。
 
 ```c++
 template <typename... Args>
@@ -1532,7 +1533,7 @@ byte e = byte{256}; // 错误
 
 C++17 引入了三个新的属性：`[[fallthrough]]`、`[[nodiscard]]` 和 `[[maybe_unused]]`。
 
-* `[[fallthrough]]` 表示在 switch 语句中进行穿透是有意的行为。此属性只能用于 switch 语句中，必须放在下一个 case/default 标签之前。
+- `[[fallthrough]]` 表示在 switch 语句中进行穿透是有意的行为。此属性只能用于 switch 语句中，必须放在下一个 case/default 标签之前。
 
 ```c++
 switch (n) {
@@ -1550,7 +1551,7 @@ switch (n) {
 }
 ```
 
-* `[[nodiscard]]` 当一个函数或类具有此属性且其返回值被丢弃时，会发出警告。
+- `[[nodiscard]]` 当一个函数或类具有此属性且其返回值被丢弃时，会发出警告。
 
 ```c++
 [[nodiscard]] bool do_something() {
@@ -1577,7 +1578,7 @@ do_something(); // 警告: 忽略了类型 'error_info' 的返回值，
                 // 声明时带有 'nodiscard' 属性
 ```
 
-* `[[maybe_unused]]` 表示变量或参数可能未使用且这是有意的。
+- `[[maybe_unused]]` 表示变量或参数可能未使用且这是有意的。
 
 ```c++
 void my_callback(std::string msg, [[maybe_unused]] bool error) {
@@ -1781,8 +1782,6 @@ if (std::filesystem::exists(bigFilePath)) {
 }
 ```
 
-**ChatGPT:**
-
 #### std::byte
 
 新的 `std::byte` 类型提供了表示数据为字节的标准方式。使用 `std::byte` 优于 `char` 或 `unsigned char` 的好处在于它不是字符类型，也不是算术类型；而且只有位运算符重载。
@@ -1961,8 +1960,8 @@ std::copy_if(std::cbegin(v), std::cend(v), ostream_it, std::not_fn(is_even)); //
 
 这些函数允许您选择传递一个基数（默认为十进制）或浮点类型输入的格式说明符。
 
-* `std::to_chars` 返回一个（非 `const`）`char` 指针，该指针是函数写入给定缓冲区的字符串的超尾指针，以及一个错误码对象。
-* `std::from_chars` 返回一个 `const char` 指针，成功时等于传递给函数的末尾指针，以及一个错误码对象。
+- `std::to_chars` 返回一个（非 `const`）`char` 指针，该指针是函数写入给定缓冲区的字符串尾后一位置的指针，以及一个错误码对象。
+- `std::from_chars` 返回一个 `const char` 指针，成功时等于传递给函数的末尾指针，以及一个错误码对象。
 
 这两个函数返回的错误码对象在成功时等于默认初始化的错误码对象。
 
@@ -2640,15 +2639,15 @@ std::to_array(a); // 返回 `std::array<int, 3>`
 
 ## 致谢
 
-* [cppreference](http://en.cppreference.com/w/cpp) - 特别有用，用于查找新库特性的示例和文档。
-* [C++ Rvalue References Explained](http://thbecker.net/articles/rvalue_references/section_01.html) - 一个很好的介绍，用于理解右值引用、完美转发和移动语义。
-* [clang](http://clang.llvm.org/cxx_status.html) 和 [gcc](https://gcc.gnu.org/projects/cxx-status.html) 的标准支持页面。这里还包含了我用来查找特性描述、修复内容和示例的语言/库提案。
-* [Compiler explorer](https://godbolt.org/)
-* [Scott Meyers' Effective Modern C++](https://www.amazon.com/Effective-Modern-Specific-Ways-Improve/dp/1491903996) - 强烈推荐的书籍！
-* [Jason Turner's C++ Weekly](https://www.youtube.com/channel/UCxHAlbZQNFU2LgEtiqd2Maw) - 很好的 C++ 相关视频集合。
-* [What can I do with a moved-from object?](http://stackoverflow.com/questions/7027523/what-can-i-do-with-a-moved-from-object)
-* [What are some uses of decltype(auto)?](http://stackoverflow.com/questions/24109737/what-are-some-uses-of-decltypeauto)
-* 还有许多我忘记的 SO 帖子...
+- [cppreference](http://en.cppreference.com/w/cpp) - 特别有用，用于查找新库特性的示例和文档。
+- [C++ Rvalue References Explained](http://thbecker.net/articles/rvalue_references/section_01.html) - 一个很好的介绍，用于理解右值引用、完美转发和移动语义。
+- [clang](http://clang.llvm.org/cxx_status.html) 和 [gcc](https://gcc.gnu.org/projects/cxx-status.html) 的标准支持页面。这里还包含了我用来查找特性描述、修复内容和示例的语言/库提案。
+- [Compiler explorer](https://godbolt.org/)
+- [Scott Meyers' Effective Modern C++](https://www.amazon.com/Effective-Modern-Specific-Ways-Improve/dp/1491903996) - 强烈推荐的书籍！
+- [Jason Turner's C++ Weekly](https://www.youtube.com/channel/UCxHAlbZQNFU2LgEtiqd2Maw) - 很好的 C++ 相关视频集合。
+- [What can I do with a moved-from object?](http://stackoverflow.com/questions/7027523/what-can-i-do-with-a-moved-from-object)
+- [What are some uses of decltype(auto)?](http://stackoverflow.com/questions/24109737/what-are-some-uses-of-decltypeauto)
+- 还有许多我忘记的 SO 帖子...
 
 ## 作者
 Anthony Calandra
