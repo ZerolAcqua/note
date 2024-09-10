@@ -2472,6 +2472,7 @@ constinit const char* d = g(false); // 错误：`g` 不是 constexpr，所以 `d
 - `default_constructible`：指定一个类型的对象可以进行默认构造。
 
 **比较概念**：
+
 - `boolean`：指定一个类型可以用于布尔上下文。
 - `equality_comparable`：指定 `operator==` 是一个等价关系。
 
