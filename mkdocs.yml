@@ -161,6 +161,8 @@ nav:
               - "遥感图像解译": course/RS/遥感图像解译.md
           - "测绘":
               - "大地测量学": course/geomatics/大地测量学.md
+          - "CV":
+              - "数字图像处理": course/CV/数字图像处理.md
       - "专业之外":
           - "CS":
               - "多媒体技术": course/CS/多媒体技术.md
