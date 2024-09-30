@@ -20,16 +20,16 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            find  /personal/note -type f ! -name ".htaccess" ! -name ".user.ini" -delete
-            find  /personal/note -type d -empty -delete
-            
+            find  /www/wwwroot/note.zerolacqua.top -type f ! -name ".htaccess" ! -name ".user.ini" -delete
+            find  /www/wwwroot/note.zerolacqua.top -type d -empty -delete
+
       - name: Copy New Files
-        uses: wlixcc/SFTP-Deploy-Action@v1.0 
-        with:  
-          username: ${{ secrets.SERVER_USERNAME }}    #ssh user name
-          server: ${{ secrets.SERVER_IP }}              #引用之前创建好的secret
+        uses: wlixcc/SFTP-Deploy-Action@v1.0
+        with:
+          username: ${{ secrets.SERVER_USERNAME }} #ssh user name
+          server: ${{ secrets.SERVER_IP }} #引用之前创建好的secret
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} #引用之前创建好的secret
-          local_path: './'  # 对应我们项目build的文件夹路径
-          remote_path: '/personal/note'
+          local_path: "./" # 对应我们项目build的文件夹路径
+          remote_path: "/www/wwwroot/note.zerolacqua.top"
         env:
           LANG: en_US.UTF-8
