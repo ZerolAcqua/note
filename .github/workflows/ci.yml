@@ -35,8 +35,8 @@ jobs:
       - name: Sync code
         uses: appleboy/ssh-action@master
         env:
-          REPO_PATH: /personal/repo/note
-          NOTE_PATH: /personal/note
+          REPO_PATH: /home/git/repo/note
+          NOTE_PATH: /www/wwwroot/note.zerolacqua.top
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
