@@ -1011,106 +1011,166 @@ classDiagram
 ??? caution "代码拿来"
 
 	```c++
-	// simple facotry
+    // factory method pattern
+    #include <iostream>
+    #include <memory>
+    #include <string>
+    #include <vector>
 
-	#include <iostream>
-	#include <memory>
+    using namespace std;
 
-	class Pizza {
-	public:
-	virtual void prepare() = 0;
-	virtual void bake() = 0;
-	virtual void cut() = 0;
-	virtual void box() = 0;
-	};
+    class Pizza {
+    protected:
+    string name;
+    string dough;
+    string sauce;
+    vector<string> toppings;
 
-	class CheesePizza : public Pizza {
-	public:
-	void prepare() override {
-		std::cout << "Preparing Cheese Pizza" << std::endl;
-	}
-	void bake() override { std::cout << "Baking Cheese Pizza" << std::endl; }
-	void cut() override { std::cout << "Cutting Cheese Pizza" << std::endl; }
-	void box() override { std::cout << "Boxing Cheese Pizza" << std::endl; }
-	};
+    public:
+    virtual void prepare() {
+        std::cout << "Preparing " << name << std::endl;
+        std::cout << "Tossing dough..." << std::endl;
+        std::cout << "Adding sauce..." << std::endl;
+        std::cout << "Adding toppings: " << std::endl;
+        for (auto topping : toppings) {
+        std::cout << "   " << topping << std::endl;
+        }
+    }
 
-	class PepperoniPizza : public Pizza {
-	public:
-	void prepare() override {
-		std::cout << "Preparing Pepperoni Pizza" << std::endl;
-	}
-	void bake() override { std::cout << "Baking Pepperoni Pizza" << std::endl; }
-	void cut() override { std::cout << "Cutting Pepperoni Pizza" << std::endl; }
-	void box() override { std::cout << "Boxing Pepperoni Pizza" << std::endl; }
-	};
+    virtual void bake() {
+        std::cout << "Bake for 25 minutes at 350" << std::endl;
+    }
 
-	class ClamPizza : public Pizza {
-	public:
-	void prepare() override { std::cout << "Preparing Clam Pizza" << std::endl; }
-	void bake() override { std::cout << "Baking Clam Pizza" << std::endl; }
-	void cut() override { std::cout << "Cutting Clam Pizza" << std::endl; }
-	void box() override { std::cout << "Boxing Clam Pizza" << std::endl; }
-	};
+    virtual void cut() {
+        std::cout << "Cutting the pizza into diagonal slices" << std::endl;
+    }
 
-	class VeggiePizza : public Pizza {
-	public:
-	void prepare() override {
-		std::cout << "Preparing Veggie Pizza" << std::endl;
-	}
-	void bake() override { std::cout << "Baking Veggie Pizza" << std::endl; }
-	void cut() override { std::cout << "Cutting Veggie Pizza" << std::endl; }
-	void box() override { std::cout << "Boxing Veggie Pizza" << std::endl; }
-	};
+    virtual void box() {
+        std::cout << "Place pizza in official PizzaStore box" << std::endl;
+    }
 
-	enum class PizzaType { CHEESE, PEPPERONI, CLAM, VEGGIE };
+    string getName() { return name; }
+    };
 
-	class SimplePizzaFactory {
-	public:
-	std::shared_ptr<Pizza> createPizza(PizzaType type) {
-		std::shared_ptr<Pizza> pizza = nullptr;
-		switch (type) {
-		case PizzaType::CHEESE:
-			pizza = std::make_shared<CheesePizza>();
-			break;
-		case PizzaType::PEPPERONI:
-			pizza = std::make_shared<PepperoniPizza>();
-			break;
-		case PizzaType::CLAM:
-			pizza = std::make_shared<ClamPizza>();
-			break;
-		case PizzaType::VEGGIE:
-			pizza = std::make_shared<VeggiePizza>();
-			break;
-		default:
-			break;
-		}
+    class NYStyleCheesePizza : public Pizza {
+    public:
+    NYStyleCheesePizza() {
+        name = "NY Style Sauce and Cheese Pizza";
+        dough = "Thin Crust Dough";
+        sauce = "Marinara Sauce";
+        toppings.push_back("Grated Reggiano Cheese");
+    }
+    };
 
-		return pizza;
-	}
-	};
+    class NYStylePepperoniPizza : public Pizza {
+    public:
+    NYStylePepperoniPizza() { name = "NY Style Pepperoni Pizza"; }
+    };
 
-	class PizzaStore {
-	public:
-	PizzaStore(SimplePizzaFactory factory) : factory(factory) {}
+    class NYStyleClamPizza : public Pizza {
+    public:
+    NYStyleClamPizza() { name = "NY Style Clam Pizza"; }
+    };
 
-	std::shared_ptr<Pizza> orderPizza(PizzaType type) {
-		std::shared_ptr<Pizza> pizza = factory.createPizza(type);
-		pizza->prepare();
-		pizza->bake();
-		pizza->cut();
-		pizza->box();
-		return pizza;
-	}
+    class NYStyleVeggiePizza : public Pizza {
+    public:
+    NYStyleVeggiePizza() { name = "NY Style Veggie Pizza"; }
+    };
 
-	private:
-	SimplePizzaFactory factory;
-	};
+    class ChicagoStyleCheesePizza : public Pizza {
+    public:
+    ChicagoStyleCheesePizza() {
+        name = "Chicago Style Deep Dish Cheese Pizza";
+        dough = "Extra Thick Crust Dough";
+        sauce = "Plum Tomato Sauce";
+        toppings.push_back("Shredded Mozzarella Cheese");
+    }
 
-	int main() {
-	SimplePizzaFactory factory;
-	PizzaStore store(factory);
-	std::shared_ptr<Pizza> pizza = store.orderPizza(PizzaType::CHEESE);
-	}
+    void cut() {
+        std::cout << "Cutting the pizza into square slices" << std::endl;
+    }
+    };
+
+    class ChicagoStylePepperoniPizza : public Pizza {
+    public:
+    ChicagoStylePepperoniPizza() { name = "Chicago Style Pepperoni Pizza"; }
+    };
+
+    class ChicagoStyleClamPizza : public Pizza {
+    public:
+    ChicagoStyleClamPizza() { name = "Chicago Style Clam Pizza"; }
+    };
+
+    class ChicagoStyleVeggiePizza : public Pizza {
+    public:
+    ChicagoStyleVeggiePizza() { name = "Chicago Deep Dish Veggie Pizza"; }
+    };
+
+    enum class PizzaType { CHEESE, PEPPERONI, CLAM, VEGGIE };
+
+    class PizzaStore {
+    public:
+    std::shared_ptr<Pizza> orderPizza(PizzaType type) {
+        std::shared_ptr<Pizza> pizza = createPizza(type);
+        pizza->prepare();
+        pizza->bake();
+        pizza->cut();
+        pizza->box();
+        return pizza;
+    }
+
+    protected:
+    virtual std::shared_ptr<Pizza> createPizza(PizzaType type) = 0;
+    };
+
+    class NYPizzaStore : public PizzaStore {
+    protected:
+    std::shared_ptr<Pizza> createPizza(PizzaType type) override {
+        std::shared_ptr<Pizza> pizza = nullptr;
+        if (type == PizzaType::CHEESE) {
+        pizza = std::make_shared<NYStyleCheesePizza>();
+        } else if (type == PizzaType::PEPPERONI) {
+        pizza = std::make_shared<NYStylePepperoniPizza>();
+        } else if (type == PizzaType::CLAM) {
+        pizza = std::make_shared<NYStyleClamPizza>();
+        } else if (type == PizzaType::VEGGIE) {
+        pizza = std::make_shared<NYStyleVeggiePizza>();
+        }
+        return pizza;
+    }
+    };
+
+    class ChicagoPizzaStore : public PizzaStore {
+    protected:
+    std::shared_ptr<Pizza> createPizza(PizzaType type) override {
+        std::shared_ptr<Pizza> pizza = nullptr;
+        if (type == PizzaType::CHEESE) {
+        pizza = std::make_shared<ChicagoStyleCheesePizza>();
+        } else if (type == PizzaType::PEPPERONI) {
+        pizza = std::make_shared<ChicagoStylePepperoniPizza>();
+        } else if (type == PizzaType::CLAM) {
+        pizza = std::make_shared<ChicagoStyleClamPizza>();
+        } else if (type == PizzaType::VEGGIE) {
+        pizza = std::make_shared<ChicagoStyleVeggiePizza>();
+        }
+        return pizza;
+    }
+    };
+
+
+    int main() {
+    std::unique_ptr<PizzaStore> nyStore = std::make_unique<NYPizzaStore>();
+    std::unique_ptr<PizzaStore> chicagoStore =
+        std::make_unique<ChicagoPizzaStore>();
+
+    std::shared_ptr<Pizza> pizza = nyStore->orderPizza(PizzaType::CHEESE);
+    std::cout << "Ethan ordered a " << pizza->getName() << std::endl;
+
+    pizza = chicagoStore->orderPizza(PizzaType::CHEESE);
+    std::cout << "Joel ordered a " << pizza->getName() << std::endl;
+
+    return 0;
+    }
 		
 	```
 
