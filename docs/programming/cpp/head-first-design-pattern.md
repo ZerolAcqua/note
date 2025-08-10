@@ -1,5 +1,5 @@
 ---
-status: new
+
 ---
 
 # C++ 实现 Headfirst 设计模式

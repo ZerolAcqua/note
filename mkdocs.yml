@@ -185,6 +185,9 @@ nav:
           - "Progit": programming/git/progit.md
       - "Python":
           - "文献计量": programming/python/bibliometrics.ipynb
+  - "计算机":
+      - "计算机系统":
+          - "Putting the “You” in CPU": cs/computer_system/Putting_the_You_in_CPU.md
   - "杂项":
       - "摄影测量":
           - "云台旋转角换算": misc/photogrammetry/云台旋转角换算.md

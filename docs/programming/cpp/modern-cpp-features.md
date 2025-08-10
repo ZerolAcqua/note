@@ -1,5 +1,5 @@
 ---
-status: new
+
 ---
 
 
@@ -1431,11 +1431,11 @@ namespace A {
 namespace A::B::C {
   int i;
 }
-```
+```tu
 
 #### 结构化绑定（Structured bindings）
 
-提议用于解构初始化，这允许编写 `auto [ x, y, z ] = expr;` 这样的代码，其中 `expr` 的类型是一个元组样对象，其元素将绑定到变量 `x`、`y` 和 `z`（此构造声明）。*元组样对象*包括 [`std::tuple`](README.md#tuples)，`std::pair`，[`std::array`](README.md#stdarray) 和聚合结构。
+提议用于解构初始化，这允许编写 `auto [ x, y, z ] = expr;` 这样的代码，其中 `expr` 的类型是一个元组样对象，其元素将绑定到变量 `x`、`y` 和 `z`（此构造声明）。*元组样对象*包括 `std::tuple`，`std::pair`，`std::array` 和聚合结构。
 
 ```c++
 using Coordinate = std::pair<int, int>;
