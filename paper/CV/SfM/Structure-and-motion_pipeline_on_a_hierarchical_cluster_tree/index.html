@@ -1,0 +1,2986 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://note.zerolacqua.top/paper/CV/SfM/Structure-and-motion_pipeline_on_a_hierarchical_cluster_tree/">
+      
+      
+        <link rel="prev" href="../Skeletal_graphs_for_efficient_structure_from_motion/">
+      
+      
+        <link rel="next" href="../Improving_the_efficiency_of_hierarchical_structure-and-motion/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.2.3">
+    
+    
+      
+        <title>Structure-and-motion pipeline on a hierarchical cluster tree - 丘卡的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0e669242.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#structure-and-motion-pipeline-on-a-hierarchical-cluster-tree" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="丘卡的笔记本" class="md-header__button md-logo" aria-label="丘卡的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            丘卡的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Structure-and-motion pipeline on a hierarchical cluster tree
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ZerolAcqua/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZerolAcqua/note
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../RS/UAV/%E5%9F%BA%E4%BA%8E%E7%89%A9%E6%8E%A2%E9%A3%9E%E8%A1%8C%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%AD%A3%E5%B0%84%E5%BD%B1%E5%83%8F%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C/" class="md-tabs__link">
+          
+  
+    
+  
+  论文
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../course/Photogrammetry/%E8%BF%91%E6%99%AF%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-tabs__link">
+          
+  
+    
+  
+  课程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../programming/cpp/modern-cpp-features/" class="md-tabs__link">
+          
+  
+    
+  
+  编程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../cs/computer_system/Putting_the_You_in_CPU/" class="md-tabs__link">
+          
+  
+    
+  
+  计算机
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../misc/photogrammetry/%E4%BA%91%E5%8F%B0%E6%97%8B%E8%BD%AC%E8%A7%92%E6%8D%A2%E7%AE%97/" class="md-tabs__link">
+          
+  
+    
+  
+  杂项
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="丘卡的笔记本" class="md-nav__button md-logo" aria-label="丘卡的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    丘卡的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ZerolAcqua/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZerolAcqua/note
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    论文
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            论文
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            RS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UAV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            UAV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RS/UAV/%E5%9F%BA%E4%BA%8E%E7%89%A9%E6%8E%A2%E9%A3%9E%E8%A1%8C%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%AD%A3%E5%B0%84%E5%BD%B1%E5%83%8F%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于物探飞行模式的正射影像快速制作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RS/UAV/%E4%B8%AD%E5%9B%BD%E5%85%89%E5%AD%A6%E5%8D%AB%E6%98%9F%E5%BD%B1%E5%83%8F%E5%8C%B9%E9%85%8D%E8%9E%8D%E5%90%88%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A combined image matching method for Chinese optical satellite imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RS/UAV/%E5%8D%97%E6%9E%81%E6%97%A0%E4%BA%BA%E6%9C%BA%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F%E8%AE%BA%E6%96%87%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    南极无人机摄影测量论文概览
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    图像匹配
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            图像匹配
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../image_matching/LBD%E7%BA%BF%E7%89%B9%E5%BE%81%E6%8F%8F%E8%BF%B0%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LBD 线特征描述算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../image_matching/Sample4Geo_Hard_Negative_Sampling_for_Cross-View_Geo-Localisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample4Geo: Hard Negative Sampling for Cross-View Geo-Localisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../image_matching/Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    从人工特征到深度特征的图像匹配调查
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" checked>
+        
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SfM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            SfM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Structure-from-Motion_Revisited/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SfM 回顾（Colmap）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Skeletal_graphs_for_efficient_structure_from_motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    用于高效 SfM 的骨架图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    基于分层聚类树的 SfM 
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    基于分层聚类树的 SfM 
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    摘要
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 引言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2 关键点匹配
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3 视图聚类
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4 层次结构和运动
+  </a>
+  
+    <nav class="md-nav" aria-label="4 层次结构和运动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 复杂性分析
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5 局部光束法平差
+  </a>
+  
+    <nav class="md-nav" aria-label="5 局部光束法平差">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    5.1 复杂性分析
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6 实验
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7 结论与未来工作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    A 复杂性分析
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    致谢
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Improving_the_efficiency_of_hierarchical_structure-and-motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提高分层 SfM 效率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Towards_Linear-Time_Incremental_Structure-from-Motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线性时间的增量式 SfM（VisualSFM）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Modeling_the_World_from_Internet_Photo_Collections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    通过互联网影像重建世界（Bundler）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Photo_Tourism_Exploring_Photo_Collections_in_3D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    相片旅行：在三维世界中浏览相片
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Building_Rome_in_a_Day/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一天建成罗马
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Efficient_structure_from_motion_for_large-scale_UAV_images_A_review_and_a_comparison_of_SfM_tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大规模无人机影像的高效 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Multicore_Bundle_Adjustment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多核光束法平差
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Efficient_tree-structured_SfM_by_RANSAC_generalized_Procrustes_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于 RANSAC 通用 Procrustes 分析的高效树状 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Divide_and_Conquer_Efficient_Large_Scale_Structure_from_Motion_Using_Graph_Partitioning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用图分割的分治高效大规模 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SfM_on-the-fly%3A_A_robust_near_real-time_SfM_for_spatiotemporally_disordered_high-resolution_imagery_from_multiple_agents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实时 SfM：一种面向多智能体时空无序高分辨率影像的鲁棒近实时 SfM 方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    课程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            课程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    专业相关
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            专业相关
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    摄影测量
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            摄影测量
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/Photogrammetry/%E8%BF%91%E6%99%AF%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    近景摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/Photogrammetry/%E5%8D%AB%E6%98%9F%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    卫星摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/Photogrammetry/%E6%95%B0%E5%AD%97%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/Photogrammetry/%E8%A7%A3%E6%9E%90%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    解析摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2" >
+        
+          <label class="md-nav__link" for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            RS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/RS/%E9%81%A5%E6%84%9F%E5%9B%BE%E5%83%8F%E8%A7%A3%E8%AF%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遥感图像解译
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_3" >
+        
+          <label class="md-nav__link" for="__nav_3_1_3" id="__nav_3_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    测绘
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            测绘
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/geomatics/%E5%A4%A7%E5%9C%B0%E6%B5%8B%E9%87%8F%E5%AD%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大地测量学
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4" >
+        
+          <label class="md-nav__link" for="__nav_3_1_4" id="__nav_3_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/CV/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字图像处理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    专业之外
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            专业之外
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            CS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/CS/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多媒体技术
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/CS/%E5%8D%97%E5%A4%A7%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9FPA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    南大计算机系统 PA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    others
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            others
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/others/%E9%80%BB%E8%BE%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    逻辑学导论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/others/%E9%9F%B3%E4%B9%90%E6%AC%A3%E8%B5%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    音乐欣赏
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    编程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            编程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            C++
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/cpp/modern-cpp-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    现代 C++ 特性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/cpp/Effective_Modern_C%2B%2B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Effective Modern C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/cpp/head-first-design-pattern/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 实现 Headfirst 设计模式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Rust
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Rust
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/rust/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    准备工作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/rust/Rust%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rust 程序设计语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Julia
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Julia
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/julia/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    准备工作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/julia/Julia_Data_Science/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Julia Data Science
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/git/progit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Progit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/python/bibliometrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    文献计量学作业
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            计算机
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机系统
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            计算机系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cs/computer_system/Putting_the_You_in_CPU/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Putting the “You” in CPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    杂项
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            杂项
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    摄影测量
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            摄影测量
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../misc/photogrammetry/%E4%BA%91%E5%8F%B0%E6%97%8B%E8%BD%AC%E8%A7%92%E6%8D%A2%E7%AE%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    云台旋转角换算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    摘要
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 引言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2 关键点匹配
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3 视图聚类
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4 层次结构和运动
+  </a>
+  
+    <nav class="md-nav" aria-label="4 层次结构和运动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 复杂性分析
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5 局部光束法平差
+  </a>
+  
+    <nav class="md-nav" aria-label="5 局部光束法平差">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    5.1 复杂性分析
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6 实验
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7 结论与未来工作
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    A 复杂性分析
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    致谢
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    参考文献
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="structure-and-motion-pipeline-on-a-hierarchical-cluster-tree">Structure-and-motion pipeline on a hierarchical cluster tree<a class="headerlink" href="#structure-and-motion-pipeline-on-a-hierarchical-cluster-tree" title="Permanent link">¶</a></h1>
+<div class="admonition info">
+<p class="admonition-title">论文链接</p>
+<p>原文：Riccardo Gherardi, Michela Farenzena, Andrea Fusiello. <a href="https://doi.org/10.1109/ICCVW.2009.5457435">Structure-and-motion pipeline on a hierarchical cluster tree</a></p>
+</div>
+<h2 id="_1">摘要<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>摘要： 本论文介绍了一种计算结构和运动的新型分层方案。图像通过自下而上的聚类方法组织成一棵树，使用重叠度作为距离度量。重建过程从叶节点到根节点按照这棵树的顺序进行。因此，问题被分解为较小的子问题，分别解决后再进行合并。与标准的顺序方法相比，这个框架具有较低的计算复杂度，不依赖于初始视图对，并且更好地应对漂移问题。通过正式的复杂度分析和一些实验结果来支持这些说法。</p>
+<h2 id="1">1 引言<a class="headerlink" href="#1" title="Permanent link">¶</a></h2>
+<p>近年来，人们对于从图像中自动建模建筑/城市景观的兴趣迅速增加。</p>
+<p>文献中涵盖了多种解决这个问题的方法。这些方法可以分为两个主要类别：第一类是专门针对城市环境设计并且在实时环境下运行的方法【6, 24】。这些系统通常依赖于大量的额外信息，例如 GPS/INS 导航系统和相机校准。第二类 - 我们的贡献所在的类别 - 包括对图像进行批处理的结构与运动（Structure and Motion，SaM）流程，该流程在重建过程中不对图像场景和采集设备做任何假设【2, 15, 16, 30, 36】。</p>
+<p>在这个背景下需要解决的主要问题是 SaM 流程的可扩展性。这引发了对效率的追求，探索了多种不同的解决方案：其中最成功的是那些旨在减少光束法平差阶段影响的方法，光束法平差阶段在特征提取之后对计算复杂性起主导作用。</p>
+<p>提出的解决方案类别之一是所谓的分区方法 【9】。它们将重建问题分解为更小且更好条件的子问题，可以有效地进行优化。在本文中，我们提出了一种新的 SaM 分层方案，它可以将计算复杂度降低一个数量级。图像被组织成一个分层的聚类树，如图 1 所示。重建过程按照这棵树的层次结构从叶节点到根节点进行。部分重建对应于内部节点，而图像存储在叶节点中。父节点包含与其子节点相关联的两个部分重建的合并结果。通过限制每个节点使用的视图数量，引入本地光束法平差策略进一步降低了整体复杂性。这种方法在某种程度上类似于 【27】，在其中构建了一棵生成树来确定图像的处理顺序。然而，在该情况下，图像是按照标准的增量方式处理的，而不是分层方式。除了在复杂性上的改进之外，该框架还更好地处理了初始化和漂移问题，这是顺序方案的典型问题。</p>
+<p>在文献中已经研究了使用分区方法进行 SaM 的应用。可以区分出两种主要策略。</p>
+<p>第一种策略是直接处理光束法平差算法，利用其属性和规律。思路是将优化问题分解为更小、更易处理的组件。这些子问题可以通过分析选择，如 【32】 中应用于 SaM 的谱分割，或者可以从问题的底层 3D 结构中得出，如 【22】 所述。这些方法的计算收益是通过限制算法复杂度的组合爆炸来处理图像和特征点数量的增加。</p>
+<p>第二种策略是选择一个包含整个解决方案的输入图像和特征点的子集。分层子采样由 【9】 首先引入，使用平衡的三焦点张量树来处理视频序列。随后，该方法由 【23】 进行了改进，添加了用于抑制冗余帧和选择张量三元组的启发式方法。在 【28】 中，序列被分割成多个段，每个段都在本地解决。然后，它们按层次结构合并，最终使用段的代表性子集。【11】 中采用了类似的方法，着重于获得良好的段划分和后续合并步骤的鲁棒性。与顺序方法相比，这些方法的优势在于它们改善了整个数据集上的误差分布，并解决了退化配置问题。无论如何，它们只适用于视频序列，无法应用于无序的稀疏图像。</p>
+<p>最近的一项工作 【31】 在稀疏数据集上描述了一种选择子集图像的方法，其重建可近似于使用整个数据集的重建结果。通过可控地从数据集中删除冗余项，可以显著降低计算要求。然而，即使在这种情况下，所选的图像也是按增量方式处理的。</p>
+<p>我们的策略结合了大部分上述方法的优势：i）它适用于无组织的相当大的图像集合，ii）它将问题分割为较小的实例并进行层次化组合，iii）它高效且可并行化，iv）它对于顺序方法的典型问题更不敏感，即对初始化 【33】 和漂移 【6】 的敏感性。</p>
+<p>本文的其余部分安排如下。下一节概述了匹配阶段，然后第 3 节描述了如何构建分层聚类树。第 4 节介绍了我们的分层方法，而第 5 节解释了本地光束法平差策略。第 6 节报告了实验结果，最后在第 7 节中得出结论。</p>
+<h2 id="2">2 关键点匹配<a class="headerlink" href="#2" title="Permanent link">¶</a></h2>
+<p>在本节中，我们描述了我们的 SaM 流程中专门用于自动提取和匹配所有 <span class="arithmatex">\(n\)</span> 个可用图像之间关键点的阶段。其输出将输入到几何阶段，该阶段将执行实际的结构和运动恢复。</p>
+<p>尽管这个阶段的构建模块是相当标准的技术，但我们精心设计了一个完全自动、鲁棒（通过剔除尽可能多的异常值）和计算效率高的过程。</p>
+<p>首先，目标是以计算效率高的方式识别潜在共享大量关键点的图像，而不是尝试在每对图像之间匹配关键点（复杂度为 <span class="arithmatex">\(\mathcal{O}(n^2)\)</span>）。我们遵循 【1】 的方法。在所有 <span class="arithmatex">\(n\)</span> 个图像中提取 SIFT 【18】 关键点。在这个筛选阶段，我们每个图像只考虑固定数量的描述符（我们使用了 300 个，而典型的图像包含数千个 SIFT 关键点）。然后，每个关键点描述符在特征空间中与其 <span class="arithmatex">\(\mathcal{l}\)</span> 个最近邻进行匹配（我们使用 <span class="arithmatex">\(\mathcal{l}=6\)</span>）。可以通过使用 k-d 树来找到近似最近邻（我们使用了 ANN 库 【20】），在 <span class="arithmatex">\(\mathcal{O}(nlogn)\)</span> 的时间内完成此操作。然后构建一个 2D 直方图，在每个 bin 中记录相应视图之间的匹配数。每个图像只会与与其匹配关键点数最多的 <span class="arithmatex">\(m\)</span> 个图像进行匹配（我们使用 <span class="arithmatex">\(m=8\)</span>）。因此，要匹配的图像数量为 <span class="arithmatex">\(\mathcal{O}(n)\)</span>，其中 <span class="arithmatex">\(m\)</span> 是常数。例如，在由 54 个图像组成的 Pozzoveggiani 数据集上，我们的 Matlab 实现中的匹配时间从 13 小时 40 分钟减少到 50 分钟。当然，通过利用现代 GPU 的计算能力，可以进一步缩短计算时间。</p>
+<p>匹配遵循最近邻方法 【18】，对于最近邻距离与次近邻距离之比大于阈值（在我们的实验中设置为 1.5）的关键点进行拒绝。</p>
+<p>然后，使用 MSAC 【35】 计算匹配图像对之间的单应性矩阵和基本矩阵。设 <span class="arithmatex">\(e_i\)</span> 为 MSAC 之后的残差，按照 【38】，最终的内点集合是满足以下条件的点：</p>
+<div class="arithmatex">\[|e_i−med_je_j|&lt;3.5σ^∗\]</div>
+<p>其中 <span class="arithmatex">\(σ^∗\)</span> 是噪声尺度的鲁棒估计量：</p>
+<div class="arithmatex">\[ σ^∗=1.4826med_i|e_i−med_je_j|\]</div>
+<p>这个异常值拒绝规则在 【12】 中被称为 <span class="arithmatex">\(X8_4\)</span>。</p>
+<p>最终，通过最小二乘法对这些内点集合重新估计模型参数（最小化几何误差的一阶近似）【4, 19】。</p>
+<p>根据几何鲁棒信息准则（GRIC）【34】 选择更可能的模型（单应性矩阵或基本矩阵）。最后，如果两个图像之间剩余的匹配数小于一个阈值（根据 【1】 中的统计测试计算），则它们将被丢弃。</p>
+<p>之后，将多个图像中的关键点匹配连接成轨迹，拒绝那些存在多个关键点汇合的不一致轨迹 【30】 和长度小于三帧的轨迹。</p>
+<h2 id="3">3 视图聚类<a class="headerlink" href="#3" title="Permanent link">¶</a></h2>
+<p>我们流程的第二阶段是将可用视图组织成一个层次化的聚类结构，以指导重建过程。</p>
+<p>在文献中已经提出了图像视图聚类的算法，用于重建 【27】、全景图 【1】、图像挖掘 【26】 和场景摘要 【29】 等领域。使用的距离和聚类算法是应用特定的。</p>
+<p>在本文中，我们使用一种适用于结构和运动重建任务的图像相似度度量。它通过考虑共有关键点的数量以及它们在图像中的分布情况来计算。具体而言，假设 <span class="arithmatex">\(S_i\)</span> 和 <span class="arithmatex">\(S_j\)</span> 分别是图像 <span class="arithmatex">\(I_i\)</span> 和 <span class="arithmatex">\(I_j\)</span> 中的匹配关键点集合：</p>
+<div class="arithmatex">\[a_{i,j}=\dfrac{1}{2}\dfrac{|S_i\cap S_j|}{|S_i\cup S_j|}+\dfrac{1}{2}\dfrac{CH(S_i)+CH(S_j)}{A_i+A_j}\]</div>
+<p>其中 <span class="arithmatex">\(CH(\cdot)\)</span> 表示一组点的凸包的面积，<span class="arithmatex">\(A_i(A_j)\)</span> 表示图像 <span class="arithmatex">\(I_i(I_j)\)</span>的总面积。第一项是一组集合之间的相似度指数，也称为 Jaccard 指数。距离为 <span class="arithmatex">\((1−\alpha_{i,j})\)</span>，因为 <span class="arithmatex">\(a_{i,j}\)</span> 的取值范围在 <span class="arithmatex">\([0, 1]\)</span> 之间。</p>
+<p>视图通过凝聚聚类方法进行分组，该方法生成一棵层次二叉聚类树，称为树状图。通常的凝聚聚类算法是自下而上进行的：从所有单例开始，算法的每次迭代将具有最小距离的两个聚类合并。通过计算聚类之间的距离，可以产生不同的算法变体，包括简单链接、完全链接和平均链接 【7】。我们选择了简单链接规则：两个聚类之间的距离由不同聚类中两个最近邻对象（最近邻）的距离确定。</p>
+<p>简单链接聚类对我们的情况很合适，因为：i）聚类问题本身相当简单，ii）最近邻信息可以通过 ANN 轻松获取，iii）它产生“拉长”或“细长”的聚类，非常适应图像在某个区域或建筑物上的典型空间排列方式。</p>
+<p>如下一节所述，由两个视图组成的聚类是开始重建的聚类。这两个视图必须满足两个相互冲突的要求：既要有大量共有的关键点，又要有足够大的基线，以实现良好条件的重建。第一个要求可以自动验证，因为这些聚类是根据公式 (3) 中定义的相似度而组成的最近视图。第二个要求等价于说基本矩阵必须比其他模型（如单应矩阵）更好地解释数据，这可以通过考虑 GRIC（如 【25】 中所述）来实现。</p>
+<p>因此，我们修改链接策略，只有当以下条件成立时，才允许两个视图 i 和 j 合并为一个聚类：</p>
+<div class="arithmatex">\[gric(F_{i,j})&lt;\alpha \;gric(H_{i,j}),\;\text{with}\;\alpha \ge 1\]</div>
+<p>其中 <span class="arithmatex">\(gric(F_{i,j})\)</span> 和 <span class="arithmatex">\(gric(H_{i,j})\)</span> 分别是通过基本矩阵和单应矩阵计算得到的 GRIC 得分（我们使用 <span class="arithmatex">\(\alpha=1.2\)</span>）。如果测试失败，则考虑第二近的元素并重复此过程。</p>
+<h2 id="4">4 层次结构和运动<a class="headerlink" href="#4" title="Permanent link">¶</a></h2>
+<p>聚类阶段生成的树状图对视图进行了层次化组织，我们的 SaM 流程将按照这个层次化组织进行。在树状图的每个节点上，需要执行一个操作，增加重建的内容（相机 + 3D 点）。这些操作包括：创建聚类时，必须执行两个视图的重建；将视图添加到聚类时，必须进行重定位-交叉步骤（与标准顺序流程相同）；当两个聚类合并时，必须解决绝对定向问题。下面详细介绍每个步骤。</p>
+<p><strong>两个视图的重建</strong></p>
+<p>我们假设进行两个视图重建的相机至少已经标定。这可以通过离线标定或自标定 【10】 来实现。</p>
+<p>给定两个视图的外参数通过因子分解本质矩阵得到，如 【14】 中所述。然后通过交叉（或三角测量）重建 3D 点，并使用 <span class="arithmatex">\(X8_4\)</span> 剪枝重投影误差。最后运行光束法平差以改善重建结果。</p>
+<p><strong>添加一个视图</strong></p>
+<p>可见于要添加的视图中的重建 3D 点提供了一组 3D-2D 对应关系，可以利用它们通过线性算法 【8】 解决外方位问题，或者在视图未标定的情况下使用 DLT 进行重定位 【13】。为了处理异常值，使用 MSAC。</p>
+<p>然后，使用最后一个视图中可见的轨迹更新 3D 结构。通过交叉获得三维点，并通过在重投影误差上进行 X84 剪枝。为了进一步保证，删除交叉条件数不良的 3D 点，使用线性系统的条件数阈值（在我们的实验中为 104）。最后，对当前重建结果进行光束法平差。</p>
+<p><strong>聚类合并</strong></p>
+<p>要合并的两个重建结果存在于两个不同的参考坐标系中，因此必须使用相似变换（或共线性，如果至少一个重建结果未标定）将其注册到另一个重建结果上。由于构造时它们具有一些共同的 3D 点，可以使用 MSAC 解决绝对定向问题。一旦相机注册完毕，通过交叉重新计算共同的 3D 点，采取与之前相同的注意事项，即在重投影误差上进行 <span class="arithmatex">\(X8_4\)</span> 剪枝和条件数测试。合并后，还对任何在合并后可见的轨迹进行交叉计算。最后，通过三角测量长度为两个的轨迹，使用重投影误差的异常值剔除（<span class="arithmatex">\(X8_4\)</span>），增加了最终重建结果中的重建点数。</p>
+<h3 id="41">4.1 复杂性分析<a class="headerlink" href="#41" title="Permanent link">¶</a></h3>
+<p>上述的层次化方法使得与顺序 SaM 流程相比，计算复杂性降低了。实际上，如果视图数为 <span class="arithmatex">\(n\)</span>，并且每个视图都向重建中添加一个恒定数量的点 <span class="arithmatex">\(\mathcal{l}\)</span>，则顺序 SaM 的计算复杂性是 <span class="arithmatex">\(\mathcal{O}(n^5)\)</span>，而我们的层次化 SaM 的计算复杂性（在最佳情况下）是 <span class="arithmatex">\(\mathcal{O}(n^4)\)</span>，如附录 A 所示。</p>
+<p>最坏的情况是每次添加一个视图来增长单个聚类。在这种情况下，对应于顺序情况，树状图极不平衡，复杂性降至 <span class="arithmatex">\(\mathcal{O}(n^5)\)</span>。经验上我们发现，树状图通常是相当平衡的，因此我们声称在实践中可以达到最佳情况的复杂性。</p>
+<h2 id="5">5 局部光束法平差<a class="headerlink" href="#5" title="Permanent link">¶</a></h2>
+<p>为了进一步降低复杂性，我们采用了一种策略，即从每个聚类 <span class="arithmatex">\(C\)</span> 中选择一个恒定数量的 <span class="arithmatex">\(k\)</span> 个视图，用于光束法平差，而不是使用整个聚类。然而，这些活动视图并非一劳永逸地固定，而是根据正在添加的对象（单个视图或另一个聚类 <span class="arithmatex">\(C^\prime\)</span>）的情况灵活选择。这种策略是本地光束法平差的一种实例 【21, 37】，在视频序列中经常使用，其中活动视图是最近的视图。</p>
+<p>让我们集中讨论聚类合并步骤，因为一个视图的添加是后者的特例。考虑属于聚类 <span class="arithmatex">\(C\)</span> 和 <span class="arithmatex">\(C^\prime\)</span> 的点集：我们首先确定在 <span class="arithmatex">\(C\)</span> 和  <span class="arithmatex">\(C^\prime\)</span> 中这些点可见的视图。在这些视图中，根据在第 3 节中已计算的距离矩阵，我们选择 <span class="arithmatex">\(k\)</span> 个最接近的视图对作为活动视图。</p>
+<p>光束法平差涉及到活动视图和可以从它们重建的点作为变量，以及一些其他锚定视图，仅用于计算重投影误差。锚定视图是每个聚类中最接近活动视图的 <span class="arithmatex">\(k\)</span> 个视图；它们不会被光束法平差移动，但会对与其他结构相关的 3D 点进行锚定，起到使被光束法平差的结构部分更加刚性的作用。图 2 说明了这个思路。</p>
+<p>在最后，可以通常运行一个包含所有视图和所有点的光束法平差，以获得最佳解。如果由于数据集的规模而无法实现这一点，这种策略仍然能够产生次优的结果。</p>
+<h3 id="51">5.1 复杂性分析<a class="headerlink" href="#51" title="Permanent link">¶</a></h3>
+<p>除了最后一个光束法平差外，现在每个光束法平差仅在恒定数量的视图上运行，因此其成本为 <span class="arithmatex">\(\mathcal{O}(1)\)</span>。光束法平差的数量为 <span class="arithmatex">\(\mathcal{O}(n)\)</span>，因此总成本由最后一个光束法平差主导，为 <span class="arithmatex">\(\mathcal{O}(n^4)\)</span>。尽管渐近复杂性与之前相同，但本地光束法平差显然减少了总操作数。</p>
+<p>顺序方法与本地光束法平差相结合也能够实现相同的复杂性 <span class="arithmatex">\(\mathcal{O}(n^4)\)</span>。然而，层次化方法易于并行化，并且更加稳健和有效，下一节的实验将会展示这一点。</p>
+<h2 id="6">6 实验<a class="headerlink" href="#6" title="Permanent link">¶</a></h2>
+<p>我们在作者用已知内部参数的消费级相机拍摄的几个数据集上测试了我们的算法（以下简称为 SAMANTHA）。图 3 和图 4 分别展示了从“Piazza Erbe”和“Piazza Bra”数据集中进行的重建结果。</p>
+<p>我们将我们的结果与 BUNDLER 【3】 产生的结果进行了比较，BUNDLER 是一个 C++实现的最先进的顺序 SaM 流水线。在我们的流水线中，我们使用了 【17】 中描述的 C++实现的束调整（BA）。只报告进行 BA 所花费的时间，以消除由于我们的软件部分使用 Matlab 编写而产生的差异，并与我们的复杂性分析保持一致。此外，BUNDLER 在匹配阶段非常慢，因为它将每个视图与其他所有视图进行匹配。所有实验都在相同的硬件上运行（Intel Core2 Duo E4600 @2.4Ghz，2Gb RAM）。</p>
+<p>表 1 报告了比较结果。结果显示，SAMANTHA 的时间比 BUNDLER 显著少，而在重建的视图和点数方面没有主要差异。</p>
+<p>作为一个顺序算法，<em>BUNDLER</em> 对初始化非常敏感。实际上，对于一些数据集，有必要仔细选择初始对，以使其产生有意义的解。在“Piazza Bra”的情况下，共尝试了四个初始对：默认选择的一个和另外三个根据我们的聚类使用的相同标准选择的。在所有情况下，结果仅为部分重建（通过重建的点数较少来证明），且存在明显的不对齐问题（图 6）。对于“Tribuna”数据集也存在类似的结果。</p>
+<p>在表 2 中，我们分析了本地 BA 策略在活动视图数量、计算时间和重建质量之间的权衡。正如预期的那样，随着活动视图数量的减少，计算时间逐渐减少，而在重建的点数和视图方面没有明显的损失。点数和视图数量的小变化在算法的相同运行中是预期的和正常的，因为存在非确定性的步骤。因此，与基线情况（所有活动视图）相比，与之平均对齐误差增加。</p>
+<p>最后，使用很少的活动视图时，SAMANTHA 可能无法合并聚类。在出现这种情况之前，我们注意到由于在不理想的情况下需要更多迭代才能使束调整收敛，导致 BA 运行时间增加。这促使我们建议使用足够大的（20+）活动视图数量，以确保快速可靠的计算。</p>
+<h2 id="7">7 结论与未来工作<a class="headerlink" href="#7" title="Permanent link">¶</a></h2>
+<p>我们开发了一种新颖的结构与运动流水线，通过基于视图聚类的分层方案，可使计算效率提高一个数量级，从而更高效、更有效地解决了初始化和漂移问题。</p>
+<p>未来的研究将致力于利用其固有的并行性，推动我们的方法在越来越大的数据集上的应用。</p>
+<h2 id="a">A 复杂性分析<a class="headerlink" href="#a" title="Permanent link">¶</a></h2>
+<p>对于具有 <span class="arithmatex">\(m\)</span> 个点和 <span class="arithmatex">\(n\)</span> 个视图的捆绑调整而言，其成本为 <span class="arithmatex">\(\mathcal{O}(mn(m+2n)2)\)</span> 【28】，因此当 <span class="arithmatex">\(m=\mathcal{l}n\)</span> 时，复杂度为 <span class="arithmatex">\(\mathcal{O}(n_4)\)</span>。</p>
+<p>在顺序的 SaM 中，添加视图 <span class="arithmatex">\(i\)</span> 需要进行一定数量的具有 <span class="arithmatex">\(i\)</span> 个视图的光束法平差（通常为一到两个），因此复杂度为</p>
+<div class="arithmatex">\[\sum^{n}_{i=1}=\mathcal{O}(i^4)=\mathcal{O}(n^5)\]</div>
+<p>对于分层方法，考虑一个树状图节点，其中两个聚类被合并为一个大小为 <span class="arithmatex">\(n\)</span> 的聚类。调整该聚类的成本 <span class="arithmatex">\(T(n)\)</span> 等于 <span class="arithmatex">\(\mathcal{O}(n^4)\)</span> 加上对左子树和右子树执行相同操作的成本。在假设树状图平衡的情况下，即两个聚类具有相同大小时，该成本由 <span class="arithmatex">\(2T(n/2)\)</span> 给出。因此，在最佳情况下，渐近时间复杂度 <span class="arithmatex">\(T\)</span> 的解为以下递归的解：</p>
+<div class="arithmatex">\[T(n)=2T(n/2)+\mathcal{O}(n^4)\]</div>
+<p>根据 Master 定理的第三种情况，<span class="arithmatex">\(T(n)=\mathcal{O}(n^4)\)</span></p>
+<h2 id="_2">致谢<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<p>感谢 Roberto Posenato 和 Cheng Dong Seon 提供的许多有益建议。感谢 A. Vedaldi 和 B. Fulkerson 的 VLFeat，David M. Mount 和 Sunil Arya 的 ANN，M. Lourakis 和 A. Argyros 的 SBA，以及 N. Snavely 的 Bundler。本研究由欧盟项目 FP7 SAMURAI 资助，授予号 FP7-SEC-2007–01 No. 217899。</p>
+<h2 id="_3">参考文献<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<details class="info">
+<summary>References</summary>
+<p>[1] M. Brown and D. Lowe. Recognising panoramas. In Proceedings of the 9<sup>th</sup> International Conference on Computer Vision, volume 2, pages 1218–1225, October 2003.</p>
+<p>[2] M. Brown and D. G. Lowe. Unsupervised 3D object recognition and reconstruction in unordered datasets. In Proceedings of the International Conference on 3D Digital Imaging and Modeling, June 2005.</p>
+<p>[3] <a href="http://phototour.cs.washington.edu/bundler/">http://phototour.cs.washington.edu/bundler/</a>.</p>
+<p>[4] O. Chum, T. Pajdla, and P. Sturm. The geometric error for homographies. Computer Vision and Image Understanding, 97(1):86–102, 2005.</p>
+<p>[5] T. H. Cormen, C. E. Leiserson, R. L. Rivest, and C. Stein. Introduction to Algorithms. The MIT Press, Cambridge, MA, USA, 2001.</p>
+<p>[6] N. Cornelis, B. Leibe, K. Cornelis, and L. V. Gool. 3D urban scene modeling integrating recognition and reconstruction. International Journal of Computer Vision, 78(2-3):121–141, July 2008.</p>
+<p>[7] R. O. Duda and P. E. Hart. Pattern Classification and Scene Analysis, pages 98–105. John Wiley and Sons, 1973.</p>
+<p>[8] P. D. Fiore. Efficient linear solution of exterior orientation. IEEE Transactions on Pattern Analysis and Machine Intelligence, 23(2):140–148, 2001.</p>
+<p>[9] A. W. Fitzgibbon and A. Zisserman. Automatic camera recovery for closed and open image sequences. In Proceedings of the European Conference on Computer Vision, pages 311–326, 1998.</p>
+<p>[10] A. Fusiello, A. Benedetti, M. Farenzena, and A. Busti. Globally convergent autocalibration using interval analysis. IEEE Transactions on Pattern Analysis and Machine Intelligence, 26(12):1633–1638, December 2004.</p>
+<p>[11] S. Gibson, J. Cook, T. Howard, R. Hubbold, and D. Oram. Accurate camera calibration for off-line, video-based augmented reality. Mixed and Augmented Reality, IEEE / ACM International Symposium on, 2002.</p>
+<p>[12] F. Hampel, P. Rousseeuw, E. Ronchetti, and W. Stahel. Robust Statistics: the Approach Based on Influence Functions. Wiley Series in probability and mathematical statistics. John Wiley &amp; Sons, 1986.</p>
+<p>[13] R. Hartley and A. Zisserman. Multiple View Geometry in Computer Vision. Cambridge University Press, 2<sup>nd</sup> edition, 2003.</p>
+<p>[14] R. I. Hartley. Estimation of relative camera position for uncalibrated cameras. In Proceedings of the European Conference on Computer Vision, pages 579–587, 1992.</p>
+<p>[15] A. Irschara, C. Zach, and H. Bischof. Towards wiki-based dense city modeling. In Proceedings of the 11<sup>th</sup> International Conference on Computer Vision, pages 1–8, 2007.</p>
+<p>[16] G. Kamberov, G. Kamberova, O. Chum, S. Obdrzalek, D. Martinec, J. Kostkova, T. Pajdla, J. Matas, and R. Sara. 3D geometry from uncalibrated images. In Proceedings of the 2<sup>nd</sup> International Symposium on Visual Computing, November 6-8 2006.</p>
+<p>[17] M. Lourakis and A. Argyros. The design and implementation of a generic sparse bundle adjustment software package based on the Levenberg-Marquardt algorithm. Technical Report 340, Institute of Computer Science - FORTH, Heraklion, Crete, Greece, August 2004.</p>
+<p>[18] D. G. Lowe. Distinctive image features from scale-invariant keypoints. International Journal of Computer Vision, 60(2):91–110, 2004.</p>
+<p>[19] Q.-T. Luong and O. D. Faugeras. The fundamental matrix: Theory, algorithms, and stability analysis. International Journal of Computer Vision, 17:43–75, 1996.</p>
+<p>[20] D. M. Mount and S. Arya. Ann: A library for approximate nearest neighbor searching. In <a href="http://www.cs.umd.edu/mount/ANN/">http://www.cs.umd.edu/mount/ANN/</a>, 1996.</p>
+<p>[21] E. Mouragnon, M. Lhuillier, M. Dhome, F. Dekeyser, and P. Sayd. Real-time localization and 3D reconstruction. In Proceedings of the International Conference on Computer Vision and Pattern Recognition, pages 363–370, 2006.</p>
+<p>[22] K. Ni, D. Steedly, and F. Dellaert. Out-of-core bundle adjustment for large-scale 3D reconstruction. In Proceedings of the International Conference on Computer Vision, pages 1–8, 2007.</p>
+<p>[23] D. Nist ́ er. Reconstruction from uncalibrated sequences with a hierarchy of trifocal tensors. In Proceedings of the European Conference on Computer Vision, pages 649–663, 2000.</p>
+<p>[24] M. Pollefeys, D. Nist ́ er, J. M. Frahm, A. Akbarzadeh, P. Mordohai, B. Clipp, C. Engels, D. Gallup, S. J. Kim, P. Merrell, C. Salmi, S. Sinha, S. Sinha, B. Talton, L. Wang, Q. Yang, H. Stew ́ enius, R. Yang, G. Welch, and H. Towles. Detailed real-time urban 3D reconstruction from video. International Journal of Computer Vision, 78(2-3):143–167, 2008.</p>
+<p>[25] M. Pollefeys, F. Verbiest, and L. V. Gool. Surviving dominant planes in uncalibrated structure and motion recovery. In Proceedings of the European Conference on Computer Vision, pages 837–851, 2002.</p>
+<p>[26] T. Quack, B. Leibe, and L. Van Gool. World-scale mining of objects and events from community photo collections. In Proceedings of the International Conference on Content-based Image and Video Retrieval, pages 47–56, 2008.</p>
+<p>[27] F. Schaffalitzky and A. Zisserman. Multi-view matching for unordered image sets, or "how do I organize my holiday snaps?". In Proceedings of the 7<sup>th</sup> European Conference on Computer Vision, pages 414–431, 2002.</p>
+<p>[28] H.-Y. Shum, Q. Ke, and Z. Zhang. Efficient bundle adjustment with virtual key frames: A hierarchical approach to multi-frame structure from motion. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, June 1999.</p>
+<p>[29] I. Simon, N. Snavely, and S. M. Seitz. Scene summarization for online image collections. In Proceedings of the International Conference on Computer Vision, 2007.</p>
+<p>[30] N. Snavely, S. M. Seitz, and R. Szeliski. Photo tourism: exploring photo collections in 3D. In SIGGRAPH: International Conference on Computer Graphics and Interactive Techniques, pages 835–846, 2006.</p>
+<p>[31] N. Snavely, S. M. Seitz, and R. Szeliski. Skeletal graphs for efficient structure from motion. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 1–8, 2008.</p>
+<p>[32] D. Steedly, I. Essa, and F. Dellaert. Spectral partitioning for structure from motion. In Proceedings of the International Conference on Computer Vision, pages 649–663, 2003.</p>
+<p>[33] T. Thorm ̈ ahlen, H. Broszio, and A. Weissenfeld. Keyframe selection for camera motion and structure estimation from multiple views. In Proceedings of the European Conference on Computer Vision, pages 523–535, 2004.</p>
+<p>[34] P. H. S. Torr. An assessment of information criteria for motion model selection. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pages 47–53, 1997.</p>
+<p>[35] P. H. S. Torr and A. Zisserman. MLESAC: A new robust estimator with application to estimating image geometry. Computer Vision and Image Understanding, 78:2000, 2000.</p>
+<p>[36] M. Vergauwen and L. V. Gool. Web-based 3D reconstruction service. Machine Vision and Applications, 17(6):411–426, 2006.</p>
+<p>[37] Z. Zhang and Y. Shan. Incremental motion estimation through modified bundle adjustment. In Proceedings of the International Conference on Image Processing, pages II343–6, Sept. 2003.</p>
+<p>[38] M. Zuliani. Computational Methods for Automatic Image Registration. PhD thesis, University of California, Santa Barbara, Dec 2006.</p>
+</details>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "content.tooltips", "content.tabs.link", "content.code.copy", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.78eede0e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.zerolacqua.top/npm/mathjax/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/d3@7/dist/d3.min.js"></script>
+      
+        <script src="https://unpkg.com/markmap-lib@0.15.3/dist/browser/index.js"></script>
+      
+        <script src="https://unpkg.com/markmap-view@0.15.3/dist/browser/index.js"></script>
+      
+    
+  </body>
+</html>

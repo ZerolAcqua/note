@@ -1,0 +1,3720 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://note.zerolacqua.top/paper/CV/SfM/Efficient_structure_from_motion_for_large-scale_UAV_images_A_review_and_a_comparison_of_SfM_tools/">
+      
+      
+        <link rel="prev" href="../Building_Rome_in_a_Day/">
+      
+      
+        <link rel="next" href="../Multicore_Bundle_Adjustment/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.2.3">
+    
+    
+      
+        <title>Efficient structure from motion for large-scale UAV images: A review and a comparison of SfM tools - 丘卡的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0e669242.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#efficient-structure-from-motion-for-large-scale-uav-images-a-review-and-a-comparison-of-sfm-tools" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="丘卡的笔记本" class="md-header__button md-logo" aria-label="丘卡的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            丘卡的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Efficient structure from motion for large-scale UAV images: A review and a comparison of SfM tools
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ZerolAcqua/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZerolAcqua/note
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../RS/UAV/%E5%9F%BA%E4%BA%8E%E7%89%A9%E6%8E%A2%E9%A3%9E%E8%A1%8C%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%AD%A3%E5%B0%84%E5%BD%B1%E5%83%8F%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C/" class="md-tabs__link">
+          
+  
+    
+  
+  论文
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../course/Photogrammetry/%E8%BF%91%E6%99%AF%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-tabs__link">
+          
+  
+    
+  
+  课程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../programming/cpp/modern-cpp-features/" class="md-tabs__link">
+          
+  
+    
+  
+  编程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../cs/computer_system/Putting_the_You_in_CPU/" class="md-tabs__link">
+          
+  
+    
+  
+  计算机
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../misc/photogrammetry/%E4%BA%91%E5%8F%B0%E6%97%8B%E8%BD%AC%E8%A7%92%E6%8D%A2%E7%AE%97/" class="md-tabs__link">
+          
+  
+    
+  
+  杂项
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="丘卡的笔记本" class="md-nav__button md-logo" aria-label="丘卡的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    丘卡的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ZerolAcqua/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZerolAcqua/note
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    论文
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            论文
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            RS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UAV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            UAV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RS/UAV/%E5%9F%BA%E4%BA%8E%E7%89%A9%E6%8E%A2%E9%A3%9E%E8%A1%8C%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%AD%A3%E5%B0%84%E5%BD%B1%E5%83%8F%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于物探飞行模式的正射影像快速制作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RS/UAV/%E4%B8%AD%E5%9B%BD%E5%85%89%E5%AD%A6%E5%8D%AB%E6%98%9F%E5%BD%B1%E5%83%8F%E5%8C%B9%E9%85%8D%E8%9E%8D%E5%90%88%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A combined image matching method for Chinese optical satellite imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RS/UAV/%E5%8D%97%E6%9E%81%E6%97%A0%E4%BA%BA%E6%9C%BA%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F%E8%AE%BA%E6%96%87%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    南极无人机摄影测量论文概览
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    图像匹配
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            图像匹配
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../image_matching/LBD%E7%BA%BF%E7%89%B9%E5%BE%81%E6%8F%8F%E8%BF%B0%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LBD 线特征描述算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../image_matching/Sample4Geo_Hard_Negative_Sampling_for_Cross-View_Geo-Localisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample4Geo: Hard Negative Sampling for Cross-View Geo-Localisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../image_matching/Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    从人工特征到深度特征的图像匹配调查
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" checked>
+        
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SfM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            SfM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Structure-from-Motion_Revisited/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SfM 回顾（Colmap）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Skeletal_graphs_for_efficient_structure_from_motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    用于高效 SfM 的骨架图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Structure-and-motion_pipeline_on_a_hierarchical_cluster_tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于分层聚类树的 SfM 
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Improving_the_efficiency_of_hierarchical_structure-and-motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提高分层 SfM 效率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Towards_Linear-Time_Incremental_Structure-from-Motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线性时间的增量式 SfM（VisualSFM）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Modeling_the_World_from_Internet_Photo_Collections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    通过互联网影像重建世界（Bundler）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Photo_Tourism_Exploring_Photo_Collections_in_3D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    相片旅行：在三维世界中浏览相片
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Building_Rome_in_a_Day/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一天建成罗马
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    大规模无人机影像的高效 SfM
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    大规模无人机影像的高效 SfM
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 引言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2 结构运动的工作流程
+  </a>
+  
+    <nav class="md-nav" aria-label="2 结构运动的工作流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 特征提取和匹配
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 使用捆绑调整进行图像定位
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sfm" class="md-nav__link">
+    3 高效的 SfM 解决方案
+  </a>
+  
+    <nav class="md-nav" aria-label="3 高效的 SfM 解决方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 图像匹配对的选择
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 图像匹配对的选择">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311" class="md-nav__link">
+    3.1.1 基于先验知识的方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312" class="md-nav__link">
+    3.1.2 基于视觉相似性的方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313" class="md-nav__link">
+    3.1.3 图像拓扑连接网络分析
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 去除初始匹配中的异常值
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 去除初始匹配中的异常值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321" class="md-nav__link">
+    3.2.1 全局几何约束
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322" class="md-nav__link">
+    3.2.2 局部几何约束
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323" class="md-nav__link">
+    3.2.3 局部光度约束
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 图像定位的效率改进
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 图像定位的效率改进">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331" class="md-nav__link">
+    3.3.1 捆绑调整
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332" class="md-nav__link">
+    3.3.2 分而治之策略
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333-slam" class="md-nav__link">
+    3.3.3 基于 SLAM 的方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4 现有软件的评估
+  </a>
+  
+    <nav class="md-nav" aria-label="4 现有软件的评估">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 数据集
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 软件包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 实验结果与评估
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 实验结果与评估">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431" class="md-nav__link">
+    4.3.1 效率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432" class="md-nav__link">
+    4.3.2 完整性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#433" class="md-nav__link">
+    4.3.3 准确性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5 讨论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6 结论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    附录 A
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Multicore_Bundle_Adjustment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多核光束法平差
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Efficient_tree-structured_SfM_by_RANSAC_generalized_Procrustes_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于 RANSAC 通用 Procrustes 分析的高效树状 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Divide_and_Conquer_Efficient_Large_Scale_Structure_from_Motion_Using_Graph_Partitioning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用图分割的分治高效大规模 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SfM_on-the-fly%3A_A_robust_near_real-time_SfM_for_spatiotemporally_disordered_high-resolution_imagery_from_multiple_agents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实时 SfM：一种面向多智能体时空无序高分辨率影像的鲁棒近实时 SfM 方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    课程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            课程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    专业相关
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            专业相关
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    摄影测量
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            摄影测量
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/Photogrammetry/%E8%BF%91%E6%99%AF%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    近景摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/Photogrammetry/%E5%8D%AB%E6%98%9F%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    卫星摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/Photogrammetry/%E6%95%B0%E5%AD%97%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/Photogrammetry/%E8%A7%A3%E6%9E%90%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    解析摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2" >
+        
+          <label class="md-nav__link" for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            RS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/RS/%E9%81%A5%E6%84%9F%E5%9B%BE%E5%83%8F%E8%A7%A3%E8%AF%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遥感图像解译
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_3" >
+        
+          <label class="md-nav__link" for="__nav_3_1_3" id="__nav_3_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    测绘
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            测绘
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/geomatics/%E5%A4%A7%E5%9C%B0%E6%B5%8B%E9%87%8F%E5%AD%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大地测量学
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4" >
+        
+          <label class="md-nav__link" for="__nav_3_1_4" id="__nav_3_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/CV/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字图像处理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    专业之外
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            专业之外
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            CS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/CS/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多媒体技术
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/CS/%E5%8D%97%E5%A4%A7%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9FPA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    南大计算机系统 PA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    others
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            others
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/others/%E9%80%BB%E8%BE%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    逻辑学导论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/others/%E9%9F%B3%E4%B9%90%E6%AC%A3%E8%B5%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    音乐欣赏
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    编程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            编程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            C++
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/cpp/modern-cpp-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    现代 C++ 特性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/cpp/Effective_Modern_C%2B%2B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Effective Modern C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/cpp/head-first-design-pattern/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 实现 Headfirst 设计模式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Rust
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Rust
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/rust/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    准备工作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/rust/Rust%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rust 程序设计语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Julia
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Julia
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/julia/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    准备工作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/julia/Julia_Data_Science/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Julia Data Science
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/git/progit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Progit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/python/bibliometrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    文献计量学作业
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            计算机
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机系统
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            计算机系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cs/computer_system/Putting_the_You_in_CPU/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Putting the “You” in CPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    杂项
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            杂项
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    摄影测量
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            摄影测量
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../misc/photogrammetry/%E4%BA%91%E5%8F%B0%E6%97%8B%E8%BD%AC%E8%A7%92%E6%8D%A2%E7%AE%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    云台旋转角换算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 引言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2 结构运动的工作流程
+  </a>
+  
+    <nav class="md-nav" aria-label="2 结构运动的工作流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 特征提取和匹配
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 使用捆绑调整进行图像定位
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sfm" class="md-nav__link">
+    3 高效的 SfM 解决方案
+  </a>
+  
+    <nav class="md-nav" aria-label="3 高效的 SfM 解决方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 图像匹配对的选择
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 图像匹配对的选择">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311" class="md-nav__link">
+    3.1.1 基于先验知识的方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312" class="md-nav__link">
+    3.1.2 基于视觉相似性的方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313" class="md-nav__link">
+    3.1.3 图像拓扑连接网络分析
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 去除初始匹配中的异常值
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 去除初始匹配中的异常值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321" class="md-nav__link">
+    3.2.1 全局几何约束
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322" class="md-nav__link">
+    3.2.2 局部几何约束
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323" class="md-nav__link">
+    3.2.3 局部光度约束
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 图像定位的效率改进
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 图像定位的效率改进">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331" class="md-nav__link">
+    3.3.1 捆绑调整
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332" class="md-nav__link">
+    3.3.2 分而治之策略
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333-slam" class="md-nav__link">
+    3.3.3 基于 SLAM 的方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4 现有软件的评估
+  </a>
+  
+    <nav class="md-nav" aria-label="4 现有软件的评估">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 数据集
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 软件包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 实验结果与评估
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 实验结果与评估">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431" class="md-nav__link">
+    4.3.1 效率
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432" class="md-nav__link">
+    4.3.2 完整性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#433" class="md-nav__link">
+    4.3.3 准确性
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5 讨论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6 结论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    附录 A
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<div class="admonition info">
+<p class="admonition-title">论文链接</p>
+<p>原文：San Jiang, Cheng Jiang, Wanshou Jiang. <a href="https://linkinghub.elsevier.com/retrieve/pii/S0924271620301131">Efficient structure from motion for large-scale UAV images: A review and a comparison of SfM tools</a></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">注意</p>
+<p>由 claude 和 chatgpt 翻译整理</p>
+</div>
+<h1 id="efficient-structure-from-motion-for-large-scale-uav-images-a-review-and-a-comparison-of-sfm-tools">Efficient structure from motion for large-scale UAV images: A review and a comparison of SfM tools<a class="headerlink" href="#efficient-structure-from-motion-for-large-scale-uav-images-a-review-and-a-comparison-of-sfm-tools" title="Permanent link">¶</a></h1>
+<h2 id="1">1 引言<a class="headerlink" href="#1" title="Permanent link">¶</a></h2>
+<p>近年来，无人机（Unmanned Aerial Vehicles，UAVs）已成为常用的遥感平台（Yao 等，2019）。与传统的遥感平台相比，UAVs 具有一些有前景的优势，例如低经济成本、易于使用和灵活的数据采集（Jiang 等，2017）。即使配备消费级相机，由于它们的相对较低飞行高度，UAVs 可以提供高空间分辨率的图像。当与倾斜成像技术结合使用时，基于 UAV 的摄影测量系统可以提供具有灵活数据采集和多角度成像的成像能力。因此，在摄影测量和遥感领域，UAV 图像可以在各种应用中广泛使用，例如农业管理（Habib 等，2016），考古遗址的 3D 文档（Habib 等，2016），沿海地形监测（Gonçalves 和 Henriques，2015）和输电线路检查（Jiang 等，2017）。</p>
+<p>尽管 UAVs 具有上述优势，但对于后续的图像处理，特别是图像方向，提出了新的挑战（Jiang 和 Jiang，2018a），主要是由于有效载荷限制和高经济成本，市场上大多数可用的 UAV 平台未配备高精度传感器以用于直接位置和方向（Turner 等，2014）。对于传统的航空三角测量（AT），必须知道摄像机姿势和 3D 点的良好初始值，这限制了它适用于恢复 UAV 图像的摄像机姿势（Remondino 和 Gerke，2015）。幸运的是，在计算机视觉领域，有一种成熟的技术，即运动结构（Structure from Motion，SfM），可以自动且同时从重叠的图像中恢复所有未知的摄像机姿势和 3D 点参数（Ullman，1979；Snavely 等，2008；Granshaw，2016；Wang 等，2019）。与传统的 AT 方法相比，SfM 不需要摄像机姿势和 3D 点的先验知识。因此，SfM 已被广泛用于 UAV 图像定向（Jiang 和 Jiang，2017；Schönberger 等，2014；Bhowmick 等，2017；Cui 等，2015；Shen 等，2016；Xu 等，2016；Zhu 等，2017）。</p>
+<p>初步的 SfM 技术最初设计用于重建小规模场景，这些场景由低空间分辨率的小尺寸照片记录（Snavely，2008；Snavely 等，2008）。对于具有大数据量和高空间分辨率的 UAV 图像，如果直接使用基于原始 SfM 的图像定位方法，将会消耗高计算成本（Xu 等，2016）。因此，必须认真解决 SfM 在大规模 UAV 图像定位中的效率问题。对于传统的 SfM 方法，图像定位过程包括三个主要步骤：（1）提取单个图像的特征，（2）匹配图像对的特征，以及（3）在捆绑调整（Bundle Adjustment，BA）的迭代执行中解决未知参数。对于第一步，时间消耗与涉及图像的数量成正比，并且已经进行了许多尝试来加速特征提取的效率，例如优化的特征检测器（Bay 等，2008；Rublee 等，2011）和使用 GPU（图形处理单元）的硬件加速（Wu，2007）。然而，随着数据量的增加，涉及到最后两个步骤的时间成本无法容忍，这些时间成本至少与图像数量的平方成正比。可以从三个方面总结这些原因。</p>
+<ul>
+<li>匹配对的组合复杂性高。对于特征匹配，一个有效的匹配对由两个空间上重叠的图像组成，匹配对的数量直接决定了特征匹配所涉及的时间成本的大小。由于紧凑相机的小尺寸，从给定测试区域采集的 UAV 图像的数量远大于使用传统航空摄影术所采集的图像数量，并且在沿轨迹和横轨迹方向上设置了大于 90%的更高重叠度，以确保后续航空三角测量的稳定图像连接。此外，如上所述，由于较低的飞行高度，UAV 图像的空间分辨率非常高。当简单地采用穷举匹配策略时，这些特征将导致特征匹配的计算复杂性很高。因此，选择匹配对是加速特征匹配并提高基于 SfM 的 UAV 图像定向整体效率的最明显策略（Jiang 和 Jiang，2017）。</li>
+<li>初始匹配的离群值比例高。在使用局部特征进行关键点描述时，例如 SIFT（尺度不变特征变换）算法（Lowe，2004）和用于特征匹配的近似 K 最近邻（KNN）（Cover 和 Hart，1967）等算法，初始匹配中不可避免地存在离群值（假匹配）。此外，对于倾斜的 UAV 图像，重复模式、遮挡和透视变形等因素将进一步降低初始匹配的质量，即使采用了两种著名的离群值去除方法，即比率测试和交叉检查。因此，对于经典的几何验证方法，即随机样本一致性（Random Sample Consensus，RANSAC）（Fischler 和 Bolles，1981），其性能将大幅下降（Lu 等，2016），因为其时间成本与初始匹配中离群值的百分比呈指数增长。为了提高 SfM 图像定位的效率和鲁棒性，需要进行可靠的离群值检测。</li>
+<li>增量 SfM 的计算复杂性高。现有的 SfM 方法可以分为两个主要组别，分别称为增量 SfM 方法（Shah 等，2014）和全局 SfM 方法（Wang 等，2019）。由于未知参数的良好初始值对于确保全局最优解至关重要，因此增量 SfM 方法已广泛用于 UAV 图像定向。在增量 SfM 的经典流程中，首先选择具有足够大的交叉角和足够数量的分布良好特征的良好种子匹配对，通过图像配准和三角测量来恢复摄像机姿势和三维点。然后，通过添加一个与重建场景连接良好的图像，来增量地执行图像定向过程，并通过空间复位和空间交叉来恢复摄像机姿势和三维点。为了减少局部图像连接之间的累积误差，当新添加的图像数量超过指定值时，将重复执行局部捆绑调整。最后，一旦所有图像都已注册，将进行全局捆绑调整以精细调整所有参数。为了获得高鲁棒性和精度的方向结果，在增量 SfM 流程中需要进行迭代 BA。对于大规模 UAV 图像的高效定向，应该打破增量 SfM 的顺序约束。</li>
+</ul>
+<p>随着多角度倾斜摄影测量系统的普及以及 UAV 平台耐用性的不断提高，现代项目可以包含数十万张非常高空间分辨率的图像。这意味着大规模 UAV 图像的定向能力正在变得越来越重要，成为基于 SfM 方法的突出特点。在摄影测量和计算机视觉领域，已经开发了不同的技术来解决 SfM 图像定向流程中出现的这三个问题。本文将对这些发展进行系统概述。本文的组织如下。第 2 部分简要介绍了增量 SfM 流程的工作流程。高效的 SfM 解决方案在第 3 部分中进行详细描述，这些解决方案按照图像匹配对选择、初始匹配的离群值去除和图像定位的效率依次组织。第 4 部分介绍了六个软件包的实验评估。此外，第 5 部分讨论了一些问题和未来研究。最后，第 6 部分提出了结论。</p>
+<h2 id="2">2 结构运动的工作流程<a class="headerlink" href="#2" title="Permanent link">¶</a></h2>
+<p>结构运动的工作流程增量式 SfM 的总体工作流程如图 1 所示。它分为两个主要组件，分别称为对应搜索和增量重建。第一个组件的目标是为两幅图像搜索可靠且分布均匀的特征匹配，包括特征提取、特征匹配和几何验证三个步骤。第二个组件的目标是估计图像的姿态和场景的三维点。这可以通过包括为最佳图像对选择进行初始化、为方向进行图像注册、进行三角测量以计算三维点、进行局部和全局精化的捆绑调整以及进行异常值去除在内的五个步骤来实现。本节将简要介绍 SfM 解决方案的工作流程。</p>
+<p><img alt="图 1" src="https://ars.els-cdn.com/content/image/1-s2.0-S0924271620301131-gr1_lrg.jpg"/></p>
+<h3 id="21">2.1 特征提取和匹配<a class="headerlink" href="#21" title="Permanent link">¶</a></h3>
+<p>对于每个图像，首先执行特征提取以检测关键点，这可以通过使用角点（Harris 和 Stephens，1988）或斑点（Lowe，2004）检测器来完成。最近，基于局部特征的匹配技术已成为广泛基线图像的黄金标准，它对平移、旋转和尺度具有不变性，并且可以容忍由于光照和视点变化引起的大变形。与传统的角点检测器相比，不变性检测器使用描述符向量来描述关键点的局部区域。因此，特征匹配可以被看作是在两个描述符集之间搜索具有最小欧氏距离的最近邻的问题。在文献中，通常使用近似 K 最近邻（KNN）搜索算法（Cover 和 Hart，1967）或 GPU 辅助的硬件加速（Wu，2007）来提高其效率。此外，为了处理分辨率高且维度大的航拍图像，还利用了分治策略进行特征提取和匹配，例如 L2-SIFT 算法（Sun 等，2014）。</p>
+<p>然后，几何验证被应用于初始匹配以去除剩余的异常值。为了应对高异常值比例的情况，此过程可以分为两部分：（1）去除明显的异常值以增加初始匹配的内点比率，（2）使用 RANSAC 方法提取与估计的变换模型一致的可靠内点。前者通常使用局部光度和几何约束（Hu 等，2015；Li 等，2017b）来实现，因为它们对高异常值比例和局部变形具有鲁棒性；后者旨在使用严格的极线几何约束来优化剩余匹配，并通常通过使用七点算法（Zhang，1998）估计基本矩阵或使用五点算法（Nister，2004）估计本质矩阵来实现。通过这些步骤，获得了可靠的对应关系。</p>
+<h3 id="22">2.2 使用捆绑调整进行图像定位<a class="headerlink" href="#22" title="Permanent link">¶</a></h3>
+<p>为了恢复相机姿态和场景几何，应将多个图像对之间的一致对应关系连接起来生成轨迹（Cao 等，2019；Zhang 等，2016）。轨迹是跨多个图像的一组匹配点，对应于场景的相同三维点。在增量式 SfM 中，首先选择具有足够大的交集角度和足够数量的分布均匀特征的两幅图像作为种子匹配对，通过图像注册和三角测量来恢复它们的姿态和三维点，然后通过 BA 进行精化。然后，通过将一个条件良好的图像添加到重建的场景中并执行局部 BA 来减少新添加图像之间的累积误差，迭代执行该过程。最后，在所有图像都已注册后，进行全局 BA 以优化所有相机姿态和场景点（Snavely 等，2008）。</p>
+<p>对于局部和全局 BA，将优化相机姿态和场景点的问题建模为重投影函数的联合最小化（Triggs 等，2000），其中将轨迹投影与其相应的图像点之间的误差之和最小化。BA 的目标函数由方程（1）表示：</p>
+<div class="arithmatex">\[
+\min_{C_{j},X_{i}}\sum_{i=1}^{n}\sum_{j=1}^{m}\rho_{ij}\|P(C_{j},X_{i})-x_{ij}\|^{2}
+\]</div>
+<p>其中 <span class="arithmatex">\(X_i\)</span> 和 <span class="arithmatex">\(C_j\)</span> 分别表示三维点和相机；<span class="arithmatex">\(P(C_j,X_i)\)</span> 是点 <span class="arithmatex">\(X_i\)</span> 在相机 <span class="arithmatex">\(C_j\)</span> 上的投影；<span class="arithmatex">\(x_{ij}\)</span> 是观测到的图像点；<span class="arithmatex">\(\|\cdot\|\)</span> 表示 L2 范数；<span class="arithmatex">\(\rho_{ij}\)</span> 是一个指示函数，如果点 <span class="arithmatex">\(X_i\)</span> 在相机 <span class="arithmatex">\(C_j\)</span> 中可见，则 <span class="arithmatex">\(\rho_{ij}\)</span> 为 1；否则，<span class="arithmatex">\(\rho_{ij}\)</span> 为 0。</p>
+<p>上述工作流程是增量式 SfM 的图像定位过程。与全局 SfM 解决方案相比，增量式 SfM 具有两个主要优势。首先，它可以在图像定位过程中容忍高异常值比例，因为增量工作流程中使用了迭代的异常值去除策略。其次，增量式 SfM 可以提供更高的重建精度，因为它利用迭代的局部 BA 来优化图像配准和点三角测量以及全局 BA 来确保重建模型的全局一致性。因此，增量式 SfM 解决方案是实现无人机图像的航测的常用工作流程。然而，随着涉及图像数量的增加，增量式 SfM 在执行迭代局部捆绑调整时效率较低，对于大规模无人机图像，这个问题应该得到严肃解决。</p>
+<h2 id="3-sfm">3 高效的 SfM 解决方案<a class="headerlink" href="#3-sfm" title="Permanent link">¶</a></h2>
+<p>本节对增量结构运动（SfM）的高效解决方案进行了全面的回顾。根据增量 SfM 工作流程中耗时最长的步骤，即特征匹配、离群值去除和捆绑调整，这些方法被分为三类，我们将详细审查每一类。表 A.1 列出了一些免费和开源的代码和软件包。</p>
+<h3 id="31">3.1 图像匹配对的选择<a class="headerlink" href="#31" title="Permanent link">¶</a></h3>
+<p>图像匹配是 SfM 定位流程中时间消耗最多的步骤。为了加速图像匹配，提出了许多方法，例如使用近似最近邻（ANN）（Beis 和 Lowe，1997）算法进行特征匹配，限制从一幅图像中提取的特征数量（Wu，2013），剪裁参与重建的多余图像（Frahm 等，2010a；Li 等，2008）等。在 Hartmann 等人的工作（2015）中详细记录了综合评估。在所有这些已报道的技术中，实际执行特征匹配之前的图像匹配对选择可能是最有效和最稳健的方法。这种技术可以分为三组，即基于先验知识的方法、基于视觉相似性的方法以及基于图像拓扑连接网络（TCN）分析的匹配对选择。这些方法在表 1 中进行了比较，并如下所述。</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>策略或方法</th>
+<th>优点和缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>先验知识</td>
+<td><strong>数据获取</strong>（AliAkbarpour 等，2015; Aliakbarpour 等，2015; Schönberger 等，2014);<strong>图像位置</strong>（Rupnik 等，2013; Rupnik 等，2014; Zheng 等，2009);<strong>图像足迹</strong>（Jiang and Jiang，2017; Xu 等，2016; Zhang 等，2018);</td>
+<td><strong>优点</strong>: (1) 高效率，无需其他计算成本; (2) 利用先验知识。<strong>缺点</strong>: (1) 依赖特殊数据获取或辅助信息; (2) 基于仅使用先验知识存在冗余匹配对。</td>
+</tr>
+<tr>
+<td>视觉相似度</td>
+<td><strong>匹配数量</strong>（Verykokou 和 Ioannidis，2016; Verykokou 和 Ioannidis，2018; Wu，2013);<strong>图像检索</strong>（Agarwal 等，2009; Cui 等，2015; Heinly 等，2015; Ji 等，2015; Schonberger 等，2015; Jiang 和 Jiang，2020)</td>
+<td><strong>优点</strong>: (1) 不依赖辅助数据源; (2) 适用于不同的数据获取。<strong>缺点</strong>: (1) 需要额外的预处理时间成本; (2) 难以确定最佳阈值; (3) 由于重复纹理导致虚假匹配。</td>
+</tr>
+<tr>
+<td>图像拓扑连接</td>
+<td><strong>图像对减少</strong>（Jiang 和 Jiang，2017; Shen 等，2016; Xu 等，2016);<strong>图像数量减少</strong>（Alsadik 等，2014; Frahm 等，2010b; Havlena 等，2010; Raguram 等，2011; Snavely，2008)</td>
+<td><strong>优点</strong>: (1) 考虑图像的拓扑连接; (2) 实现进一步减少匹配对。<strong>缺点</strong>: (1) 难以计算 TNC 图的边权重; (2) 去除非必要的边缘。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="311">3.1.1 基于先验知识的方法<a class="headerlink" href="#311" title="Permanent link">¶</a></h4>
+<ol>
+<li>
+<p><strong>数据采集约束</strong></p>
+<p>在摄影测量和遥感领域，数据采集往往是基于已建立的法规进行的，并且飞行轨迹经过精心设计，以确保随后的数据处理成功以及最终产品的精度（Rupnik 等，2015）。数据采集的这些先验信息可以用于在不牺牲计算成本的情况下实现图像匹配对的选择。例如，对于连续记录的图像，可以从它们的记录顺序中推导出图像之间的邻接关系。通过利用时间一致性约束，特征匹配可以限制在它们的前向和后向邻居之间，这些邻居在指定的时间偏移内（AliAkbarpour 等，2015；Aliakbarpour 等，2015；Schönberger 等，2014）。对于基于无人机的摄影测量，飞行轨迹通常配置为几乎平行且笔直的条带。图像对可以在相同的条带内或来自相邻的条带中找到。这个标准将 n 个图像的特征匹配时间成本从 <span class="arithmatex">\(\mathcal{O}(n^2)\)</span> 减少到 <span class="arithmatex">\(\mathcal{O}(kn)\)</span> （Aliakbarpour 等，2015）。</p>
+</li>
+<li>
+<p><strong>图像位置</strong></p>
+<p>除了来自数据采集的先验信息外，来自机载导航和定位传感器的 POS（位置和方向系统）数据也可以用于引导图像匹配。当只有 GNSS（全球导航卫星系统）信息可用时，会使用空间距离约束来搜索候选匹配对。它将特征匹配限制在在以目标图像投影中心为中心的圆形邻域内的图像上。这个标准基于这样的观察：靠近目标图像的图像更有可能具有空间重叠区域（Rupnik 等，2013；Rupnik 等，2014）。Zheng 等（2009）使用照片的地理位置信息进行分层聚类，并建立了一个面向网络规模的地标识别引擎。尽管这种技术可以减少匹配对的数量，但不同采集需要确定合理的搜索半径。此外，为了保持必要的图像对，搜索半径通常大于其最佳值。因此，仍然会存在许多多余的匹配对。</p>
+</li>
+<li>
+<p><strong>图像足迹</strong></p>
+<p>当图像的近似 POS 数据和测试区域的平均高程数据都可用时，可以通过将四个角投影到使用平均高程定义的物体空间平面上来计算图像的地面足迹。然后，通过简单检查这些图像足迹的重叠关系来确定匹配对，这被称为重叠标准。与 GNSS 辅助的空间距离约束相比，重叠标准可以过滤掉所有不必要的图像对，进一步减少了匹配对的冗余。对于地形 3D 模型重建，Zhang 等（2018）使用了无人机平台的飞行控制数据和测试站点的 DEM（数字高程模型）数据源，设计了数据采集计划和关键帧选择方法。值得注意的是，在这些基于重叠标准的方法中，还可以利用空间距离约束来避免任意一对图像之间的穷举交叉测试（Jiang 和 Jiang，2018a）。对于每个目标图像，所有其他图像的中心位置都被索引并按照它们与目标图像的距离进行排序。然后，将按顺序执行交叉测试，直到没有其他图像与目标图像相交为止。这个操作对每个图像都进行，以获得它们的匹配对。总之，先验信息为匹配对选择提供了最直接和可靠的线索。但是，这种技术依赖于特殊的采集或来自机载传感器的辅助数据。</p>
+</li>
+</ol>
+<h4 id="312">3.1.2 基于视觉相似性的方法<a class="headerlink" href="#312" title="Permanent link">¶</a></h4>
+<p>重叠的图像对具有相似的外观。在没有关于数据采集和相机姿态的先验知识的情况下，可以根据图像视觉相似性的量化来实现匹配对的选择。在基于局部特征的匹配上下文中，图像视觉相似性可以直接从它们的低级特征描述符中计算出来，或者从高级语义特征中推导出来（Ji 等，2015）。</p>
+<ol>
+<li>
+<p><strong>匹配数量</strong></p>
+<p>对于匹配对选择的问题，通过匹配对数量来量化图像视觉相似性是合理的。也就是说，高视觉相似性值更容易分配给具有大量特征匹配的图像对。然而，这与匹配对选择的目的相冲突，因为特征匹配应该用于计算特征对应关系的数量以量化视觉相似性。为了解决这个问题，可以利用两种策略，即多尺度和尺度限制，来达成妥协。对于前一种策略，首先对降采样后的图像执行特征匹配，以选择匹配数量大于指定阈值的候选图像对，并随后在它们的原始分辨率上执行特征匹配（Verykokou 和 Ioannidis，2016，2018）。尽管必须以穷举方式执行特征匹配，但由于降采样图像的尺寸减小，多尺度策略的整体时间成本大大减少。对于后一种策略，即尺度限制，在 Wu（2013）的研究中，提出了一种经典的预先特征匹配技术。通过利用不变特征的尺度特性，该技术首先将每个图像的特征按照尺度降序排序。然后，对于每一对图像，匹配两个图像之间的顶尺度特征，并且如果匹配数量超过给定阈值，则将其标记为有效匹配对。为了实现具有线性时间复杂度的增量 SfM 流程，匹配对选择的尺度限制策略已经集成到了著名的开源 SfM 软件 VisualSfM 中（Wu，2011）。</p>
+</li>
+<li>
+<p><strong>图像检索</strong></p>
+<p>图像的视觉相似性也可以通过使用高级语义特征来量化。如今，对于大多数大规模 SfM 流程，使用词汇树进行图像检索是匹配对选择的黄金标准（Cui 等，2018）。这项技术受到了从文本检索中借鉴的方法的启发，包括倒排文件、词项和倒数文档频率加权（Datta 等，2008；Sivic 和 Zisserman，2009）。词汇树基于图像检索的工作流程包括三个主要步骤，如图 2 所示。</p>
+<p><img alt="图 2" src="https://ars.els-cdn.com/content/image/1-s2.0-S0924271620301131-gr2_lrg.jpg"/></p>
+<ul>
+<li>特征提取和选择。从训练图像中提取局部特征，例如 SIFT（Lowe，2004）算法，并为每个特征计算一个特征描述符。为了减少构建词汇树的计算成本，可以根据一些策略（例如尺度限制）来过滤初始特征。</li>
+<li>词汇树构建。基于 Nister 和 Stewenius（2006）的思想，输入特征的描述符空间通过使用分层 K 均值聚类算法（Arai 和 Barakbah，2007）进行量化。输入描述符被分成 K 组，其中每组包含与相应聚类中心最接近的描述符向量。这个过程对以前构建的每个组都进行迭代执行，直到达到最大树级别或最大词汇数。</li>
+<li>图像索引和检索。对于每个图像的每个特征向量，从词汇树中找到最接近的聚类中心，即具有最小平方欧几里得距离的单词，然后将其索引信息记录在相应倒排文件的项目中，该项目存储了当前图像的图像标识和单词的出现次数。然后，每个图像由单词频率向量表示。在实际中，应用了“词项频率-逆文档频率”（Nister 和 Stewenius，2006）的加权策略。因此，两幅图像的相似度分数被计算为它们相应向量的余弦角，匹配对选择的问题被视为查找具有最高相似度分数的图像。</li>
+</ul>
+</li>
+</ol>
+<p>在 Agarwal 等人的工作（2009）、Cui 等人的工作（2018）、Heinly 等人的工作（2015）、Ji 等人的工作（2015）和 Schonberger 等人的工作（2015）中，首先从一组测试图像或训练图像中提取了局部特征点，并使用了 SIFT 算法进行描述。对于每个查询图像，检索到一组相似图像，这些图像用于构建匹配图以引导 SfM 流程。图 3 显示了使用词汇树检索的查询图像的结果，用黄色表示。在大多数已记录的研究中，SIFT 算法已广泛用于提取特征描述符，然后构建词汇树。对于一些研究，还利用了全局描述符，例如 GIST（Oliva 和 Torralba，2001），用于图像的高级表示（Douze 等，2009）。最近，在 Zheng 等人的工作（2017a）中对图像检索进行了全面的回顾。</p>
+<p><img alt="图 3" src="https://ars.els-cdn.com/content/image/1-s2.0-S0924271620301131-gr3_lrg.jpg"/></p>
+<h4 id="313">3.1.3 图像拓扑连接网络分析<a class="headerlink" href="#313" title="Permanent link">¶</a></h4>
+<p>关于大规模无人机图像的采集和词汇树-based 图像检索的先验信息可以降低组合复杂性。然而，由于高度重叠度，从这些技术生成的初始匹配对包含大量冗余匹配对，这导致特征匹配的计算成本很高（Shen 等人，2016）。为了消除冗余匹配对，一些研究专注于图像拓扑连接网络（TCN）的分析（Xu 等人，2014）。</p>
+<ol>
+<li>
+<p><strong>用 TCN 分析减少图像对</strong></p>
+<p>对于拓扑分析，TCN 通常表示为一个无向加权图，其中每个顶点代表一个图像，为每个匹配对添加了加权边。边权重度量相应匹配对的重要性。由于匹配对被选择用于特征匹配，因此使用匹配特征点的数量来量化边权重是合理的。通常，对于传统的垂直摄影测量学来说，匹配对的数量与两幅图像的重叠区域成正比。换句话说，在近似 POS 数据可用时，边权重可以使用两个图像足迹的重叠区域的面积来计算。在 Xu 等人（2016）提出的工作中，构建了一个加权的 TCN 图，边权重由图像对的重叠区域来表征。利用无人机平台的飞行控制数据，首先通过将图像的四个角投影到高程平面来计算每个图像的足迹。然后，进行图像足迹的交叉测试以选择重叠匹配对，随后计算连接图像的重叠区域。最后，使用分层度受限的最大生成树（HDB-MST）算法从 TCN 图中迭代删除非必要的边。</p>
+<p>然而，对于斜视图像，匹配对的数量也受到成像角度的显著影响，因为它引起了不同的辐射和几何变形，如严重的遮挡、光照和尺度的变化，而几乎所有的特征匹配算法，包括 SIFT（Lowe，2004），对这些变形都有限的容忍度。因此，TCN 的边权重不能简单地使用图像重叠区域来计算。为了解决这种情况，Jiang 和 Jiang（2018a）提出了使用两幅图像的重叠区域和交叉角度来加权 TCN 图的边，并设计了一种算法，即 MST-Expansion，用于匹配图提取。在这种方法中，边权重是重叠区域和交叉角度的线性组合，MST-Expansion 被设计为非迭代算法，使用两阶段算法来实现 TCN 图的简化。首先，从 TCN 图中提取了一个最大生成树（MST），它使用最大累积边权的最少边来串联所有顶点。然后，对每个顶点执行扩展操作，以引入关键边，并确保在沿轨迹和跨轨迹方向上的稳定连接，参见图 4。Cui 等人（2018）在匹配对选择中也使用了类似的想法，使用了正交 MST 。</p>
+<p><img alt="图 4" src="https://ars.els-cdn.com/content/image/1-s2.0-S0924271620301131-gr4_lrg.jpg"/></p>
+</li>
+<li>
+<p><strong>用 TCN 分析减少图像</strong></p>
+<p>除了上述方法中消除 TCN 图的非必要边之外，还可以使用图像拓扑连接网络的分析来减少参与特征匹配的图像数量。对于某些数据活动，例如来自照片分享网站的数据，收集到的图像往往高度冗余。这个观察也适用于无人机图像。因此，可以使用更小的代表性子集来代表整个场景（Hartmann 等人，2015）。基于这个想法，Frahm 等人（2010b）使用全局图像描述符，即 GIST（Oliva 和 Torralba，2001），来实现图像聚类，每个具有相似视点的聚类都由一个标志性图像表示。因此，整个场景可以由标志性图像的子集覆盖，这些子集使用 SfM 技术进行 3D 模型重建。类似的工作还可以在其他研究中找到（Raguram 等人，2011）。</p>
+<p>在 Havlena 等人（2010）的工作中，设计了一种减少图像数量的不同方法。不使用 GIST 描述符，而是使用了基于词汇树的检索技术来测量图像的视觉相似性，并使用从测量的相似性导出的图像对构建了一个无向加权图。核心思想是找到顶点集的最小子集，使得与顶点子集对应的子图是连接的，而不在子集中的所有图像都与子图中的至少一个顶点有连接。可以通过使用最小连接支配集算法（Guha 和 Khuller，1998）来找到顶点集的子集。类似的工作也在 Alsadik 等人（2014）的研究中报道。在 Snavely（2008）报告的工作中，设计了骨架图来选择覆盖整个场景的图像子集。这种技术可以大大降低大规模和高度冗余的无人机图像的重建复杂性，因为它减少了涉及 SfM 的参数数量，并且可以实现不包括在骨架图中的其他图像的直接方向。尽管这些方法不执行匹配对选择，但涉及 SfM 的图像减少可以减少匹配对的数量。</p>
+</li>
+</ol>
+<h3 id="32">3.2 去除初始匹配中的异常值<a class="headerlink" href="#32" title="Permanent link">¶</a></h3>
+<p>当仅使用局部外观进行特征描述符和相似性测量时，初始匹配不可避免地会受到异常值的污染。为了生成具有高内点比率的特征对应关系，去除异常值是基于局部特征的匹配中非常重要的一步。根据使用的约束类型，文献中存在的方法可以分为三类，即全局几何约束方法、局部几何约束方法和局部光度约束方法。这些方法列在表 2 中。</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>策略或方法</th>
+<th>优点和缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>全局几何约束</td>
+<td><strong>参数化方法</strong>（Chum 和 Matas，2005; Chum 等，2003; Fischler 和 Bolles，1981; Lu 等，2016; Raguram 等，2013; Torr 和 Zisserman，2000; Kang 等，2014; Wu 等，2014; Di Ruberto，2012; Chen 等，2013; Chen 等，2015; Tolias 和 Avrithis，2011);<strong>非参数化方法</strong>（Aguilar 等，2009; Izadi 和 Saeedi，2012; Ma 等，2014; Jiang 和 Jiang，2018b; Sedaghat 和 Mohammadi，2019; Shi 等，2014; Zhao 等，2014; Zhao 等，2013);</td>
+<td><strong>优点</strong>: (1) 具有较高的精度; (2) 相对较高的对离群值的容忍度。<strong>缺点</strong>: (1) 不适用于初始匹配的内点比率非常低的情况; (2) 依赖预定义的几何模型; (2) 不适用于具有非刚性变换的图像。</td>
+</tr>
+<tr>
+<td>局部几何约束</td>
+<td><strong>预处理或后处理</strong>（Sattler 等，2009; Johns 和 Yang，2015; Matsuzaki 等，2016);<strong>仿射不变方法</strong>（Alajlan 等，2007; Caroti 等，2015; Li 等，2005, 2017a,b; Liu 等，2011; Zhao 等，2016; Meng 等，2015; Zhao 等，2013; Jiang 和 Shi，2016; Li 和 Ye，2012; Song 等，2013; Zhang 等，2013)</td>
+<td><strong>优点</strong>: (1) 良好适应局部变形，对离群值具有高鲁棒性; (2) 适用于刚性和非刚性图像。<strong>缺点</strong>: (1) 相对较低的可区分性; (2) 对于去除离群值的精度较低。</td>
+</tr>
+<tr>
+<td>局部光度约束</td>
+<td><strong>基于线描述符的方法</strong>（Hirose 和 Saito，2012; Jiang 和 Jiang，2019; Li 等，2017a,b; Liu 和 Marlet，2012);</td>
+<td><strong>优点</strong>: (1) 与本地几何约束相比，对于离群值具有高可区分性; (2) 适用于刚性和非刚性图像。<strong>缺点</strong>: (1) 与本地几何约束相比，计算描述符的时间成本较高。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="321">3.2.1 全局几何约束<a class="headerlink" href="#321" title="Permanent link">¶</a></h4>
+<p>全局几何约束的核心思想是从初始匹配计算变换，例如相似性或仿射变换，并根据它们与估计的变换模型的几何一致性将初始匹配分类为内点和异常值。现有方法可以分为两组，即参数化方法和非参数化方法，如下所述。</p>
+<ol>
+<li>
+<p><strong>参数化方法</strong></p>
+<p>参数化方法以明确的方式解决变换模型的参数。在已有文献研究中，RANSAC（Fischler 和 Bolles，1981）是因其对异常值的鲁棒性而成为最受欢迎的健壮模型估计工具之一。RANSAC 以假设和验证的方式进行随机样本选择和最优模型确定。尽管 RANSAC 可以容忍高达 70%的异常值比例，但其计算成本将随着异常值的百分比呈指数增长（Chum 和 Matas，2008）。为了应对这个问题，根据假设生成和模型验证，已经设计了 RANSAC 的许多变体，包括 MLESAC（Torr 和 Zisserman，2000）、LOSAC（Chum 等，2003）、PROSAC（Chum 和 Matas，2005）、USAC（Raguram 等，2013）等。在遥感图像匹配中，已经报道了大量修正 RANSAC 的工作，例如 BaySAC（Kang 等，2014）和 FSC（Wu 等，2014）。此外，可以在 Choi 等人（1997）、Raguram 等人（2008）、Shahbazi 等人（2017）的研究中找到对 RANSAC 的全面比较。</p>
+<p>与 RANSAC 中使用的假设和验证框架相反，Lu 等人（2016）提出了一种不同的解决方案来实现可靠的异常值去除。考虑到高异常值比率会导致高计算成本，Hough 变换（HT）（Hough，1962）被用来增加初始匹配的内点比率。HT 的核心思想是将参数空间中的模型求解转换为特征空间中的峰值投票。HT 可以被看作是一种隐式的模型估计方法，因为它不直接估计变换模型的参数。与基于 RANSAC 的显式方法相比，HT 具有两个重要的优势：（1）它可以容忍高异常值比例，因为错误匹配的投票在投票空间中随机分布，而真正匹配的投票是一致和集中的；（2）由于使用直接的投票方案，而不是在 RANSAC 中的迭代假设和验证框架，因此实现了高效率。因此，HT 广泛用于形状识别（Di Ruberto，2012）、特征匹配（Chen 等，2013；Chen 等，2015；Tolias 和 Avrithis，2011）和快速空间验证（Schönberger 等，2016）的应用。</p>
+<p>在异常值去除的背景下，HT 经常用于估计两幅图像之间的一致几何变换模型。由于其直接的投票策略，与基于 RANSAC 的方法相比，HT 具有非常高的效率。在 Lu 等人（2016）的工作中，使用了基于 Hough 变换原理的几何一致性投票策略（GCVS）。在这项研究中，使用两幅图像之间的旋转和缩放两个变换参数来构建二维投票空间。两幅图像之间的比例和旋转参数被定义为两个相应矢量的长度比和交角。推荐使用比例和旋转的组合来实现稳健的分离性能，而不是仅使用一个参数进行投票。由于投票空间的粗略量化和仅使用两个参数进行变换近似的几何一致性较差，HT 方法的精度低于基于 RANSAC 的方法。因此，在 Hough 变换之后，进行了基于 RANSAC 的精化阶段。</p>
+</li>
+<li>
+<p><strong>非参数化方法</strong></p>
+<p>与参数化方法相反，非参数化方法通常设计用于处理刚性和非刚性图像的特征匹配（Li 等，2017a）。在提出的这些算法中，图匹配是广泛使用的技术，用于消除异常值。Aguilar 等人（2009）实现了一种称为图变换匹配（GTM）的点匹配方法，通过搜索从初始匹配中推导出的共识图来实现。该算法迭代消除可疑的匹配并增加两个图的相似性。Izadi 和 Saeedi（2012）不仅依赖于相邻关系来选择异常值，还采用角距离来加权匹配的相似性，并设计了改进版本的 GTM 算法，即加权图变换匹配（WGTM）。对于遥感图像匹配，已经利用了图匹配技术（Sedaghat 和 Mohammadi，2019；Shi 等，2014；Zhao 等，2013，2014）。鉴于异常值具有不一致的运动，Ma 等人（2014）将消除异常值的问题公式化为共识矢量场的插值，并设计了矢量场共识（VFC）方法，该方法被建模为具有潜变量的贝叶斯模型的最大后验估计。</p>
+<p>考虑到图像空间中对应集之间的复杂变换模型，Jiang 和 Jiang（2018b）设计并实现了一种高效的几何验证算法，即分层运动一致性约束（HMCC），用于倾斜无人机图像的异常值去除。首先，使用机载 GNSS 和相机安装角度计算图像的近似姿态，这些姿态用于将初始匹配投影到物体空间中的平面上。基于物体空间投影，一对匹配的两个投影点形成一个原始体，称为运动，用于实现 HMCC。所提出的算法使用三个约束来从初始候选匹配中消除异常值，如图 5 所示。第一个约束是全局方向一致约束，它假定真正的匹配方向应该一致，而假匹配的方向是随机的。第二个假设是局部方向变化约束，指示内点的局部方向变化是有限的。最后一个约束被称为全局长度约束，它假定内点的长度变化不会发生剧烈变化。HMCC 的思想类似于 VFC 算法，尽管使用了 Hough 投票方案来实现这三个约束。</p>
+<p><img alt="图 5" src="https://ars.els-cdn.com/content/image/1-s2.0-S0924271620301131-gr5_lrg.jpg"/></p>
+</li>
+</ol>
+<h4 id="322">3.2.2 局部几何约束<a class="headerlink" href="#322" title="Permanent link">¶</a></h4>
+<p>局部几何约束利用特征点位置之间的空间关系。与全局几何约束相比，局部几何约束具有两个主要优点。一方面，局部几何约束能够很好地适应局部变形，因为它们仅依赖于相邻特征点之间的局部空间关系，而不是两组特征点之间的全局变换模型；另一方面，局部几何约束不需要从以异常值为主的初始匹配中估计出变换模型，这可以提高异常值消除的效率（Jiang 和 Jiang，2019）。</p>
+<ol>
+<li>
+<p><strong>前处理或后处理方法</strong></p>
+<p>在文献中，局部几何约束广泛用作 RANSAC 算法之前或之后的前处理或后处理步骤。作为前处理步骤，局部几何约束用于增加初始匹配的内点比率（Sattler 等，2009；Johns 和 Yang，2015；Matsuzaki 等，2016）。在 Sattler 等人（2009）的工作中，设计并实施了一种空间一致性检查策略，以增加原始特征的区分能力。其基本思想是通过计算落入两个相应区域的特征的比率来测量较大空间邻域内的特征点的匹配质量。这项技术导致了一个修改版的 RANSAC，比基本的 RANSAC 运行速度更快。类似的前处理策略也在其他研究中有所报道（Jiang 和 Jiang，2018b；Lu 等，2016）。相反，对于后处理步骤，局部几何约束用于消除从全局几何约束中幸存下来的虚假匹配。例如，胡等人（2015）设计了三个局部空间约束，用于修正标准的特征匹配工作流程，而不仅仅使用基于 RANSAC 的异常值去除方法。</p>
+</li>
+<li>
+<p><strong>具有仿射不变性的方法</strong></p>
+<p>与与 RANSAC 结合使用的上述方法不同，一些研究还利用了局部几何约束的仿射不变性特性（Alajlan 等，2007；Caroti 等，2015；Li 等，2005, 2017a, b；Liu 等，2011；Zhao 等，2016）。在 Li 等人（2005）的工作中，设计了一种使用空间角度顺序（SAO）原理的几何约束，该原理假定与一组变换下的一对一对应相关的相邻点的角度顺序保持不变。这个约束已成功用于去除具有极低重叠区域的图像对的初始匹配的异常值（Liu 等人，2011）以及具有非刚性变换的图像对（Jiang 和 Jiang，2019）。结合图匹配技术，SAO 用于测量图的差异并实现遥感图像匹配的异常值去除（Meng 等人，2015；Zhao 等人，2013）。此外，在仿射变换下，由三对内点形成的两个对应三角形的面积比也保持不变。这一属性被用来构建局部几何约束，称为三角形面积比（TAR）（Alajlan 等，2007），并用于遥感图像的注册（Jiang 和 Shi，2016；Li 和 Ye，2012；Song 等，2013；Zhang 等，2013）。</p>
+</li>
+</ol>
+<h4 id="323">3.2.3 局部光度约束<a class="headerlink" href="#323" title="Permanent link">¶</a></h4>
+<p>局部几何约束的区分能力与全局几何约束相比不具竞争力。为增强局部几何约束的区分能力，一些研究中还利用了局部光度约束，这些约束是使用特征的局部点区域或连接两个相邻特征的局部线区域来建模的。从特征匹配的角度来看，特征描述符，如 SIFT 算法，可以被视为用于获取初始匹配的一阶光度约束，因为它们只描述了特征点周围的局部区域。为了去除保留的异常值，可以使用线描述符（Wang 等，2019；Zhang 等，2013）来设计和实现高阶光度约束，这些描述符描述了连接两个特征点的线条上的区域。</p>
+<ol>
+<li>
+<p><strong>基于线描述符的方法</strong></p>
+<p>在文献中，线描述符也广泛用于从立体图像中搜索线对应关系。王等人（2009）设计了一种新颖的线描述符，称为均值-标准差线描述符（MSLD），该描述符利用线段的相邻外观计算，只能使用线段的相邻外观来计算。MSLD 的核心思想是为每个线段上的每个像素定义一个像素支持区域（PSR），并通过累积每个 PSR 沿四个方向的梯度来形成 4D 特征向量。因此，线段的 MSLD 描述符定义为从所有 PSR 的 4D 特征向量的连接中计算出的均值和标准差的组合向量。为了提高计算效率并实现尺度不变性，Zhang 和 Koch（2013）使用了线支持区域（LSR）来定义线段的局部区域，而不是 MSLD 中的 PSR，并从与 SIFT 算法中使用的类似的尺度空间金字塔中提取线段。提出的线带描述符（LBD）是使用与提取的线段平行的若干 LSR 区域的梯度方向的统计值来计算的。为了实现高效的线匹配，还为同时定位和映射（SLAM）系统设计了基于线的八方向直方图特征（LEHF）（Hirose 和 Saito，2012）。</p>
+</li>
+</ol>
+<p>基于线描述符的原则，Liu 和 Marlet（2012）提出了一种虚拟线描述符（VLD），使用 SIFT 样的描述符来描述两个特征点之间的线条上的规则覆盖，如图 6 所示。这项技术是根据这样的观察而设计的，即仅当两个对应的点对是正确的匹配时，来自一对图像的两个 VLD 是相似的。基于虚拟线描述符的原则，Li 等人（2017b）开发了一种称为自适应分箱支持线变换（AB-SLT）的支持线描述符，其中使用了自适应分箱直方图技术（Sedaghat 和 Ebadi，2015）来表征一个虚拟线段的不重叠的圆形区域。具有其 AB-SLT 描述符的欧几里德距离小于某个值的支持线对被标记为目标匹配的有效投票。为了区分内点和异常值，可以通过检查它们的投票分数来实现。</p>
+<p><img alt="图 6" src="https://ars.els-cdn.com/content/image/1-s2.0-S0924271620301131-gr6_lrg.jpg"/></p>
+<p>为了避免构建虚拟线描述符的退化 KNN（K 最近邻）图，Jiang 和 Jiang（2019）将几何和光度约束集成到 Delaunay 三角测量中以进行异常值消除和匹配扩展。首先，使用 Delaunay 三角测量和其相应的图来组织初始匹配，基于它们的相应关系。通过建立的相邻结构，设计了类似于 Liu 和 Marlet（2012）的光度约束和使用空间角度顺序的几何约束来计算初始匹配的不相似度分数。在层次消除和左右检查策略的基础上，同时更新 Delaunay 三角测量及其相应的图，分层执行异常值去除。最后，还利用对应三角形之间的几何约束来扩展匹配以恢复更多的真实匹配。</p>
+<h3 id="33">3.3 图像定位的效率改进<a class="headerlink" href="#33" title="Permanent link">¶</a></h3>
+<p>对于大规模无人机图像定位，由于图像注册的顺序约束以及捆绑调整的迭代执行，增量式 SfM 工作流程的计算成本将是不可接受的。为了提高增量式 SfM 的效率，现有的解决方案可以分为两组主要方案，即提高捆绑调整的效率和打破增量式 SfM 的顺序约束。此外，即时定位和测图（SLAM）是机器人领域的一个基本问题，用于为移动车辆的自主导航提供关键信息。在本回顾中，还报道了 SLAM 技术，因为它可以看作是 SfM 问题的一个特殊情况。效率改进的图像定位比较列在表 3 中。</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>策略或方法</th>
+<th>优点和缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>捆绑调整</td>
+<td><strong>硬件加速</strong>（Choudhary 等，2010; Hänsch 等，2016; Liu 等，2012; Wu 等，2011; Zheng 等，2017b);<strong>模型简化</strong>（Rupnik 等，2013; Sun 等，2016; Cefalu 等，2016; Indelman 和 Dellaert，2015; Rodriguez 等，2011; Rodríguez 等，2011);<strong>其他方法</strong>（Konolige，2010; Kummerle 等，2011; Lourakis，2009; Zhao 等，2015)</td>
+<td><strong>优点</strong>: (1) 利用硬件加速的能力; (2) 捆绑调整对图像定位的稀疏特性。<strong>缺点</strong>: (1) 不打破增量 SfM 的顺序约束。</td>
+</tr>
+<tr>
+<td>分而治之</td>
+<td><strong>简单方法</strong>（Bhowmick 等，2014; Lu 等，2019; Zhu 等，2017; Xie 等，2019);<strong>分层方法</strong>（Farenzena 等，2009; Gherardi 等，2010; Toldo 等，2015); 全局模型约束方法（Bhowmick 等，2017; Shah 等，2014; Sun 和 Tao，2018)</td>
+<td><strong>优点</strong>: (1) 利用集群的计算能力; (2) 适用于非常大规模的数据集; (3) 打破增量 SfM 解决方案的顺序约束。<strong>缺点</strong>: (1) 难以实现强大的子场景合并。</td>
+</tr>
+<tr>
+<td>基于 SLAM 的方法</td>
+<td>(Davison 等，2007; Engel 等，2014; Fuentes-Pacheco 等，2015; MurArtal 等，2015; Mur-Artal 和 Tardos，2017; Qin 等，2018; Taketomi 等，2017)</td>
+<td><strong>优点</strong>: (1) 能够实现实时在线处理。<strong>缺点</strong>: (1) 适用于按顺序捕获的图像; (2) 精度不如基于 SfM 的方法高。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="331">3.3.1 捆绑调整<a class="headerlink" href="#331" title="Permanent link">¶</a></h4>
+<ol>
+<li>
+<p><strong>硬件加速</strong></p>
+<p>为了提高捆绑调整的效率，已广泛使用硬件加速技术（Choudhary 等，2010；Hänsch 等，2016；Liu 等，2012；Wu 等，2011；Zheng 等，2017b）。在 Wu 等（2011）的研究中，多核 CPU（中央处理单元）和多核 GPU 已用于解决捆绑调整的并行性问题，通过重组矩阵-向量乘积为可并行化操作。实验结果表明，对于大规模图像的捆绑调整，目前可用的 CPU 和 GPU 可以实现 10 至 30 倍的加速比。</p>
+</li>
+<li>
+<p><strong>模型简化</strong></p>
+<p>与硬件加速相反，模型简化也用于降低捆绑调整的复杂性，通常通过减少相机参数的数量（Rupnik 等，2013；Sun 等，2016）或点参数的数量（Cefalu 等，2016，2015，2011）来实现。对于多相机倾斜图像的航测三角测量，Sun 等（2016）提出了一种捆绑调整模型，称为减少捆绑调整（RBA），以减少相机参数的数量和非线性优化问题的维度。通过使用倾斜和垂直图像之间的恒定相对姿势，将倾斜图像的绝对姿势与它们的相对方向和垂直图像的绝对方向相结合。这个修订大大降低了大规模场景的捆绑调整的计算成本，同时节省了内存使用。不同于同时解决相机姿势和场景点参数的传统 SfM 技术，结构较少的 SfM 技术旨在恢复相机姿势，因为场景点数量极大。这一技术通过使用极线几何和尺度一致性约束来制定 BA 问题（Cefalu 等，2016）。</p>
+</li>
+<li>
+<p><strong>其他方法</strong></p>
+<p>在图像定位的背景下，BA 问题被表达为预测点和观察点之间的重投影误差的联合最小二乘算法求解。正常方程的稀疏性质通常用于减少涉及的参数数量，例如 Lourakis（2009）记录的基于图像和点之间的稀疏连接的 SBA（稀疏捆绑调整）算法。通过进一步利用相机之间的稀疏连接，Konolige（2010）设计了一种用于高效处理 SBA 块数据的解决方案，并发布了一种稀疏 SBA（sSBA）系统，其效率比 SBA 系统高一个数量级。为了降低传统 BA 求解器的复杂性，Kummerle 等（2011）提出了一种图优化的通用框架，称为 g2o（通用图优化），该框架通过使用 BA 问题的结构特征来提高 BA 效率。最近，Zhao 等（2015）提出了一种特征参数化方法，称为 ParallaxBA，通过使用视差角来解决 BA 问题。与使用欧几里德坐标的传统 BA 解决方案相比，这种方法避免了传统 BA 解决方案的缺点。与 SBA、sSBA 和 g2o 相比，可以提高收敛性、效率和准确性，</p>
+</li>
+</ol>
+<h4 id="332">3.3.2 分而治之策略<a class="headerlink" href="#332" title="Permanent link">¶</a></h4>
+<p>为了解决增量式 SfM 方法的顺序约束引起的问题，分而治之策略可能是最明显的解决方案。分而治之策略的核心思想是将大规模场景划分为几个大小可比较的小场景，从而可以使用多核技术进行小场景的并行重建，或在分布式计算系统上执行（Agarwal 等，2009）。最终，通过基于它们之间的场景图像连接将所有小子场景合并，得到整个场景（Bhowmick 等，2014；Bhowmick 等，2017；Farenzena 等，2009；Gherardi 等，2010；Lu 等，2019；Ni 等，2007；Sun 和 Tao，2018；Toldo 等，2015；Xie 等，2019；Zhu 等，2017；Zhao 等，2018）。</p>
+<ol>
+<li>
+<p><strong>简单方法</strong></p>
+<p>简单方法只是将整个场景分割成相对较小的子场景，并通过使用它们的共同相机姿势和场景点来合并子场景（Lu 等，2019）。Bhowmick 等（2014）提出了一种结构运动估计流程，使用分而治之策略。为建立图像连接关系，首先使用 SiftGPU（Wu，2007）算法从所有无序图像中提取 SIFT 特征，并用于训练词汇树。对于每个图像，使用词汇树检索前 p 个图像。然后，创建一个匹配图，其边缘由相似性分数加权，作为一个无向图，并使用标准化切割算法（Shi 和 Malik，2000）将其分割成一些密集连接的组件。由于边缘由相似性分数加权，处于相同组件内的图像具有相似的外观，可以稳健地重建。此外，与切割边缘对应的图像被存储为候选连接图像，将用于后续组件合并。在每个组件的独立重建之后，可以使用连接图像之间的极线关系来合并整个场景的完整重建。</p>
+</li>
+<li>
+<p><strong>层次方法</strong></p>
+<p>基于简单的分而治之策略的场景划分方法存在两个主要问题。一方面，划分组件的图像数量不平衡，例如使用标准化切割算法，这会降低并行重建的总体性能；另一方面，为了实现可靠的组件合并，连接图像的数量应足够大，以确保整个重建精度（Zhu 等，2017）。为解决这些问题，已经利用了层次凝聚聚类技术来对大规模数据集进行场景划分和合并。Farenzena 等（2009）、Gherardi 等（2010）和 Toldo 等（2015）引入了一种分层聚类树方案来计算结构和运动，如图 7 所示，其中使用重叠度的度量将图像组织成分层二叉树。与简单的分而治之策略相比，这种技术具有两个优点。首先，它本质上是可并行化和高效的；其次，它对于几乎所有经典增量 SfM 解决方案中出现的初始化和漂移问题不敏感。类似于 Gherardi 等（2010）的工作，Ni 和 Dellaert（2012）采用分而治之的方式设计了一种 SfM 方法，称为 HyperSfM，它将 SfM 问题递归地划分为子图，并在超图表示上解决退化问题。为了避免对精确初始估计和迭代执行 BA 的需求，Zhao 等（2018）提出了一种线性 SfM 系统，通过将原始问题划分为包含两个或三个图像的子图来实现。SfM 系统以并行方式重建子图，并按层次合并子模型。</p>
+</li>
+<li>
+<p><strong>全局模型约束方法</strong></p>
+</li>
+</ol>
+<p>尽管 Farenzena 等（2009）、Gherardi 等（2010）和 Toldo 等（2015）提出的解决方案可以实现大规模数据集的分层重建，但由于它是在聚类树的叶节点初始化的，并以自底向上的方式执行场景重建和合并，因此该方法本质上缺乏更全局的视角。因此，Bhowmick 等（2017）建议将大型数据集划分为具有预定义图像数量的基础聚类，并从这些基础聚类的位置触发子场景重建和合并。此外，对于子场景重建，应用了 SfM 的全局方法，因为它具有比顺序 SfM 方法更广阔的全局视角。</p>
+<p><img alt="图 7" src="https://ars.els-cdn.com/content/image/1-s2.0-S0924271620301131-gr7_lrg.jpg"/></p>
+<p>根据这种寻找分而治之策略的全局视角的观点，Shah 等（2014）分析了现有增量式 SfM 流水线的缺点，并建议使用大尺度特征构建整个重建场景的粗略模型。基于粗略模型的几何形状，可以使用直接定位技术并行地注册所有其他图像，因为可以直接建立 3D-2D 对应关系。粗略模型除了用于图像定位外，还可以用于辅助匹配对选择。类似的研究也可以在 Sun 和 Tao（2018）中找到。</p>
+<h4 id="333-slam">3.3.3 基于 SLAM 的方法<a class="headerlink" href="#333-slam" title="Permanent link">¶</a></h4>
+<p>SLAM 技术使移动车辆的实时定位和未知环境的建图成为可能。当应用于无人机时，其目的与 SfM 技术几乎相同，即计算平台的方向和场景的结构。在文献中，Davison 等（2007）设计了单目视觉 SLAM 系统，称为 MonoSLAM，通过在前端跟踪稀疏特征并在后端扩展卡尔曼滤波器来实现。这是第一个用于纯基于摄像头的任务的实时 SLAM 系统，并将 SLAM 技术的应用范围从移动机器人扩展到了纯视觉领域。一般来说，现有的 SLAM 系统可以分为直接方法和基于特征的方法。前者利用所有光度信息来恢复相机姿势和场景结构，例如 LSD-SLAM（大规模直接单目 SLAM）系统，基于直接图像对齐估算准确的相机姿势（Engel 等，2014）。相反，基于特征的方法将问题分解为两个独立的步骤，即特征匹配和相机姿势以及场景结构的计算。为了实现实时处理，通常使用性能极高的特征提取方法，而不是计算密集的 SIFT 算法，例如 ORB-SLAM（Mur-Artal 等，2015）系统集成了 ORB 特征。在 Mur-Artal 和 Tardos（2017）中，设计并实施了 ORB-SLAM2 系统，用于单目、立体和 RGB-D 相机。这个系统可以在标准 CPU 上为各种数据源实现实时定位和映射，包括无人机图像。此外，通过与其他传感器的集成，可以进一步增强 SLAM 的能力，例如集成了低成本惯性测量单元的 VINS（视觉惯性系统）系统（Qin 等，2018）。一些知名的 SLAM 系统列在表 A.2 中。有关进一步讨论，可以参考一些综述（Fuentes-Pacheco 等，2015；Taketomi 等，2017）。</p>
+<h2 id="4">4 现有软件的评估<a class="headerlink" href="#4" title="Permanent link">¶</a></h2>
+<p>在实验中，将使用四个无人机（UAV）数据集来评估六个已选择的知名 SfM 软件包的性能，包括两个开源软件包，即 ColMap（Schonberger 和 Frahm，2016）和 AliceVision（Moulon 等，2012），一个免费软件包，即 VisualSfM（Wu，2011），以及三个商业软件包，即 RealityCapture（RealityCapture，2019），Agisoft Metashape（Agisoft，2020）和 Pix4Dmapper（Pix4Dmapper，2020）。</p>
+<p>我们将评估这些软件包在特征提取、特征匹配和基于 SfM 的航空三角测量方面的性能，包括效率、完整性和准确性。为了进行评估，所有实验都在一台 Windows PC 上进行，该 PC 配备了 3.4 GHz 的 Intel Core i7-4770 CPU 和 2 GB 的 GeForce GTX 770 M 显卡。</p>
+<h3 id="41">4.1 数据集<a class="headerlink" href="#41" title="Permanent link">¶</a></h3>
+<p>用于实验评估的四个数据集用于评估所选软件包的 SfM 性能。有关数据采集的详细信息如表 4 所示。</p>
+<table>
+<thead>
+<tr>
+<th>项目名称</th>
+<th>数据集 1</th>
+<th>数据集 2</th>
+<th>数据集 3</th>
+<th>数据集 4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UAV 类型 (Multi-rotor)</td>
+<td>多旋翼</td>
+<td>多旋翼</td>
+<td>多旋翼</td>
+<td>多旋翼</td>
+</tr>
+<tr>
+<td>飞行高度 (m) (300)</td>
+<td>300</td>
+<td>165</td>
+<td>120</td>
+<td>175</td>
+</tr>
+<tr>
+<td>相机模式 (Sony ILCE7R)</td>
+<td>Sony ILCE7R</td>
+<td>Sony RX1R</td>
+<td>Sony RX1R</td>
+<td>Sony NEX-7</td>
+</tr>
+<tr>
+<td>摄像机数量 (1)</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>5</td>
+</tr>
+<tr>
+<td>焦距 (mm) (35)</td>
+<td>35</td>
+<td>35</td>
+<td>35</td>
+<td>nadir: 16, oblique: 35</td>
+</tr>
+<tr>
+<td>摄像机安装角度 (∘) (nadir: 0, oblique: 45/−45)</td>
+<td>nadir: 0, oblique: 45/−45</td>
+<td>front: 25, −15</td>
+<td>front: 25, −25, back: 0, −15</td>
+<td>nadir: 0, oblique: 45/−45</td>
+</tr>
+<tr>
+<td>图像数量 (157)</td>
+<td>157</td>
+<td>320</td>
+<td>390</td>
+<td>750</td>
+</tr>
+<tr>
+<td>图像尺寸 (pixel × pixel) (7360 × 4912)</td>
+<td>7360 × 4912</td>
+<td>6000 × 4000</td>
+<td>6000 × 4000</td>
+<td>6000 × 4000</td>
+</tr>
+<tr>
+<td>地面分辨率 (cm) (4.20)</td>
+<td>4.20</td>
+<td>5.05</td>
+<td>3.67</td>
+<td>4.27</td>
+</tr>
+</tbody>
+</table>
+<p>所有这些数据集都是使用多旋翼无人机平台捕获的。每个数据集的特点如下：</p>
+<ul>
+<li>第一个数据集来自一个由低矮建筑和裸土覆盖的残留区域，如图 8a 所示。使用一台 Sony ILCE-7R 相机，分辨率为 7360×4912 像素，共记录了 157 张图像。为了模拟 Pentaview 倾斜成像，分别以 0°和 45°的倾斜角进行了两次单独的拍摄。在 300 米的飞行高度下，地面采样距离（GSD）约为 4.20 厘米。</li>
+<li>第二个数据集位于郊区，主要由植被覆盖，并穿过一些铁路轨道，如图 8b 所示。配备了一台分辨率为 6000×4000 像素的 Sony RX1R 相机，共收集了 320 张图像，地面采样距离为 5.05 厘米。对于此数据集，将俯仰和横滚角配置为 25°和-15°。</li>
+<li>第三个数据集来自一片农田，穿越了一些道路，如图 8c 所示。为了进行数据采集，设计了一个双相机系统，与第二个测试场所使用的相同的相机，用于捕捉沿前方和侧方方向的图像。在 120 米的飞行高度下，共收集了 390 张图像，GSD 为 3.67。此外，为了进行绝对定向测试，已测量了 43 个 GCP，这些 GCP 是使用 Trimble R8 GNSS 接收机测量的，其水平和垂直方向的名义精度分别为 1 厘米和 2 厘米。GCP 的分布如图 9 所示。</li>
+<li>第四个数据集来自一个城市地区，中央有一个购物广场，周围是高层住宅楼，如图 8d 所示。为了进行图像采集，使用了一个带有一个垂直相机和四个倾斜相机的五相机倾斜摄影测量系统，其中四个倾斜相机相对于垂直相机旋转了 45°。五台相机的尺寸为 6000×4000 像素。在 175 米的飞行高度下，共录制了 750 张图像，GSD 值为 4.27 厘米。</li>
+</ul>
+<h3 id="42">4.2 软件包<a class="headerlink" href="#42" title="Permanent link">¶</a></h3>
+<p>在实验中，选择了六个软件包，用于评估基于 SfM 的航空三角测量的性能。每个采用软件包的简要描述如下。</p>
+<ul>
+<li><strong>ColMap</strong>（Schonberger 和 Frahm，2016）已发布为通用的结构运动和多视图立体管线，为有序和无序数据集提供了图形和命令行界面，用于稀疏和稠密 3D 重建。尤其是，它提供了从简单针孔到复杂鱼眼模式的各种相机模型。对于特征匹配，有六种选项可供选择，例如详尽、顺序、词汇树基和 GPS 辅助解决方案。此外，从特征提取到束调整，广泛利用了硬件加速，例如使用 SiftGPU（Wu，2007）和 PBA（Wu 等，2011）库。</li>
+<li><strong>AliceVision</strong>（Moulon 等，2012）旨在提供用于测试和分析最先进计算机视觉算法的摄影测量计算机视觉框架。对于图像匹配对选择，它还利用了基于词汇树的图像检索技术。此外，GPU 加速用于特征提取和匹配，多核 CPU 技术用于束调整。为了方便使用，开发了一个名为 Meshroom 的 GUI（图形用户界面），用于 AliceVision 项目。</li>
+<li><strong>VisualSfM</strong>（Wu，2011）是广泛使用的免费软件包，用于实现稀疏的 3D 重建，提供了易于使用的 GUI 和命令行界面。对于特征匹配，加速使用了 SiftGPU 库和预先匹配策略。PBA 库也用于束调整，它使用了多核 CPU 和 GPU 技术进行加速。</li>
+<li><strong>RealityCapture</strong>（RealityCapture，2019）能够使用图像和点云创建有纹理的 3D 网格、正射图和地理参考地图。如官方网站所述，它比其他竞争对手的软件包快 10 倍。此外，RealityCapture 可以使用 GPS 和 GCP 观测来实现绝对定向。因此，它将在本综述中进行评估。</li>
+<li><strong>Agisoft</strong> Metashape（Agisoft，2020）是本研究中评估的商业软件包之一。与其他开源和免费工具包的灵活性相比，Metashape 提供了一个更加优雅的管道，以促进摄影测量处理，它使用 POS 数据和硬件技术来加速基于 SfM 的稀疏重建。</li>
+<li><strong>Pix4Dmapper</strong>（Pix4Dmapper，2020）是另一个用于性能评估的商业软件包。它在摄影测量领域广泛用于处理无人机图像并生成正射图和有纹理模型。与 Agisoft Metashape 类似，它提供了完整的摄影测量工作流程，并使用多核 CPU 和 GPU 技术进行效率加速。</li>
+</ul>
+<p>根据上述软件包的特点，它们用于 SfM-based 重建的配置如表 5 所示。对于图像配对选择，GPS/POS 数据在 ColMap、Metashape 和 Pix4Dmapper 中使用；ColMap、AliceVision 和 Pix4Dmapper 可以利用基于词汇树的图像检索技术；VisualSfM 使用预先匹配策略选择候选匹配对。在特征匹配加速方面，几乎所有软件包都使用了基于 GPU 的硬件加速技术，除了 RealityCapture 使用了多核 CPU 技术。在束调整期间，这些软件包中的大多数都使用了多核 CPU 加速技术，只有 VisualSfM 使用了 PBA 库进行束调整。</p>
+<table>
+<thead>
+<tr>
+<th>软件名称</th>
+<th>图像匹配对</th>
+<th>加速匹配</th>
+<th>加速 BA</th>
+<th>网址</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ColMap</td>
+<td>GPS &amp; VOC-TREE</td>
+<td>GPU</td>
+<td>CPU</td>
+<td><a href="https://github.com/colmap/colmap">https://github.com/colmap/colmap</a></td>
+<td>3.5</td>
+</tr>
+<tr>
+<td>AliceVision</td>
+<td>VOC-TREE</td>
+<td>GPU</td>
+<td>CPU</td>
+<td><a href="https://github.com/alicevision/meshroom">https://github.com/alicevision/meshroom</a></td>
+<td>2019.2.0</td>
+</tr>
+<tr>
+<td>VisualSfM</td>
+<td>预处理匹配</td>
+<td>GPU</td>
+<td>GPU &amp; CPU</td>
+<td><a href="https://ccwu.me/vsfm">https://ccwu.me/vsfm</a></td>
+<td>0.5.26</td>
+</tr>
+<tr>
+<td>RealityCapture</td>
+<td>–</td>
+<td>CPU</td>
+<td>CPU</td>
+<td><a href="https://www.capturingreality.com/">https://www.capturingreality.com</a></td>
+<td>1.0.3</td>
+</tr>
+<tr>
+<td>Metashape</td>
+<td>POS &amp; 多尺度</td>
+<td>GPU &amp; CPU</td>
+<td>CPU</td>
+<td><a href="https://www.agisoft.com/">https://www.agisoft.com</a></td>
+<td>1.4.1</td>
+</tr>
+<tr>
+<td>Pix4Dmapper</td>
+<td>GPS &amp; VOC-TREE</td>
+<td>GPU &amp; CPU</td>
+<td>CPU</td>
+<td><a href="https://www.pix4d.com">https://www.pix4d.com</a></td>
+<td>4.4.12</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43">4.3 实验结果与评估<a class="headerlink" href="#43" title="Permanent link">¶</a></h3>
+<p>我们将评估所选的六个软件包的性能，包括效率、完整性和准确性。对于效率评估，记录了特征匹配和束调整中涉及的时间成本，以分析相应的匹配对选择策略和硬件加速方法的影响。对于完整性评估，使用连接图像和重建的 3D 点的数量作为本研究的指标。准确性评估通过使用相对定向和绝对定向测试估算的 RMSE（均方根误差）来进行。值得注意的是，在 ColMap 的实验中，GPS 基于的空间相邻约束和基于词汇树的图像检索技术将分别进行独立评估，分别用 ColMap-GPS 和 ColMap-VOC 表示。此外，已经使用逐渐选择工具来过滤重投影误差较大的匹配，直到 RMSE 不再明显变化。对于所有实验测试，为所有评估的软件包配置了默认参数，除了匹配对选择方法。</p>
+<h4 id="431">4.3.1 效率<a class="headerlink" href="#431" title="Permanent link">¶</a></h4>
+<p>特征匹配和束调整中涉及的时间成本用于效率评估。统计结果列于表 6 中，图 10a 和 b 分别展示了特征匹配和束调整中所消耗的时间成本的比较。明显可见，对于特征匹配，虽然只使用了多核 CPU 技术，RealityCapture 实现了最高的效率，分别为数据集 1、2、3 和 4 的 2.88 分钟、4.12 分钟、4.47 分钟和 9.15 分钟。对于 VisualSfM 的特征匹配，采用了预先匹配策略以选择候选匹配对并避免穷举匹配。然而，时间成本仍然呈指数比例增加，与图像数量成正比，从 157 张图像的数据集 1 的 18.54 分钟增加到 750 张图像的数据集 4 的 510.80 分钟。我们可以预期，随着图像数量的增加，特征匹配的时间成本可能会成为高效 SfM 解决方案的瓶颈。类似的结果也可以从 Metashape 的效率分析中观察到，因为多尺度策略对所有匹配对执行了穷举测试。</p>
+<p>当使用基于词汇树的图像检索技术进行匹配对选择，即 ColMap-VOC 和 AliceVision 时，特征匹配中消耗的时间成本对于四个倾斜角不同的数据集几乎相同，如图 10a 所示。这一观察表明了词汇树方法的高灵活性。相反，对于 ColMap-GPS，应确定一个合理的距离阈值，以选择在更大成像角下捕获的数据集所需的所有匹配对，例如数据集 1 和 4 中使用的 45°倾斜成像角。在本研究中，配置了 GPS 基于的匹配对选择的距离阈值，数据集 1 和 4 为 100 米，数据集 2 和 3 为 30 米。此外，Pix4Dmapper 的时间成本高于 ColMap-VOC 和 AliceVision，特别是数据集 4。这主要是由于基于 GPS 的方法可能会生成许多没有重叠区域的匹配对，导致大量时间成本。</p>
+<p>图 10b 展示了 BA 中涉及的时间成本的统计结果。由于使用了多核 CPU 和 GPU 加速，VisualSfM 在 BA 中花费的时间最少，对于所有四个数据集都不到两分钟。与其他软件包相比，AliceVison、RealityCapture 和 Pix4Dmapper 的 BA 效率相对较高，它们的时间成本不少于四个数据集的 15 分钟。通过进一步分析，我们可以观察到，几乎所有评估的软件包中，由于使用了增量重建策略，BA 的时间成本几乎与图像数量成线性比例关系。综上所述，AliceVision 在考虑特征匹配和束调整的效率时，在开源和免费软件包中表现出更好的性能；RealityCapture 在三个商业软件包中表现出最佳性能。然而，随着图像数量的增加，特征匹配所涉及的高计算成本可能成为设计高效 SfM 管道的瓶颈。</p>
+<h4 id="432">4.3.2 完整性<a class="headerlink" href="#432" title="Permanent link">¶</a></h4>
+<p>对于完整性分析，使用连接图像和重建的 3D 点的数量作为本研究的指标。表 7 显示了四个数据集的统计结果。我们可以清楚地看到，除了 VisualSfM 外，其他五个软件包可以重建每个数据集中的所有图像，并且可以获得更多的 3D 点。即使在 VisualSfM 中使用了预先匹配策略，恢复的图像数量和 3D 点数量仍然少于其他方法，整个模型容易分成一些子模型。这可以从两个方面解释。一方面，由于成对匹配对选择，特征匹配步骤可能会引入不匹配的匹配对，从而在 BA 中进一步引发虚假匹配；另一方面，BA 中使用了一个简单的相机模型，只有一个焦距和一个径向畸变参数，可能不足以模拟相机的畸变。在所有评估的软件包中，Metashape 的恢复 3D 点数量最多，这是因为使用了分而治之的特征匹配方法。对于三个开源软件包，AliceVision 的 3D 点数量比其他软件包多。此外，对于 ColMap-GPS 和 ColMap-VOC，重建的 3D 点数量是可比较的，这表明词汇树方法与空间距离约束相比可以选择适当的匹配对。为了进行视觉分析，图 11 显示了从数据集 1 重建的 3D 点云。</p>
+<h4 id="433">4.3.3 准确性<a class="headerlink" href="#433" title="Permanent link">¶</a></h4>
+<p>对于准确性分析，本研究进行了不带 GCP 和带 GCP 的束调整测试。在没有地面真值数据的情况下，束调整测试用于测量图像定位的相对准确性。表 8 呈现了所评估的软件包的 RMSE 的统计结果。由于无法连接所有图像到单个模型中，因此对于 VisualSfM，没有列出数据集 3 和 4 的 RMSE。明显可见，Pix4Dmapper 在四个数据集中达到最好的 RMSE，其次是 Metashape。此外，这两个开源软件包 ColMap 和 AliceVision 的 RMSE 大于 Metashape 和 Pix4Dmapper。但是，与 RealityCapture 相比，它们在准确性方面表现更好。通过进一步分析，我们可以看到，ColMap-VOC 和 AliceVision 表现出竞争性的性能，特别是对于数据集 1、2 和 3。尽管 ColMap-GPS 的 RMSE 优于 ColMap-VOC 和 AliceVision，但是使用基于词汇树的图像检索方法进行匹配对选择，可以形成可靠的图像连接，以在每个数据集中实现成功的精度相对较高的定位。这可以验证基于词汇树的匹配对选择方法的有效性。</p>
+<p>借助地面真值数据，可以评估绝对定向准确性。在本研究中，从数据集 3 中收集了 43 个 GCP，用于地理参考重建模型，其中 4 个 GCP，编号为 7、9、35 和 37，用于绝对定向，其他所有 GCP 用作精度评估的检查点（CPs）。在所评估的软件包中，ColMap 和 AliceVision 不支持基于 GCP 的定位，VisualSfM 无法为数据集 3 重建单个模型。因此，选择 RealityCapture、Metashape 和 Pix4Dmapper 进行绝对定向测试。</p>
+<p>图 12 呈现了数据集 3 的束调整残差空间分布。图 12a、c 和 e 分别显示了 RealityCapture、Metashape 和 Pix4Dmapper 在水平方向上的残差分布；图 12b、d 和 f 呈现了三个软件包在垂直方向上的残差分布。明显可见，在三个软件包中，由于残差幅度较小且随机分布方向不同，没有观察到系统性错误。用于定量比较的三个统计指标，即最小值、最大值和平均值，分别用于 X、Y 和 Z 方向。我们可以看到，在 X 和 Y 方向，Metashape 和 Pix4Dmapper 的水平准确性相近，这也可以通过图 13a 和 b 中的单个残差验证。与 RealityCapture 相比，Pix4Dmapper 在水平方向上具有更好的精度。然而，在 Z 方向上的平均残差为 0.135 米，大于 RealityCapture 的 0.118 米。此外，Pix4Dmapper 的垂直残差与 RealityCapture 和 Metashape 的垂直残差不同，对大多数 CPs 具有相反的值，如图 12c 所示。图 14 展示了数据集 3 的束调整残差的 RMSE。明显可见，Metashape 在 X、Y 和 Z 方向上均达到最高的束调整准确性，分别为 0.045 米、0.038 米和 0.090 米。对于所评估的三个软件包，水平精度优于垂直精度。因此，在准确性评估方面，Metashape 的性能优于其他软件包。</p>
+<h2 id="5">5 讨论<a class="headerlink" href="#5" title="Permanent link">¶</a></h2>
+<p>本文从匹配对选择、初始匹配的异常值去除以及束调整的效率改进等方面，提供了增量结构光测量（Structure from Motion，SfM）的高效解决方案综述（第 3 节）。我们还从效率、完整性和准确性的角度评估了六个知名软件包在基于 SfM 的重建中的性能（第 4 节）。尽管已经有大量的研究文献记录了许多有前途的进展，但以下是一些问题和未来研究的列举：</p>
+<ul>
+<li>
+<p><strong>使用图像检索技术进行匹配对选择</strong></p>
+<p>对于从大规模无人机图像中选择匹配对，使用词汇树进行图像检索可以是一个强大且可靠的解决方案，它可以显著降低特征匹配中的计算成本。然而，对于基于词汇树的图像检索技术，应该仔细考虑精度和效率之间的平衡，可以从两个方面进行分析。一方面，如果使用从不相关数据集训练的预构建词汇树，词汇树的不完整性会降低图像检索的精度；另一方面，为每个三角测量项目使用所有图像构建单独的词汇树将导致非常大的计算成本。此外，几乎所有现有的基于词汇树的图像检索方法都采用了选择相似图像的固定数量或固定比例的策略（Cui et al., 2018）。这种策略会导致匹配对要么过多，要么过少。因此，在成功应用此方法时，应认真考虑这些问题。基于“预先匹配”的核心思想（Wu, 2013），可以使用“受限制的规模策略”来选择建立词汇树的特征，以提高耗时步骤的效率。</p>
+</li>
+<li>
+<p><strong>对于倾斜无人机图像的特征匹配</strong></p>
+<p>对于基于 SfM 的无人机摄影测量，图像匹配是最具挑战性的任务，尤其是对于倾斜无人机图像，因为其视角变化和光照变化导致了严重的几何和光度形变。此外，无人机图像通常是在比航空图像更低的飞行高度获取的。这导致城市区域存在严重的遮挡，使得城市区域的匹配不可靠。这些问题降低了大多数基于局部特征的算法的性能。为了克服上述问题，应设计出优雅且高效的仿射不变特征检测器和描述符，以促进涉及无人机图像匹配的几何变换。此外，对于以遮挡为主的区域，例如高楼的城市区域，除了点匹配，还可以使用多元匹配方法来获取图像对之间足够可靠的匹配，例如线对应（Sun et al., 2015）。</p>
+</li>
+<li>
+<p><strong>初始候选匹配的异常值去除</strong></p>
+<p>为了从初始候选匹配中高效可靠地去除异常值，可以利用局部几何和光度约束来增加内点比例，并提高随后的全局几何验证的效率，例如 RANSAC 方法。局部约束和全局约束是互补的。对于局部几何和光度约束，它们可以容忍高的异常值比例，并有效地消除明显的虚假匹配；对于全局几何约束，它们可以提供高度区分能力，以优化最终的结果。通过局部和全局约束的结合，可以实现高精度的异常值去除方法。但需要注意两个问题。首先，构建局部邻域关系以建立局部约束的最常用技术是 K 最近邻图（KNN 图）（Aguilar et al., 2009；Li et al., 2017a）。然而，邻居数量难以确定，KNN 图可能会因邻居在角度方向上分布不均匀而导致局部区域退化（Li et al., 2017b）。其次，异常值去除的目的是在删除虚假匹配的同时保留尽可能多的真实匹配。因此，初始匹配不应该被平等对待，应该尽早删除可能是异常值的匹配。 </p>
+</li>
+<li>
+<p><strong>提高束调整的效率</strong></p>
+<p>为了提高束调整的效率，“分而治之”策略可以提高基于 SfM 的重建的整体效率，简化增量 SfM 问题的复杂性。这种策略可以将大规模场景分割为具有相等图像大小的小分区，并允许小分区的并行计算。通过使用分区间图像连接，重建的分区可以合并成一个全局模型。“分而治之”策略涉及的最重要的技术是如何可靠地合并所有重建的分区。尽管已经报道了一些有前途的结果，但模型合并仍然是实现大规模数据集的并行重建的最具挑战性的任务。为了解决这个问题，一个解决方案是将全局约束集成到模型合并过程中（Shah et al., 2014；Sun and Tao, 2018）。因此，“分而治之”策略的关键问题是如何高效和精确地构建全局约束。</p>
+</li>
+</ul>
+<h2 id="6">6 结论<a class="headerlink" href="#6" title="Permanent link">¶</a></h2>
+<p>在本文中，我们从匹配对选择、初始匹配的异常值去除以及束调整的效率改进等方面，对增量 SfM 的高效解决方案进行了综述。对于传统的 SfM 流水线，特征匹配是最耗时的步骤之一，这阻碍了大规模无人机图像的穷举匹配。为了实现高效匹配，我们已经回顾了使用来自数据采集和机载 GNSS/IMU 传感器的先验信息、使用基于视觉相似性的图像检索方法（例如词汇树）以及使用图像拓扑连接网络分析来进一步简化的现有匹配对选择方法。考虑到高异常值比率会导致高计算成本和常用的 RANSAC 方法的不稳定估计，我们已经回顾了最近报道的技术，以实现对初始候选匹配的高效异常值去除。这些方法可以大致分为三类，包括全局几何约束、局部光度和几何约束。为了提高局部和全局优化中使用的束调整的效率，我们已经回顾了使用硬件加速和修改的束调整模型的方法。此外，“分而治之”策略也已广泛回顾，因为它们能够实现大规模数据集的并行重建。作为 SfM 系统的特殊形式，本综述还报告了 SLAM 技术。最后，对六个知名 SfM 软件包进行了广泛评估，从 3D 模型重建的效率、完整性和准确性方面进行了评估。根据回顾的研究和实验结果，还提出了当前工作和未来研究的问题。</p>
+<h2 id="a">附录 A<a class="headerlink" href="#a" title="Permanent link">¶</a></h2>
+<p>在这项研究中回顾的免费开源代码和软件包列表</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类别</th>
+<th>描述</th>
+<th>网址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIFTGPU</td>
+<td>特征提取与匹配</td>
+<td>用于 GPU 硬件加速的 SIFT 实现（Wu, 2007）</td>
+<td><a href="https://github.com/pitzer/SiftGPU">SiftGPU</a></td>
+</tr>
+<tr>
+<td>L2-SIFT</td>
+<td>特征提取与匹配</td>
+<td>适用于大尺寸图像的基于瓦片的特征提取与匹配（Sun 等，2014）</td>
+<td><a href="https://services.eng.uts.edu.au/sdhuang/research.htm">L2-SIFT</a></td>
+</tr>
+<tr>
+<td>Sequential Matcher</td>
+<td>先验知识（数据获取）</td>
+<td>将特征匹配的时间复杂度从 O(n^2)降低到 O(n)（Schönberger 等，2014）</td>
+<td><a href="https://github.com/colmap/colmap/tree/master/src/feature">Sequential Matcher</a></td>
+</tr>
+<tr>
+<td>Spatial Matcher</td>
+<td>先验知识（图像位置）</td>
+<td>不仅节省时间，还能提高收敛的可能性（Rupnik 等，2013）</td>
+<td><a href="https://github.com/colmap/colmap/tree/main/src/colmap/feature">Spatial Matcher</a></td>
+</tr>
+<tr>
+<td>MultiScale Matcher</td>
+<td>视觉相似度（匹配数量）</td>
+<td>避免在没有辅助数据的情况下进行耗时匹配（MicMac, 2020）</td>
+<td><a href="http://www.tapenade.gamsau.archi.fr/TAPEnADe/Tools.html">MultiScale Matcher</a></td>
+</tr>
+<tr>
+<td>Preemptive Matcher</td>
+<td>视觉相似度（匹配数量）</td>
+<td>实现线性时间的增量式运动结构（Wu, 2013）</td>
+<td><a href="http://www.cs.washington.edu/homes/ccwu/vsfm">Preemptive Matcher</a></td>
+</tr>
+<tr>
+<td>VocabTree Matcher</td>
+<td>视觉相似度（图像检索）</td>
+<td>将每个图像与其最近的邻居匹配（Schönberger 等，2016）</td>
+<td><a href="https://github.com/vote-and-verify/vote-and-verify">VocabTree Matcher</a></td>
+</tr>
+<tr>
+<td>USAC</td>
+<td>全局几何约束（参数方法）</td>
+<td>提供新的鲁棒估计的通用框架（Raguram 等，2013）</td>
+<td>原文中链接已失效</td>
+</tr>
+<tr>
+<td>VFC</td>
+<td>全局几何约束（非参数方法）</td>
+<td>具有对错误匹配的高鲁棒性（Ma 等，2014）</td>
+<td><a href="https://sites.google.com/site/jiayima2013/">VFC</a></td>
+</tr>
+<tr>
+<td>KVLD</td>
+<td>本地光度约束（线描述符）</td>
+<td>显著提高现有图形匹配器的准确性（Liu 和 Marlet，2012）</td>
+<td><a href="https://github.com/Zhe-LIU-Imagine/KVLD">KVLD</a></td>
+</tr>
+<tr>
+<td>LBD</td>
+<td>本地光度约束（线描述符）</td>
+<td>高效，对图像变换具有鲁棒性，对低纹理图像准确（Zhang 和 Koch，2013）</td>
+<td><a href="https://github.com/mtamburrano/LBD_Descriptor">LBD</a></td>
+</tr>
+<tr>
+<td>PBA</td>
+<td>捆绑调整（硬件加速）</td>
+<td>利用硬件并行性进行高效的 3D 场景重建（Wu 等，2011）</td>
+<td><a href="http://grail.cs.washington.edu/projects/mcba/">PBA</a></td>
+</tr>
+<tr>
+<td>SBA</td>
+<td>捆绑调整（其他）</td>
+<td>利用雅克比矩阵的稀疏特性以实现计算节省（Lourakis，2009）</td>
+<td><a href="http://users.ics.forth.gr/lourakis/sba/">SBA</a></td>
+</tr>
+<tr>
+<td>sSBA</td>
+<td>捆绑调整（其他）</td>
+<td>利用结构运动问题的稀疏辅助结构（Konolige，2010）</td>
+<td><a href="https://github.com/chzach/SSBA/tree/master/SSBA-4.0">sSBA</a></td>
+</tr>
+<tr>
+<td>g2o</td>
+<td>捆绑调整（其他）</td>
+<td>将 BA 的最小二乘问题表示为优化基于图形的误差函数（Kummerle 等，2011）</td>
+<td><a href="https://github.com/RainerKuemmerle/g2o">g2o</a></td>
+</tr>
+<tr>
+<td>ParallaxBA</td>
+<td>捆绑调整（其他）</td>
+<td>相较于其他 BA 库，改进了收敛性、准确性和效率（Zhao 等，2015）</td>
+<td><a href="https://openslam.org/">ParallaxBA</a></td>
+</tr>
+</tbody>
+</table>
+<p>最先进的在线视觉 SLAM 系统列表</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类别</th>
+<th>描述</th>
+<th>网址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PTAM</td>
+<td>RGB (单目)</td>
+<td>用于小场景实时相机跟踪的 SLAM（Klein 和 Murray，2007）</td>
+<td><a href="https://github.com/Oxford-PTAM/PTAM-GPL">https://github.com/Oxford-PTAM/PTAM-GPL</a></td>
+</tr>
+<tr>
+<td>LSD-SLAM</td>
+<td>RGB (单目)</td>
+<td>完全直接的实时单目 SLAM（Engel 等，2014）</td>
+<td><a href="https://github.com/tum-vision/lsd_slam">https://github.com/tum-vision/lsd_slam</a></td>
+</tr>
+<tr>
+<td>ORB-SLAM</td>
+<td>RGB (单目)</td>
+<td>通用且准确的单目 SLAM，用于计算相机轨迹和稀疏 3D 重建（Mur-Artal 等，2015）</td>
+<td><a href="https://github.com/raulmur/ORB_SLAM">https://github.com/raulmur/ORB_SLAM</a></td>
+</tr>
+<tr>
+<td>ORB-SLAM2</td>
+<td>RGB 和深度 (RGBD)</td>
+<td>用于单目、立体和 RGB-D 相机的实时 SLAM，用于计算稀疏 3D 重建（Mur-Artal 和 Tardos，2017）</td>
+<td><a href="https://github.com/raulmur/ORB_SLAM2">https://github.com/raulmur/ORB_SLAM2</a></td>
+</tr>
+<tr>
+<td>SVO-SLAM</td>
+<td>RGB (单目)</td>
+<td>半直接的单目视觉测距管道（Forster 等，2014）</td>
+<td><a href="https://github.com/uzh-rpg/rpg_svo">https://github.com/uzh-rpg/rpg_svo</a></td>
+</tr>
+<tr>
+<td>OpenVSLAM</td>
+<td>RGB、立体和 RGBD</td>
+<td>间接 SLAM，可以处理各种类型的相机模型（Sumikura 等，2019）</td>
+<td><a href="https://github.com/xdspacelab/openvslam">https://github.com/xdspacelab/openvslam</a></td>
+</tr>
+<tr>
+<td>Cartographer</td>
+<td>RGBD 和 LiDAR</td>
+<td>为多个平台和传感器配置提供 2D 和 3D 实时 SLAM 的系统</td>
+<td><a href="https://github.com/cartographer-project/cartographer">https://github.com/cartographer-project/cartographer</a></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "content.tooltips", "content.tabs.link", "content.code.copy", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.78eede0e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.zerolacqua.top/npm/mathjax/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/d3@7/dist/d3.min.js"></script>
+      
+        <script src="https://unpkg.com/markmap-lib@0.15.3/dist/browser/index.js"></script>
+      
+        <script src="https://unpkg.com/markmap-view@0.15.3/dist/browser/index.js"></script>
+      
+    
+  </body>
+</html>

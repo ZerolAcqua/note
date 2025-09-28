@@ -1,0 +1,3617 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://note.zerolacqua.top/course/CV/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">
+      
+      
+        <link rel="prev" href="../../geomatics/%E5%A4%A7%E5%9C%B0%E6%B5%8B%E9%87%8F%E5%AD%A6/">
+      
+      
+        <link rel="next" href="../../CS/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.2.3">
+    
+    
+      
+        <title>数字图像处理 - 丘卡的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0e669242.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="丘卡的笔记本" class="md-header__button md-logo" aria-label="丘卡的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            丘卡的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              数字图像处理
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ZerolAcqua/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZerolAcqua/note
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../paper/RS/UAV/%E5%9F%BA%E4%BA%8E%E7%89%A9%E6%8E%A2%E9%A3%9E%E8%A1%8C%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%AD%A3%E5%B0%84%E5%BD%B1%E5%83%8F%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C/" class="md-tabs__link">
+          
+  
+    
+  
+  论文
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../Photogrammetry/%E8%BF%91%E6%99%AF%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-tabs__link">
+          
+  
+    
+  
+  课程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../programming/cpp/modern-cpp-features/" class="md-tabs__link">
+          
+  
+    
+  
+  编程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cs/computer_system/Putting_the_You_in_CPU/" class="md-tabs__link">
+          
+  
+    
+  
+  计算机
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../misc/photogrammetry/%E4%BA%91%E5%8F%B0%E6%97%8B%E8%BD%AC%E8%A7%92%E6%8D%A2%E7%AE%97/" class="md-tabs__link">
+          
+  
+    
+  
+  杂项
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="丘卡的笔记本" class="md-nav__button md-logo" aria-label="丘卡的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    丘卡的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ZerolAcqua/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZerolAcqua/note
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    论文
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            论文
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            RS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UAV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            UAV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/RS/UAV/%E5%9F%BA%E4%BA%8E%E7%89%A9%E6%8E%A2%E9%A3%9E%E8%A1%8C%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%AD%A3%E5%B0%84%E5%BD%B1%E5%83%8F%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于物探飞行模式的正射影像快速制作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/RS/UAV/%E4%B8%AD%E5%9B%BD%E5%85%89%E5%AD%A6%E5%8D%AB%E6%98%9F%E5%BD%B1%E5%83%8F%E5%8C%B9%E9%85%8D%E8%9E%8D%E5%90%88%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A combined image matching method for Chinese optical satellite imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/RS/UAV/%E5%8D%97%E6%9E%81%E6%97%A0%E4%BA%BA%E6%9C%BA%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F%E8%AE%BA%E6%96%87%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    南极无人机摄影测量论文概览
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    图像匹配
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            图像匹配
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/image_matching/LBD%E7%BA%BF%E7%89%B9%E5%BE%81%E6%8F%8F%E8%BF%B0%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LBD 线特征描述算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/image_matching/Sample4Geo_Hard_Negative_Sampling_for_Cross-View_Geo-Localisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample4Geo: Hard Negative Sampling for Cross-View Geo-Localisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/image_matching/Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    从人工特征到深度特征的图像匹配调查
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SfM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            SfM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Structure-from-Motion_Revisited/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SfM 回顾（Colmap）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Skeletal_graphs_for_efficient_structure_from_motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    用于高效 SfM 的骨架图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Structure-and-motion_pipeline_on_a_hierarchical_cluster_tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于分层聚类树的 SfM 
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Improving_the_efficiency_of_hierarchical_structure-and-motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提高分层 SfM 效率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Towards_Linear-Time_Incremental_Structure-from-Motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线性时间的增量式 SfM（VisualSFM）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Modeling_the_World_from_Internet_Photo_Collections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    通过互联网影像重建世界（Bundler）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Photo_Tourism_Exploring_Photo_Collections_in_3D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    相片旅行：在三维世界中浏览相片
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Building_Rome_in_a_Day/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一天建成罗马
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Efficient_structure_from_motion_for_large-scale_UAV_images_A_review_and_a_comparison_of_SfM_tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大规模无人机影像的高效 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Multicore_Bundle_Adjustment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多核光束法平差
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Efficient_tree-structured_SfM_by_RANSAC_generalized_Procrustes_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于 RANSAC 通用 Procrustes 分析的高效树状 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Divide_and_Conquer_Efficient_Large_Scale_Structure_from_Motion_Using_Graph_Partitioning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用图分割的分治高效大规模 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/SfM_on-the-fly%3A_A_robust_near_real-time_SfM_for_spatiotemporally_disordered_high-resolution_imagery_from_multiple_agents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实时 SfM：一种面向多智能体时空无序高分辨率影像的鲁棒近实时 SfM 方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    课程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            课程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    专业相关
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            专业相关
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    摄影测量
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            摄影测量
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Photogrammetry/%E8%BF%91%E6%99%AF%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    近景摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Photogrammetry/%E5%8D%AB%E6%98%9F%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    卫星摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Photogrammetry/%E6%95%B0%E5%AD%97%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Photogrammetry/%E8%A7%A3%E6%9E%90%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    解析摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2" >
+        
+          <label class="md-nav__link" for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            RS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RS/%E9%81%A5%E6%84%9F%E5%9B%BE%E5%83%8F%E8%A7%A3%E8%AF%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遥感图像解译
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_3" >
+        
+          <label class="md-nav__link" for="__nav_3_1_3" id="__nav_3_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    测绘
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            测绘
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../geomatics/%E5%A4%A7%E5%9C%B0%E6%B5%8B%E9%87%8F%E5%AD%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大地测量学
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4" checked>
+        
+          <label class="md-nav__link" for="__nav_3_1_4" id="__nav_3_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    数字图像处理
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    数字图像处理
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    一、往年试卷的分析
+  </a>
+  
+    <nav class="md-nav" aria-label="一、往年试卷的分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    名词解释
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    一些要点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    要问的问题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    二、自己复习的笔记
+  </a>
+  
+    <nav class="md-nav" aria-label="二、自己复习的笔记">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    第一章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    第二章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    第三章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    第四章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    第五章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    第六章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    第七章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    第八章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    第九章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    第十章
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    专业之外
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            专业之外
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            CS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多媒体技术
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS/%E5%8D%97%E5%A4%A7%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9FPA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    南大计算机系统 PA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    others
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            others
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/%E9%80%BB%E8%BE%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    逻辑学导论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/%E9%9F%B3%E4%B9%90%E6%AC%A3%E8%B5%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    音乐欣赏
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    编程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            编程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            C++
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cpp/modern-cpp-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    现代 C++ 特性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cpp/Effective_Modern_C%2B%2B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Effective Modern C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cpp/head-first-design-pattern/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 实现 Headfirst 设计模式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Rust
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Rust
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/rust/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    准备工作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/rust/Rust%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rust 程序设计语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Julia
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Julia
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/julia/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    准备工作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/julia/Julia_Data_Science/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Julia Data Science
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/git/progit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Progit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/bibliometrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    文献计量学作业
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            计算机
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机系统
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            计算机系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/computer_system/Putting_the_You_in_CPU/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Putting the “You” in CPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    杂项
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            杂项
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    摄影测量
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            摄影测量
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/photogrammetry/%E4%BA%91%E5%8F%B0%E6%97%8B%E8%BD%AC%E8%A7%92%E6%8D%A2%E7%AE%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    云台旋转角换算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    一、往年试卷的分析
+  </a>
+  
+    <nav class="md-nav" aria-label="一、往年试卷的分析">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    名词解释
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    一些要点
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    要问的问题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    二、自己复习的笔记
+  </a>
+  
+    <nav class="md-nav" aria-label="二、自己复习的笔记">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    第一章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    第二章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    第三章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    第四章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    第五章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    第六章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    第七章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    第八章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    第九章
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    第十章
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">数字图像处理<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<h2 id="_2">一、往年试卷的分析<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<h3 id="_3">名词解释<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>灰度直方图</strong>是指反映一幅图像各灰度级像元出现的频率。</li>
+<li><strong>邻域</strong>是指一个像元 <span class="arithmatex">\((x,y)\)</span> 的邻近（周围）像元形成的像元集合。即 <span class="arithmatex">\(\{(x+p,  y+q)\}\)</span>，<span class="arithmatex">\(p\)</span>、<span class="arithmatex">\(q\)</span> 为任意整数。</li>
+<li><strong>中值滤波</strong>是指将当前像元的窗口（或邻域）中所有像元灰度由小到大进行排序，中间值作为当前像元的输出值。</li>
+<li><strong>直方图规定化</strong>是指将原图像灰度直方图变成规定形状的直方图而对图像作修正的增强方法。</li>
+<li><strong>模板匹配</strong>是指对象物的图案以图像形式表现时，根据该图案与一幅图像各部分的相似度，从而求得对象物在图像中位置的操作。</li>
+<li><strong>采样和量化</strong></li>
+<li><strong>图像冗余度</strong></li>
+<li><strong>区域</strong></li>
+<li><strong>模板匹配</strong></li>
+<li><strong>数字图像</strong>是将一幅画面在空间上分割成离散的点（或像元），各点（或像元）的灰度值经量化用离散的整数来表示，形成计算机能处理的形式。</li>
+<li><strong>图像锐化</strong>是增强图像的边缘或轮廓。</li>
+<li>从图像灰度为 <span class="arithmatex">\(i\)</span> 的像元出发，沿某一方向 <span class="arithmatex">\(\theta\)</span>、距离为 <span class="arithmatex">\(d\)</span> 的像元灰度为 j 同时出现的概率 <span class="arithmatex">\(P(i,j,\theta,d)\)</span>，这样构成的矩阵称<strong>灰度共生矩阵</strong>。</li>
+<li><strong>细化</strong>是提取线宽为一个像元大小的中心线的操作。</li>
+<li>
+<p><strong>无失真编码</strong>是指压缩图像经解压可以恢复原图像，没有任何信息损失的编码</p>
+</li>
+<li>
+<p><strong>数字图像</strong>是指由被称作像素的小块区域组成的二维矩阵。将物理图像行列划分后，每个小块区域称为像素（pixel）。</p>
+</li>
+<li><strong>数字图像处理</strong>指用数字计算机及其它有关数字技术，对图像施加某种运算和处理，从而达到某种预想目的的技术.</li>
+<li><strong>8-连通的定义</strong>：对于具有值 <span class="arithmatex">\(V\)</span> 的像素 <span class="arithmatex">\(p\)</span> 和 <span class="arithmatex">\(q\)</span>，如果 <span class="arithmatex">\(q\)</span> 在集合 <span class="arithmatex">\(N_8(p)\)</span> 中,则称这两个像素是 8-连通的。</li>
+<li><strong>灰度直方图</strong>是指反映一幅图像各像元出现的频率。</li>
+<li><strong>中值滤波</strong>是指将当前像元的窗口（或领域）中所有像元灰度由小到大进行排序，中间值作为当前像元的输出值。</li>
+<li><strong>像素的邻域</strong>是指一个像元 <span class="arithmatex">\((x，y)\)</span> 的邻近（周围）形成的像元集合。即 <span class="arithmatex">\(\{(x+p,y+q)\}\)</span>，<span class="arithmatex">\(p\)</span>、<span class="arithmatex">\(q\)</span> 为任意整数。</li>
+<li><strong>像素的四邻域</strong>：像素 <span class="arithmatex">\(p(x,y)\)</span> 的 4-邻域是：<span class="arithmatex">\((x+1,y)\)</span>, <span class="arithmatex">\((x-1,y)\)</span>, <span class="arithmatex">\((x,y+1)\)</span>, <span class="arithmatex">\((x,y-1)\)</span></li>
+<li><strong>像素的连接数</strong></li>
+<li><strong>图像分割</strong></li>
+<li><strong>直方图匹配</strong></li>
+<li><strong>伪颜色增强</strong></li>
+<li><strong>直方图规定化</strong></li>
+<li><strong>图像膨胀</strong></li>
+<li><strong>连接成分</strong></li>
+<li><strong>Laws 纹理能量分析</strong></li>
+<li><strong>图像分割</strong></li>
+<li><strong>行程编码</strong></li>
+<li><strong>模板匹配</strong></li>
+</ul>
+<blockquote>
+<p>这怕不是每年都考？</p>
+</blockquote>
+<hr/>
+<h3 id="_4">一些要点<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<p>下列图像边缘增强算子中</p>
+<ul>
+<li>梯度算子 　　</li>
+<li>Prewitt 算子</li>
+<li>Roberts 算子  </li>
+<li>Laplacian 算子</li>
+</ul>
+<p>对噪声最敏感的是 <strong>Laplacian 算子</strong>，抗噪性能最好的是 <strong>Prewitt 算子</strong></p>
+</li>
+<li>
+<p>连接数和欧拉数</p>
+</li>
+<li>方向链码</li>
+<li>区域生长</li>
+<li>线性位移不变系统逆滤波恢复图像原理</li>
+<li>
+<p>写出 4-链码 10103322 的形状数：</p>
+<p>03033133</p>
+</li>
+</ul>
+<blockquote>
+<p>这是个什么鬼？？</p>
+</blockquote>
+<ol>
+<li>Laplacian 算子和 Laplacian 增强算子</li>
+<li>图像平滑和锐化</li>
+<li>边缘增强和边缘检测</li>
+</ol>
+<hr/>
+<h3 id="_5">要问的问题<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
+<ol>
+<li>为什么 ppt 上和书上的高通滤波算子、Roberts 梯度算子不同</li>
+<li>中值滤波的时候打……的部分如何处理</li>
+</ol>
+<hr/>
+<h2 id="_6">二、自己复习的笔记<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
+<h3 id="_7">第一章<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>图像</strong>是对客观存在的物体的一种相似性的生动模仿或描述。是物体的一种不完全、不精确，但在某种意义上是适当的表示。</li>
+<li><strong>模拟图像</strong>：指空间坐标和明暗程度都是连续变化的、计算机无法直接处理的图像。</li>
+<li><strong>数字图像</strong>：是一种空间坐标和灰度均不连续的、用离散的数字(一般用整数)表示的图像。这样的图像才能被计算机处理。          </li>
+<li>
+<p><strong>数字图像处理</strong>
+利用计算机对数字图像进行系列操作，从而获得某种预期的结果的技术总称。</p>
+</li>
+<li>
+<p>数字图像处理的<strong>特点及其应用</strong></p>
+<ul>
+<li>精度高</li>
+<li>再现性好（可重复）</li>
+<li>通用性、灵活性强</li>
+</ul>
+</li>
+<li>
+<p>数字图像处理可分为三个层次：狭义图像处理、图像分析、图像理解</p>
+</li>
+</ul>
+<h3 id="_8">第二章<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>图像数字化</strong>是将一幅画面转化成计算机能处理的形式—数字图像的过程。<em>具体来说，就是把一幅图分割成一个个小区域（像素），并将各小区域灰度用整数来表示，形成一幅点阵式的数字图像。包括采样和量化两个过程。像素的位置和灰度就是像素的属性</em>。</li>
+<li><strong>采样</strong>：将空间上连续的图像变换成离散点的操作称为采样。采样间隔和采样孔径的大小是两个很重要的参数。   </li>
+<li><strong>量化</strong>：将像素灰度转换成离散的整数值的过程叫量化。</li>
+<li><strong>二值图像</strong>是指图像的每个像素只能是黑或白，没有中间的过渡</li>
+<li><strong>灰度图像</strong>是指每个像素的信息由一个量化的灰度级来描述的数字图像，没有彩色信息。</li>
+<li><strong>彩色图像</strong>是指每个像素的信息由 RGB 三原色构成的图像，其中 RGB 是由不同的灰度级来描述的。</li>
+<li>
+<p>图像的质量</p>
+<ul>
+<li>
+<p>层次</p>
+<p><strong>灰度级</strong>：表示像素明暗程度的整数量称为灰度级</p>
+</li>
+<li>
+<p>对比度</p>
+<p>对比度是指一幅图像中灰度反差的大小</p>
+</li>
+</ul>
+</li>
+<li>
+<p>以灰度级为横坐标，纵坐标为灰度级的频率，绘制频率同灰度级的关系图就是<strong>灰度直方图</strong></p>
+</li>
+<li>
+<p>直方图的性质</p>
+<ul>
+<li>灰度直方图只能反映图像的灰度分布情况，而不能反映图像像素的位置,即丢失了像素的位置信息。</li>
+<li>一幅图像对应唯一的灰度直方图，反之不成立。不同的图像可对应相同的直方图.</li>
+<li>一幅图像分成多个区域，多个区域的直方图之和即为原图像的直方图。</li>
+</ul>
+</li>
+<li>
+<p>直方图的应用</p>
+<ul>
+<li>用于判断图像量化是否恰当</li>
+<li>用于确定图像二值化的阈值</li>
+<li>统计图像中物体的面积。</li>
+<li>计算图像信息量 <span class="arithmatex">\(H\)</span>（熵）</li>
+</ul>
+</li>
+<li>
+<p>局部处理 </p>
+<ol>
+<li><strong>邻域定义</strong>：对于任一像素 <span class="arithmatex">\((i，j)\)</span>，该像素周围的像素构成的集合 <span class="arithmatex">\(\{(i+p,j+q)\;|\;p,q \in Z\}\)</span>，叫做该像素的邻域。</li>
+<li><strong>局部处理</strong>：对输入图像 <span class="arithmatex">\(IP(i,j)\)</span> 处理时，某一输出像素 <span class="arithmatex">\(JP(i,j)\)</span> 值由输入图像像素 <span class="arithmatex">\((i,j)\)</span> 及其邻域 <span class="arithmatex">\(N(IP(i,j))\)</span> 中的像素值确定。这种处理称为局部处理。</li>
+<li><strong>点处理</strong>：在局部处理中，当输出值 <span class="arithmatex">\(JP(i,j)\)</span> 仅与 <span class="arithmatex">\(IP(i,j)\)</span> 有关，则称为点处理，包括对比度增强、图像二值化</li>
+<li><strong>大局处理</strong>：在局部处理中，输出像素 <span class="arithmatex">\(JP(i,j)\)</span> 的值取决于输入图像大范围或全部像素的值，这种处理称为大局处理。</li>
+<li><strong>迭代处理</strong>
+    反复对图像进行某种运算直至满足给定的条件，从而得到输出图像的处理结果称为迭代处理。</li>
+<li><del>跟踪处理
+选择满足适当条件的像素作为起始像素，检查输入图像和已得到的输出结果，求出下一步应该处理的像素，进行规定的处理，然后决定是继续处理下面的像素，还是终止处理。这种处理形式称为跟踪处理。</del></li>
+<li>位置不变处理和位置可变处理</li>
+<li>窗口处理和模板处理
+对图像的处理，一般采用对整个画面进行处理，但也有只对画面中特定的部分进行处理的情况。</li>
+<li>图像的特征有自然特征和人工特征</li>
+<li><strong>特征提取</strong>：获取图像特征信息的操作称作特征提取。</li>
+<li>特征空间
+    把从图像提取的 <span class="arithmatex">\(m\)</span> 个特征量 <span class="arithmatex">\(y_1,y_2,\cdots,y_m\)</span>，用 <span class="arithmatex">\(m\)</span> 维的向量 <span class="arithmatex">\(Y＝[y_1 \; y_2 \;\cdots\; y_m]^\mathrm{T}\)</span> 表示称为特征向量。另外，对应于各特征量的 <span class="arithmatex">\(m\)</span> 维空间叫做特征空间。</li>
+</ol>
+</li>
+</ul>
+<h3 id="_9">第三章<a class="headerlink" href="#_9" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>图像变换</strong>即为达到图像处理的某种目的而使用的一种数学计算方法，是将图像<strong>从空间域</strong>变换到<strong>其它域（如频率域）</strong>的数学变换。 </li>
+<li>
+<p>图像变换的目的：</p>
+<ul>
+<li>使图像处理问题简化；</li>
+<li>有利于图像特征提取；</li>
+<li>有助于从概念上增强对图像信息的理解</li>
+</ul>
+</li>
+<li>
+<p>图像变换的要求</p>
+<ul>
+<li>图像函数变换后处理较变换前更加方便和简单；</li>
+<li>图像函数变换后不损失原图像的信息；</li>
+<li>图像变换必须是可逆的。 </li>
+</ul>
+</li>
+<li>
+<p>卷积</p>
+<p><span class="arithmatex">\(y(t)=\int_{-\infty}^{+\infty}x(t)h(t-\tau)d\tau=x(t)*h(t)\)</span></p>
+<ul>
+<li>
+<p>一维卷积</p>
+<p><span class="arithmatex">\(h(t)=f(t)*g(t)=\sum_{m=0}^{M-l}f(m)g(t-m)\)</span></p>
+</li>
+<li>
+<p>离散二维卷积</p>
+<p><span class="arithmatex">\(h(x,y)=f*g=\sum_{m=0}^{M-l}\sum_{n=0}^{N-l}f(m,n)g(x-m,y-n)\)</span></p>
+</li>
+</ul>
+</li>
+<li>
+<p>傅里叶变换</p>
+<ul>
+<li>
+<p>一维</p>
+<p><span class="arithmatex">\(F[f(x)]=F(u)=\int_{-\infty}^{+\infty}f(x)e^{-j2\pi ux}dx\\F^{-1}[F(u)]=f(x)=\int_{-\infty}^{+\infty}F(u)e^{j2\pi ux}du\)</span></p>
+</li>
+<li>
+<p>二维</p>
+<p><span class="arithmatex">\(F[f(x,y)]=F(u,\nu)=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}f(x,y)e^{-j2\pi(ux+\nu y)}dxdy\)</span></p>
+<p><span class="arithmatex">\(F^{-1}[F(u,\nu)]=f(x,y)=\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}F(u,\nu)e^{j2\pi(ux+\nu y)}dud\nu\)</span></p>
+</li>
+<li>
+<p><strong>二维离散</strong></p>
+<p><span class="arithmatex">\(F[f(x,y)]=F(u,v)=\frac{1}{MN}\sum_{x=0}^{M-1}\sum_{y=0}^{N-1}f(x,y)e^{-j2\pi(\frac{ux}{M}+\frac{vy}{N})}\)</span></p>
+<p><span class="arithmatex">\(F^{-1}[F(u,\nu)]=f(x,y)=\sum_{u=0}^{M-1}\sum_{\nu=0}^{N-1}F(u,\nu)e^{j2\pi(\frac{ux}{M}+\frac{vy}{N})}\)</span></p>
+</li>
+<li>
+<p>卷积定理</p>
+<p>空间域 <span class="arithmatex">\(f(x,y)*h(x,y)\Leftrightarrow F(u,\nu)\cdot H(u,\nu)\)</span> </p>
+<p>频率域 <span class="arithmatex">\(F(u,\nu)*H(u,\nu)\Leftrightarrow f(x,y)\cdot h(x,y)\)</span></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_10">第四章<a class="headerlink" href="#_10" title="Permanent link">¶</a></h3>
+<!-- TODO -->
+<ul>
+<li><strong>图像增强</strong>的定义：突出图像中的主要信息，抑制、削弱、剔除图像中的不需要的信息，使处理的结果对特定的应用来说比原始图像更“合适”，更便于进一步处理。</li>
+<li>图像增强目的：使图像更适合于人的视觉特性或机器的识别系统。</li>
+<li>
+<p>点运算：</p>
+<ul>
+<li>
+<p>灰度变换</p>
+<ul>
+<li>线性变换</li>
+<li>分段线性变换</li>
+<li>非线性灰度变换(<strong>对数</strong>、指数)</li>
+</ul>
+</li>
+<li>
+<p>直方图修整法</p>
+<ul>
+<li><strong>灰度直方图</strong>是反映一幅图像中的灰度级与出现这种灰度级的像素的概率之间的关系的图形。</li>
+<li>
+<p><strong>直方图均衡化</strong>处理</p>
+<p>直方图均衡化是将原图像通过某种变换，得到一幅灰度直方图为均匀分布的新图像的方法。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>直方图规定化</strong>
+    直方图规定化是使原图像灰度直方图变成规定形状的直方图而对图像作修正的增强方法。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>图像的空间域平滑</p>
+<p>为了抑制噪声改善图像质量所进行的处理称<strong>图像平滑</strong>或去噪</p>
+<ul>
+<li>
+<p>局部平滑法</p>
+<p><del>超限像素平滑法</del></p>
+<p><del>灰度最相近的 K 个邻点平均法</del></p>
+<p><del>最大均匀性平滑</del></p>
+<p><del>空间低通滤波法</del></p>
+</li>
+<li>
+<p>中值滤波</p>
+</li>
+</ul>
+</li>
+<li>
+<p>图像空间域锐化</p>
+<p><em>在图像的识别中常需要突出边缘和轮廓信息。<strong>图像锐化</strong>就是增强图像的边缘或轮廓。</em>图像平滑通过积分过程使得图像边缘模糊，图像锐化则通过微分而使图像边缘突出、清晰。</p>
+<ul>
+<li>
+<p>梯度锐化法</p>
+<ul>
+<li>Roberts 梯度算法</li>
+<li>Prewitt 锐化算法</li>
+<li>Sobel 锐化算法</li>
+</ul>
+</li>
+<li>
+<p>二阶微分算法</p>
+<ul>
+<li>Laplacian 算子</li>
+<li>Laplacian 增强算子</li>
+</ul>
+</li>
+<li>
+<p>方向算子</p>
+<ul>
+<li>Kirsch 算子</li>
+</ul>
+</li>
+<li>
+<p>高通滤波法</p>
+</li>
+</ul>
+</li>
+<li>
+<p>图像频率域增强</p>
+<ul>
+<li>
+<p><strong>图像增强的目的</strong>主要包括：</p>
+<ul>
+<li>消除噪声，改善图像的视觉效果；</li>
+<li>突出边缘，有利于识别和处理；</li>
+</ul>
+</li>
+<li>
+<p>频率域平滑—低通滤波</p>
+<p>过程包括，DFT 变换，滤波，IDFT 反变换</p>
+</li>
+<li>
+<p>频率域锐化—高通滤波</p>
+</li>
+<li>
+<p>同态滤波</p>
+</li>
+</ul>
+</li>
+<li>
+<p>图像彩色增强</p>
+<p><strong>彩色增强技术</strong>是利用人眼的视觉特性，将灰度图像变成彩色图像或改变彩色图像已有彩色的分布，改善图像的可分辨性。彩色增强方法可分为伪彩色增强和假彩色增强两类。</p>
+</li>
+<li>
+<p>伪彩色增强</p>
+<p><strong>伪彩色增强</strong>是把黑白图像的各个不同灰度级按照线性或非线性的映射函数变换成不同的彩色，得到一幅彩色图像的技术。使原图像细节更易辨认，目标更容易识别。</p>
+<ul>
+<li><strong>密度分割法</strong>是把黑白图像的灰度级从 0（黑）到 <span class="arithmatex">\(M_0\)</span>（白）分成 <span class="arithmatex">\(N\)</span> 个区间 <span class="arithmatex">\(I_i,(i=1,2,\cdots,N)\)</span>,给每个区间 <span class="arithmatex">\(I_i\)</span> 指定一种彩色 <span class="arithmatex">\(C_i\)</span>，这样，便可以把一幅灰度图像变成一幅伪彩色图像。该方法比较简单、直观。缺点是变换出的彩色数目有限。</li>
+<li>空间域灰度级一彩色变换</li>
+<li>频率域伪彩色增强</li>
+</ul>
+</li>
+<li>
+<p>假彩色增强</p>
+<p><strong>假彩色增强</strong>是对自然彩色图像或同一景物的多光谱图像，通过映射函数变换成新的三基色分量，彩色合成使感兴趣目标呈现出与原图像中不同的、奇异的彩色</p>
+<ul>
+<li>假彩色增强目的：<ul>
+<li>一是使感兴趣的目标呈现奇异的彩色或置于奇特的彩色环境中，从而更引人注目；</li>
+<li>一是使景物呈现出与人眼色觉相匹配的颜色，以提高对目标的分辨力。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_11">第五章<a class="headerlink" href="#_11" title="Permanent link">¶</a></h3>
+<ul>
+<li>图像的退化是指图像在形成、传输和记录过程中，由于成像系统、传输介质和设备的不完善，使图像的质量变坏。</li>
+<li>图像复原就是要尽可能恢复退化图像的本来面目，它是沿图像退化的逆过程进行处理。</li>
+<li>
+<p><strong>图像复原和图像增强的区别</strong>：</p>
+<ul>
+<li>图像增强不考虑图像是如何退化的，而是试图采用各种技术来增强图像的视觉效果。因此，图像增强可以不顾增强后的图像是否失真，只要看得舒服就行。</li>
+<li>而图像复原就完全不同，需知道图像退化的机制和过程等先验知识，据此找出一种相应的逆处理方法，从而得到复原的图像。</li>
+<li>如果图像已退化，应先作复原处理，再作增强处理。二者的目的都是为了改善图像的质量。  </li>
+</ul>
+</li>
+<li>
+<p>典型的图像退化原因</p>
+<ul>
+<li>光学衍射降质的 <span class="arithmatex">\(H(u,v)\)</span></li>
+<li>相机与景物相对运动的降质</li>
+<li>大气湍流造成的图像降质</li>
+</ul>
+</li>
+<li>
+<p><strong>逆滤波恢复法</strong></p>
+<ul>
+<li>对退化图像 <span class="arithmatex">\(g(x，y)\)</span> 作二维离散傅立叶变换，得到 <span class="arithmatex">\(G(u,v)\)</span>；</li>
+<li>计算系统点扩散函数 <span class="arithmatex">\(h(x，y)\)</span> 的二维傅立叶变换，得到 <span class="arithmatex">\(H(u,v)\)</span>；（通常 <span class="arithmatex">\(h(x,y)\)</span> 的尺寸小于 <span class="arithmatex">\(g(x,y)\)</span> 的尺寸。为了消除混叠效应引起的误差，需要把 <span class="arithmatex">\(h(x,y)\)</span> 的尺寸延拓）</li>
+<li>按 <span class="arithmatex">\(F(u,v)=G(u,v)/H(u,v)\)</span> 计算 <span class="arithmatex">\(\hat{F}(u,v)\)</span></li>
+<li>计算 <span class="arithmatex">\(\hat{F}(u,v)\)</span> 的逆傅立叶变换，求得 <span class="arithmatex">\(\hat{f}(x,y)\)</span></li>
+<li>
+<p>解决方法</p>
+<ul>
+<li>在 <span class="arithmatex">\(H(u,v)=0\)</span> 及其附近，人为地仔细设置 <span class="arithmatex">\(H^{-1}(u,v)\)</span>的值</li>
+<li>使 <span class="arithmatex">\(H^{-1}(u,v)\)</span> 具有低通滤波性质，如下式所示</li>
+</ul>
+<div class="arithmatex">\[H^{-1}(u,v)=\begin{cases}\frac{1}{H(u,v)}&amp;\text{D}\leq\text{D}_0\\[2ex]0&amp;\text{D}&gt;\text{D}_0\end{cases}\]</div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>维纳滤波复原方法</strong></p>
+</li>
+<li>
+<p><span class="arithmatex">\(H_w(u,v)=\frac{H^*(u,v)}{\left|H(u,v)\right|^2+\frac{P_n(u,v)}{P_f(u,v)}}\)</span></p>
+</li>
+<li><span class="arithmatex">\(\hat{F}(u,\nu)=\frac{H^*(u,\nu)}{\left|H(u,\nu)\right|^2+P_n(u,\nu)/P_f(u,\nu)}G(u,\nu)\)</span></li>
+<li>
+<p>复原过程步骤：</p>
+<ul>
+<li>计算图像 <span class="arithmatex">\(g(x,y)\)</span> 的二维离散傅立叶变换得到 <span class="arithmatex">\(G(u,v)\)</span>；</li>
+<li>计算点扩散函数 <span class="arithmatex">\(h_w(x,y)\)</span> 的二维离散傅立叶变换。同逆滤波一样，为了避免混叠效应引起的误差，应将尺寸延拓；</li>
+<li>估算图像的功率谱密度 <span class="arithmatex">\(P_f\)</span> 和噪声的谱密度 <span class="arithmatex">\(P_n\)</span>；</li>
+<li>由公式计算图像的估计值 <span class="arithmatex">\(\hat{F}(u,v)\)</span>;</li>
+<li>计算 <span class="arithmatex">\(\hat{F}(u,v)\)</span> 的逆傅里叶变换，得到恢复后的图像 <span class="arithmatex">\(\hat{f}(x,y)\)</span>。</li>
+<li>
+<p>图像的几何校正</p>
+</li>
+<li>
+<p>图像几何校正的基本方法是先建立几何校正的数学模型；其次利用已知条件确定模型参数；最后根据模型对图像进行几何校正。通常分两步：</p>
+<ul>
+<li>图像空间坐标变换：首先建立图像像点坐标（行、列号）和物方（或参考图）对应点坐标间的映射关系，解求映射关系中的未知参数，然后根据映射关系对图像各个像素坐标进行校正；</li>
+<li>确定各像素的灰度值（灰度内插）。</li>
+</ul>
+</li>
+<li>
+<p>几何校正方法包括：直接法；间接法。</p>
+</li>
+<li>常用的像素灰度内插法有<strong>最近邻元法</strong>、<strong>双线性内插法</strong>和<strong>三次内插法</strong>三种</li>
+</ul>
+</li>
+</ul>
+<h3 id="_12">第六章<a class="headerlink" href="#_12" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<p><strong>视觉冗余</strong></p>
+<p>编码冗余、像素冗余、心理视觉冗余</p>
+</li>
+<li>
+<p>图像编码的目的：节省存储空间；减少传输时间；利于处理，降低处理成本。</p>
+</li>
+<li>
+<p>保真度准则</p>
+<ul>
+<li>客观和主观度准则</li>
+<li>均方根误差和均方根信噪比</li>
+<li>
+<p>图像压缩冗余度和编码效率</p>
+</li>
+<li>
+<p>平均信息熵：<span class="arithmatex">\(H(d) = -\sum_{i=1}^{m} p(d_{i}) \log_{2} p(d_{i})\)</span></p>
+</li>
+<li>平均编码长度：<span class="arithmatex">\(R(d)=\sum_{i=1}^{m}p(d_{i})\beta_{i}\)</span></li>
+<li>冗余度：<span class="arithmatex">\(r=\frac{R(d)}{H(d)}-1\)</span></li>
+<li>编码效率：<span class="arithmatex">\(\eta=\frac{H(d)}{R(d)}=\frac{1}{1+r}\)</span></li>
+</ul>
+</li>
+<li>
+<p>统计编码</p>
+<ul>
+<li>霍夫曼编码</li>
+<li>行程编码</li>
+</ul>
+</li>
+</ul>
+<h3 id="_13">第七章<a class="headerlink" href="#_13" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>图像分割</strong>：把图像分成互不重叠的区域并提取感兴趣目标的技术</li>
+<li>
+<p>图像分割的<strong>方法</strong></p>
+<ul>
+<li>基于边缘的分割方法</li>
+<li>区域分割</li>
+<li>区域生长</li>
+<li>分裂-合并分割</li>
+</ul>
+</li>
+<li>
+<p><strong>边缘检测</strong>：图像中像素灰度有阶跃变化或屋顶变化的那些像素的集合</p>
+<ul>
+<li>
+<p>几种常用的边缘检测算子</p>
+<ul>
+<li>梯度算子</li>
+<li>Roberts 算子</li>
+<li>Prewitt 算子</li>
+<li>Sobel 算子</li>
+<li>Kirsch 算子</li>
+<li>Laplacian 算子</li>
+<li>Marr 算子</li>
+</ul>
+</li>
+<li>
+<p>曲面拟合法</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>边缘跟踪</strong>的概念</p>
+<ul>
+<li>将检测的边缘点连接成线就是边缘跟踪。线是图像的一种中层符号描述</li>
+<li>
+<p>由边缘形成线特征的两个过程</p>
+<ul>
+<li>可构成线特征的边缘提取</li>
+<li>将边缘连接成线</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Hough 变换</strong></p>
+<p>直角坐标系中的一条直线对应极坐标系中的一点，这种线到点的变换就是 Hough 变换。 </p>
+<ul>
+<li>
+<p>算法步骤：</p>
+<ul>
+<li>在 <span class="arithmatex">\(\rho,\theta\)</span> 的极值范围内对其分别进行 <span class="arithmatex">\(m,n\)</span> 等分，设一个二维数组的下标与 <span class="arithmatex">\(\rho_i,\theta_j\)</span> 的取值对应；</li>
+<li>对图像上的所有边缘点作 Hough 变换，求每个点在 <span class="arithmatex">\(\theta_j,(j＝0,1,\cdots,n)\)</span> Hough 变换后的 <span class="arithmatex">\(\rho_i\)</span>，判断 <span class="arithmatex">\((\rho_i,\theta_j)\)</span> 与哪个数组元素对应，则让该数组元素值加 1；</li>
+<li>比较数组元素值的大小，最大值所对应的 <span class="arithmatex">\((\rho_i,\theta_j)\)</span> 就是这些共线点对应的直线方程的参数。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>区域分割</strong>：一幅图像中属于同一区域的像素应具有相同或相似的属性，不同区域的像素属性不同。因此图像的分割就要寻求具有代表性的属性，利用这类属性进行划分，使具有相同属性的像素归属同一区域，不同属性的像素归属不同区域。</p>
+<ul>
+<li>阈值分割法</li>
+<li>复杂图像的区域分割</li>
+<li>特征空间聚类法</li>
+</ul>
+</li>
+<li>
+<p><strong>区域增长</strong>：区域增长是把图像分割成若干小区域，比较相邻小区域特征的相似性。若它们足够相似，则作为同一区域合并，以此方式将特征相似的小区域不断合并，直到不能合并为止，最后形成特征不同的各区域。</p>
+<ul>
+<li>单一型（像素与像素）</li>
+<li>质心型（像素与区域）</li>
+<li>
+<p>混合型（区域与区域）</p>
+<ul>
+<li>
+<p>区域分裂合并法</p>
+<ol>
+<li>初始分割   </li>
+<li>合并处理</li>
+<li>分裂处理</li>
+<li>组合处理</li>
+<li>消失小区</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_14">第八章<a class="headerlink" href="#_14" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<p>二值图像的特点：</p>
+</li>
+<li>
+<p>数据量小;</p>
+</li>
+<li>处理速度快、成本低、实时性强;</li>
+<li>
+<p>定义几何学的各种概念；</p>
+</li>
+<li>
+<p>8-邻域与 8-邻接：像素 <span class="arithmatex">\((i,j)\)</span> 上、下、左、右 4 个像素和 4 个对角线像素，称为像素 <span class="arithmatex">\((i,j)\)</span> 的 8-邻域。互为 8-邻域的两像素叫 8-邻接（或 8-连通） 。</p>
+</li>
+<li>
+<p>连接成分</p>
+<ul>
+<li>
+<p>连接成分
+　 <br/>
+    在一个二值图像中，如果把相互连接的像素汇集为一组，就产生了若干个“0”值像素组和“1”值的像素组，我们分别称这些组为连接成分（Connected Component）。</p>
+</li>
+<li>
+<p>孔
+　 <br/>
+    在“0”连接成分中，如果存在与外围的一行、一列的像素不相连的成分，则把它叫做孔（Hole）。</p>
+</li>
+<li>
+<p>单连接成分</p>
+<p>不包含孔的“1”连接成分叫单连接成分。</p>
+<ul>
+<li>
+<p>孤立点：</p>
+<p>仅含有一个像素的单连接成分叫孤立点（Isolated Point）。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>多重连接成分：</p>
+<p>含有孔的“1”连接成分叫多重连接成分。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>像素的连接数</p>
+<div class="arithmatex">\[\begin{aligned}&amp;N_{c}^{4}=\sum_{k=0,2,4,6}[f(x_{k})-f(x_{k})\cdot f(x_{k+1})\cdot f(x_{k+2})]\\&amp;N_{c}^{8}=\sum_{k=0,2,4,6}\{[1-f(x_{k})]-[1-f(x_{k})]\cdot[1-f(x_{k+1})]\cdot[1-f(x_{k+2})]\}\end{aligned}\]</div>
+</li>
+<li>
+<p>像素 <span class="arithmatex">\(X\)</span> 的邻域以及它的连接数</p>
+<p><span class="arithmatex">\(N_{c}^{8}=0\)</span>，孤立点或内部点；</p>
+<p><span class="arithmatex">\(N_{c}^{8}=1\)</span>，端点；</p>
+<p><span class="arithmatex">\(N_{c}^{8}=2\)</span>，连接点 ; </p>
+</li>
+<li>
+<p>像素可删除性</p>
+<p>当改变一个像素值，由 1 变成 0 的时候，整个图像连接成分的连接性不改变，则这个像素被称为是可删除</p>
+</li>
+<li>
+<p><strong>膨胀</strong>和<strong>腐蚀</strong></p>
+<ul>
+<li><strong>图像膨胀</strong>：把二值图像各 1 像素连接成分边界扩大一层的处理。</li>
+<li><strong>收缩</strong>：把二值图像各 1 像素连接成分边界点去掉从而缩小一层的处理。</li>
+</ul>
+</li>
+<li>
+<p><strong>开运算</strong>:腐蚀运算后再进行膨胀运算的组合运算称为开运算（Opening）。</p>
+<ul>
+<li>消除细小对象。</li>
+<li>在细小粘连处分离对象。</li>
+<li>在不改变形状的前提下，平滑对象的边缘。</li>
+</ul>
+</li>
+<li>
+<p><strong>闭运算</strong>:膨胀运算后再进行腐蚀运算的组合运算称为闭运算（Closing）</p>
+<ul>
+<li>填充对象内细小空洞。</li>
+<li>连接邻近对象。</li>
+<li>在不明显改变面积前提下，平滑对象的边缘。</li>
+</ul>
+</li>
+<li>
+<p><strong>细化</strong>：从二值图像中提取线宽为 1 像素的中心线的操作称为细化。</p>
+</li>
+<li>区域跟踪</li>
+</ul>
+<h3 id="_15">第九章<a class="headerlink" href="#_15" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<p><strong>纹理</strong> </p>
+<p>把图像中局部不规则的，而宏观有规律的特性称之为纹理。</p>
+</li>
+<li>
+<p><strong>人工纹理</strong>是某种符号的有序排列， 这些符号可以是线条、点、字母等，是有规则的。</p>
+</li>
+<li>
+<p><strong>自然纹理</strong>是具有重复排列现象的自然景象，如砖墙、森林、草地等图案，往往是无规则的。</p>
+</li>
+<li>
+<p>测量纹理特性的方法：</p>
+<ul>
+<li>统计分析法：从图像有关属性的统计分析出发</li>
+<li>结构分析法：着力找出纹理基元，然后从结构组成上探索纹理的规律，或直接去探求纹理构成的结构规律的</li>
+</ul>
+</li>
+<li>直方图分析法</li>
+<li>
+<p>Laws 纹理能量测量法</p>
+<ul>
+<li>
+<p>纹理测量</p>
+<ul>
+<li>一阶统计分析法
+依据单个像素及其邻域的灰度或某种属性分布</li>
+<li>二阶统计分析法
+根据一对像素灰度组合分布</li>
+<li>一阶方法做纹理分类，正确性优于二阶方法</li>
+<li><strong>Laws 的纹理能量测量法是一种典型的一阶分析方法，在纹理分析领域中有一定影响</strong></li>
+</ul>
+</li>
+<li>
+<p>基本思路</p>
+<ul>
+<li>微窗口滤波</li>
+<li>能量变换</li>
+</ul>
+</li>
+<li>
+<p>特点 
+    这种纹理分析方法简单、有效。但所提供的模板较少，尚未更多地给出其变化性质，因此，应用受到一定的限制。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>灰度共生矩阵</p>
+<p>从图像 <span class="arithmatex">\((x,y)\)</span> 灰度为 <span class="arithmatex">\(i\)</span> 的像素出发，统计与距离为 <span class="arithmatex">\(\delta=\sqrt{\Delta x^2+\Delta y^2}\)</span>、灰度为 <span class="arithmatex">\(j\)</span> 的像素同时出现的概率 <span class="arithmatex">\(P(i,j,\delta,\theta)\)</span>。</p>
+<ul>
+<li>
+<p>灰度共生矩阵特征的提取</p>
+<p>灰度共生矩阵反映了图像灰度关于方向、相邻间隔、变化幅度的综合信息，它可作为分析图像基元和排列结构的信息。</p>
+<p>作为纹理分析的特征量，往往不是直接应用计算的灰度共生矩阵，而是在灰度共生矩阵的基础上再提取纹理特征量，称为二次统计量。</p>
+<p>一幅图像的灰度级数一般是 256，这样计算的灰度共生矩阵太大。为了解决这一问题，在求灰度共生矩阵之前，常压缩为 16 级。</p>
+</li>
+<li>
+<p>灰度共生矩阵提取特征之前，要作<strong>正规化处理</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_16">第十章<a class="headerlink" href="#_16" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>模式（pattern）</strong> 存在于时间，空间中可观察的事物，具有时间或空间分布的信息。</li>
+<li>
+<p><strong>模板匹配</strong>定义</p>
+<p>当对象物的图案以图像的形式表现时，根据该图案与一幅图像的各部分的相似度判断其是否存在，并求得对象物在图像中位置的操作叫做模板匹配。</p>
+<ul>
+<li>
+<p>模板匹配的用途：</p>
+<ul>
+<li>在几何变换中，检测变换的对应点； </li>
+<li>多光谱或多时相图像间的几何配准（图像配准）；</li>
+<li>在立体影像分析中提取左右影像间的对应关系；</li>
+<li>运动物体的跟踪；</li>
+<li>图像中对象物位置的检测等。  </li>
+</ul>
+</li>
+<li>
+<p>模板匹配方法的改进</p>
+<ul>
+<li>高速模板匹配法</li>
+<li>粗精检索结合方法</li>
+<li>高精度定位的模板匹配</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>模式识别</p>
+<ul>
+<li>统计模式识别</li>
+<li>结构模式识别</li>
+<li>模糊模式识别</li>
+<li>智能模式识别</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.tooltips", "content.tabs.link", "content.code.copy", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.78eede0e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.zerolacqua.top/npm/mathjax/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/d3@7/dist/d3.min.js"></script>
+      
+        <script src="https://unpkg.com/markmap-lib@0.15.3/dist/browser/index.js"></script>
+      
+        <script src="https://unpkg.com/markmap-view@0.15.3/dist/browser/index.js"></script>
+      
+    
+  </body>
+</html>

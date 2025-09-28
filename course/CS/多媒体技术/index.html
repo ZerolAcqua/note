@@ -1,0 +1,5713 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://note.zerolacqua.top/course/CS/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/">
+      
+      
+        <link rel="prev" href="../../CV/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">
+      
+      
+        <link rel="next" href="../%E5%8D%97%E5%A4%A7%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9FPA/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.2.3">
+    
+    
+      
+        <title>多媒体技术 - 丘卡的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0e669242.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="丘卡的笔记本" class="md-header__button md-logo" aria-label="丘卡的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            丘卡的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              多媒体技术
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ZerolAcqua/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZerolAcqua/note
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../paper/RS/UAV/%E5%9F%BA%E4%BA%8E%E7%89%A9%E6%8E%A2%E9%A3%9E%E8%A1%8C%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%AD%A3%E5%B0%84%E5%BD%B1%E5%83%8F%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C/" class="md-tabs__link">
+          
+  
+    
+  
+  论文
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../Photogrammetry/%E8%BF%91%E6%99%AF%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-tabs__link">
+          
+  
+    
+  
+  课程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../programming/cpp/modern-cpp-features/" class="md-tabs__link">
+          
+  
+    
+  
+  编程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cs/computer_system/Putting_the_You_in_CPU/" class="md-tabs__link">
+          
+  
+    
+  
+  计算机
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../misc/photogrammetry/%E4%BA%91%E5%8F%B0%E6%97%8B%E8%BD%AC%E8%A7%92%E6%8D%A2%E7%AE%97/" class="md-tabs__link">
+          
+  
+    
+  
+  杂项
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="丘卡的笔记本" class="md-nav__button md-logo" aria-label="丘卡的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    丘卡的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ZerolAcqua/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZerolAcqua/note
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    论文
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            论文
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            RS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UAV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            UAV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/RS/UAV/%E5%9F%BA%E4%BA%8E%E7%89%A9%E6%8E%A2%E9%A3%9E%E8%A1%8C%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%AD%A3%E5%B0%84%E5%BD%B1%E5%83%8F%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于物探飞行模式的正射影像快速制作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/RS/UAV/%E4%B8%AD%E5%9B%BD%E5%85%89%E5%AD%A6%E5%8D%AB%E6%98%9F%E5%BD%B1%E5%83%8F%E5%8C%B9%E9%85%8D%E8%9E%8D%E5%90%88%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A combined image matching method for Chinese optical satellite imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/RS/UAV/%E5%8D%97%E6%9E%81%E6%97%A0%E4%BA%BA%E6%9C%BA%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F%E8%AE%BA%E6%96%87%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    南极无人机摄影测量论文概览
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    图像匹配
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            图像匹配
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/image_matching/LBD%E7%BA%BF%E7%89%B9%E5%BE%81%E6%8F%8F%E8%BF%B0%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LBD 线特征描述算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/image_matching/Sample4Geo_Hard_Negative_Sampling_for_Cross-View_Geo-Localisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample4Geo: Hard Negative Sampling for Cross-View Geo-Localisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/image_matching/Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    从人工特征到深度特征的图像匹配调查
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SfM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            SfM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Structure-from-Motion_Revisited/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SfM 回顾（Colmap）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Skeletal_graphs_for_efficient_structure_from_motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    用于高效 SfM 的骨架图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Structure-and-motion_pipeline_on_a_hierarchical_cluster_tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于分层聚类树的 SfM 
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Improving_the_efficiency_of_hierarchical_structure-and-motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提高分层 SfM 效率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Towards_Linear-Time_Incremental_Structure-from-Motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线性时间的增量式 SfM（VisualSFM）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Modeling_the_World_from_Internet_Photo_Collections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    通过互联网影像重建世界（Bundler）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Photo_Tourism_Exploring_Photo_Collections_in_3D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    相片旅行：在三维世界中浏览相片
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Building_Rome_in_a_Day/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一天建成罗马
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Efficient_structure_from_motion_for_large-scale_UAV_images_A_review_and_a_comparison_of_SfM_tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大规模无人机影像的高效 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Multicore_Bundle_Adjustment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多核光束法平差
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Efficient_tree-structured_SfM_by_RANSAC_generalized_Procrustes_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于 RANSAC 通用 Procrustes 分析的高效树状 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Divide_and_Conquer_Efficient_Large_Scale_Structure_from_Motion_Using_Graph_Partitioning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用图分割的分治高效大规模 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/SfM_on-the-fly%3A_A_robust_near_real-time_SfM_for_spatiotemporally_disordered_high-resolution_imagery_from_multiple_agents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实时 SfM：一种面向多智能体时空无序高分辨率影像的鲁棒近实时 SfM 方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    课程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            课程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    专业相关
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            专业相关
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    摄影测量
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            摄影测量
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Photogrammetry/%E8%BF%91%E6%99%AF%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    近景摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Photogrammetry/%E5%8D%AB%E6%98%9F%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    卫星摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Photogrammetry/%E6%95%B0%E5%AD%97%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Photogrammetry/%E8%A7%A3%E6%9E%90%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    解析摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2" >
+        
+          <label class="md-nav__link" for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            RS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RS/%E9%81%A5%E6%84%9F%E5%9B%BE%E5%83%8F%E8%A7%A3%E8%AF%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遥感图像解译
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_3" >
+        
+          <label class="md-nav__link" for="__nav_3_1_3" id="__nav_3_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    测绘
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            测绘
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../geomatics/%E5%A4%A7%E5%9C%B0%E6%B5%8B%E9%87%8F%E5%AD%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大地测量学
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4" >
+        
+          <label class="md-nav__link" for="__nav_3_1_4" id="__nav_3_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CV/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字图像处理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    专业之外
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            专业之外
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" checked>
+        
+          <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            CS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    多媒体技术
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    多媒体技术
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    复习课
+  </a>
+  
+    <nav class="md-nav" aria-label="复习课">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    第一章 绪论
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    第二章 视频图像压缩
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    第三章 语音音频压缩
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    第四章 多媒体通信与流媒体
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    第五章 视频图像分析与检索
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    课件
+  </a>
+  
+    <nav class="md-nav" aria-label="课件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    第一章 多媒体技术导论
+  </a>
+  
+    <nav class="md-nav" aria-label="第一章 多媒体技术导论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 多媒体技术基本概念
+  </a>
+  
+    <nav class="md-nav" aria-label="1 多媒体技术基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 媒体的概念
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 媒体的分类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 多媒体的基本概念
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    1.4 多媒体的描述
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    1.5 多媒体技术的主要特征
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2 多媒体技术研究内容
+  </a>
+  
+    <nav class="md-nav" aria-label="2 多媒体技术研究内容">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 视频图像压缩的必要性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 语音音频压缩
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 多媒体通信与流媒体
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 视频图像检索与分析
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3 多媒体技术应用领域
+  </a>
+  
+    <nav class="md-nav" aria-label="3 多媒体技术应用领域">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 数字安防
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 数字娱乐
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 数字医疗
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 数字教育
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    第二章 视频图像压缩
+  </a>
+  
+    <nav class="md-nav" aria-label="第二章 视频图像压缩">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1 视频图像压缩导论
+  </a>
+  
+    <nav class="md-nav" aria-label="1 视频图像压缩导论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11_1" class="md-nav__link">
+    1.1 人眼的视觉特性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12_1" class="md-nav__link">
+    1.2 视频图像压缩基础
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13_1" class="md-nav__link">
+    1.3 视频图像压缩发展历程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2 数据压缩基本方法
+  </a>
+  
+    <nav class="md-nav" aria-label="2 数据压缩基本方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21_1" class="md-nav__link">
+    2.1 游程编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22_1" class="md-nav__link">
+    2.2 熵编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23_1" class="md-nav__link">
+    2.3 字典编码
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    3 视频图像压缩方法
+  </a>
+  
+    <nav class="md-nav" aria-label="3 视频图像压缩方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31_1" class="md-nav__link">
+    3.1 预测编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32_1" class="md-nav__link">
+    3.2 变换编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33_1" class="md-nav__link">
+    3.3 量化编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34_1" class="md-nav__link">
+    3.4 视频压缩流程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4 视频图像编码标准
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    第三章 语音音频压缩
+  </a>
+  
+    <nav class="md-nav" aria-label="第三章 语音音频压缩">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    1 语音音频基础知识
+  </a>
+  
+    <nav class="md-nav" aria-label="1 语音音频基础知识">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11_2" class="md-nav__link">
+    1.1 声波
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12_2" class="md-nav__link">
+    1.2 语音
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13_2" class="md-nav__link">
+    1.3 声音感知
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    2 语音音频编码方法
+  </a>
+  
+    <nav class="md-nav" aria-label="2 语音音频编码方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21_2" class="md-nav__link">
+    2.1 波形编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22_2" class="md-nav__link">
+    2.2 参数编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23_2" class="md-nav__link">
+    2.3 感知编码
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    3 语音音频编码框架
+  </a>
+  
+    <nav class="md-nav" aria-label="3 语音音频编码框架">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31_2" class="md-nav__link">
+    3.1 语音编码框架
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32_2" class="md-nav__link">
+    3.2 音频编码框架
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33_2" class="md-nav__link">
+    3.3 混合编码框架
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    4 语音音频编码标准
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5 语音音频质量评价
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6 空间音频编码
+  </a>
+  
+    <nav class="md-nav" aria-label="6 空间音频编码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    6.1 多声道编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    6.2 三维音频系统
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    第四章 多媒体通信与流媒体
+  </a>
+  
+    <nav class="md-nav" aria-label="第四章 多媒体通信与流媒体">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    1 多媒体通信
+  </a>
+  
+    <nav class="md-nav" aria-label="1 多媒体通信">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11_3" class="md-nav__link">
+    1.1 多媒体通信技术
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12_3" class="md-nav__link">
+    1.2 多媒体通信系统
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    2 流媒体技术
+  </a>
+  
+    <nav class="md-nav" aria-label="2 流媒体技术">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21_3" class="md-nav__link">
+    2.1 流媒体技术原理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22_3" class="md-nav__link">
+    2.2 流媒体相关协议
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    第五章 视频图像分析与检索
+  </a>
+  
+    <nav class="md-nav" aria-label="第五章 视频图像分析与检索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    1 多媒体数据库
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    2 视频图像检索
+  </a>
+  
+    <nav class="md-nav" aria-label="2 视频图像检索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21_4" class="md-nav__link">
+    2.1 基于内容检索
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22_4" class="md-nav__link">
+    2.2 图像检索
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23_3" class="md-nav__link">
+    2.3 视频检索
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    3 图像分割
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_2" class="md-nav__link">
+    4 目标检测
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    5 目标跟踪
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6_1" class="md-nav__link">
+    6 视频行为识别
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    题型
+  </a>
+  
+    <nav class="md-nav" aria-label="题型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    简答题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    计算题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    简述题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    总结
+  </a>
+  
+    <nav class="md-nav" aria-label="总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    人眼的视觉特性在视频图像压缩中的运用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    人的发声特性和听觉特性在语音音频压缩中的运用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    哈夫曼编码的写法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    算术编码的写法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    视频冗余和压缩方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8D%97%E5%A4%A7%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9FPA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    南大计算机系统 PA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    others
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            others
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/%E9%80%BB%E8%BE%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    逻辑学导论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/%E9%9F%B3%E4%B9%90%E6%AC%A3%E8%B5%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    音乐欣赏
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    编程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            编程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            C++
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cpp/modern-cpp-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    现代 C++ 特性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cpp/Effective_Modern_C%2B%2B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Effective Modern C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cpp/head-first-design-pattern/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 实现 Headfirst 设计模式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Rust
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Rust
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/rust/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    准备工作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/rust/Rust%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rust 程序设计语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Julia
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Julia
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/julia/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    准备工作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/julia/Julia_Data_Science/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Julia Data Science
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/git/progit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Progit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/bibliometrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    文献计量学作业
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            计算机
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机系统
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            计算机系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/computer_system/Putting_the_You_in_CPU/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Putting the “You” in CPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    杂项
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            杂项
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    摄影测量
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            摄影测量
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/photogrammetry/%E4%BA%91%E5%8F%B0%E6%97%8B%E8%BD%AC%E8%A7%92%E6%8D%A2%E7%AE%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    云台旋转角换算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    复习课
+  </a>
+  
+    <nav class="md-nav" aria-label="复习课">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    第一章 绪论
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    第二章 视频图像压缩
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    第三章 语音音频压缩
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    第四章 多媒体通信与流媒体
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    第五章 视频图像分析与检索
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    课件
+  </a>
+  
+    <nav class="md-nav" aria-label="课件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    第一章 多媒体技术导论
+  </a>
+  
+    <nav class="md-nav" aria-label="第一章 多媒体技术导论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 多媒体技术基本概念
+  </a>
+  
+    <nav class="md-nav" aria-label="1 多媒体技术基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 媒体的概念
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 媒体的分类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    1.3 多媒体的基本概念
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    1.4 多媒体的描述
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    1.5 多媒体技术的主要特征
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2 多媒体技术研究内容
+  </a>
+  
+    <nav class="md-nav" aria-label="2 多媒体技术研究内容">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 视频图像压缩的必要性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 语音音频压缩
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 多媒体通信与流媒体
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 视频图像检索与分析
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3 多媒体技术应用领域
+  </a>
+  
+    <nav class="md-nav" aria-label="3 多媒体技术应用领域">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 数字安防
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 数字娱乐
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 数字医疗
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 数字教育
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    第二章 视频图像压缩
+  </a>
+  
+    <nav class="md-nav" aria-label="第二章 视频图像压缩">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    1 视频图像压缩导论
+  </a>
+  
+    <nav class="md-nav" aria-label="1 视频图像压缩导论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11_1" class="md-nav__link">
+    1.1 人眼的视觉特性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12_1" class="md-nav__link">
+    1.2 视频图像压缩基础
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13_1" class="md-nav__link">
+    1.3 视频图像压缩发展历程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    2 数据压缩基本方法
+  </a>
+  
+    <nav class="md-nav" aria-label="2 数据压缩基本方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21_1" class="md-nav__link">
+    2.1 游程编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22_1" class="md-nav__link">
+    2.2 熵编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23_1" class="md-nav__link">
+    2.3 字典编码
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    3 视频图像压缩方法
+  </a>
+  
+    <nav class="md-nav" aria-label="3 视频图像压缩方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31_1" class="md-nav__link">
+    3.1 预测编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32_1" class="md-nav__link">
+    3.2 变换编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33_1" class="md-nav__link">
+    3.3 量化编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34_1" class="md-nav__link">
+    3.4 视频压缩流程
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4 视频图像编码标准
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    第三章 语音音频压缩
+  </a>
+  
+    <nav class="md-nav" aria-label="第三章 语音音频压缩">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    1 语音音频基础知识
+  </a>
+  
+    <nav class="md-nav" aria-label="1 语音音频基础知识">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11_2" class="md-nav__link">
+    1.1 声波
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12_2" class="md-nav__link">
+    1.2 语音
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13_2" class="md-nav__link">
+    1.3 声音感知
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    2 语音音频编码方法
+  </a>
+  
+    <nav class="md-nav" aria-label="2 语音音频编码方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21_2" class="md-nav__link">
+    2.1 波形编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22_2" class="md-nav__link">
+    2.2 参数编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23_2" class="md-nav__link">
+    2.3 感知编码
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    3 语音音频编码框架
+  </a>
+  
+    <nav class="md-nav" aria-label="3 语音音频编码框架">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31_2" class="md-nav__link">
+    3.1 语音编码框架
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32_2" class="md-nav__link">
+    3.2 音频编码框架
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33_2" class="md-nav__link">
+    3.3 混合编码框架
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    4 语音音频编码标准
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5 语音音频质量评价
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6 空间音频编码
+  </a>
+  
+    <nav class="md-nav" aria-label="6 空间音频编码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    6.1 多声道编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    6.2 三维音频系统
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    第四章 多媒体通信与流媒体
+  </a>
+  
+    <nav class="md-nav" aria-label="第四章 多媒体通信与流媒体">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    1 多媒体通信
+  </a>
+  
+    <nav class="md-nav" aria-label="1 多媒体通信">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11_3" class="md-nav__link">
+    1.1 多媒体通信技术
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12_3" class="md-nav__link">
+    1.2 多媒体通信系统
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    2 流媒体技术
+  </a>
+  
+    <nav class="md-nav" aria-label="2 流媒体技术">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21_3" class="md-nav__link">
+    2.1 流媒体技术原理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22_3" class="md-nav__link">
+    2.2 流媒体相关协议
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    第五章 视频图像分析与检索
+  </a>
+  
+    <nav class="md-nav" aria-label="第五章 视频图像分析与检索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    1 多媒体数据库
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    2 视频图像检索
+  </a>
+  
+    <nav class="md-nav" aria-label="2 视频图像检索">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21_4" class="md-nav__link">
+    2.1 基于内容检索
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22_4" class="md-nav__link">
+    2.2 图像检索
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23_3" class="md-nav__link">
+    2.3 视频检索
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    3 图像分割
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_2" class="md-nav__link">
+    4 目标检测
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    5 目标跟踪
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6_1" class="md-nav__link">
+    6 视频行为识别
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    题型
+  </a>
+  
+    <nav class="md-nav" aria-label="题型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    简答题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    计算题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    简述题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    总结
+  </a>
+  
+    <nav class="md-nav" aria-label="总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    人眼的视觉特性在视频图像压缩中的运用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    人的发声特性和听觉特性在语音音频压缩中的运用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    哈夫曼编码的写法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    算术编码的写法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    视频冗余和压缩方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">多媒体技术<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<h2 id="_2">复习课<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<h3 id="_3">第一章 绪论<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<ul>
+<li>媒体</li>
+<li>表现域/维</li>
+<li>数字化</li>
+<li>特征</li>
+</ul>
+<h3 id="_4">第二章 视频图像压缩<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
+<ul>
+<li>人眼的视觉特征</li>
+</ul>
+<p>利用人眼的视觉特征压缩</p>
+<ul>
+<li>YUV</li>
+<li>量化编码</li>
+<li>帧率</li>
+<li>块效应滤波</li>
+<li>假纹理</li>
+<li>视觉关注度</li>
+<li>
+<p>降低量化级数</p>
+</li>
+<li>
+<p>RGB、HSI、YUV</p>
+</li>
+<li>
+<p>优势、适用场景</p>
+</li>
+<li>RGB 与 HSI 的转换<ul>
+<li>均值、方差、旋转角</li>
+</ul>
+</li>
+<li>
+<p>YUV 用于彩色图像压缩</p>
+</li>
+<li>
+<p>冗余与压缩方法</p>
+</li>
+<li>
+<p>时间、空间、视觉、频率</p>
+</li>
+<li>
+<p>帧间、帧内编码、变换编码</p>
+</li>
+<li>
+<p>压缩评价指标</p>
+</li>
+<li>
+<p>熵编码，无失真度指标</p>
+</li>
+<li>
+<p>PSNR</p>
+</li>
+<li>
+<p>游程编码</p>
+</li>
+<li>
+<p>只对交流系数编码</p>
+</li>
+<li>
+<p>熵编码（哈夫曼、算术编码）</p>
+</li>
+<li>
+<p>香农-费诺</p>
+</li>
+<li><strong>哈夫曼编码</strong><ul>
+<li>上放策略：码方差更小</li>
+<li>平均码长和码方差计算</li>
+</ul>
+</li>
+<li>
+<p><strong>算术编码</strong></p>
+<ul>
+<li>不排序、按自然顺序，从 0 到 1 赋值（从下往上）</li>
+</ul>
+</li>
+<li>
+<p>LZW 字典编码</p>
+</li>
+<li>
+<p>LZ77：隐式字典，要求上下文相关性比较强</p>
+</li>
+<li>LZ78：二元形式字典，为了照顾查不到字典的情况</li>
+<li>
+<p><strong>LZW：要将字典初始化</strong></p>
+<ul>
+<li>编解码的规则</li>
+</ul>
+</li>
+<li>
+<p>运动估计</p>
+</li>
+<li>
+<p>运动矢量估计</p>
+<ul>
+<li>快速算法：三步搜索法</li>
+<li>运动矢量不一定反映真实的运动，只要残差足够小就行</li>
+<li>宏块包含了不同的运动时，残差变大，细分宏块，但会增加运动矢量的数量。</li>
+</ul>
+</li>
+<li>
+<p>帧内预测</p>
+<ul>
+<li>预测哪一块和纹理方向有关</li>
+</ul>
+</li>
+<li>
+<p>帧类型</p>
+</li>
+<li>
+<p>I 帧、P 帧、B 帧</p>
+<ul>
+<li>B 帧会打乱编码顺序，且需要缓存</li>
+<li>I 帧一般比 P 帧大</li>
+</ul>
+</li>
+<li>
+<p>视频帧不应当全 P 帧</p>
+<ul>
+<li>错误的时间传递</li>
+<li>进度条不能调整</li>
+<li>场景切换（？）</li>
+</ul>
+</li>
+<li>
+<p>宏块类型</p>
+</li>
+<li>
+<p>Intra 宏块、Inter 宏块</p>
+</li>
+<li>
+<p>P 帧 Intra 宏块</p>
+</li>
+<li>
+<p>出现了新目标（极端情况：场景切换）</p>
+</li>
+<li>
+<p>目标的运动太剧烈</p>
+</li>
+<li>
+<p>内容本身空间相关性太强</p>
+</li>
+<li>
+<p>变换编码</p>
+</li>
+<li>
+<p>傅里叶变换的意义，基图像加权和形式</p>
+</li>
+<li>频率图像：坐标是频率，值是权重。</li>
+<li>
+<p>对小块进行频率域的变换</p>
+</li>
+<li>
+<p>量化编码</p>
+</li>
+<li>
+<p>与图像处理的“量化”意义不同</p>
+<ul>
+<li>能量集中在低频部分</li>
+<li>人眼对高频的感受不如低频强</li>
+</ul>
+</li>
+<li>
+<p>视频压缩流程</p>
+</li>
+<li>
+<p>缓存中得到的是解码图像</p>
+</li>
+<li>帧间预测与帧内预测的选择，先讨论帧类型</li>
+<li>
+<p>预测是对块的预测</p>
+</li>
+<li>
+<p>码流结构</p>
+</li>
+<li>压缩标准 JPEG、MPEG、H.26X</li>
+<li>分级压缩</li>
+</ul>
+<h3 id="_5">第三章  语音音频压缩<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<p>人耳、发声的生理特性</p>
+</li>
+<li>
+<p>语音短时平稳性——处理帧长</p>
+</li>
+<li>清浊音与周期性</li>
+<li>耳蜗的频率位置映射</li>
+<li>闻域曲线</li>
+<li>
+<p>听觉掩蔽</p>
+<ul>
+<li>时域</li>
+<li>频域</li>
+</ul>
+</li>
+<li>
+<p>波形、参数、感知编码</p>
+</li>
+<li>
+<p>波形编码实际就是数字化过程（采样、量化）</p>
+<p>脉冲编码调制</p>
+</li>
+<li>
+<p>非均匀量化</p>
+</li>
+</ul>
+<p>先进行非线性压扩，再进行均匀量化。</p>
+<ul>
+<li>
+<p>PCM→DPCM（预测）→ADPCM（预测）→子带 ADPCM（频率变换）</p>
+</li>
+<li>
+<p>语音数字化模型</p>
+</li>
+</ul>
+<p>四个参数，浊清不同处理</p>
+<ul>
+<li>语音/音频混合编码</li>
+</ul>
+<p>闭环模式与开环模式（如何选择的问题）</p>
+<ul>
+<li>语音音频标准的 MP3</li>
+</ul>
+<p>MP3 是 MPEG1 的第 3 层</p>
+<ul>
+<li>
+<p>双声道编码</p>
+</li>
+<li>
+<p>和差立体声</p>
+</li>
+<li>
+<p>强度立体声</p>
+</li>
+<li>
+<p>空间声学参数</p>
+</li>
+<li>
+<p>听觉定位机制</p>
+<ul>
+<li>水平方位</li>
+<li>时间差：低频</li>
+<li>强度差：高频，遮挡</li>
+<li>垂直方位</li>
+<li>耳廓效应</li>
+</ul>
+</li>
+<li>
+<p>空间音频编码</p>
+</li>
+<li>
+<p>下混</p>
+</li>
+<li>
+<p>重建</p>
+</li>
+<li>
+<p>三维音频补充</p>
+</li>
+</ul>
+<h3 id="_6">第四章 多媒体通信与流媒体<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<p>面向通信的视频编码</p>
+</li>
+<li>
+<p>可伸缩视频编码：带宽波动</p>
+</li>
+<li>
+<p>分布式视频编码：摄像头</p>
+</li>
+<li>
+<p>视频容错</p>
+</li>
+<li>
+<p>语音增强、听音增强</p>
+</li>
+<li>
+<p>远端语音：去噪</p>
+</li>
+<li>
+<p>近端听音：增强</p>
+<ul>
+<li>噪声抵消策略</li>
+<li>语音特性修正策略</li>
+<li>优缺点</li>
+</ul>
+</li>
+<li>
+<p>VoIP 话音质量</p>
+</li>
+<li>
+<p>影响因素</p>
+</li>
+<li>
+<p>压缩算法</p>
+<ul>
+<li>活动语音检测</li>
+</ul>
+<p>舒适噪声</p>
+</li>
+<li>
+<p>顺序流、实时流</p>
+</li>
+<li>顺序流<ul>
+<li>质量保障、有延时</li>
+</ul>
+</li>
+<li>流媒体传输原理协议</li>
+</ul>
+<h3 id="_7">第五章 视频图像分析与检索<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
+<ul>
+<li>基于内容检索</li>
+</ul>
+<p>色彩特征，色调直方图。</p>
+<ul>
+<li>检索有排序</li>
+<li>
+<p>一对一不需要排序</p>
+</li>
+<li>
+<p>双重比较法</p>
+</li>
+<li>
+<p>小阈值判断起始</p>
+</li>
+<li>大阈值判断变化</li>
+</ul>
+<h2 id="_8">课件<a class="headerlink" href="#_8" title="Permanent link">¶</a></h2>
+<h3 id="_9">第一章 多媒体技术导论<a class="headerlink" href="#_9" title="Permanent link">¶</a></h3>
+<h4 id="1">1 多媒体技术基本概念<a class="headerlink" href="#1" title="Permanent link">¶</a></h4>
+<h5 id="11">1.1 媒体的概念<a class="headerlink" href="#11" title="Permanent link">¶</a></h5>
+<ul>
+<li>在计算机领域中，媒体有两种含义，一是<strong>信息的载体</strong>，如磁带、磁盘、光盘和半导体存储器，一是指<strong>载体的信息</strong>，如文字、声音、图形和图像。</li>
+<li>按照国际电信联盟 ITU-T 建议的定义，媒体主要有<strong>五种形式</strong>，这些媒体形式在多媒体领域是相互密切关联的。</li>
+<li>感知媒体</li>
+<li>表示媒体</li>
+<li>表现媒体</li>
+<li>存储媒体</li>
+<li>传输媒体</li>
+<li>从媒体信息的获取途径来划分</li>
+<li>视听味嗅触</li>
+<li>我们听说过计算机视觉、计算机听觉，为什么很少听说计算机嗅觉、味觉、触觉呢？这其中的技术难点是什么呢？</li>
+</ul>
+<h5 id="12">1.2 媒体的分类<a class="headerlink" href="#12" title="Permanent link">¶</a></h5>
+<ul>
+<li>视觉</li>
+<li>静止<ul>
+<li>图像</li>
+<li>图形</li>
+<li>文字</li>
+<li>符号</li>
+<li>语言文字</li>
+</ul>
+</li>
+<li>动态<ul>
+<li>视频</li>
+<li>动态影像视频</li>
+<li>真实感三维动画</li>
+<li>动画</li>
+<li>二维动画</li>
+<li>三维动画</li>
+</ul>
+</li>
+<li>其它表示为视觉的媒体</li>
+<li>听觉</li>
+<li>声音<ul>
+<li>声响（自然界）</li>
+<li>语音（人类语言）</li>
+<li>音乐</li>
+</ul>
+</li>
+<li>触觉</li>
+<li>振动</li>
+<li>运动</li>
+<li>传感/发生器</li>
+<li>其它（嗅觉、味觉）</li>
+</ul>
+<h5 id="13">1.3 多媒体的基本概念<a class="headerlink" href="#13" title="Permanent link">¶</a></h5>
+<ul>
+<li>多媒体 = 多种媒体数据 + 一系列交互</li>
+<li>交互是人类获取信息、掌握知识的重要途径</li>
+</ul>
+<h5 id="14">1.4 多媒体的描述<a class="headerlink" href="#14" title="Permanent link">¶</a></h5>
+<ul>
+<li>
+<p>值</p>
+</li>
+<li>
+<p>表现域</p>
+</li>
+<li>
+<p>表现维</p>
+</li>
+<li>
+<p>多媒体的数字化</p>
+</li>
+<li>
+<p>采样</p>
+<p>采样（sampling）也称取样，指把时间域或空间域的连续量转化成离散量的过程</p>
+</li>
+<li>
+<p>量化</p>
+<p>指将信号的连续取值近似为有限多个离散值的过程</p>
+</li>
+</ul>
+<h5 id="15">1.5 多媒体技术的主要特征<a class="headerlink" href="#15" title="Permanent link">¶</a></h5>
+<ul>
+<li>多维性</li>
+</ul>
+<p>多媒体技术的多维性指的是，它把计算机所能处理的信息媒体的种类或范围扩大。不仅局限于原来的数据、文本或单一的语音、图像等，还包括人类的视、听、嗅、味与触觉。</p>
+<ul>
+<li>交互性</li>
+</ul>
+<p>交互可以做到自由的控制和干预信息的处理，增加对信息的注意力和理解，延长信息的保留时间。在计算机辅助教学、交互艺术等方面都取得了巨大的成功。</p>
+<ul>
+<li>集成性</li>
+</ul>
+<p>多媒体的集成性主要表现在多媒体信息的集成和处理这些媒体的设备与设施的集成。多媒体系统是建立在一个大的信息环境之下，系统的各种设备与设施应该成为一个整体，以充分发挥多媒体特性的协同效应。</p>
+<ul>
+<li>主观性</li>
+</ul>
+<p>多媒体信息通常是由人的感官来接受的，因此多媒体技术需要考虑人的生理和心理等主观特性，如人眼的视觉特性在视频技术中就得到广泛应用。</p>
+<ul>
+<li>视觉关注度</li>
+<li>几何错觉</li>
+<li>色彩错觉</li>
+</ul>
+<h4 id="2">2 多媒体技术研究内容<a class="headerlink" href="#2" title="Permanent link">¶</a></h4>
+<h5 id="21">2.1 视频图像压缩的必要性<a class="headerlink" href="#21" title="Permanent link">¶</a></h5>
+<ul>
+<li>视频图像压缩的基本依据</li>
+<li>空间冗余</li>
+<li>频率冗余</li>
+<li>视觉冗余</li>
+<li>熵冗余</li>
+<li>时间冗余</li>
+<li>视频图像压缩的基本方法</li>
+<li>帧内预测编码</li>
+<li>变换编码</li>
+<li>量化编码</li>
+<li>熵编码</li>
+<li>帧间预测编码</li>
+<li>时间冗余，求差</li>
+</ul>
+<h5 id="22">2.2 语音音频压缩<a class="headerlink" href="#22" title="Permanent link">¶</a></h5>
+<ul>
+<li>基本概念</li>
+</ul>
+<p>从信息论的观点来看，描述信源的数据是信息和数据冗余之和，即：数据=信息+数据冗余。</p>
+<ul>
+<li>语音音频编码分类</li>
+<li>波形编码</li>
+<li>参数编码</li>
+<li>
+<p>混合编码</p>
+</li>
+<li>
+<p>参数编码与语音压缩</p>
+</li>
+</ul>
+<p>参数编码是从语音波形信号中提取生成语音的参数，使用这些参数通过语音生成模型重构出语音，使重构的语音信号尽可能地保持原始语音信号的语意。也就是说，参数编码是把语音信号产生的数字模型作为基础，然后求出数字模型的模型参数，再按照这些参数还原数字模型，进而合成语音。</p>
+<ul>
+<li>
+<p>听觉掩蔽与音频压缩</p>
+</li>
+<li>
+<p>人耳接收一个声音时有可能受到另一个声音的干扰或压制，这称为掩蔽现象。</p>
+<ul>
+<li>前向掩蔽</li>
+<li>时域掩蔽</li>
+</ul>
+</li>
+</ul>
+<h5 id="23">2.3 多媒体通信与流媒体<a class="headerlink" href="#23" title="Permanent link">¶</a></h5>
+<ul>
+<li>媒体同步</li>
+<li>低时延通信</li>
+<li>带宽适应</li>
+<li>容错</li>
+<li>流媒体技术</li>
+</ul>
+<h5 id="24">2.4 视频图像检索与分析<a class="headerlink" href="#24" title="Permanent link">¶</a></h5>
+<ul>
+<li>图像检索</li>
+<li>图像分割</li>
+<li>基于人工交互的分割</li>
+<li>语义分割</li>
+<li>软分割\抠图</li>
+<li>目标检测与识别</li>
+<li>目标跟踪</li>
+<li>行为识别</li>
+</ul>
+<h4 id="3">3 多媒体技术应用领域<a class="headerlink" href="#3" title="Permanent link">¶</a></h4>
+<h5 id="31">3.1 数字安防<a class="headerlink" href="#31" title="Permanent link">¶</a></h5>
+<h5 id="32">3.2 数字娱乐<a class="headerlink" href="#32" title="Permanent link">¶</a></h5>
+<h5 id="33">3.3 数字医疗<a class="headerlink" href="#33" title="Permanent link">¶</a></h5>
+<h5 id="34">3.4 数字教育<a class="headerlink" href="#34" title="Permanent link">¶</a></h5>
+<h3 id="_10">第二章 视频图像压缩<a class="headerlink" href="#_10" title="Permanent link">¶</a></h3>
+<h4 id="1_1">1 视频图像压缩导论<a class="headerlink" href="#1_1" title="Permanent link">¶</a></h4>
+<h5 id="11_1">1.1 人眼的视觉特性<a class="headerlink" href="#11_1" title="Permanent link">¶</a></h5>
+<ul>
+<li>
+<p>人眼结构</p>
+</li>
+<li>
+<p>虹膜的收缩和扩张控制着进入眼睛的光量。</p>
+</li>
+<li>透射光在视网膜上成像。视网膜上的传感器将信息传输给大脑</li>
+<li>
+<p>视网膜上有两类光感受器：锥状体和杆状体</p>
+</li>
+<li>
+<p>人眼的视觉特性</p>
+</li>
+<li>
+<p>人眼的光谱灵敏度</p>
+</li>
+<li>
+<p>视觉的亮度适应性</p>
+<ul>
+<li>明适应</li>
+<li>暗适应</li>
+<li>人眼能通过调节感光灵敏度来适应范围很广的亮度</li>
+<li>人眼对目标亮度的感知更多依赖于目标跟背景之间的亮度差</li>
+</ul>
+</li>
+<li>
+<p>“马赫”带</p>
+</li>
+<li>
+<p>侧抑制</p>
+</li>
+<li>
+<p>几何错觉</p>
+<p>填充信息 </p>
+</li>
+<li>
+<p>视觉关注度/显著度</p>
+</li>
+<li>
+<p>视频图像基本参数</p>
+</li>
+<li>
+<p>空间分辨率</p>
+</li>
+<li>灰度分辨率</li>
+<li>时间分辨率</li>
+<li>
+<p>如果选择降低上述三种分辨率参数中的一种来减少数据量，你会选择哪种？——灰度</p>
+</li>
+<li>
+<p>色彩模型</p>
+</li>
+<li>
+<p>RGB 模型</p>
+<ul>
+<li>符合人眼客观构造，但不符合主观理解</li>
+</ul>
+</li>
+<li>
+<p>HSI 模型</p>
+<ul>
+<li>色调与亮度、饱和度相互独立，对光照变化更鲁棒</li>
+</ul>
+</li>
+<li>
+<p>RGB 到 HSI 模型转换</p>
+</li>
+<li>
+<p>YCbCr</p>
+<p>是用于彩色图像压缩时的一种表色系统</p>
+<ul>
+<li>采样依据：人类视觉系统（HVS）对亮度比对彩色敏感</li>
+</ul>
+</li>
+</ul>
+<h5 id="12_1">1.2 视频图像压缩基础<a class="headerlink" href="#12_1" title="Permanent link">¶</a></h5>
+<ul>
+<li>
+<p>数据冗余</p>
+</li>
+<li>
+<p>时间冗余</p>
+</li>
+<li>空间冗余</li>
+<li>
+<p>视觉冗余</p>
+</li>
+<li>
+<p>评价指标</p>
+</li>
+<li>
+<p>压缩比、失真度、计算复杂度</p>
+</li>
+<li>客观质量评价指标——峰值信噪比<ul>
+<li>均方误差 MSE 越小，PSNR 越大，质量越好</li>
+</ul>
+</li>
+<li>
+<p>主观质量评价指标</p>
+<ul>
+<li>绝对评价尺度</li>
+<li>相对评价尺度</li>
+</ul>
+</li>
+<li>
+<p>标准化</p>
+</li>
+</ul>
+<p>压缩标准 JPEG、MPEG、H.26X</p>
+<h5 id="13_1">1.3 视频图像压缩发展历程<a class="headerlink" href="#13_1" title="Permanent link">¶</a></h5>
+<h4 id="2_1">2 数据压缩基本方法<a class="headerlink" href="#2_1" title="Permanent link">¶</a></h4>
+<h5 id="21_1">2.1 游程编码<a class="headerlink" href="#21_1" title="Permanent link">¶</a></h5>
+<ul>
+<li>原理：如果数据项 d 在输入流中出现 n 次，则以单个字符对 nd 替换 n 次出现者。这个连续出现的数据项叫做游程 n，这种数据压缩方法称为游程编码或 RLE</li>
+<li>需要特殊的提示字符</li>
+</ul>
+<h5 id="22_1"><u><strong>2.2 熵编码</strong></u><a class="headerlink" href="#22_1" title="Permanent link">¶</a></h5>
+<ul>
+<li>熵：信息的度量</li>
+<li>变长码</li>
+<li>把短码赋给出现频率高的字符</li>
+<li>遵循前缀性。 </li>
+<li>香农－费诺编码</li>
+<li>哈夫曼编码</li>
+<li>步骤<ol>
+<li>信源符号按概率分布大小，以递减次序排列</li>
+<li>取两个最小的概率，分别赋以 0,1。然后把这两个概率值相加，作为新概率值与其他概率重新排序</li>
+<li>按重排概率值，重复（2）直到概率和达到 1 为止</li>
+<li>由后向前排列码序，即得哈夫曼编码使用</li>
+</ol>
+</li>
+<li>注意<ul>
+<li>使用上放策略，码方差更小</li>
+<li>哈夫曼编码过程编出的最佳码不是唯一的，但其平均码长是一样的，其中码方差最小者最佳。因此在哈夫曼编码过程中，合并后的新符号应当排在其它相同概率符号的上面。</li>
+</ul>
+</li>
+<li>D 进制哈夫曼编码<ul>
+<li>每次合并 D 个符号</li>
+<li>信源符号个数有要求，不符合要求的话需要补上概率为 0 的符号</li>
+</ul>
+</li>
+<li>算术编码</li>
+<li>Huffman 编码中每个符号都用整数个 bits 来表示，影响编码效率。 </li>
+<li>若能把一串符号作为编码单位，则效率还可提高。</li>
+<li>算术编码不排序，按自然顺序从下往上排</li>
+<li>编码过程、解码过程<ul>
+<li>新增字典第几项，等于第几次解码项加下一次解码的第一个字符</li>
+</ul>
+</li>
+</ul>
+<h5 id="23_1">2.3 字典编码<a class="headerlink" href="#23_1" title="Permanent link">¶</a></h5>
+<ul>
+<li>为了达到好的性能，需要知道信源的结构信息</li>
+<li>静态字典</li>
+<li>自适应字典</li>
+<li>LZ77</li>
+<li>搜索缓冲区为当前字典</li>
+<li>三元组\&lt;o,l,c&gt;，以应对无字典可查的情况</li>
+<li>假设模式满足局部性</li>
+<li>LZ78</li>
+<li>没有搜索缓冲区——代之以显式的字典</li>
+<li>编码器/解码器必须同步建立字典</li>
+<li>二元组\&lt;i,c&gt;，同样要应对无字典可查的情况</li>
+<li>字典大小控制<ul>
+<li>停止增长字典</li>
+<li>删除一些较早用过的项</li>
+<li>将字典全部删除</li>
+</ul>
+</li>
+<li><strong><u>LZW</u></strong></li>
+<li>字典初始化： 将单个信源 符号按照符号顺序写入字典表</li>
+<li>编码和解码？</li>
+<li>字典结构——树</li>
+</ul>
+<h4 id="3_1">3 视频图像压缩方法<a class="headerlink" href="#3_1" title="Permanent link">¶</a></h4>
+<ul>
+<li>
+<p>视频压缩的可行性</p>
+</li>
+<li>
+<p>视频压缩的基本依据</p>
+<ul>
+<li>空间冗余</li>
+<li>频率冗余</li>
+<li>视觉冗余</li>
+<li>熵冗余</li>
+<li>时间冗余</li>
+</ul>
+</li>
+<li>
+<p>视频压缩的基本方法</p>
+<ul>
+<li>帧内预测编码</li>
+<li>变换编码</li>
+<li>量化编码</li>
+<li>熵编码</li>
+<li>帧间预测编码</li>
+</ul>
+</li>
+</ul>
+<h5 id="31_1">3.1 预测编码<a class="headerlink" href="#31_1" title="Permanent link">¶</a></h5>
+<ul>
+<li>帧间预测编码的运动估计</li>
+<li>运动估计：对两帧图像之间的运动位移进行估计</li>
+<li>运动补偿：根据估计得到的运动位移对图像进行对齐</li>
+<li>基于块的运动估计<ul>
+<li>将视频的每一帧分成许多互不重叠的宏块（16*16 像素图像块）</li>
+<li>对每个宏块到参考帧某一给定特定搜索范围内根据一定的匹配准则找出与当前块最相似的块，即匹配块</li>
+<li>匹配块与当前块的相对位移即为运动矢量，和残差数据均要写入压缩流</li>
+</ul>
+</li>
+<li>运动估计全搜索算法<ul>
+<li>最简单、最原始，能得到全局最优结果，但计算量非常大</li>
+</ul>
+</li>
+<li>运动估计快速算法<ul>
+<li>三步搜索法</li>
+<li>计算量小，近似全局最优</li>
+</ul>
+</li>
+<li>
+<p>运动估计的目的</p>
+<ul>
+<li>引入运动估计，就是为了减少帧间预测编码残差图像所包含的信息量， 进而达到数据压缩的目的</li>
+<li>单元块大小越小，算法量基本不变，但运动矢量会变多</li>
+<li>一个块中有不同的运动趋势，自适应分块</li>
+</ul>
+</li>
+<li>
+<p>视频预测编码</p>
+</li>
+<li>
+<p>帧间/帧内预测编码的相同点</p>
+<ul>
+<li>编码端：原始值－预测值＝差值</li>
+<li>解码端：差值＋预测值＝原始值</li>
+</ul>
+</li>
+<li>
+<p>帧间/帧内预测编码的不同点</p>
+<ul>
+<li>帧间预测：预测值是时间上相邻的图像像素值，去除的是时间冗余</li>
+</ul>
+<p>帧内预测：预测值是空间上相邻的图像像素值，去除的是空间冗余</p>
+<ul>
+<li>帧间预测：需进行运动估计得到运动矢量</li>
+</ul>
+<p>帧内预测：不需进行运动估计</p>
+</li>
+<li>
+<p>静止图像的二维预测编码</p>
+</li>
+<li>
+<p>三邻域预测法</p>
+</li>
+<li>
+<p>预测的方向与图像的纹理有关</p>
+</li>
+<li>
+<p>视频帧类型</p>
+</li>
+<li>
+<p>帧间预测编码与帧类型</p>
+<ul>
+<li>I 帧：不能进行帧间预测，只能进行帧内预测，基本选项</li>
+<li>P 帧：可以进行前向帧间预测，基本选项</li>
+<li>B 帧：可以进行双向帧间预测，高级选项</li>
+<li>第一帧类型为 I 帧，其他帧类型由人工设置参数决定</li>
+</ul>
+</li>
+<li>视频帧大小比较<ul>
+<li>I 帧：不能去除时间冗余，只能去除空间冗余</li>
+<li>P 帧：可以去除时间冗余</li>
+<li>一般情况：视频帧的时间冗余多于空间冗余，I 帧数据量大于 P 帧</li>
+<li>特殊情况：视频帧的时间和空间冗余均较多，I 帧 P 帧数据量均较少</li>
+</ul>
+</li>
+<li>
+<p>视频第一帧不应全部为 P 帧</p>
+<ul>
+<li>视频跳转播放</li>
+<li>终止误码传播</li>
+</ul>
+</li>
+<li>
+<p>视频宏块类型</p>
+</li>
+<li>
+<p>视频宏块类型</p>
+<ul>
+<li>Intra 宏块：进行帧内预测的 16*16 像素图像块</li>
+<li>Inter 宏块：进行帧间预测的 16*16 像素图像块</li>
+</ul>
+</li>
+<li>
+<p>帧类型与宏块类型的关系</p>
+<ul>
+<li>I 帧：所有宏块均为 Intra 宏块，不能进行帧间预测，只能进行帧内预测</li>
+<li>P 帧：宏块可以为 Inter 宏块，进行帧间预测，也可以为 Intra 宏块，进行帧内预测</li>
+</ul>
+</li>
+<li>
+<p>P 帧中宏块是 Intra 宏块的情况</p>
+<ul>
+<li>
+<p>当前帧出现了前一帧未出现的新目标，新目标与前一帧没有时间相关性（出现新目标）</p>
+</li>
+<li>
+<p>目标连续，但当前帧中目标运动太过剧烈，目标与前一帧时间相关性太弱（运动太剧烈）</p>
+</li>
+<li>
+<p>当前帧内容自身过于简单相似，空间相关性太强（空间相关性强）</p>
+</li>
+<li>
+<p>时间相关性越强，时间冗余越多，就应该 Inter 宏块类型</p>
+</li>
+</ul>
+<p>空间相关性越强，空间冗余越多，就应该 Intra 宏块类型</p>
+</li>
+</ul>
+<h5 id="32_1">3.2 变换编码<a class="headerlink" href="#32_1" title="Permanent link">¶</a></h5>
+<ul>
+<li>频率冗余</li>
+<li>空间域：能量倾向于均匀地分布</li>
+<li>频率域：能量集中到少数几个“重要”的数据上</li>
+<li>傅里叶变换<ul>
+<li>函数表示为不同频率的正弦或余弦的加权和的形式</li>
+</ul>
+</li>
+<li>变换编码</li>
+<li>能够实现对能量的压缩，将能量集中到少数几个“重要”的数据上</li>
+<li>低频（基本信息）权重系数大</li>
+<li>高频（细节信息）权重系数小</li>
+<li>变换的基本单元：8×8 像素块</li>
+</ul>
+<h5 id="33_1">3.3 量化编码<a class="headerlink" href="#33_1" title="Permanent link">¶</a></h5>
+<ul>
+<li>视觉冗余</li>
+<li>视觉系统是非均匀和非线性的，对不同的变化感知程度不同</li>
+<li>对低频信息（基本信息）感知程度较强</li>
+<li>对高频信息（细节信息）感知程度较弱</li>
+<li>量化编码</li>
+<li>去掉高频信息，保留低频信息</li>
+<li>编码端：原始值 / 量化步长 ＝ 量化值</li>
+<li>解码端：量化值 X 量化步长 ＝ 重建值</li>
+<li>
+<p>加大量化步长，可以降低码率</p>
+</li>
+<li>
+<p>基于 DCT 变换的分块量化导致失真</p>
+</li>
+<li>块效应：变换编码是一种块结构编码方法，易出现块与块间的不连续性。</li>
+<li>蚊式噪声：看起来像某种围绕物体与背景之间高频分界(在前景物体与背景 之间形成的尖锐跳变)的朦胧的东西或闪光体。</li>
+</ul>
+<h5 id="34_1">3.4 视频压缩流程<a class="headerlink" href="#34_1" title="Permanent link">¶</a></h5>
+<ul>
+<li>
+<p>编码器</p>
+</li>
+<li>
+<p>缓存中“参考帧”。</p>
+</li>
+<li>
+<p>进行运动估计</p>
+</li>
+<li>
+<p>进行运动补偿计算</p>
+</li>
+<li>
+<p>当前帧和运动补偿参考帧进行差值运算得到运动补偿的帧差图像。</p>
+</li>
+<li>
+<p>对帧差图像进行 DCT 变换和量化。</p>
+</li>
+<li>
+<p>量化后的系数和运动矢量进行熵编码和传输。</p>
+</li>
+<li>
+<p>量化后的系数同时被解码，得到的帧差图像和运动补偿参考帧进行加法运算，从而得到一个新的放在缓存中的参考帧。</p>
+</li>
+<li>
+<p>正量化与熵编码之间：“之”字型扫描和行程编码。</p>
+</li>
+</ul>
+<p>使变换系数所代表的频率分量由高到低排列，增加连零的个数，提高变字长行程编码效率。</p>
+<ul>
+<li>
+<p>解码器</p>
+</li>
+<li>
+<p>对运动矢量和系数进行解码</p>
+</li>
+<li>进行反量化和反变换，得到帧差图像</li>
+<li>由缓存中的参考帧通过运动矢量进行运动补偿计算， 得到运动补偿参考帧</li>
+<li>帧差图像和运动补偿参考帧进行加法运算，得到当前帧图像</li>
+<li>
+<p>当前帧图像放入缓存中，作为新的参考帧</p>
+</li>
+<li>
+<p>视频码流结构</p>
+</li>
+</ul>
+<h4 id="4">4 视频图像编码标准<a class="headerlink" href="#4" title="Permanent link">¶</a></h4>
+<ul>
+<li>JPEG 标准</li>
+<li>MPEG-1 编码</li>
+<li>MPEG-4 编码</li>
+</ul>
+<h3 id="_11">第三章 语音音频压缩<a class="headerlink" href="#_11" title="Permanent link">¶</a></h3>
+<h4 id="1_2">1 语音音频基础知识<a class="headerlink" href="#1_2" title="Permanent link">¶</a></h4>
+<h5 id="11_2">1.1 声波<a class="headerlink" href="#11_2" title="Permanent link">¶</a></h5>
+<h5 id="12_2">1.2 语音<a class="headerlink" href="#12_2" title="Permanent link">¶</a></h5>
+<ul>
+<li>浊音</li>
+</ul>
+<p>声道打开，声带绷紧，气流经过使声带发生较低频率的张弛振荡，形成浊音，发浊音时声带发生振动， 因此浊音有周期性。</p>
+<ul>
+<li>清音</li>
+</ul>
+<p>声带不振动，而声道在某处保持收缩，气流在声道里收缩后高速通过 产生湍流，再经过主声道（咽、口腔）的调整最终形成清音，清音没有周期性</p>
+<ul>
+<li>
+<p>语音短时平稳性</p>
+</li>
+<li>
+<p>语音信号分析帧</p>
+</li>
+</ul>
+<h5 id="13_2">1.3 声音感知<a class="headerlink" href="#13_2" title="Permanent link">¶</a></h5>
+<ul>
+<li>人耳可以听到的声音的频率范围</li>
+<li>频率—位置的映射</li>
+<li>人耳对声音的频谱分析</li>
+<li>耳蜗内侧部位对低频敏感，外侧对高频敏感</li>
+<li>等响曲线、闻域曲线</li>
+<li>听觉掩蔽</li>
+<li>频域掩蔽</li>
+<li>时域掩蔽（前向掩蔽、后向掩蔽）</li>
+</ul>
+<h4 id="2_2">2 语音音频编码方法<a class="headerlink" href="#2_2" title="Permanent link">¶</a></h4>
+<h5 id="21_2">2.1 波形编码<a class="headerlink" href="#21_2" title="Permanent link">¶</a></h5>
+<ul>
+<li>
+<p>波形编码原理</p>
+</li>
+<li>
+<p>采样：为了避免混叠，采样频率至少为连续信号频率的两倍</p>
+</li>
+<li>
+<p>常用波形编码技术</p>
+</li>
+<li>
+<p>脉冲编码调制 PCM</p>
+<ul>
+<li>非均匀量化方法</li>
+</ul>
+<p>先非线性变换，再均匀量化</p>
+</li>
+<li>
+<p>差分脉冲编码调制 DPCM</p>
+<ul>
+<li>用前面传输的若干抽样值来预测当前要传输的样值，然后对预测的误差而不是样值进行编码、传输。在接收端再用接收的预测误差来修正当前的预测值</li>
+<li>预测器是通过 n 时刻之前的 N 个重建语音样点线性组合而成</li>
+</ul>
+</li>
+<li>
+<p>自适应差分脉冲编码调制 ADPCM</p>
+<ul>
+<li>自适应预测和自适应量化</li>
+</ul>
+</li>
+<li>
+<p>子带 ADPCM</p>
+<ul>
+<li>子带 ADPCM 原理：将信号分成多个子带，对各子带采用 ADPCM 编码</li>
+</ul>
+</li>
+</ul>
+<h5 id="22_2">2.2 参数编码<a class="headerlink" href="#22_2" title="Permanent link">¶</a></h5>
+<p>根据语音形成机理，着眼于构造语音生成模型，对语音特征参数进行提取和编码，力图使重建语音保持原语音的语意，而非波形。</p>
+<ul>
+<li>
+<p>语音产生数字模型</p>
+</li>
+<li>
+<p>将清浊音判断、浊音的基音周期看做语音信号输入 e(n)，增益系数 G 和时变数字滤波器系数{𝑎𝑖}看做声道滤波器参数</p>
+</li>
+<li>
+<p>语音信号特征参数</p>
+</li>
+<li>
+<p>清浊音判别、基音周期参数提取方法</p>
+</li>
+<li>
+<p>线性预测原理——滤波器系数</p>
+</li>
+<li>
+<p>线性预测声码器 LPC</p>
+</li>
+<li>
+<p>对比</p>
+</li>
+<li>
+<p>波形编码</p>
+<p>力图使重建音频波形保持原语音信号的波形形状，如 PCM，质量好，码率高，16～64kbps</p>
+</li>
+<li>
+<p>参数编码</p>
+<p>通过对语音信号特征参数的提取和编码，力图使重建信号保持原语音的语意，波形可能有较大的差别，码率低，1.2～2.4kbps</p>
+</li>
+<li>
+<p>混合编码</p>
+<p>既利用了语音的生成模型，减少了传输码率，又使解码的语音产生接近原始语音的波形，以保留说话人的自然特征在 4～16kbps 上获得高质量语音编码</p>
+</li>
+<li>
+<p>波形编码：码率高，质量好</p>
+<p>参数编码：码率低，质量差</p>
+<p>混合编码：码率低于波形编码，质量高于参数编码</p>
+</li>
+</ul>
+<h5 id="23_2">2.3 感知编码<a class="headerlink" href="#23_2" title="Permanent link">¶</a></h5>
+<ul>
+<li>
+<p>感知编码原理</p>
+</li>
+<li>
+<p>利用心理声学模型，去除声音信号中人耳不能感知的 部分，采用尽可能低的数据率获得信源输出的感知无 失真表示。感知编码一般结构。</p>
+</li>
+<li>
+<p>感知模型：也叫心理声学模型，模拟人耳听觉机制(掩蔽特性)，根据信号特性来对其他模块进行指导与控制</p>
+</li>
+</ul>
+<h4 id="3_2">3 语音音频编码框架<a class="headerlink" href="#3_2" title="Permanent link">¶</a></h4>
+<h5 id="31_2">3.1 语音编码框架<a class="headerlink" href="#31_2" title="Permanent link">¶</a></h5>
+<ul>
+<li>
+<p>语音信号特点 + 线性预测合成模型</p>
+</li>
+<li>
+<p>技术：码本激励线性预测（CELP）算法</p>
+</li>
+<li>声道参数：LPC 参数</li>
+<li>ACELP：代数码本激励线性预测算法</li>
+</ul>
+<h5 id="32_2">3.2 音频编码框架<a class="headerlink" href="#32_2" title="Permanent link">¶</a></h5>
+<ul>
+<li>音频编码原理：源于人耳听觉感知机理，利用声音的频域掩蔽特性，去除感知不到的冗余信号</li>
+<li>TVC：变换域矢量编码技术</li>
+</ul>
+<h5 id="33_2">3.3 混合编码框架<a class="headerlink" href="#33_2" title="Permanent link">¶</a></h5>
+<p>​   实际场景中，信号复杂，常用伴有语音和音乐，还有环境声等</p>
+<ul>
+<li>基本思想</li>
+</ul>
+<p>指同时使用两种或两种以上的编码方法进行编码，也称为多模式编码，克服了语音编码和音频编码的弱点，并结合了各自的优势。</p>
+<ul>
+<li>关键技术</li>
+</ul>
+<p>模式切换是混合编码框架中的关键技术，解决两个问题</p>
+<ul>
+<li>编码器选择——开环（闭环）</li>
+<li>
+<p>编码帧块间的无缝衔接——长短窗</p>
+</li>
+<li>
+<p>闭环模式选择</p>
+</li>
+<li>
+<p>原理：对待编码信号采用 ACELP 和 TVC 分别编码，然后解码，计算解码信号的信噪比，取信噪比大者作为编码模式</p>
+</li>
+<li>优点：闭环模式采用 SNR 值计算，模式选择准确率最好。</li>
+<li>
+<p>缺点：由于是分析-合成方法决策，复杂度高</p>
+</li>
+<li>
+<p>开环模式选择</p>
+</li>
+<li>
+<p>原理：采用信号分类算法，对待编码信号进行分类判决，若为语音信号，则采用 ACELP 编码方法；若为音乐信号，则采用 TVC 编码方法</p>
+</li>
+<li>优点：开环模式因避免分析-合成，可以大幅降低计算复杂度</li>
+<li>
+<p>缺点：相比闭环模式，准确率降低约 15%~20%</p>
+</li>
+<li>
+<p>通过长短重叠窗进行平滑衔接</p>
+</li>
+</ul>
+<h4 id="4_1">4 语音音频编码标准<a class="headerlink" href="#4_1" title="Permanent link">¶</a></h4>
+<ul>
+<li>MPEG 中主要的语音频编码标准</li>
+<li>MPEG 标准——MPEG-1</li>
+<li>MP3 是其三种压缩层次之一</li>
+<li>ITU-T 标准——G.711</li>
+</ul>
+<h4 id="5">5 语音音频质量评价<a class="headerlink" href="#5" title="Permanent link">¶</a></h4>
+<ul>
+<li>
+<p>语音频质量评价因素</p>
+</li>
+<li>
+<p>声音质量等级标准（4 级）</p>
+<ul>
+<li>数字激光唱盘 CD-DA 质量，其信号带宽为 20Hz~20kHz</li>
+<li>调频广播 FM 质量，其信号带宽为 50Hz~15kHz</li>
+<li>调幅广播 AM 质量，其信号带宽为 80Hz~7kHz</li>
+<li>电话的话音质量，其信号带宽为 80Hz~3.4kHz</li>
+</ul>
+</li>
+<li>
+<p>频率成分</p>
+<ul>
+<li>
+<p>对模拟音频来说，再现声音的频率成分越多，失真与干扰越小，声音保真度越高，音质也越好。</p>
+</li>
+<li>
+<p>对数字音频来说，再现声音的频率成分越多，误码率越小，音质越好。通常用码率（存储容量）来衡量，取样频率越高，量化比特数越大。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>声音类别</p>
+<ul>
+<li>语音音质保真度主要体现在清晰、不失真、再现平面声象</li>
+<li>乐音的保真度要求较高，营造空间声象主要体现在用多声道模拟立体环绕声，或虚拟双声道 3D 环绕声等方法，再现原来声源的一切声象。</li>
+</ul>
+</li>
+<li>
+<p>音频信号用途不同，压缩质量标准不同</p>
+</li>
+<li>
+<p>主观评价、客观评价</p>
+</li>
+<li>
+<p>主观评价方法与标准</p>
+</li>
+<li>
+<p>语音音质</p>
+</li>
+<li>乐音音质</li>
+<li>
+<p>音频音质</p>
+</li>
+<li>
+<p>客观评价方法与标准</p>
+</li>
+<li>
+<p>基于输入-输出的客观评价</p>
+</li>
+<li>基于输出的客观评价</li>
+</ul>
+<h4 id="6">6 空间音频编码<a class="headerlink" href="#6" title="Permanent link">¶</a></h4>
+<h5 id="61">6.1 多声道编码<a class="headerlink" href="#61" title="Permanent link">¶</a></h5>
+<ul>
+<li>
+<p>现代多声道系统</p>
+</li>
+<li>
+<p>双声道立体声编码</p>
+</li>
+<li>
+<p>和差立体声编码（M/S）</p>
+</li>
+<li>
+<p>强度立体声编码</p>
+<ul>
+<li>利用了人耳对高频信号（1.6kHz 以上）的频谱包络敏感而对频谱细节不敏感特性，仅限于高频段使用，对低频段使用会严重影响立体声效果</li>
+</ul>
+</li>
+<li>
+<p>多声道编码</p>
+</li>
+<li>
+<p>空间听觉特性</p>
+<ul>
+<li>
+<p>空间心理声学</p>
+</li>
+<li>
+<p>听觉定位效应</p>
+<ul>
+<li>
+<p>单耳定位（竖直）</p>
+</li>
+<li>
+<p>双耳定位（水平）</p>
+</li>
+</ul>
+<p>入射声波到达人的两耳时具有不同的差异而引起的听觉效果,主要表现在水平面内</p>
+</li>
+<li>
+<p>水平定位</p>
+<ul>
+<li>耳间时间差</li>
+<li>耳间强度差（高频）</li>
+<li>耳间相关性</li>
+</ul>
+</li>
+<li>
+<p>垂直定位</p>
+<ul>
+<li>与耳廓相关的信号高频（大于 5KHz）频谱线索(频响中波峰和波谷出现的位置)是人耳对声源垂直定位的依据</li>
+</ul>
+</li>
+<li>
+<p>距离</p>
+</li>
+</ul>
+</li>
+<li>
+<p>空间音频编码</p>
+<ul>
+<li>空间音频编码：将多声道信号用一个下混声道和若干描述声源空间信息的空间参数来表征，解码端通过上混和空间声场合成来重构。声道间空间参数的改变会带来声像位置的改变，因此空间参数可以用于描述音源空间信息，以及重建音源.</li>
+<li>空间音频编码（Spatial Audio Coding， SAC）</li>
+</ul>
+</li>
+</ul>
+<h5 id="62">6.2 三维音频系统<a class="headerlink" href="#62" title="Permanent link">¶</a></h5>
+<ul>
+<li>三维音频基本概念</li>
+<li>多声道回放的三维音频系统</li>
+<li>声场<ul>
+<li>自由声场</li>
+<li>混响声场</li>
+</ul>
+</li>
+<li>经典技术<ul>
+<li>Ambisonics</li>
+<li>WFS</li>
+<li>VBAP</li>
+<li>NHK 22.2</li>
+</ul>
+</li>
+<li>耳机回放的三维音频系统</li>
+<li>我们将声源 S 到达双耳的过程看做一个滤波的过程，若知道滤波器我们就可以虚拟合成出该空间位置的声音，用耳机播放出来即可</li>
+<li>头相关传输函数（HRTF）</li>
+<li>HRTF 个性化生成技术</li>
+<li>客观评估</li>
+<li>主观评价</li>
+</ul>
+<h3 id="_12">第四章 多媒体通信与流媒体<a class="headerlink" href="#_12" title="Permanent link">¶</a></h3>
+<h4 id="1_3">1 多媒体通信<a class="headerlink" href="#1_3" title="Permanent link">¶</a></h4>
+<h5 id="11_3">1.1 多媒体通信技术<a class="headerlink" href="#11_3" title="Permanent link">¶</a></h5>
+<ul>
+<li>多媒体通信相关技术</li>
+<li>概述<ul>
+<li>网络技术</li>
+<li>压缩技术</li>
+<li>终端技术</li>
+<li>同步技术</li>
+</ul>
+</li>
+<li>第五代移动通信</li>
+<li>可伸缩视频编码<ul>
+<li>可伸缩视频编码（Scalable Video Coding, SVC）是视频编码的一种，该技术把视频信号编码成分层的形式，当带宽不足时只对基本层的码流进行传输和解码，但这时解码的视频质量不高。当带宽慢慢变大时，可以传输和解码增强层的码流来提高视频的解码质量。</li>
+<li>质量域可伸缩</li>
+<li>多维度可伸缩编码</li>
+<li>注意力编码</li>
+</ul>
+</li>
+<li>分布式视频编码<ul>
+<li>编码简单，解码较复杂</li>
+<li>适用于计算能力、内存容量、耗电量受限的无线视频终 端（如无线视频监控系统、视频传感器网络等）。</li>
+<li>帧内编码-帧间解码系统</li>
+</ul>
+</li>
+<li>视频容错<ul>
+<li>编码端容错技术——帧内刷新</li>
+<li>编码端容错技术——分片</li>
+<li>编码端容错技术——可伸缩编码+非平等保护</li>
+<li>编码端容错技术——多描述编码</li>
+<li>解码端容错技术——错误掩盖</li>
+<li>编解码协同的容错技术——FMO+错误掩盖</li>
+</ul>
+</li>
+<li>语音通信<ul>
+<li>语音通信过程</li>
+<li>远端的说话阶段、近端的听音阶段</li>
+<li>解决方案：语音增强技术、近端听音增强技术</li>
+</ul>
+</li>
+<li>语音增强<ul>
+<li>是指当语音信号被各种各样的噪声干扰、甚至淹没后，从噪声背景中提取有用的语音信号</li>
+<li>频谱相减法</li>
+<li>自适应滤波法</li>
+<li>基于神经网络的语音增强</li>
+</ul>
+</li>
+<li>近端听音增强<ul>
+<li>当接听者处于嘈杂环境中，即使通信设备输出清晰的语音信号，语音信号仍旧会被环境噪音干扰甚至淹没，通过对原始语音的修改，使其具有更高的人耳清晰度，该技术称为近端听音增强(Near-End Listening Enhancement，NELE)或语音清晰度增强(Speech Intelligibility Enhancement, IENH)</li>
+<li>噪声抵消策略</li>
+<li>语音特性修正策略</li>
+<li>基于神经网络的全方位调整</li>
+</ul>
+</li>
+</ul>
+<h5 id="12_3">1.2 多媒体通信系统<a class="headerlink" href="#12_3" title="Permanent link">¶</a></h5>
+<ul>
+<li>IP 网络电话（VoIP）</li>
+<li>优缺点</li>
+<li>质量影响因素<ul>
+<li>压缩算法</li>
+<li>语音活动检测<ul>
+<li>活动语音检测主要用于检测输入信号是话音还是背景噪音。</li>
+<li>舒适噪声生成(CNG: Comfortable Noise Generation)：主要用于接收方重建背景噪声。</li>
+</ul>
+</li>
+<li>回声<ul>
+<li>回声抑制器</li>
+<li>回声消除器</li>
+</ul>
+</li>
+<li>语音延时</li>
+<li>丢失分组语音包</li>
+<li>抖动</li>
+</ul>
+</li>
+<li>可视电话系统</li>
+<li>
+<p>软件实现</p>
+<ul>
+<li>主控模块</li>
+<li>协议处理模块</li>
+<li>视频数据处理模块</li>
+<li>音频数据处理模块</li>
+<li>复用/解复用模块</li>
+<li>通讯处理模块</li>
+<li>用户接口模块</li>
+</ul>
+</li>
+<li>
+<p>影响因素</p>
+<ul>
+<li>带宽</li>
+<li>视频数据压缩</li>
+</ul>
+</li>
+<li>
+<p>视频会议系统</p>
+</li>
+<li>H.323 协议概述</li>
+</ul>
+<h4 id="2_3">2 流媒体技术<a class="headerlink" href="#2_3" title="Permanent link">¶</a></h4>
+<h5 id="21_3">2.1 流媒体技术原理<a class="headerlink" href="#21_3" title="Permanent link">¶</a></h5>
+<ul>
+<li>流式传输方法<ul>
+<li>顺序流</li>
+<li>定义：顺序下载，在下载文件的同时用户可观看再线媒体，在给定时刻，用户只能观看已下载的那部分，不能跳到还未下载的前头部分</li>
+<li>优点：标准的 HTTP 服务器可发送文件，不需要其他特殊协议；比较合适高质量的片段，这种方法保证电影播放的最终质量</li>
+<li>缺点：本质上是一种点播，用户在观看前，必须经历延时，对比较慢的连接尤其如此</li>
+<li>实时流</li>
+<li>定义：一般说来，如视频为实时广播，或使用流传输媒体服务器，或应用如 RTSP 的实时协议，即为实时流传输</li>
+<li>优点：实时流传输保证媒体信号带宽与网络连接匹配，使媒体可被实时观看到，适合视频直播</li>
+<li>缺点：实时流传输与顺序流传输不同，需要专用的流媒体服务器与传输协议；必须匹配连接带宽，网络拥挤或出现问题时，视频质量很差</li>
+</ul>
+</li>
+<li>流式传输基本原理</li>
+<li>
+<p>流媒体播放方式</p>
+<ul>
+<li>单播</li>
+<li>组播</li>
+</ul>
+</li>
+<li>
+<p>流媒体文件格式</p>
+</li>
+</ul>
+<h5 id="22_3">2.2 流媒体相关协议<a class="headerlink" href="#22_3" title="Permanent link">¶</a></h5>
+<h3 id="_13">第五章 视频图像分析与检索<a class="headerlink" href="#_13" title="Permanent link">¶</a></h3>
+<h4 id="1_4">1 多媒体数据库<a class="headerlink" href="#1_4" title="Permanent link">¶</a></h4>
+<ul>
+<li>多媒体数据管理问题</li>
+<li>多媒体数据库的一般结构形式</li>
+<li>多媒体数据库的层次结构</li>
+</ul>
+<h4 id="2_4">2 视频图像检索<a class="headerlink" href="#2_4" title="Permanent link">¶</a></h4>
+<h5 id="21_4">2.1 基于内容检索<a class="headerlink" href="#21_4" title="Permanent link">¶</a></h5>
+<h5 id="22_4">2.2 图像检索<a class="headerlink" href="#22_4" title="Permanent link">¶</a></h5>
+<ul>
+<li>基于颜色特征的检索</li>
+<li>基于纹理特征的检索</li>
+<li>基于形状特征的检索</li>
+<li>基于组合的多特征检索</li>
+<li>基于语义特征的检索</li>
+<li>颜色特征</li>
+<li>颜色直方图</li>
+<li>行人重识别</li>
+</ul>
+<h5 id="23_3">2.3 视频检索<a class="headerlink" href="#23_3" title="Permanent link">¶</a></h5>
+<ul>
+<li>视频检索与索引</li>
+<li>视频序列</li>
+<li>镜头的切换<ul>
+<li>直接切换</li>
+<li>渐变切换</li>
+</ul>
+</li>
+<li>镜头的运动</li>
+<li>视频检索常用的关键技术</li>
+<li>关键帧抽取</li>
+<li>镜头分割<ul>
+<li>非直接镜头切换（确定一个阈值）</li>
+<li>渐变镜头切换（双重比较法）</li>
+<li>双重比较法：是指采用两个阀值。首先用第一个较低的阀值来确定出潜在渐变切换序列的起始帧。一旦确定了这个帧，就将它与后续的帧进行比较，用得到的差值来取代帧间的差值。这个差值必须是单调的，应该不断地加大，直至这个单调的过程中止。这时，将这个差值与第二个较大的阀值进行比较，如果超过了这个阀值，就认为这个不断比较差值单调的视频序列对应的就是一个渐变切换点</li>
+</ul>
+</li>
+<li>视频结构重构</li>
+<li>多媒体内容描述接口 MPEG-7 </li>
+</ul>
+<h4 id="3_3">3 图像分割<a class="headerlink" href="#3_3" title="Permanent link">¶</a></h4>
+<ul>
+<li>基于边缘的图像分割</li>
+<li>点检测</li>
+<li>线检测</li>
+<li>边缘检测</li>
+<li>边缘连接与检测</li>
+<li>基于区域的图像分割</li>
+<li>阈值分割</li>
+<li>聚类分割</li>
+<li>基于语义的图像分割</li>
+<li>基于人工交互的语义分割</li>
+<li>基于图论的图像分割</li>
+<li>基于样本学习的语义分割</li>
+<li>基于全卷积网络 FCN 的语义分割</li>
+</ul>
+<h4 id="4_2">4 目标检测<a class="headerlink" href="#4_2" title="Permanent link">¶</a></h4>
+<ul>
+<li>
+<p>基于模板匹配的目标检测</p>
+</li>
+<li>
+<p>基于分类的目标检测</p>
+</li>
+<li>
+<p>目标定位</p>
+<ul>
+<li>滑动窗口</li>
+<li>区域选择</li>
+</ul>
+</li>
+<li>
+<p>目标分类</p>
+<ul>
+<li>
+<p>常见的特征：颜色特征、 纹理特征、梯度方向直方图特征、深度学习特征</p>
+</li>
+<li>
+<p>分类器：KNN、SVM、人工神经网络</p>
+</li>
+</ul>
+</li>
+<li>
+<p>关键问题及挑战</p>
+<ul>
+<li>遮挡</li>
+<li>尺度</li>
+<li>形变</li>
+<li>低光照</li>
+</ul>
+</li>
+<li>
+<p>基于语义的目标检测</p>
+</li>
+<li>
+<p>视觉词组</p>
+</li>
+</ul>
+<h4 id="5_1">5 目标跟踪<a class="headerlink" href="#5_1" title="Permanent link">¶</a></h4>
+<p>目标跟踪是指从一段连续的图像序列或视频中估计出感兴趣目标的运动状态和运动轨迹</p>
+<ul>
+<li>经典跟踪算法</li>
+<li>Meanshift 算法</li>
+<li>相关滤波跟踪</li>
+<li>相机移动、变焦等</li>
+<li>背景复杂</li>
+</ul>
+<h4 id="6_1">6 视频行为识别<a class="headerlink" href="#6_1" title="Permanent link">¶</a></h4>
+<ul>
+<li>活动分类</li>
+<li>面临的挑战</li>
+<li>人物位置，尺度的变化</li>
+<li>同类活动差异大</li>
+<li>相机移动、变焦等</li>
+<li>背景复杂</li>
+<li>Bag of Word</li>
+<li>
+<p>HOG 特征表达</p>
+</li>
+<li>
+<p>卷积神经网络</p>
+</li>
+<li>基于深度网络的行为识别</li>
+</ul>
+<h2 id="_14">题型<a class="headerlink" href="#_14" title="Permanent link">¶</a></h2>
+<p>分值组成：八个简答（40）三个计算（30）三个简述（30）</p>
+<h3 id="_15">简答题<a class="headerlink" href="#_15" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<p>多媒体数字化的两个主要环节</p>
+</li>
+<li>
+<p>视频压缩采用的色彩模型并解释原因</p>
+</li>
+<li>
+<p>视频压缩中变换编码的基本思想</p>
+</li>
+</ul>
+<p>基本思想+如何实现压缩</p>
+<ul>
+<li>
+<p>多媒体数据压缩的性能评价指标</p>
+</li>
+<li>
+<p>简答 ADPCM 的基本思想</p>
+</li>
+<li>
+<p>波形、参数、感知三种编码技术的优缺点</p>
+</li>
+<li>
+<p>流式传输的原理</p>
+</li>
+<li>多媒体数据库的层次结构</li>
+</ul>
+<h3 id="_16">计算题<a class="headerlink" href="#_16" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<p>哈夫曼编码</p>
+</li>
+<li>
+<p>LZW 字典编码</p>
+</li>
+<li>算术编码</li>
+</ul>
+<h3 id="_17">简述题<a class="headerlink" href="#_17" title="Permanent link">¶</a></h3>
+<ul>
+<li>视频编码器的基本框架</li>
+<li>JPEG 编码的基本过程</li>
+<li>语音编码非均匀量化</li>
+<li>可视电话软件实现的基本过程</li>
+<li>深度学习在多媒体技术领域的应用及其面临的挑战</li>
+<li>可解释性差</li>
+<li>泛化能力差</li>
+<li>负面影响</li>
+<li>
+<p>多媒体技术在数字安防领域的主要应用</p>
+</li>
+<li>
+<p>跨媒体应用</p>
+</li>
+</ul>
+<h2 id="_18">总结<a class="headerlink" href="#_18" title="Permanent link">¶</a></h2>
+<h3 id="_19">人眼的视觉特性在视频图像压缩中的运用<a class="headerlink" href="#_19" title="Permanent link">¶</a></h3>
+<ul>
+<li>YUV</li>
+<li>人类视觉系统（HVS）对亮度比对彩色敏感</li>
+<li>量化编码</li>
+<li>人眼对高频表示的细节部分敏感度不如低频高</li>
+<li>帧率</li>
+<li>25 帧左右的视频就可以形成连续的视频了</li>
+<li>块效应滤波（？？）</li>
+<li>假纹理</li>
+<li>水波、草地等纹理可以自动生成，人眼的区分能力不足</li>
+<li>视觉关注度</li>
+<li>ROI 编码。人眼的关注范围有限，对不重要的目标可以增大压缩率。</li>
+<li>降低量化级数</li>
+<li>人眼对量化级数（颜色数）的变化不敏感</li>
+</ul>
+<h3 id="_20">人的发声特性和听觉特性在语音音频压缩中的运用<a class="headerlink" href="#_20" title="Permanent link">¶</a></h3>
+<ul>
+<li>发声特性</li>
+<li>清浊音的周期特性不同，浊音有周期性，清音没有</li>
+<li>语音短时平稳性<ul>
+<li>人在说话时，声道形状会随口腔肌肉运动而进行相应变化，肌肉运动频率相对于语音变化频率而言要相对缓慢，在一个短时间间隔（20～40ms）内，可以认为声道及其输入是近似平稳的</li>
+<li>语音信号分析帧：假设语音信号短时平稳，为便于语音信号处理，会将语音信号进行分帧处理，语音信号的处理帧长为 20ms</li>
+</ul>
+</li>
+<li>听觉特性</li>
+<li>人耳的频率—位置的映射<ul>
+<li>子带 ADPCM</li>
+</ul>
+</li>
+<li>闻域曲线<ul>
+<li>感知编码</li>
+</ul>
+</li>
+<li>听觉掩蔽<ul>
+<li>感知编码</li>
+<li>语音特性修正策略</li>
+</ul>
+</li>
+</ul>
+<h3 id="_21">哈夫曼编码的写法<a class="headerlink" href="#_21" title="Permanent link">¶</a></h3>
+<h3 id="_22">算术编码的写法<a class="headerlink" href="#_22" title="Permanent link">¶</a></h3>
+<h3 id="_23">视频冗余和压缩方法<a class="headerlink" href="#_23" title="Permanent link">¶</a></h3>
+<ul>
+<li>视频压缩的基本依据</li>
+<li>空间冗余</li>
+<li>频率冗余</li>
+<li>视觉冗余</li>
+<li>熵冗余</li>
+<li>
+<p>时间冗余</p>
+</li>
+<li>
+<p>视频压缩的基本方法</p>
+</li>
+<li>帧内预测编码</li>
+<li>变换编码</li>
+<li>量化编码</li>
+<li>熵编码</li>
+<li>帧间预测编码</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.tooltips", "content.tabs.link", "content.code.copy", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.78eede0e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.zerolacqua.top/npm/mathjax/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/d3@7/dist/d3.min.js"></script>
+      
+        <script src="https://unpkg.com/markmap-lib@0.15.3/dist/browser/index.js"></script>
+      
+        <script src="https://unpkg.com/markmap-view@0.15.3/dist/browser/index.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4184 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://note.zerolacqua.top/paper/CV/image_matching/Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey.mm/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.2.3">
+    
+    
+      
+        <title>Image Matching from Handcrafted to Deep Features A Survey.mm - 丘卡的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0e669242.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="丘卡的笔记本" class="md-header__button md-logo" aria-label="丘卡的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            丘卡的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Image Matching from Handcrafted to Deep Features A Survey.mm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ZerolAcqua/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZerolAcqua/note
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../RS/UAV/%E5%9F%BA%E4%BA%8E%E7%89%A9%E6%8E%A2%E9%A3%9E%E8%A1%8C%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%AD%A3%E5%B0%84%E5%BD%B1%E5%83%8F%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C/" class="md-tabs__link">
+          
+  
+    
+  
+  论文
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../course/Photogrammetry/%E8%BF%91%E6%99%AF%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-tabs__link">
+          
+  
+    
+  
+  课程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../programming/cpp/modern-cpp-features/" class="md-tabs__link">
+          
+  
+    
+  
+  编程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../cs/computer_system/Putting_the_You_in_CPU/" class="md-tabs__link">
+          
+  
+    
+  
+  计算机
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../misc/photogrammetry/%E4%BA%91%E5%8F%B0%E6%97%8B%E8%BD%AC%E8%A7%92%E6%8D%A2%E7%AE%97/" class="md-tabs__link">
+          
+  
+    
+  
+  杂项
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="丘卡的笔记本" class="md-nav__button md-logo" aria-label="丘卡的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    丘卡的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ZerolAcqua/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZerolAcqua/note
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    论文
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            论文
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            RS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UAV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            UAV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RS/UAV/%E5%9F%BA%E4%BA%8E%E7%89%A9%E6%8E%A2%E9%A3%9E%E8%A1%8C%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%AD%A3%E5%B0%84%E5%BD%B1%E5%83%8F%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于物探飞行模式的正射影像快速制作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RS/UAV/%E4%B8%AD%E5%9B%BD%E5%85%89%E5%AD%A6%E5%8D%AB%E6%98%9F%E5%BD%B1%E5%83%8F%E5%8C%B9%E9%85%8D%E8%9E%8D%E5%90%88%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A combined image matching method for Chinese optical satellite imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../RS/UAV/%E5%8D%97%E6%9E%81%E6%97%A0%E4%BA%BA%E6%9C%BA%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F%E8%AE%BA%E6%96%87%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    南极无人机摄影测量论文概览
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    图像匹配
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            图像匹配
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LBD%E7%BA%BF%E7%89%B9%E5%BE%81%E6%8F%8F%E8%BF%B0%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LBD 线特征描述算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Sample4Geo_Hard_Negative_Sampling_for_Cross-View_Geo-Localisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample4Geo: Hard Negative Sampling for Cross-View Geo-Localisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    从人工特征到深度特征的图像匹配调查
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SfM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            SfM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SfM/Structure-from-Motion_Revisited/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SfM 回顾（Colmap）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SfM/Skeletal_graphs_for_efficient_structure_from_motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    用于高效 SfM 的骨架图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SfM/Structure-and-motion_pipeline_on_a_hierarchical_cluster_tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于分层聚类树的 SfM 
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SfM/Improving_the_efficiency_of_hierarchical_structure-and-motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提高分层 SfM 效率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SfM/Towards_Linear-Time_Incremental_Structure-from-Motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线性时间的增量式 SfM（VisualSFM）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SfM/Modeling_the_World_from_Internet_Photo_Collections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    通过互联网影像重建世界（Bundler）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SfM/Photo_Tourism_Exploring_Photo_Collections_in_3D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    相片旅行：在三维世界中浏览相片
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SfM/Building_Rome_in_a_Day/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一天建成罗马
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SfM/Efficient_structure_from_motion_for_large-scale_UAV_images_A_review_and_a_comparison_of_SfM_tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大规模无人机影像的高效 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SfM/Multicore_Bundle_Adjustment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多核光束法平差
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SfM/Efficient_tree-structured_SfM_by_RANSAC_generalized_Procrustes_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于 RANSAC 通用 Procrustes 分析的高效树状 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SfM/Divide_and_Conquer_Efficient_Large_Scale_Structure_from_Motion_Using_Graph_Partitioning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用图分割的分治高效大规模 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SfM/SfM_on-the-fly%3A_A_robust_near_real-time_SfM_for_spatiotemporally_disordered_high-resolution_imagery_from_multiple_agents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实时 SfM：一种面向多智能体时空无序高分辨率影像的鲁棒近实时 SfM 方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    课程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            课程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    专业相关
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            专业相关
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    摄影测量
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            摄影测量
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/Photogrammetry/%E8%BF%91%E6%99%AF%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    近景摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/Photogrammetry/%E5%8D%AB%E6%98%9F%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    卫星摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/Photogrammetry/%E6%95%B0%E5%AD%97%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/Photogrammetry/%E8%A7%A3%E6%9E%90%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    解析摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2" >
+        
+          <label class="md-nav__link" for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            RS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/RS/%E9%81%A5%E6%84%9F%E5%9B%BE%E5%83%8F%E8%A7%A3%E8%AF%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遥感图像解译
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_3" >
+        
+          <label class="md-nav__link" for="__nav_3_1_3" id="__nav_3_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    测绘
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            测绘
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/geomatics/%E5%A4%A7%E5%9C%B0%E6%B5%8B%E9%87%8F%E5%AD%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大地测量学
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4" >
+        
+          <label class="md-nav__link" for="__nav_3_1_4" id="__nav_3_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/CV/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字图像处理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    专业之外
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            专业之外
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            CS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/CS/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多媒体技术
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/CS/%E5%8D%97%E5%A4%A7%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9FPA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    南大计算机系统 PA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    others
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            others
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/others/%E9%80%BB%E8%BE%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    逻辑学导论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../course/others/%E9%9F%B3%E4%B9%90%E6%AC%A3%E8%B5%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    音乐欣赏
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    编程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            编程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            C++
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/cpp/modern-cpp-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    现代 C++ 特性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/cpp/Effective_Modern_C%2B%2B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Effective Modern C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/cpp/head-first-design-pattern/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 实现 Headfirst 设计模式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Rust
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Rust
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/rust/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    准备工作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/rust/Rust%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rust 程序设计语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Julia
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Julia
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/julia/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    准备工作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/julia/Julia_Data_Science/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Julia Data Science
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/git/progit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Progit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../programming/python/bibliometrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    文献计量学作业
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            计算机
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机系统
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            计算机系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cs/computer_system/Putting_the_You_in_CPU/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Putting the “You” in CPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    杂项
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            杂项
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    摄影测量
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            摄影测量
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../misc/photogrammetry/%E4%BA%91%E5%8F%B0%E6%97%8B%E8%BD%AC%E8%A7%92%E6%8D%A2%E7%AE%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    云台旋转角换算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    摘要
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1 引言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2 特征检测
+  </a>
+  
+    <nav class="md-nav" aria-label="2 特征检测">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 特征检测概述
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 角点特征
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 角点特征">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221" class="md-nav__link">
+    2.2.1 基于梯度的检测器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222" class="md-nav__link">
+    2.2.2 基于强度的检测器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#223" class="md-nav__link">
+    2.2.3 基于曲率的检测器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 斑点特征
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 斑点特征">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    基于二阶偏导数的方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#232" class="md-nav__link">
+    2.3.2 基于分割的检测器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 可学习特征
+  </a>
+  
+    <nav class="md-nav" aria-label="2.4 可学习特征">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#241" class="md-nav__link">
+    2.4.1 经典学习方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#242" class="md-nav__link">
+    2.4.2 基于深度学习的检测器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-3d" class="md-nav__link">
+    2.5 3D 特征检测器
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5 3D 特征检测器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#251" class="md-nav__link">
+    2.5.1 固定尺度检测器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#252" class="md-nav__link">
+    2.5.2 自适应尺度检测器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    2.6 总结
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3 特征描述
+  </a>
+  
+    <nav class="md-nav" aria-label="3 特征描述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 特征描述符概述
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 手工制作的特征描述符
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 手工制作的特征描述符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321" class="md-nav__link">
+    3.2.1 基于梯度统计的描述符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322" class="md-nav__link">
+    3.2.2 基于局部二值模式统计的描述符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323" class="md-nav__link">
+    3.2.3 基于局部强度比较的描述符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#324" class="md-nav__link">
+    3.2.4 基于局部强度顺序统计的描述符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 基于学习的特征描述符
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 基于学习的特征描述符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331" class="md-nav__link">
+    3.3.1 经典学习型描述符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332" class="md-nav__link">
+    3.3.2 基于深度学习的描述符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 三维特征描述符
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 三维特征描述符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341" class="md-nav__link">
+    3.4.1 手工制作三维描述符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342" class="md-nav__link">
+    3.4.2 基于学习的三维描述符
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    3.5 总结
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4 匹配方法
+  </a>
+  
+    <nav class="md-nav" aria-label="4 匹配方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 匹配方法概述
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 基于区域的匹配
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 图匹配方法
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 图匹配方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431" class="md-nav__link">
+    4.3.1 光谱松弛方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432" class="md-nav__link">
+    4.3.2 凸松弛方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#433" class="md-nav__link">
+    4.3.3 凸到凹松弛
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#434" class="md-nav__link">
+    4.3.4 连续松弛
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#435" class="md-nav__link">
+    4.3.5 多图匹配
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#436" class="md-nav__link">
+    4.3.6 其他范式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    4.4 点集配准方法
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 点集配准方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#441-icp" class="md-nav__link">
+    4.4.1 ICP 及其变种
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#442-em" class="md-nav__link">
+    4.4.2 基于 EM 的方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#443" class="md-nav__link">
+    4.4.3 基于密度的方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#444" class="md-nav__link">
+    4.4.4 基于优化的方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#445" class="md-nav__link">
+    4.4.5 杂项方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    4.5 消除误匹配的描述符匹配
+  </a>
+  
+    <nav class="md-nav" aria-label="4.5 消除误匹配的描述符匹配">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#451" class="md-nav__link">
+    4.5.1 虚拟匹配集构建
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#452" class="md-nav__link">
+    4.5.2 基于重新采样的方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#453" class="md-nav__link">
+    4.5.3 基于非参数模型的方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#454" class="md-nav__link">
+    4.5.4 宽松方法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46" class="md-nav__link">
+    4.6 基于学习的匹配
+  </a>
+  
+    <nav class="md-nav" aria-label="4.6 基于学习的匹配">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#461" class="md-nav__link">
+    4.6.1 从图像学习
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#462" class="md-nav__link">
+    4.6.2 从点学习
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47" class="md-nav__link">
+    4.7 三维情况下的匹配
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#48" class="md-nav__link">
+    4.8 总结
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5 基于匹配的应用
+  </a>
+  
+    <nav class="md-nav" aria-label="5 基于匹配的应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-sfm" class="md-nav__link">
+    5.1 SfM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-slam" class="md-nav__link">
+    5.2 SLAM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    5.3 视觉导航
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    5.4 图像配准和拼接
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    5.5 图像融合
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56" class="md-nav__link">
+    5.6 图像检索、物体识别和跟踪
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Image Matching from Handcrafted to Deep Features A Survey.mm</h1>
+
+<h2 id="_1">摘要<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<ul>
+<li>介绍了特征检测、描述和匹配技术，并进行了分析。</li>
+<li>简要介绍了几种典型的基于图像匹配的应用</li>
+<li>通过实验，对这些经典和最新的技术进行了全面和客观的比较。</li>
+<li>总结了图像匹配技术的当前状态，并提供了关于未来工作的深刻讨论和展望。</li>
+<li>这项综述可以作为图像匹配和相关领域的研究人员和工程师的参考资料。</li>
+</ul>
+<h2 id="1">1 引言<a class="headerlink" href="#1" title="Permanent link">¶</a></h2>
+<ul>
+<li>图像匹配策略</li>
+<li>基于区域的方法</li>
+<li>基于特征的方法</li>
+<li>挑战 </li>
+<li>依赖于相似性测量，对变化敏感。</li>
+<li>基于特征匹配方法<ul>
+<li>很难定义和提取属于现实世界中相同位置的高比例和大数量的特征，确保匹配性。</li>
+<li>特征点之间的匹配数量众多，通常从高分辨率图像中提取出数千个特征</li>
+<li>离群值和噪声影响大</li>
+<li>质量较差、内容重复、几何变形、视角变化导致误匹配</li>
+</ul>
+</li>
+<li>两个图像或点集之间的几何关系不易确定</li>
+<li>深度学习<ul>
+<li>宽基线图像立体或在复杂和严重变形下进行注册时，从图像学习直接进行注册或变换模型估计的选择有限。</li>
+<li>稀疏点数据变换的参数回归困难</li>
+</ul>
+</li>
+</ul>
+<h2 id="2">2 特征检测<a class="headerlink" href="#2" title="Permanent link">¶</a></h2>
+<h3 id="21">2.1 特征检测概述<a class="headerlink" href="#21" title="Permanent link">¶</a></h3>
+<ul>
+<li>按语义结构</li>
+<li>角点特征</li>
+<li>斑点特征</li>
+<li>线条/边缘</li>
+<li>形态区域特征</li>
+<li>点易于提取，大致可以分为角点和斑点</li>
+<li>良好的兴趣点</li>
+<li>易于查找</li>
+<li>计算速度快</li>
+<li>提升思路</li>
+<li>可匹配性</li>
+<li>后续应用</li>
+<li>匹配效率</li>
+<li>减少存储要求</li>
+<li>可重复性</li>
+<li>不变性</li>
+<li>稳健性</li>
+<li>效率</li>
+<li>特征检测的共同思想构建特征响应以区分显着的点、线和区域，以及平坦和不明显的图像区域</li>
+<li>根据策略分类</li>
+<li>梯度</li>
+<li>强度</li>
+<li>二阶导数</li>
+<li>轮廓曲率</li>
+<li>区域分割</li>
+<li>基于学习</li>
+</ul>
+<h3 id="22">2.2 角点特征<a class="headerlink" href="#22" title="Permanent link">¶</a></h3>
+<ul>
+<li>角点搜索的策略</li>
+<li>梯度</li>
+<li>强度</li>
+<li>轮廓曲率</li>
+</ul>
+<h4 id="221">2.2.1 基于梯度的检测器<a class="headerlink" href="#221" title="Permanent link">¶</a></h4>
+<ul>
+<li>基于梯度的角点响应倾向使用一阶信息</li>
+<li>Moravec 检测器</li>
+<li>对方向或图像旋转不具有不变性</li>
+<li>Harris 角点检测器</li>
+<li>引入了解决各向异性和计算复杂性问题的方法。</li>
+<li>使用二阶矩阵或自相关矩阵找到最快和最低灰度值变化的方向，因</li>
+<li>对方向和光照具有不变性</li>
+<li>具有可靠的可重复性和独特性</li>
+<li>使特征更加“分散”并更准确地定位来提高跟踪性能。</li>
+</ul>
+<h4 id="222">2.2.2 基于强度的检测器<a class="headerlink" href="#222" title="Permanent link">¶</a></h4>
+<ul>
+<li>基于模板/强度比较的角点检测器</li>
+<li>将周围像素的强度与中心像素的强度进行比较</li>
+<li>简化图像梯度计算</li>
+<li>适用于具有存储和实时要求的应用。</li>
+<li>SUSAN</li>
+<li>基于局部半径区域像素和核的亮度相似性。</li>
+<li>不需要梯度计算。已经提出了许多类似的方法，这些方法</li>
+<li>FAST</li>
+<li>基于亮度比较</li>
+<li>使用与中心像素沿圆形模式的每个像素的二进制比较</li>
+<li>使用机器学习策略确定更可靠的角点特征</li>
+<li>SUSAN 的改进</li>
+<li>FAST-ER</li>
+<li>提高 FAST 的效率而不损失效果</li>
+<li>基于核周围进一步像素强度比较来增强可重复性</li>
+<li>AGAST</li>
+<li>定义了另外两个像素亮度比较标准</li>
+<li>在扩展配置空间中对其进行了优化和专门的决策树训练，从而使 FAST 检测器更通用和自适应</li>
+<li>ORB</li>
+<li>将 FAST 的效率与 Harris 检测器的可靠性相结合</li>
+<li>使用 Harris 响应来选择一定数量的 FAST 角点作为最终检测到的特征</li>
+<li>局部块的灰度质心和中心像素本身形成一个矢量，表征为主方向</li>
+<li>一种类似于 Sadder 的检测器</li>
+<li>通过对具有一定几何约束的两个同心圆上的强度比较来有效验证鞍点条件</li>
+</ul>
+<h4 id="223">2.2.3 基于曲率的检测器<a class="headerlink" href="#223" title="Permanent link">¶</a></h4>
+<p>角点特征提取的另一种策略是基于检测到的高级图像结构，例如边缘、轮廓和显著区域。角点特征可以立即被定义为来自边缘或轮廓的中点/端点或稀疏采样（Belongie 等人 2002）。这些随后用于形状匹配或点注册，特别是对于纹理较少或二进制类型的图像对。
+- 基于曲率策略
+  - 边缘提取和选择方法
+  - 曲线平滑
+  - 曲率估计
+      - 直接：基于代数或几何估计，例如余弦、局部曲率和切线偏转
+      - 间接：显著性测量
+        - 曲线上的几个移动矩形计数曲线点
+        - 从连接曲线两个端点的弦到曲线点的垂直距离
+        - 其他替代方法
+      - 直接方法对噪声和局部变化更敏感
+  - 选择曲率极值点
+    - 使用阈值策略确定角点，以消除虚假和不明显的点
+- MSFD 多尺度分割型角点检测器 
+  - 用于宽基线场景匹配和重构
+  - 可以为宽基线图像匹配生成丰富且准确的角点特征
+  - 并具有高重建性能</p>
+<h4 id="_2">总结<a class="headerlink" href="#_2" title="Permanent link">¶</a></h4>
+<ul>
+<li>共同缺点</li>
+<li>分布不分散或不均匀</li>
+<li>受到两个图像之间的尺度和仿射变换的限制</li>
+<li>对比</li>
+<li>基于梯度的方法<ul>
+<li>能够更精确地定位</li>
+</ul>
+</li>
+<li>基于强度的方法<ul>
+<li>在效率方面具有优势</li>
+</ul>
+</li>
+<li>基于曲率方法<ul>
+<li>需要更多的计算，</li>
+<li>对于处理无纹理或二进制图像（例如红外和医学图像）等图像更为合适</li>
+</ul>
+</li>
+</ul>
+<h3 id="23">2.3 斑点特征<a class="headerlink" href="#23" title="Permanent link">¶</a></h3>
+<ul>
+<li>斑点特征</li>
+<li>局部封闭区域，区域内的像素彼此相似，与周围区域有所不同</li>
+<li>分类</li>
+<li>二阶偏导数<ul>
+<li>基于仿射不变的拉普拉斯尺度选择和/或 Hessian 矩阵计算</li>
+</ul>
+</li>
+<li>区域分割两种类型的检测器。<ul>
+<li>分割形态区域来检测斑点特征</li>
+<li>椭圆拟合来估计仿射信息。</li>
+</ul>
+</li>
+<li>特点</li>
+<li>斑点特征对于精度要求较高的视觉应用更有用</li>
+<li>有更多的图像线索用于特征识别和表示</li>
+<li>斑点特征对图像变换更加准确和鲁棒。</li>
+</ul>
+<h4 id="_3">基于二阶偏导数的方法<a class="headerlink" href="#_3" title="Permanent link">¶</a></h4>
+<ul>
+<li>高斯拉普拉斯（LoG）<ul>
+<li>使用拉普拉斯算子进行边缘检测，根据图像的二阶导数的零交叉点进行操作</li>
+<li>应用高斯卷积滤波作为预处理步骤，以减少噪声。</li>
+</ul>
+</li>
+<li>差分高斯（DoG）<ul>
+<li>用来近似 LoG 滤波器，并大大加快计算速度</li>
+</ul>
+</li>
+<li>基于 Hessian 矩阵行列式（DoH）<ul>
+<li>这种方法更具仿射不变性</li>
+<li>可以应用第二矩阵的特征值和特征向量来估计和校正仿射区域。</li>
+</ul>
+</li>
+<li>SIFT<ul>
+<li>在 DoG 金字塔中提取关键点</li>
+<li>使用局部强度值的 Hessian 矩阵进行滤波</li>
+</ul>
+</li>
+<li>SURF<ul>
+<li>使用 Haar 小波计算，近似基于 Hessian 矩阵的检测器</li>
+<li>积分图像策略，简化了二阶微分模板的构建。</li>
+</ul>
+</li>
+<li>ASIFT<ul>
+<li>全仿射不变的 SIFT 检测器<ul>
+<li>使用双边滤波近似 Laplace 计算的中心周围极值策略特征检测器</li>
+</ul>
+</li>
+<li>DARTs</li>
+<li>使用分段三角形滤波器高效近似 DoH</li>
+<li>SIFT-ER 检测器</li>
+<li>使用余弦调制的高斯滤波器，以获得具有最小尺度空间定位误差的高特征可检测性</li>
+<li>其中滤波器系统具有高度精确的滤波器近似</li>
+<li>无需任何图像下/上采样</li>
+<li>基于边缘焦点的斑点检测器</li>
+<li>边缘焦点被定义为图像中距离最近的边缘大致等距的点，边缘的方向垂直于此点</li>
+<li>KAZA 检测器</li>
+<li>采用非线性偏扩散滤波来搜索斑点特征</li>
+<li>在金字塔框架中嵌入快速显式扩散</li>
+<li>受到计算复杂性的限制</li>
+<li>WADE</li>
+<li>通过波传播函数实现非线性特征检测。</li>
+</ul>
+</li>
+</ul>
+<h4 id="232">2.3.2 基于分割的检测器<a class="headerlink" href="#232" title="Permanent link">¶</a></h4>
+<ul>
+<li>基于像素强度或零梯度进行不规则区域分割</li>
+<li>极大稳定极值区域（MSER）（Matas et al. 2004）。<ul>
+<li>提取在大范围强度阈值下保持稳定的区域</li>
+<li>不需要额外的处理来估计尺度</li>
+<li>对大的视角变化具有鲁棒性</li>
+</ul>
+</li>
+<li>MSER 的扩展方法<ul>
+<li>利用形状结构线索。</li>
+</ul>
+</li>
+<li>其他改进<ul>
+<li>基于主曲率图像的分水岭区域</li>
+<li>考虑颜色信息以提高区分度</li>
+</ul>
+</li>
+<li>基于强度和边缘的区域<ul>
+<li>也用于仿射协变区域检测</li>
+<li>这种类型的特征检测对于特征匹配的用途不太有用</li>
+<li>发展成为计算机视觉中的显著性检测和分割</li>
+</ul>
+</li>
+</ul>
+<h3 id="24">2.4 可学习特征<a class="headerlink" href="#24" title="Permanent link">¶</a></h3>
+<h4 id="241">2.4.1 经典学习方法<a class="headerlink" href="#241" title="Permanent link">¶</a></h4>
+<ul>
+<li>经典的学习方法</li>
+<li>决策树</li>
+<li>支持向量机（SVM）</li>
+<li>其他分类器</li>
+<li>使用到传统学习方法的检测器</li>
+<li>FAST 检测器</li>
+<li>Wald-Boost 分类器</li>
+<li>经典学习仅用于通过分类器学习可靠的特征选择，而不是直接从原始图像中提取兴趣特征</li>
+</ul>
+<h4 id="242">2.4.2 基于深度学习的检测器<a class="headerlink" href="#242" title="Permanent link">¶</a></h4>
+<ul>
+<li>基于 CNN 的检测</li>
+<li>构建响应图</li>
+<li>任务通常转化为一个回归问题，可以在变换和成像条件不变性约束下以可微分的方式进行训练。</li>
+<li>许多方法通过与特征描述和匹配的联合训练将特征检测集成到整个匹配管道中，可以增强最终的匹配性能并以端到端的方式优化整个过程。</li>
+<li>TILDE</li>
+<li>训练多个分段线性回归模型以检测在天气和照明条件大幅变化的情况下可重复使用的关键点</li>
+<li>使用 DoG 进行训练集收集，从相同视点拍摄的多个训练图像中识别出良好的关键点候选项- 训练一个通用的回归器来预测一个得分图</li>
+<li>经过非极大值抑制（NMS）后的最大值可以视为所需的兴趣点</li>
+<li>DetNet</li>
+<li>学习局部协变特征的第一个完全一般化的公式；</li>
+<li>将检测任务形式化为回归问题</li>
+<li>推导出一个协方差约束</li>
+<li>自动学习局部特征检测的稳定锚点，以在几何变换下实现。</li>
+<li>Quad-net</li>
+<li>单一的实值响应函数实现了在变换不变的分位数排名下的关键点检测</li>
+<li>通过优化可重复排名来完全从头开始学习检测器</li>
+<li>TCDET 检测器</li>
+<li>平等关注区分性和协变约束</li>
+<li>可以在各种图像变换下检测出具有区分性和可重复性的特征</li>
+<li>Key.Net</li>
+<li>在浅层多尺度架构中结合了手工制作和学习的 CNN 滤波器</li>
+<li>手工制作的滤波器提供了本地化、评分和排名可重复特征的锚点结构</li>
+<li>LIFT </li>
+<li>可以被视为 SIFT 的可训练版本，需要来自 SfM 系统的监督来确定特征锚点</li>
+<li>训练过程是从描述符到检测器逐个进行的，可以使用学到的结果来指导检测器的训练，从而提高了可检测性。</li>
+<li>SuperPoint</li>
+<li>通过输入全尺寸图像引入了一个完全卷积模型</li>
+<li>并在一个前向传递中联合计算像素级兴趣点位置和相关描述符；为了生成伪地面真值并进行预训练，构建了一个合成数据集</li>
+<li>通过自监督训练实现了它的同质性适应模块，提高了检测的可重复性。</li>
+<li>LF-Net</li>
+<li>将端到端流程限制在一个分支中，以可微分的方式优化整个过程</li>
+<li>使用在全尺寸图像上操作的完全卷积网络生成丰富的特征评分图</li>
+<li>可以用于提取关键点位置和特征属性，如尺度和方向</li>
+<li>RF-Net</li>
+<li>选择多尺度上的高响应像素作为关键点，但响应图是由感受野特征图构建的</li>
+<li>ASFeat</li>
+<li>以探索特征点的局部形状信息，并通过联合学习本地特征检测器和描述符来增强点检测的准确性</li>
+</ul>
+<h3 id="25-3d">2.5 3D 特征检测器<a class="headerlink" href="#25-3d" title="Permanent link">¶</a></h3>
+<ul>
+<li>现有的方法</li>
+<li>固定尺度检测器<ul>
+<li>在特定尺度级别搜索关键点</li>
+</ul>
+</li>
+<li>自适应尺度检测器<ul>
+<li>通过采用在表面上定义的尺度空间来扩展二维图像的尺度概念</li>
+<li>通过将三维数据嵌入到二维平面上来实现传统的尺度空间分析</li>
+</ul>
+</li>
+</ul>
+<h4 id="251">2.5.1 固定尺度检测器<a class="headerlink" href="#251" title="Permanent link">¶</a></h4>
+<ul>
+<li>局部表面贴片（LSP）方法</li>
+<li>点的显著性通过其形状指数来测量</li>
+<li>该形状指数由点处的主曲率定义</li>
+<li>内在形状签名（ISS）方法</li>
+<li>显著性源自支持区域的散射矩阵的特征值分解。</li>
+<li>可以识别出在每个主方向上变化很大的点。</li>
+<li>基于形状热核的方法（HKS）</li>
+<li>基于形状上的热扩散过程的属性</li>
+<li>显著性测量是通过将热核限制到时间域来定义的</li>
+<li>热核是由底层流形唯一确定的，这使得 HKS 成为形状的紧凑特征描述。</li>
+</ul>
+<h4 id="252">2.5.2 自适应尺度检测器<a class="headerlink" href="#252" title="Permanent link">¶</a></h4>
+<ul>
+<li>拉普拉斯-贝尔特拉米尺度空间</li>
+<li>计算围绕每个点的增加支持上的设计函数来实现。</li>
+<li>这个函数由一个反映了底层形状的局部平均曲率的新颖运算符定义，并提供了显著性信息</li>
+<li>MeshDoG 方法</li>
+<li>类似于 2D 情况下的 DoG 运算符</li>
+<li>该运算符是在流形上定义的标量函数上计算的。DoG 运算符的输出代表了关键点检测的显著性。</li>
+</ul>
+<h3 id="26">2.6 总结<a class="headerlink" href="#26" title="Permanent link">¶</a></h3>
+<ul>
+<li>特征检测器的解决的问题</li>
+<li>如何在图像中定义可辨别的模式</li>
+<li>如何在不同的图像条件和图像质量下重复检测显著特征</li>
+<li>改进策略</li>
+<li>特征响应类型</li>
+<li>效率</li>
+<li>鲁棒性</li>
+<li>准确性</li>
+<li>传统方法中的常用策略</li>
+<li>近似和预计算</li>
+<li>尺度和仿射信息估计<ul>
+<li>搜索稳定特征</li>
+</ul>
+</li>
+<li>局部极值搜索<ul>
+<li>获得亚像素精度</li>
+</ul>
+</li>
+<li>非极大值抑制（NMS）<ul>
+<li>像素和尺度空间中避免局部聚集的特征</li>
+</ul>
+</li>
+</ul>
+<h2 id="3">3 特征描述<a class="headerlink" href="#3" title="Permanent link">¶</a></h2>
+<ul>
+<li>特征描述符</li>
+<li>用于将感兴趣点周围的原始局部信息转换为稳定且具有辨别性的形式</li>
+<li>以高维向量的形式存在</li>
+<li>描述符空间中两个对应的特征尽可能接近</li>
+<li>两个不对应的特征则尽可能远离。</li>
+</ul>
+<h3 id="31">3.1 特征描述符概述<a class="headerlink" href="#31" title="Permanent link">¶</a></h3>
+<ul>
+<li>特征描述的处理过程</li>
+<li>局部低级特征提取<ul>
+<li>像素强度和梯度</li>
+<li>局部块被划分为若干部分</li>
+</ul>
+</li>
+<li>空间池化</li>
+<li>特征归一化</li>
+</ul>
+<h3 id="32">3.2 手工制作的特征描述符<a class="headerlink" href="#32" title="Permanent link">¶</a></h3>
+<ul>
+<li>构建过程</li>
+<li>类似传统局部描述符</li>
+<li>提取低级信息<ul>
+<li>图像梯度</li>
+<li>强度</li>
+</ul>
+</li>
+<li>应用常用的池化和归一化策略<ul>
+<li>统计</li>
+<li>比较</li>
+</ul>
+</li>
+<li>生成长且简单的矢量<ul>
+<li>根据数据类型（浮点或二进制）进行区分性描述</li>
+</ul>
+</li>
+<li>描述策略分类</li>
+<li>梯度统计</li>
+<li>局部二值模式统计</li>
+<li>局部强度比较</li>
+<li>局部强度顺序统计</li>
+</ul>
+<h4 id="321">3.2.1 基于梯度统计的描述符<a class="headerlink" href="#321" title="Permanent link">¶</a></h4>
+<ul>
+<li>梯度直方图（HOG）</li>
+<li>SIFT</li>
+<li>SURF</li>
+<li>使用 Haar 小波响应来近似梯度计算来加速 SIFT 运算</li>
+<li>应用积分图像，避免 Haar 小波响应中的重复计算</li>
+<li>CSIFT</li>
+<li>使用额外的颜色信息来增强辨别性</li>
+<li>ASIFT</li>
+<li>模拟了通过变化两个相机轴方向参数获得的所有图像视图，以实现完全仿射不变性</li>
+<li>SIFT-rank</li>
+<li>基于 SIFT 的不变特征对应的序数图像描述。</li>
+<li>基于 Weber 定律的方法（WLD）</li>
+<li>在特定位置编码差分激发和方向的直方图。</li>
+<li>RootSIFT</li>
+<li>不增加处理或存储要求的情况下获得了更好的性能。</li>
+<li>DSP-SIFT</li>
+<li>对不同域大小中的梯度方向进行池化</li>
+<li>DAISY</li>
+<li>基于 SIFT 的宽基线立体图像的另一种高效的密集描述符</li>
+<li>使用对数极坐标网格布局和高斯池化策略来近似梯度方向的直方图</li>
+<li>DARTs</li>
+<li>高效地计算尺度空间并重用它来进行描述符计算</li>
+<li>局部重力力量模式</li>
+</ul>
+<h4 id="322">3.2.2 基于局部二值模式统计的描述符<a class="headerlink" href="#322" title="Permanent link">¶</a></h4>
+<ul>
+<li>基于强度统计的方法</li>
+<li>受到局部二值模式（LBP）的启发</li>
+<li>LBP </li>
+<li>具有有利于其在兴趣区域描述中使用的特性</li>
+<li>缺点是该运算符产生了一个相当长的直方图，并且在平坦的图像区域中不太稳健。</li>
+<li>中心对称 LBP（CS-LBP）</li>
+<li>（使用 SVM 进行分类器训练）是 LBP 的修改版本</li>
+<li>结合了 SIFT 和 LBP 的优点</li>
+<li>以解决平坦区域问题</li>
+<li>中心对称局部三值模式（CS-LTP）</li>
+<li>在块中使用相对顺序的直方图和 LBP 代码的直方图</li>
+<li>RLBP（Chen 等人 2013）</li>
+<li>改变编码位来提高 LBP 的稳健性</li>
+</ul>
+<h4 id="323">3.2.3 基于局部强度比较的描述符<a class="headerlink" href="#323" title="Permanent link">¶</a></h4>
+<ul>
+<li>基于局部强度比较的描述符</li>
+<li>二进制描述符</li>
+<li>用于比较的选择规则是关键</li>
+<li>大多限于短基线匹配。</li>
+<li>BRIEF</li>
+<li>由图像块中多个随机点对的强度二进制测试结果串联而成</li>
+<li>ORB</li>
+<li>旋转 BRIEF</li>
+<li>与定向 FAST 角点相结合</li>
+<li>使用机器学习策略选择了强大的二进制测试</li>
+<li>减轻旋转和尺度变化的限制。</li>
+<li>BRISK</li>
+<li>使用了一个半径逐渐增大的同心圆采样策略</li>
+<li>FREAK</li>
+<li>受视网膜结构启发</li>
+<li>比较视网膜采样模式上的图像强度来进行快速计算和低内存成本的匹配</li>
+<li>保持对尺度、旋转和噪声的鲁棒性</li>
+</ul>
+<h4 id="324">3.2.4 基于局部强度顺序统计的描述符<a class="headerlink" href="#324" title="Permanent link">¶</a></h4>
+<ul>
+<li>像素值的顺序</li>
+<li>强度顺序的池化对旋转和单调强度变化不敏感，</li>
+<li>将序数信息编码到描述符中</li>
+<li>强度顺序池化方案可以使描述符在不估计参考方向的情况下具有旋转不变性</li>
+<li>序数空间强度分布方法</li>
+<li>该方法使用序数和空间强度直方图来归一化捕获的纹理信息和结构信息</li>
+<li>对任何单调递增的亮度变化都是不变的。</li>
+<li>LIOP</li>
+<li>编码每个像素的局部顺序信息</li>
+<li>使用整体序数信息将局部块划分为子区域</li>
+<li>这些子区域用于累积 LIOPLIOP</li>
+<li>OIOP/MIOP</li>
+<li>可以编码用于噪声和畸变稳健性的整体序数信息</li>
+<li>还提出一种基于学习的量化方法来提高其区分度。</li>
+</ul>
+<h3 id="33">3.3 基于学习的特征描述符<a class="headerlink" href="#33" title="Permanent link">¶</a></h3>
+<h4 id="331">3.3.1 经典学习型描述符<a class="headerlink" href="#331" title="Permanent link">¶</a></h4>
+<ul>
+<li>PCASIFT</li>
+<li>使用主成分分析（PCA）<ul>
+<li>减少由局部图像梯度组成的向量的维度</li>
+<li>形成一个强大且紧凑的描述符。</li>
+</ul>
+</li>
+<li>二进制描述符</li>
+<li>从提供的浮点型描述符中学习</li>
+<li>通常通过哈希方法来实现</li>
+<li>局部敏感哈希（LSH）</li>
+<li>是一种常见的无监督哈希方法</li>
+<li>该方法通过随机投影生成嵌入</li>
+<li>非监督哈希</li>
+<li>核化 LSH</li>
+<li>光谱哈希</li>
+<li>语义哈希</li>
+<li>基于 p 稳定分布的 LSH</li>
+<li>监督哈希方法</li>
+<li>最小损失哈希</li>
+</ul>
+<h4 id="332">3.3.2 基于深度学习的描述符<a class="headerlink" href="#332" title="Permanent link">¶</a></h4>
+<ul>
+<li>主要形式</li>
+<li>度量学习<ul>
+<li>学习一个用于相似度测量的判别度量</li>
+<li>输入是原始块或生成的描述符</li>
+</ul>
+</li>
+<li>描述符学习<ul>
+<li>描述符学习倾向于从原始图像或块生成描述符表示</li>
+<li>需要一个测量方法，比如 L2 距离或经过训练的度量网络</li>
+</ul>
+</li>
+<li>DeepCompare</li>
+<li>使用通用块相似性函数直接从原始图像像素中学习</li>
+<li>在这种情况下，各种 Siamese 类型的 CNN 模型被应用于编码相似性函数</li>
+<li>这些模型被训练用于识别正样本和负样本图像块对</li>
+<li>MatchNet</li>
+<li>同时学习描述符和度量</li>
+<li>级联类似 Siamese 的描述网络和完全卷积决策网络</li>
+<li>任务被转化为一个交叉熵损失下的分类问题</li>
+<li>DeepDesc</li>
+<li>使用 CNN 来学习具有 L2 距离测量的判别图像块表示</li>
+<li>通过最小化成对铰链损失来训练具有正样本和负样本块对的 Siamese 网络</li>
+<li>提出的硬负采样策略减轻了正负样本不平衡问题</li>
+<li>TFeat</li>
+<li>利用三元组训练样本来进行基于 CNN 的图像块描述和匹配</li>
+<li>通过浅卷积网络和快速硬负采样策略实现</li>
+<li>L2Net</li>
+<li>渐进采样策略来优化欧几里得空间中的相对距离损失函数</li>
+<li>考虑中间特征图和描述符的紧凑性以获得更好的性能</li>
+<li>HardNet</li>
+<li>使用简单的铰链三元组损失和“最难在批次内”的挖掘，获得更好的改进</li>
+<li>PN-Net</li>
+<li>同时使用了在距离度量学习和在线增强领域引入的思想</li>
+<li>同时使用正和负约束进行训练。</li>
+<li>所提出的 SoftPN 损失函数比铰链损失或 SoftMax 比率具有更快的收敛速度和更低的误差</li>
+<li>BinGAN</li>
+<li>生成对抗网络的正则化方法</li>
+<li>学习图像块的具有辨别性但紧凑的二进制表示</li>
+<li>ContextDesc </li>
+<li>将局部块相似性约束与兴趣点的空间几何约束相结合，从而大大提高了匹配性能。</li>
+<li>端到端学习方法</li>
+<li>LIFT</li>
+<li>通过端到端 CNN 网络同时实现关键点检测、方向估计和特征描述。</li>
+<li>SuperPoint</li>
+<li>一种用于训练多视图几何问题的兴趣点检测器和描述符的自监督框架</li>
+<li>完全卷积模型在全尺寸图像上运行，并共同计算像素级兴趣点位置和相关描述符</li>
+<li>与基于路径的网络形成对比。</li>
+<li>LF-Net<ul>
+<li>一个双分支设置</li>
+<li>并通过迭代创建虚拟目标响应</li>
+<li>允许无需手工制作的先验条件即可从头开始进行训练</li>
+<li>这个技术实现了特征图生成</li>
+<li>使用前 K 选择和 NMS 的尺度不变关键点检测、方向估计和描述符提取</li>
+</ul>
+</li>
+<li>RF-Net</li>
+<li>创建了一个端到端可训练的匹配框架</li>
+<li>从 LF-Net 结构修改而来的</li>
+<li>构建的感知特征图导致了有效的关键点检测</li>
+<li>通用的损失函数术语，即邻域掩码，有助于训练补丁选择</li>
+<li>D2-Net </li>
+<li>使用单个 CNN 同时实现了密集特征描述符和特征检测器的双重作用</li>
+<li>语义匹配</li>
+<li>UCN</li>
+<li>使用深度度量学习直接学习了一个保留几何或语义相似性的特征空间</li>
+<li>有助于生成几何或语义对应任务的密集和准确的对应关系</li>
+<li>NCN</li>
+<li>开发了一种基于典型思想的可端到端训练的 CNN 架构</li>
+<li>使用半本地约束来找到图像对之间可靠的稠密对应关系</li>
+</ul>
+<h3 id="34">3.4 三维特征描述符<a class="headerlink" href="#34" title="Permanent link">¶</a></h3>
+<h4 id="341">3.4.1 手工制作三维描述符<a class="headerlink" href="#341" title="Permanent link">¶</a></h4>
+<ul>
+<li>描述符分类</li>
+<li>基于空间分布直方图<ul>
+<li>对支持区域中的点的空间分布进行编码的直方图来表示局部特征</li>
+</ul>
+</li>
+<li>基于几何属性直方图</li>
+<li>光谱描述符</li>
+<li>自旋图像</li>
+<li>三维形状上下文</li>
+<li>独特形状上下文</li>
+<li>旋转投影统计</li>
+<li>三自旋图像</li>
+<li>局部表面块</li>
+<li>THRIFT</li>
+<li>点特征直方图，</li>
+<li>快速点特征直方图</li>
+<li>方向直方图签名</li>
+<li>MeshHoG 描述符</li>
+<li>类似于 SIFT（Lowe 2004），并使用梯度信息生成直方图。</li>
+<li></li>
+<li>全局点签名</li>
+<li>用形状上的 Laplace-Beltrami 算子的特征值和特征函数来表示点的局部特征</li>
+<li>波核签名</li>
+<li>从与形状相关的 Laplace-Beltrami 算子的谱分解中获得的</li>
+<li>HKS</li>
+<li>基于热扩散过程</li>
+<li>WKS</li>
+<li>基于形状上的量子力学粒子的时间演化 </li>
+</ul>
+<h4 id="342">3.4.2 基于学习的三维描述符<a class="headerlink" href="#342" title="Permanent link">¶</a></h4>
+<ul>
+<li>使用不同的学习方案来泛化光谱描述符。</li>
+<li>PointNet</li>
+<li>这个网络可以消耗原始点云以充分利用三维匹配任务中的稀疏性。</li>
+</ul>
+<h3 id="35">3.5 总结<a class="headerlink" href="#35" title="Permanent link">¶</a></h3>
+<ul>
+<li>设计目标</li>
+<li>实现检测到的特征点之间的准确和有效的对应关系建立</li>
+<li>将原始图像信息转化为具有区分性和稳定性的表示</li>
+<li>两个匹配的特征尽可能接近</li>
+<li>误匹配的特征则相距甚远</li>
+<li>描述符的设计要求</li>
+<li>易于计算</li>
+<li>计算和存储要求低。</li>
+<li>面对严重变形和成像条件时保持其区分性和不变性特征</li>
+<li>传统局部描述符的构建过程</li>
+<li>提取低级信息<ul>
+<li>图像梯度</li>
+<li>强度</li>
+<li>梯度信息可以被视为比原始强度更高阶的图像线索</li>
+</ul>
+</li>
+<li>池化策略、直方图或统计方法<ul>
+<li>对几何变换更具不变性</li>
+<li>需要额外的计算来计算梯度和统计，以及浮点类型数据的距离度量</li>
+</ul>
+</li>
+<li>基于 LBP 的方法</li>
+<li>具有较高的区分能力和对光照变化和图像对比度的良好鲁棒性</li>
+<li>经常用于纹理表示和人脸识别。</li>
+<li>提高深度描述符的区分能力和鲁棒性的技巧</li>
+<li>中心周围和三元（甚至更多）结构可能提供大量的重要信息来学习</li>
+<li>硬负样本挖掘策略会使结构集中在困难样本上，可以实现更好的匹配性能</li>
+<li>根据描述任务的基本和内在属性设计更可靠的损失函数。<ul>
+<li>最近设计的三元、排名、对比和全局损失优于早期的简单铰链和交叉熵损失</li>
+</ul>
+</li>
+<li>需要有效和全面的 ground truth 数据集<ul>
+<li>获得更好的匹配性能和泛化能力。</li>
+</ul>
+</li>
+<li>将描述符与检测器一起训练，端到端方式构建成完整的匹配管道<ul>
+<li>可以共同优化检测器和描述符，从而可以实现令人振奋的性能</li>
+</ul>
+</li>
+<li>描述符的整体性能还取决于适当的检测器</li>
+</ul>
+<h2 id="4">4 匹配方法<a class="headerlink" href="#4" title="Permanent link">¶</a></h2>
+<h3 id="41">4.1 匹配方法概述<a class="headerlink" href="#41" title="Permanent link">¶</a></h3>
+<ul>
+<li>匹配方法分类</li>
+<li>基于区域<ul>
+<li>通常指的是密集匹配</li>
+<li>通常不检测特征</li>
+</ul>
+</li>
+<li>基于特征<ul>
+<li>直接</li>
+<li>图匹配</li>
+<li>点集配准</li>
+<li>间接</li>
+<li>将匹配任务分为两个阶段<ul>
+<li>通过测量空间的距离来评估描述符的相似性</li>
+<li>使用额外的局部和/或全局几何约束将错误匹配从潜在匹配集中移除</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="42">4.2 基于区域的匹配<a class="headerlink" href="#42" title="Permanent link">¶</a></h3>
+<ul>
+<li>基于区域的方法</li>
+<li>进行图像配准</li>
+<li>使用整个图像的像素强度来建立密集像素对应关系</li>
+<li>相似性度量标准<ul>
+<li>相关性的方法</li>
+<li>域变换</li>
+<li>倾向于在将原始图像转换为另一个域</li>
+<li>互信息（MI）方法</li>
+<li>适用于多模态</li>
+<li>MI 在确定整个搜索空间的全局最大值方面存在困难，这不可避免地降低了其鲁棒性</li>
+</ul>
+</li>
+<li>优化方法<ul>
+<li>连续优化</li>
+<li>离散优化</li>
+<li>两者的混合形式</li>
+</ul>
+</li>
+<li>变换模型<ul>
+<li>刚性</li>
+<li>仿射</li>
+<li>薄板样条（TPS）</li>
+<li>弹性体</li>
+<li>扩散模型</li>
+</ul>
+</li>
+</ul>
+<h3 id="43">4.3 图匹配方法<a class="headerlink" href="#43" title="Permanent link">¶</a></h3>
+<ul>
+<li>图匹配（GM）</li>
+<li>在两个或多个图之间建立节点到节点的对应关系</li>
+<li>从问题设置的角度分类</li>
+<li>精确匹配</li>
+<li>不精确匹配</li>
+<li>GM 可以被公式化为二次分配问题（QAP）</li>
+<li>研究的主体集中在 Lawler 的 QAP（Lawler 1963）上。</li>
+<li>Koopmans-Beckmann 的 QAP 是另一种流行的形式。</li>
+<li>作为一般的组合 QAP 问题，GM 已知是 NP 困难问题</li>
+<li>大多数方法放宽了严格的约束并以可接受的代价提供了近似解决方案</li>
+</ul>
+<h4 id="431">4.3.1 光谱松弛方法<a class="headerlink" href="#431" title="Permanent link">¶</a></h4>
+<ul>
+<li>这些方法由于松弛程度较大而具有效率的优点。然而，一般情况下精度不足。 </li>
+</ul>
+<h4 id="432">4.3.2 凸松弛方法<a class="headerlink" href="#432" title="Permanent link">¶</a></h4>
+<ul>
+<li>许多研究已经转向研究原始问题的凸松弛方法，以获得解决非凸 QAP 问题的理论优势。</li>
+<li>半定规划（SDP）</li>
+<li>是解决组合问题的通用工具，已应用于解决 GM</li>
+<li>SDP 松弛</li>
+<li>非常紧密，允许在多项式时间内找到强近似解</li>
+<li>高计算成本限制了其可扩展性</li>
+<li>LP 松弛的对偶问题</li>
+<li>这与 MAP 推断算法有很强的联系。</li>
+</ul>
+<h4 id="433">4.3.3 凸到凹松弛<a class="headerlink" href="#433" title="Permanent link">¶</a></h4>
+<ul>
+<li>一个有用的策略是利用路径跟随技术</li>
+<li>这种方法逐渐实现了原始问题的凸到凹过程，最终找到一个满足约束的良好解决方案</li>
+<li>与升级方法相比，计算复杂度也低得多</li>
+</ul>
+<h4 id="434">4.3.4 连续松弛<a class="headerlink" href="#434" title="Permanent link">¶</a></h4>
+<h4 id="435">4.3.5 多图匹配<a class="headerlink" href="#435" title="Permanent link">¶</a></h4>
+<ul>
+<li>与经典的两图匹配设置不同，联合匹配一批具有一致对应关系的图，即多图匹配</li>
+<li>多图匹配的一个核心问题是为可行解决方案强制执行循环一致性</li>
+<li>多图匹配方法分类</li>
+<li>多图匹配问题通过计算一系列二图匹配任务的迭代过程来解决</li>
+<li>以初始（带噪声的）二图匹配结果作为输入，并旨在恢复全局一致的二图匹配集</li>
+<li>利用聚类或低秩恢复技术来解决多图匹配问题，为问题提供了特征空间的新视角</li>
+</ul>
+<h4 id="436">4.3.6 其他范式<a class="headerlink" href="#436" title="Permanent link">¶</a></h4>
+<ul>
+<li>GM 的随机漫步观点</li>
+<li>渐进的 GM 方法</li>
+<li>超图匹配</li>
+</ul>
+<h3 id="44">4.4 点集配准方法<a class="headerlink" href="#44" title="Permanent link">¶</a></h3>
+<ul>
+<li>点集配准（PSR）</li>
+<li>估计最佳对齐两个点集的空间变换</li>
+<li>PSR 对数据提出了更强的假设，即点集之间存在全局变换</li>
+</ul>
+<h4 id="441-icp">4.4.1 ICP 及其变种<a class="headerlink" href="#441-icp" title="Permanent link">¶</a></h4>
+<ul>
+<li>迭代最近点（ICP）算法</li>
+<li>ICP 交替进行两个点集中最接近点的硬分配和封闭形式刚性变换估计，直到收敛</li>
+<li>简单性和低计算复杂性</li>
+<li>ICP 算法被广泛用作基线算法</li>
+<li>ICP 需要良好的初始化<ul>
+<li>容易陷入局部最优解。</li>
+</ul>
+</li>
+<li>EM-ICP</li>
+<li>LM-ICP</li>
+<li>TriICP</li>
+<li>鲁棒点匹配（RPM）算法</li>
+<li>克服 ICP 的限制</li>
+<li>采用了软分配和确定性退火策略</li>
+<li>刚性变换模型则通过使用薄板样条来进行非刚性化。 </li>
+</ul>
+<h4 id="442-em">4.4.2 基于 EM 的方法<a class="headerlink" href="#442-em" title="Permanent link">¶</a></h4>
+<ul>
+<li>RPM 也是 EM 类 PSR 方法的代表之一</li>
+<li>一致性点漂移（CPD）方法</li>
+<li>建立在 GMM 基础上的概率框架中</li>
+<li>EM 算法用于参数的最大似然估计</li>
+</ul>
+<h4 id="443">4.4.3 基于密度的方法<a class="headerlink" href="#443" title="Permanent link">¶</a></h4>
+<ul>
+<li>基于密度的方法引入了生成模型到 PSR 问题中</li>
+</ul>
+<h4 id="444">4.4.4 基于优化的方法<a class="headerlink" href="#444" title="Permanent link">¶</a></h4>
+<ul>
+<li>基于优化的方法作为全局最优解，以缓解局部最优问题</li>
+<li>这些方法通常在有限的变换空间中进行搜索，以节省时间</li>
+<li>广泛使用随机优化技术</li>
+<li>遗传算法</li>
+<li>粒子群优化</li>
+<li>粒子滤波</li>
+<li>模拟退火</li>
+<li>不能保证收敛</li>
+<li>分支界限（BnB）优化技术</li>
+<li>可以在变换空间中高效地搜索全局最优解</li>
+<li>构成许多基于优化的方法的理论基础，</li>
+<li>基于半定规划（SDP）松弛的方法</li>
+<li>该方法保证了等距形状匹配的全局解。</li>
+<li>一种鲁棒非刚性 PSR 的公式</li>
+<li>基于全局平滑鲁棒数据拟合和正则化</li>
+<li>通过 majorization-minimization 算法进行优化</li>
+<li>以减少解决简单最小二乘问题的每次迭代</li>
+</ul>
+<h4 id="445">4.4.5 杂项方法<a class="headerlink" href="#445" title="Permanent link">¶</a></h4>
+<ul>
+<li>PSR 基于不同观察的一些新方案已经出现</li>
+<li>将点集建模为受引力作用的粒子<ul>
+<li>通过求解牛顿力学的微分方程来实现配准</li>
+</ul>
+</li>
+<li>使用上下文感知高斯场来解决 PSR 问题</li>
+<li>区分性优化方法<ul>
+<li>从训练数据中学习搜索方向，以指导优化，无需定义成本函数</li>
+</ul>
+</li>
+<li>考虑了点集的颜色信息</li>
+<li>多个点集的联合配准。</li>
+</ul>
+<h3 id="45">4.5 消除误匹配的描述符匹配<a class="headerlink" href="#45" title="Permanent link">¶</a></h3>
+<ul>
+<li>描述符匹配后的误匹配消除，也称为间接图像匹配</li>
+<li>将匹配任务分为两个阶段</li>
+<li>通过测量空间的距离来计算局部图像描述符的相似性，建立初步对应关系</li>
+<li>通过使用额外的局部和/或全局几何约束，从虚拟匹配集中移除错误匹配。</li>
+<li>构建虚拟匹配集的常见策略</li>
+<li>固定阈值（FT）</li>
+<li>最近邻（NN，也称为蛮力匹配）、</li>
+<li>互相最近邻（MNN）</li>
+<li>最近邻距离比（NNDR）</li>
+<li>误匹配消除方法分类</li>
+<li>基于重新采样的方法</li>
+<li>非参数模型方法</li>
+<li>宽松方法</li>
+</ul>
+<h4 id="451">4.5.1 虚拟匹配集构建<a class="headerlink" href="#451" title="Permanent link">¶</a></h4>
+<ul>
+<li>FT 策略</li>
+<li>考虑了距离低于固定阈值的匹配项</li>
+<li>可能会对数据敏感</li>
+<li>可能导致与一对一对应性相反的众多一对多匹配</li>
+<li>NN 策略</li>
+<li>可以有效处理数据敏感性问题并提高潜在真实匹配项的召回率
+  无法避免一对多的情况。</li>
+<li>互相最近邻</li>
+<li>可以获得高比例的正确匹配，</li>
+<li>可能牺牲了许多其他真实对应关系</li>
+<li>NNDR</li>
+<li>考虑到了第一个和第二个最近邻之间的距离差异很大。</li>
+<li>使用预定义的阈值的距离比会获得稳健且有前途的匹配性能</li>
+<li>不会牺牲许多真实匹配。</li>
+<li>依赖于这些描述符的稳定距离分布。</li>
+<li>在 SIFT 等描述符匹配中被广泛使用且表现良好</li>
+<li>NNDR 对于其他类型的描述符，如二进制或一些基于学习的描述符已不再适用。</li>
+</ul>
+<h4 id="452">4.5.2 基于重新采样的方法<a class="headerlink" href="#452" title="Permanent link">¶</a></h4>
+<ul>
+<li>RANSAC 算法</li>
+<li>假设这两幅图像由某种参数化几何关系（如射影变换或极线几何）耦合在一起</li>
+<li>采用一种假设和验证策略<ul>
+<li>采样最小子集，作为假设估计模型</li>
+<li>并通过一致内点数量验证质量</li>
+<li>与最优模型一致的对应关系被识别为内点。</li>
+</ul>
+</li>
+<li>MLESAC</li>
+<li>最大似然过程来验证模型质量</li>
+<li>NAPSAC</li>
+<li>假定内点在中在空间上是连贯的</li>
+<li>GroupSAC</li>
+<li>假定内点存在某些分组</li>
+<li>PROSAC</li>
+<li>利用了先验预测的内点概率</li>
+<li>EVSAC</li>
+<li>使用了与对应关系的极值理论的置信度估计。</li>
+<li>局部优化 RANSAC（LO-RANSAC）</li>
+<li>其中关键观察是当到达迄今为止最佳模型时，采用最小子集可以放大底层噪声并产生与 ground truth 相去甚远的假设</li>
+<li>LO-RANSAC </li>
+<li>USAC</li>
+<li>集成了很多 RANSAC 改进策略 </li>
+<li>MAGSAC</li>
+<li>应用了 <span class="arithmatex">\(\sigma\)</span>-一致性</li>
+<li>在一系列噪声尺度上进行边际化来消除对用户定义阈值的需求</li>
+<li>MAGSAC++</li>
+<li>引入了一个新的评分函数</li>
+<li>避免了需要内点/外点决策</li>
+<li>一种新颖的边际化过程被构建为 M-估计</li>
+<li>重新采样类方法的缺陷</li>
+<li>理论上所需的运行时间随着异常值率的增加呈指数级增长</li>
+<li>最小子集采样策略仅适用于参数模型，并不能处理经历复杂变换的图像对</li>
+</ul>
+<h4 id="453">4.5.3 基于非参数模型的方法<a class="headerlink" href="#453" title="Permanent link">¶</a></h4>
+<ul>
+<li>非参数模型处理匹配中更一般的先验</li>
+<li>运动连贯性</li>
+<li>可以处理退化情况</li>
+<li>使用三角形化的 2-D 网格来模拟变形，使用定制的鲁棒估计器来消除异常值的有害影响</li>
+<li>矢量场一致性（VFC）</li>
+<li>变形函数限制在再生核希尔伯特空间中，与 Tikhonov 正则化一起用于强制执行平滑约束</li>
+<li>估计在贝叶斯模型中进行，其中显式考虑了异常值以实现稳健性</li>
+</ul>
+<h4 id="454">4.5.4 宽松方法<a class="headerlink" href="#454" title="Permanent link">¶</a></h4>
+<ul>
+<li>分段仿射变形</li>
+</ul>
+<h3 id="46">4.6 基于学习的匹配<a class="headerlink" href="#46" title="Permanent link">¶</a></h3>
+<ul>
+<li>学习进行的匹配步骤</li>
+<li>基于图像的学习<ul>
+<li>图像配准</li>
+<li>立体匹配</li>
+<li>相机定位或变换估计</li>
+</ul>
+</li>
+<li>基于点的学习<ul>
+<li>点数据处理</li>
+<li>分类</li>
+<li>分割</li>
+<li>配准</li>
+</ul>
+</li>
+</ul>
+<h4 id="461">4.6.1 从图像学习<a class="headerlink" href="#461" title="Permanent link">¶</a></h4>
+<ul>
+<li>图像配准</li>
+<li>立体匹配</li>
+</ul>
+<h4 id="462">4.6.2 从点学习<a class="headerlink" href="#462" title="Permanent link">¶</a></h4>
+<ul>
+<li>深度学习技术解决基于点的任务</li>
+<li>参数拟合<ul>
+<li>受到经典的 RANSAC 算法的启发 </li>
+<li>估计变换模型</li>
+</ul>
+</li>
+<li>点分类和/或分割<ul>
+<li>倾向于训练分类器来从候选匹配集中识别真实的匹配项</li>
+</ul>
+</li>
+</ul>
+<h3 id="47">4.7 三维情况下的匹配<a class="headerlink" href="#47" title="Permanent link">¶</a></h3>
+<ul>
+<li>三维匹配方法步骤</li>
+<li>关键点检测</li>
+<li>局部特征描述</li>
+<li>计算描述符之间的相似性来建立稀疏对应关系集</li>
+</ul>
+<h3 id="48">4.8 总结<a class="headerlink" href="#48" title="Permanent link">¶</a></h3>
+<ul>
+<li>传统的图像配准和立体匹配</li>
+<li>基于块的相似性测量和优化策略来实现密集匹配，以搜索全局最优解</li>
+<li>在具有高重叠区域（轻微几何变形）和双目摄像机的图像对上进行的</li>
+<li>需要大量的计算负担和有限的手工制作测量指标。</li>
+<li>深度学习</li>
+<li>提高了配准精度和视差估计</li>
+<li>对于更复杂的场景，如宽基线图像立体匹配或具有严重几何变形的图像配准，仍然是一个开放的问题。</li>
+<li>基于特征的匹配可以有效解决大视角、宽基线和严重非刚性图像匹配问题中的限制</li>
+<li>最流行的策略<ul>
+<li>基于描述符距离构建假定匹配</li>
+<li>使用鲁棒估计器（如 RANSAC）</li>
+</ul>
+</li>
+<li>假定匹配集中存在大量误匹配可能会对后续视觉任务的性能产生负面影响，并且需要相当长的时间来估计模型</li>
+<li>需要误匹配移除方法，并将其集成到具有额外几何约束的情况下，以尽可能保留尽可能多的真实匹配，并将误匹配保持在最低水平<ul>
+<li>基于重采样的方法，如 RANSAC，可以估计潜在参数模型并同时去除离群值</li>
+<li>其理论上所需的运行时间随着离群值比率的增加而呈指数增长</li>
+</ul>
+</li>
+<li>非参数模型的方法可以通过使用高维非参数模型来处理非刚性图像匹配问题<ul>
+<li>在更复杂的解决方案空间中定义目标函数和找到最优解仍然具有挑战性</li>
+<li>参数敏感性</li>
+<li>容易保留明显的离群值</li>
+</ul>
+</li>
+</ul>
+<h2 id="5">5 基于匹配的应用<a class="headerlink" href="#5" title="Permanent link">¶</a></h2>
+<h3 id="51-sfm">5.1 SfM<a class="headerlink" href="#51-sfm" title="Permanent link">¶</a></h3>
+<ul>
+<li>运动恢复（Structure-from-Motion，SfM）包括三个主要阶段</li>
+<li>跨图像的特征匹配</li>
+<li>相机姿态估计</li>
+<li>使用估计的运动和特征恢复三维结构</li>
+<li>特征匹配管道应用</li>
+<li>特征检测</li>
+<li>描述</li>
+<li>最近邻匹配</li>
+<li>初始对应关系离群值处理</li>
+<li>需要几何验证</li>
+<li>使用 RANSAC 来估计基础矩阵</li>
+<li>几何感知方法</li>
+<li>使用少量特征来估计图像之间的极线几何，并利用它来引导匹配其余特征</li>
+</ul>
+<h3 id="52-slam">5.2 SLAM<a class="headerlink" href="#52-slam" title="Permanent link">¶</a></h3>
+<ul>
+<li>过程</li>
+<li>需要特征匹配来建立帧之间的对应关系</li>
+<li>作为估计相对相机姿态和定位的输入</li>
+<li>回环检测</li>
+<li>SLAM 应用中的另一个核心模块</li>
+<li>使用图像相似性来识别以前访问过的位置</li>
+<li>特征匹配结果自然适用于测量两个场景的相似性</li>
+</ul>
+<h3 id="53">5.3 视觉导航<a class="headerlink" href="#53" title="Permanent link">¶</a></h3>
+<h3 id="54">5.4 图像配准和拼接<a class="headerlink" href="#54" title="Permanent link">¶</a></h3>
+<ul>
+<li>图像配准</li>
+<li>将来自不同视点、不同时刻或不同传感器获得的同一场景的两个或多个图像对齐的过程</li>
+<li>建立对应关系后，图像配准就被简化为估计变换模型（例如刚性、仿射或投影）</li>
+<li>源图像通过映射函数进行变换<ul>
+<li>依赖于插值技术（例如双线性和最近邻）</li>
+</ul>
+</li>
+<li>多模态图像配准问题更加复杂</li>
+<li>不同模态引起的外观高度变化<ul>
+<li>PIIFD 特征</li>
+</ul>
+</li>
+<li>图像拼接、图像镶嵌</li>
+<li>图像拼接处理重叠度较低的图像，并要求在像素级别进行准确对齐</li>
+</ul>
+<h3 id="55">5.5 图像融合<a class="headerlink" href="#55" title="Permanent link">¶</a></h3>
+<ul>
+<li>图像融合</li>
+<li>用于将不同传感器或不同拍摄设置下获取的图像中的有意义信息进行组合，其中源图像已经精确对齐。</li>
+<li>图像融合的前提是使用特征匹配方法对源图像进行注册</li>
+</ul>
+<h3 id="56">5.6 图像检索、物体识别和跟踪<a class="headerlink" href="#56" title="Permanent link">¶</a></h3>
+<ul>
+<li>特征匹配可用于衡量图像之间的相似性</li>
+<li>图像检索</li>
+<li>检索出对于给定查询图像展现相似场景的所有图像</li>
+<li>图像相似性本质上是由图像之间的特征匹配决定的</li>
+<li>几何上下文验证是一种常见的用于改进初始图像检索结果的技术</li>
+<li>它与特征匹配直接相关</li>
+<li>几何上下文验证技术可用于解决由于局部描述符的模糊性和量化损失导致的误匹配问题。</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "content.tooltips", "content.tabs.link", "content.code.copy", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.78eede0e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.zerolacqua.top/npm/mathjax/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/d3@7/dist/d3.min.js"></script>
+      
+        <script src="https://unpkg.com/markmap-lib@0.15.3/dist/browser/index.js"></script>
+      
+        <script src="https://unpkg.com/markmap-view@0.15.3/dist/browser/index.js"></script>
+      
+    
+  </body>
+</html>

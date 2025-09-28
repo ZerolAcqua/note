@@ -1,0 +1,5375 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://note.zerolacqua.top/course/others/%E9%80%BB%E8%BE%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/">
+      
+      
+        <link rel="prev" href="../../CS/%E5%8D%97%E5%A4%A7%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9FPA/">
+      
+      
+        <link rel="next" href="../%E9%9F%B3%E4%B9%90%E6%AC%A3%E8%B5%8F/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.2.3">
+    
+    
+      
+        <title>逻辑学导论 - 丘卡的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0e669242.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="丘卡的笔记本" class="md-header__button md-logo" aria-label="丘卡的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            丘卡的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              逻辑学导论
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ZerolAcqua/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZerolAcqua/note
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../paper/RS/UAV/%E5%9F%BA%E4%BA%8E%E7%89%A9%E6%8E%A2%E9%A3%9E%E8%A1%8C%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%AD%A3%E5%B0%84%E5%BD%B1%E5%83%8F%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C/" class="md-tabs__link">
+          
+  
+    
+  
+  论文
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../Photogrammetry/%E8%BF%91%E6%99%AF%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-tabs__link">
+          
+  
+    
+  
+  课程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../programming/cpp/modern-cpp-features/" class="md-tabs__link">
+          
+  
+    
+  
+  编程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cs/computer_system/Putting_the_You_in_CPU/" class="md-tabs__link">
+          
+  
+    
+  
+  计算机
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../misc/photogrammetry/%E4%BA%91%E5%8F%B0%E6%97%8B%E8%BD%AC%E8%A7%92%E6%8D%A2%E7%AE%97/" class="md-tabs__link">
+          
+  
+    
+  
+  杂项
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="丘卡的笔记本" class="md-nav__button md-logo" aria-label="丘卡的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    丘卡的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ZerolAcqua/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZerolAcqua/note
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    论文
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            论文
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            RS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UAV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            UAV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/RS/UAV/%E5%9F%BA%E4%BA%8E%E7%89%A9%E6%8E%A2%E9%A3%9E%E8%A1%8C%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%AD%A3%E5%B0%84%E5%BD%B1%E5%83%8F%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于物探飞行模式的正射影像快速制作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/RS/UAV/%E4%B8%AD%E5%9B%BD%E5%85%89%E5%AD%A6%E5%8D%AB%E6%98%9F%E5%BD%B1%E5%83%8F%E5%8C%B9%E9%85%8D%E8%9E%8D%E5%90%88%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A combined image matching method for Chinese optical satellite imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/RS/UAV/%E5%8D%97%E6%9E%81%E6%97%A0%E4%BA%BA%E6%9C%BA%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F%E8%AE%BA%E6%96%87%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    南极无人机摄影测量论文概览
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    图像匹配
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            图像匹配
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/image_matching/LBD%E7%BA%BF%E7%89%B9%E5%BE%81%E6%8F%8F%E8%BF%B0%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LBD 线特征描述算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/image_matching/Sample4Geo_Hard_Negative_Sampling_for_Cross-View_Geo-Localisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample4Geo: Hard Negative Sampling for Cross-View Geo-Localisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/image_matching/Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    从人工特征到深度特征的图像匹配调查
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SfM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            SfM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Structure-from-Motion_Revisited/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SfM 回顾（Colmap）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Skeletal_graphs_for_efficient_structure_from_motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    用于高效 SfM 的骨架图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Structure-and-motion_pipeline_on_a_hierarchical_cluster_tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于分层聚类树的 SfM 
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Improving_the_efficiency_of_hierarchical_structure-and-motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提高分层 SfM 效率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Towards_Linear-Time_Incremental_Structure-from-Motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线性时间的增量式 SfM（VisualSFM）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Modeling_the_World_from_Internet_Photo_Collections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    通过互联网影像重建世界（Bundler）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Photo_Tourism_Exploring_Photo_Collections_in_3D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    相片旅行：在三维世界中浏览相片
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Building_Rome_in_a_Day/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一天建成罗马
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Efficient_structure_from_motion_for_large-scale_UAV_images_A_review_and_a_comparison_of_SfM_tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大规模无人机影像的高效 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Multicore_Bundle_Adjustment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多核光束法平差
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Efficient_tree-structured_SfM_by_RANSAC_generalized_Procrustes_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于 RANSAC 通用 Procrustes 分析的高效树状 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Divide_and_Conquer_Efficient_Large_Scale_Structure_from_Motion_Using_Graph_Partitioning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用图分割的分治高效大规模 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/SfM_on-the-fly%3A_A_robust_near_real-time_SfM_for_spatiotemporally_disordered_high-resolution_imagery_from_multiple_agents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实时 SfM：一种面向多智能体时空无序高分辨率影像的鲁棒近实时 SfM 方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    课程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            课程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    专业相关
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            专业相关
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    摄影测量
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            摄影测量
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Photogrammetry/%E8%BF%91%E6%99%AF%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    近景摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Photogrammetry/%E5%8D%AB%E6%98%9F%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    卫星摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Photogrammetry/%E6%95%B0%E5%AD%97%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Photogrammetry/%E8%A7%A3%E6%9E%90%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    解析摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2" >
+        
+          <label class="md-nav__link" for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            RS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RS/%E9%81%A5%E6%84%9F%E5%9B%BE%E5%83%8F%E8%A7%A3%E8%AF%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遥感图像解译
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_3" >
+        
+          <label class="md-nav__link" for="__nav_3_1_3" id="__nav_3_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    测绘
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            测绘
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../geomatics/%E5%A4%A7%E5%9C%B0%E6%B5%8B%E9%87%8F%E5%AD%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大地测量学
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4" >
+        
+          <label class="md-nav__link" for="__nav_3_1_4" id="__nav_3_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CV/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字图像处理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    专业之外
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            专业之外
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            CS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多媒体技术
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS/%E5%8D%97%E5%A4%A7%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9FPA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    南大计算机系统 PA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" checked>
+        
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    others
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            others
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    逻辑学导论
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    逻辑学导论
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    第一章
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    第二章
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    第三章
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%9F%B3%E4%B9%90%E6%AC%A3%E8%B5%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    音乐欣赏
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    编程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            编程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            C++
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cpp/modern-cpp-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    现代 C++ 特性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cpp/Effective_Modern_C%2B%2B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Effective Modern C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cpp/head-first-design-pattern/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 实现 Headfirst 设计模式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Rust
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Rust
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/rust/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    准备工作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/rust/Rust%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rust 程序设计语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Julia
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Julia
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/julia/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    准备工作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/julia/Julia_Data_Science/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Julia Data Science
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/git/progit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Progit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/bibliometrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    文献计量学作业
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            计算机
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机系统
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            计算机系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/computer_system/Putting_the_You_in_CPU/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Putting the “You” in CPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    杂项
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            杂项
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    摄影测量
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            摄影测量
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/photogrammetry/%E4%BA%91%E5%8F%B0%E6%97%8B%E8%BD%AC%E8%A7%92%E6%8D%A2%E7%AE%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    云台旋转角换算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    第一章
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    第二章
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    第三章
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">逻辑学导论<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<h2 id="_2">第一章<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<ul>
+<li>
+<p>逻辑学的定义及其对象</p>
+</li>
+<li>
+<p>逻辑学的基本作用</p>
+</li>
+<li>
+<p>学习逻辑学的意义</p>
+</li>
+<li>
+<p>逻辑学的研究方法</p>
+</li>
+<li>
+<p>课程内容</p>
+</li>
+<li>
+<p>逻辑学的基本概念</p>
+</li>
+<li>
+<p>语言和定义</p>
+</li>
+<li>
+<p>演绎</p>
+<ul>
+<li>
+<p>直言命题</p>
+</li>
+<li>
+<p>直言三段论</p>
+</li>
+<li>
+<p>符号逻辑</p>
+</li>
+<li>
+<p>演绎方法</p>
+</li>
+</ul>
+</li>
+<li>
+<p>归纳逻辑</p>
+</li>
+<li>
+<p>真实性与有效性</p>
+</li>
+<li>
+<p>前提真而结论假，则推理无效；</p>
+</li>
+<li>
+<p>前提真，推理有效，则结论必真。</p>
+</li>
+<li>
+<p>一个推理是有效的还是无效的，最直接的方法就是找一个与它的形式相同并且前提真而结论假的推理。</p>
+</li>
+<li>
+<p>逻辑的基本规律</p>
+</li>
+<li>
+<p>同一律</p>
+<ul>
+<li>在统一思维过程中，一切思想（包括概念和命题）都必须与自身保持同一。</li>
+</ul>
+</li>
+<li>
+<p>矛盾律</p>
+<ul>
+<li>两个互相矛盾的命题不能同时为真，也不能同为假。</li>
+</ul>
+</li>
+<li>
+<p>排中律</p>
+<ul>
+<li>两个互相矛盾的命题不能同为假，必有一真。</li>
+</ul>
+</li>
+<li>
+<p>充足理由律</p>
+<ul>
+<li>在同一思维和论证过程中，一个思想被确定为真，要有充足的理由</li>
+</ul>
+</li>
+</ul>
+<h2 id="_3">第二章<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<ul>
+<li>
+<p>命题和推理</p>
+</li>
+<li>
+<p>命题、判断和语句</p>
+<ul>
+<li>
+<p>语句 是一组表示事物情况的声音或笔画，是命题的物质载体。</p>
+</li>
+<li>
+<p>命题 是通过语句来反映事物情况（属性或关系）的思维形式。
+  两者之间有区别：只有表达了一种或真或假的思想的语句才是命题。</p>
+</li>
+<li>
+<p>判断就是被断定了的命题。</p>
+</li>
+<li>
+<p>语句与命题的区别</p>
+</li>
+<li>
+<p>同一命题可在不同语句中被断定。</p>
+</li>
+<li>
+<p>同一语句可以表达不同的命题</p>
+</li>
+</ul>
+</li>
+<li>
+<p>命题的形式及其种类</p>
+<ul>
+<li>真值与真值承担者</li>
+<li>
+<p>逻辑学只把命题视作真值承担者。</p>
+</li>
+<li>
+<p>命题形式</p>
+</li>
+<li>
+<p>命题可以分为简单命题和复合命题。</p>
+</li>
+<li>
+<p>按照对一个命题的结构分析的层次不同，可以分成词项逻辑和命题逻辑。</p>
+</li>
+<li>
+<p>简单命题与复合命题</p>
+<ul>
+<li>
+<p>简单命题是不包含其他命题的命题。</p>
+</li>
+<li>
+<p>原子命题是不能再进行分析的单个命题。</p>
+</li>
+<li>
+<p>复合命题是由其他命题构成的命题，通常借助一些联结词来联结。</p>
+</li>
+<li>
+<p>在复合命题中，构成复合命题的简单命题叫“肢命题”，联结肢命题的语词叫逻辑联结词，通常简称为“联结词”。不过，复合命题的肢命题也可能是复合命题。</p>
+</li>
+<li>
+<p>根据逻辑联结词的不同，复合命题又可以分为联言、选言、假言命题和负命题。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>推理及其种类</p>
+<ul>
+<li>
+<p>推理是一个命题序列，它是从一个或几个已知命题推出一个新命题的思维形式。</p>
+</li>
+<li>
+<p>从认识进程的角度来分：</p>
+<ul>
+<li>
+<p>演绎推理：从一般到个别。</p>
+</li>
+<li>
+<p>归纳推理：从个别到一般；但完全归纳法是演绎推理。</p>
+</li>
+<li>
+<p>类比推理：从个别到个别。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>从结论的可靠性角度来分：</p>
+<ul>
+<li>
+<p>必然推理：前提真则结论必然真的推理，它是保真性推理.</p>
+</li>
+<li>
+<p>或然推理：前提真，结论不一定真；前提只为结论提供一定程度的支持。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>联言命题及其推理</p>
+</li>
+<li>
+<p>定义</p>
+<ul>
+<li>
+<p>联言命题是反映若干事物情况同时存在的命题，通常由“并且”这类联结词联结两个或多个肢命题形成的复合命题。</p>
+</li>
+<li>
+<p>“联言”的逻辑符号都表示为“<span class="arithmatex">\(\land\)</span>”（读作“合取”），因此又叫合取命题。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>联言命题的逻辑值</p>
+<ul>
+<li>
+<p>一个联言命题的所有肢命题同时为真，该命题才为真；否则为假。</p>
+</li>
+<li>
+<p>一个命题有两个命题变项时，真值表共有 4 行；有 n 个命题变项时，真值表共有<span class="arithmatex">\(2^n\)</span>行。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>联言命题的种类和省略式</p>
+<ul>
+<li>复合谓项联言命题</li>
+<li>
+<p>由两个或两个以上的并列谓项和一个相同的主项构成的联言命题。它反映同一客观对象具有或不具有多种不同事物情况，通常只写一次主项，其余都承前省略。</p>
+</li>
+<li>
+<p>复合主项联言命题</p>
+</li>
+<li>
+<p>由两个或两个以上并列的主项和一个相同的谓项所构成的联言命题。它反映两个或两个以上的对象具有或不具有某种共同的情况。通常只写一次谓项，其余都承后省略。</p>
+</li>
+<li>
+<p>复合主谓项联言命题</p>
+</li>
+<li>由两个或两个以上并列的主项和谓项所构成的命题。它反映两个或两个以上的客观对象同时具有或不具有两种或两种以上的事物情况。</li>
+</ul>
+</li>
+<li>
+<p>联言命题推理#命题推理</p>
+<ul>
+<li>合成式：如果分别肯定两个联言支，那么就可以肯定它们组成的联言命题。</li>
+<li>
+<p><span class="arithmatex">\((p, q) \models(p\land q)\)</span></p>
+</li>
+<li>
+<p>分解式：如果肯定一个联言命题，那么就可以分别肯定其中的每一个联言支。</p>
+</li>
+<li><span class="arithmatex">\(p\land q\models q\)</span></li>
+</ul>
+</li>
+<li>
+<p>选言命题及其推理</p>
+</li>
+<li>
+<p>定义</p>
+<ul>
+<li>
+<p>反映在若干事物情况中至少有一个存在的命题。</p>
+</li>
+<li>
+<p>构成选言命题的简单（肢）命题叫选言肢。一个选言命题可以有多个选言肢，不同选言肢之间通常由表示选言的联结词联结。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>分类</p>
+<ul>
+<li>
+<p>相容选言命题：各选言肢之间彼此相容，可以同真。
+  只有当所有选言肢都为假时，相容选言命题才为假。</p>
+</li>
+<li>
+<p>不相容选言命题
+  选言肢之间是相互排斥的，即如果其中的一个为真，则其余的不可能为真。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>选言命题推理#命题推理</p>
+<ul>
+<li>相容选言推理</li>
+<li>
+<p><span class="arithmatex">\(((p\lor q)\land \lnot p) \models q\)</span>
+    注意：肯定否定式是错误的，也即在肯定一个选言肢后，并不能必定肯定或否定另一个选言肢。</p>
+</li>
+<li>
+<p>不相容选言推理</p>
+</li>
+<li>
+<p>肯定否定式：肯定一个选言肢，必否定另一个选言肢</p>
+<ul>
+<li><span class="arithmatex">\(((p\lor q)\land p)\models \lnot q\)</span></li>
+</ul>
+</li>
+<li>
+<p>否定肯定式：否定一个选言肢，必肯定另一个选言肢</p>
+<ul>
+<li><span class="arithmatex">\(((p\lor q)\land \lnot p)\models  q\)</span></li>
+</ul>
+</li>
+<li>
+<p>联言命题与选言命题对当方阵</p>
+</li>
+</ul>
+</li>
+<li>
+<p>假言命题及其推理</p>
+</li>
+<li>
+<p>定义</p>
+<ul>
+<li>
+<p>断定一事物情况是另一事物情况存在的条件的命题。</p>
+</li>
+<li>
+<p>假言命题都是表示条件的复合命题。每一个假言命题包括两个肢命题，其中表示条件的肢命题叫“前件”，表示依赖条件而成立的另一个命题叫“后件”。</p>
+</li>
+<li>
+<p>联结前、后件这两个肢命题的语词叫“假言联结词”。通常有：“如果，那么”；“只有，才”，“当且仅当”等等</p>
+</li>
+</ul>
+</li>
+<li>
+<p>分类</p>
+<ul>
+<li>充分条件假言命题：</li>
+</ul>
+<p>断定一事物情况是另一事物情况存在的充分条件的假言命题</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(p\implies q\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(p\implies q\)</span>为真的条件：</p>
+</li>
+<li>
+<p>在 p 真时 q 一定为真。至于 p 为假时，q 可真可假。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(p\implies q\)</span>为假的条件：</p>
+</li>
+<li>
+<p>在 p 真时 q 为假，因为这与充分条件的含义不符。</p>
+</li>
+<li>
+<p>必要条件假言命题</p>
+</li>
+</ul>
+<p>断定某事物情况是另一事物情况存在的必要条件的命题</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(p \ \Longleftarrow  \  q\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(p \ \Longleftarrow  \  q\)</span>为假的条件：在 p 假时 q 为真，因为这与必要条件的含义不符。</p>
+</li>
+<li>
+<p>充分必要条件假言命题</p>
+</li>
+</ul>
+<p>反映某事物情况是另一个事物情况的充分且必要条件的命题。</p>
+<ul>
+<li><span class="arithmatex">\(p\iff q\)</span></li>
+<li><span class="arithmatex">\(p\iff q\)</span>的真假条件：前后件 p 和 q 具有相同的真值（即同真或同假）时，该命题才为真；其余情形下为假。</li>
+</ul>
+</li>
+<li>
+<p>假言命题推理#命题推理 </p>
+<ul>
+<li>
+<p>假言推理</p>
+</li>
+<li>
+<p>前提中有一个假言命题，并且根据假言命题前后件之间的逻辑关系来推出结论的推理。</p>
+</li>
+<li>
+<p>充分条件假言推理</p>
+<p>前提中有一个充分条件假言命题的推理。</p>
+<ul>
+<li>
+<p>肯定前件就要肯定后件：<span class="arithmatex">\(((p\implies q ) \land p )\models q\)</span></p>
+</li>
+<li>
+<p>否定后件就要否定前件：<span class="arithmatex">\(((p\implies q ) \land \lnot q) \models \lnot p\)</span></p>
+</li>
+<li>
+<p>充分条件假言推理的有效形式是肯定前件式和否定后件式，而肯定后件式和否定前件式都是无效式</p>
+</li>
+</ul>
+</li>
+<li>
+<p>必要条件假言推理</p>
+<p>一个前提为必要条件假言命题</p>
+<ul>
+<li>
+<p>否定前件必否定后件：<span class="arithmatex">\(((p \ \Longleftarrow  \  q ) \land \lnot p) \models \lnot q\)</span></p>
+</li>
+<li>
+<p>肯定后件必肯定前件：<span class="arithmatex">\(((p \ \Longleftarrow  \  q ) \land q) \models p\)</span></p>
+</li>
+</ul>
+</li>
+<li>
+<p>充分必要条件假言推理</p>
+<p>前件是后件的充分条件，并且前件是后件的必要条件。</p>
+<ul>
+<li>
+<p>肯定前件必肯定后件： <span class="arithmatex">\(((p\iff q ) \land p) \models q\)</span></p>
+</li>
+<li>
+<p>否定前件必否定后件：<span class="arithmatex">\(((p\iff q ) \land\lnot p) \models \lnot q\)</span></p>
+</li>
+<li>
+<p>肯定后件必肯定前件：<span class="arithmatex">\(((p\iff q ) \land q) \models p\)</span></p>
+</li>
+<li>
+<p>否定后件必否定前件：<span class="arithmatex">\(((p\iff q ) \land\lnot q) \models \lnot p\)</span></p>
+</li>
+</ul>
+</li>
+<li>
+<p>假言易位推理</p>
+</li>
+<li>
+<p>假言易位推理是通过变换前提中的前后件的位置，推出一个假言命题作为结论的推理。</p>
+</li>
+<li>
+<p>充分条件假言易位推理：<span class="arithmatex">\((p\implies q) \models(\lnot q \implies \lnot p))\)</span></p>
+</li>
+<li>
+<p>必要条件假言易位推理：<span class="arithmatex">\((p \ \Longleftarrow  \  q) \models(q\implies p)\)</span></p>
+</li>
+<li>
+<p>充分必要条件假言易位推理：<span class="arithmatex">\((p\iff q) \models(q\iff p)\)</span></p>
+</li>
+<li>
+<p>假言联锁推理</p>
+</li>
+</ul>
+<p>纯假言推理</p>
+<ul>
+<li>
+<p>充分条件假言连锁推理</p>
+<p>以充分条件假言命题作前提和结论的推理。</p>
+<ul>
+<li>
+<p>肯定式：<span class="arithmatex">\((p\implies q)\land (q\implies r) \models (p\implies r)\)</span></p>
+</li>
+<li>
+<p>否定式：<span class="arithmatex">\((p\implies q)\land (q\implies r) \models (\lnot r\implies \lnot p)\)</span>⟹¬p)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>必要条件假言连锁推理</p>
+<p>以必要条件假言命题作前提。</p>
+<ul>
+<li>
+<p>肯定式：<span class="arithmatex">\((p \ \Longleftarrow  \ q)\land (q \ \Longleftarrow  \ r) \models (p \ \Longleftarrow  \  r)\)</span></p>
+</li>
+<li>
+<p>否定式：<span class="arithmatex">\((p \ \Longleftarrow  \ q)\land (q \ \Longleftarrow  \ r) \models (\lnot r \ \Longleftarrow  \ \lnot p)\)</span> </p>
+</li>
+</ul>
+</li>
+<li>
+<p>混合条件假言联锁推理</p>
+<p>以几种不同的假言命题做前提的假言连锁推理。</p>
+<ul>
+<li>
+<p><span class="arithmatex">\((p \iff q)\land (q \implies r) \models(p\implies r)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\((p \iff q)\land (q  \ \Longleftarrow  \ r) \models(p \ \Longleftarrow  \ r)\)</span></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>负命题及其推理</p>
+</li>
+<li>
+<p>定义</p>
+<ul>
+<li>负命题就是某个（简单或复合）命题的否定命题。
+  原命题为真，则其负命题为假；原命题为假，则其负命题为真。需要注意，它否定整个原命题，而非部分</li>
+</ul>
+</li>
+<li>
+<p>负命题推理#命题推理 </p>
+<ul>
+<li>简单命题的负命题及其推理</li>
+<li>
+<p><span class="arithmatex">\(p\models\lnot \lnot p\)</span>
+    双否律</p>
+</li>
+<li>
+<p>复合命题的负命题及其推理</p>
+</li>
+<li>
+<p>联言命题的负命题及其推理</p>
+<ul>
+<li><span class="arithmatex">\(\lnot (p \land q) \models\lnot p \lor \lnot q\)</span>
+  德摩根律</li>
+</ul>
+</li>
+<li>
+<p>相容选言命题的负命题及其推理</p>
+<ul>
+<li><span class="arithmatex">\(\lnot (p \lor q) \models\lnot p \land\lnot q\)</span></li>
+</ul>
+</li>
+<li>
+<p>不相容选言命题的负命题及其推理</p>
+<ul>
+<li><span class="arithmatex">\(\lnot (p \lor q) \models(\lnot p \land\lnot q)\lor( p \land q)\)</span>
+  实际上是这样的：<span class="arithmatex">\(\lnot ((p \lor q)\land \lnot (p \land q)) \models(\lnot p \land\lnot q)\lor( p \land q)\)</span></li>
+</ul>
+</li>
+<li>
+<p>充分条件假言命题的负命题及其推理</p>
+<ul>
+<li><span class="arithmatex">\(\lnot (p \implies q) \models (p \land \lnot q)\)</span>
+  实际上是这样的：<span class="arithmatex">\(\lnot (\lnot p\lor  q) \models (p \land \lnot q)\)</span></li>
+</ul>
+</li>
+<li>
+<p>必要条件假言命题的负命题及其推理</p>
+<ul>
+<li><span class="arithmatex">\(\lnot (p \ \Longleftarrow  \ q) \models (\lnot p \land  q)\)</span>
+  实际上是这样的：<span class="arithmatex">\(\lnot (\lnot q\lor  p) \models (q \land \lnot p)\)</span></li>
+</ul>
+</li>
+<li>
+<p>充分必要条件假言命题的负命题及其推理</p>
+<ul>
+<li><span class="arithmatex">\(\lnot (p \iff q)\models(p \land \lnot q) \lor (\lnot p \land q)\)</span>
+  实际上是这样的：<span class="arithmatex">\(\lnot( (\lnot p\lor  q) \land(\lnot q\lor  p)) \models(p \land \lnot q) \lor (\lnot p \land q)\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>复合命题的其他推理</p>
+</li>
+<li>
+<p>假言选言推理</p>
+<ul>
+<li>
+<p>以充分条件假言命题和选言命题作为前提的推理</p>
+</li>
+<li>
+<p>如果由两个假言命题和一个二肢的选言命题作为前提所构成的假言选言推理，叫二难推理。</p>
+</li>
+<li>
+<p>如果由三个或四个假言命题和一个三肢或四肢的选言命题作为前提所构成的假言选言推理，分别叫三难推理或四难推理。
+  我们主要研究二难推理。它反映的是：只有两种客观情况供选择，但无论选择哪一种情况，其结论都是令人难以接受的，即处于“左右为难”的尴尬境地。</p>
+</li>
+<li>
+<p>二难推理#命题推理 </p>
+</li>
+<li>
+<p>这种推理是在前提中肯定两个假言命题的前件，在结论中肯定其后件。（前提中的后件相同）</p>
+</li>
+<li>
+<p><span class="arithmatex">\(((p\implies r)\land (q\implies r))\land (p \lor q)\models r\)</span></p>
+</li>
+</ul>
+</li>
+<li>
+<p>假言联言推理#命题推理 </p>
+<p>是由两个充分条件假言命题和一个联言命题作前提，推出另一个联言命题为结论的推理形式。</p>
+<ul>
+<li>肯定式</li>
+<li>
+<p><span class="arithmatex">\(((p\implies q)\land(r\implies s))\land(p\land r)\models(q\land s)\)</span></p>
+</li>
+<li>
+<p>否定式</p>
+</li>
+<li><span class="arithmatex">\(((p\implies q)\land(r\implies s))\land(\lnot q\land \lnot s)\models(\lnot p\land \lnot r)\)</span></li>
+</ul>
+</li>
+<li>
+<p>反三段论</p>
+<p>前提和结论都是假言型多重复合命题。</p>
+<ul>
+<li>
+<p>反映某几种事物情况（条件）共同构成了另一个事物情况的充分条件，那么，当这一事物情况不出现时，就可以推出这几个条件中至少有一个不具备</p>
+</li>
+<li>
+<p><span class="arithmatex">\(((p\land q)\implies r)\implies((p\land \lnot r)\implies \lnot q)\)</span></p>
+</li>
+</ul>
+</li>
+<li>
+<p>归谬推理</p>
+<p>一种使用归谬法进行推理的推理形式</p>
+<ul>
+<li><span class="arithmatex">\(((p\implies q)\land(p\implies\lnot q))\models\lnot p\)</span></li>
+</ul>
+</li>
+<li>
+<p>逻辑联结词的优先级</p>
+</li>
+<li>
+<p>联结词<span class="arithmatex">\(\lnot\)</span>,<span class="arithmatex">\(\land\)</span>,<span class="arithmatex">\(\lor\)</span>,<span class="arithmatex">\(\implies\)</span>,<span class="arithmatex">\(\iff\)</span>中，<span class="arithmatex">\(\lnot\)</span>是一元联结词，其它都是连接两个命题的二元联结词</p>
+</li>
+<li>
+<p>我们定义优先级<span class="arithmatex">\(\lnot,[\land,\lor],\implies\)</span>,<span class="arithmatex">\(\iff\)</span></p>
+</li>
+<li>
+<p>除非有括号，否则按照优先级从高到低，从左到右的次序结合
+    <span class="arithmatex">\(\lnot p\lor q\)</span>等同于<span class="arithmatex">\(((\lnot p)\lor q)\)</span>​</p>
+</li>
+<li>
+<p>重言式</p>
+</li>
+<li>
+<p>真值形式：由真值联结词和命题变项构成的形式结构，也称之为公式</p>
+</li>
+<li>真值联结词</li>
+<li>
+<p>五种基本的真值形式</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(\lnot p\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(p\land q\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(p\lor q\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(p\implies q\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(p \iff q\)</span></p>
+</li>
+<li>真值表：表示公式中原子的真假和公式真假值之间的关系</li>
+<li>
+<p>重言式：重言的真值形式的简称，无论其中的命题变项取何种真值，该真值形式的值都是“真”，因此，又叫永真式。</p>
+</li>
+<li>
+<p>同一律：<span class="arithmatex">\(p\implies p\)</span></p>
+</li>
+<li>
+<p>矛盾律：<span class="arithmatex">\(\lnot (p \land \lnot p)\)</span></p>
+</li>
+<li>
+<p>排中律：<span class="arithmatex">\(p \lor \lnot p\)</span></p>
+</li>
+<li>永假式：无论其中的命题变项取何种真值，该真值形式的值都是假的。</li>
+<li>可满足式：真值形式的值至少在某种情况下是真的。</li>
+<li>
+<p>常见的重言式#命题推理 </p>
+</li>
+<li>
+<p>同一律：<span class="arithmatex">\(p\implies p\)</span></p>
+</li>
+<li>矛盾律：<span class="arithmatex">\(\lnot(p\land \lnot p)\)</span></li>
+<li>排中律：<span class="arithmatex">\(p\lor \lnot p\)</span></li>
+<li>分离律：<span class="arithmatex">\((p \implies q)\land p \implies q\)</span></li>
+<li>否后律：<span class="arithmatex">\((p \implies q)\land \lnot q \implies \lnot p\)</span></li>
+<li>析否律：<span class="arithmatex">\((p \lor q) \land\lnot q \implies p\)</span></li>
+<li>合取简化律：<span class="arithmatex">\((p \land q)\implies p\)</span></li>
+<li>析取引入律：<span class="arithmatex">\(p\implies p \lor q\)</span></li>
+<li>幂等律：</li>
+<li><span class="arithmatex">\(p \lor p \iff p\)</span></li>
+<li><span class="arithmatex">\(p \land p\iff p\)</span></li>
+<li>假言易位律：<span class="arithmatex">\((p\implies q)\iff(\lnot q \implies \lnot p)\)</span></li>
+<li>德·摩根律：</li>
+<li><span class="arithmatex">\(\lnot(p\land q)\iff(\lnot p \lor\lnot q))\)</span></li>
+<li><span class="arithmatex">\(\lnot(p\lor q)\iff(\lnot p \land\lnot q))\)</span></li>
+<li>交换律：</li>
+<li><span class="arithmatex">\(p\land q\iff q\land p\)</span></li>
+<li><span class="arithmatex">\(p \lor q \iff q\lor p\)</span></li>
+<li>双否律： <span class="arithmatex">\(\lnot \lnot p \iff p\)</span></li>
+<li>结合律：</li>
+<li><span class="arithmatex">\((p\land q)\land r \iff p \land (q \land r)\)</span></li>
+<li><span class="arithmatex">\((p\lor q)\lor r \iff p \lor (q \lor r)\)</span></li>
+<li>分配律：</li>
+<li><span class="arithmatex">\(p \land (q \lor r)\iff(p\land q)\lor (p \land r)\)</span></li>
+<li><span class="arithmatex">\(p \lor  (q \land r)\iff(p\lor q)\land (p \lor r)\)</span></li>
+<li>蕴析律：<span class="arithmatex">\((p\implies q)\iff (\lnot p \lor q)\)</span></li>
+<li>等值律：</li>
+<li><span class="arithmatex">\((p\iff q)\iff (p\implies q)\land (q\implies p)\)</span></li>
+<li><span class="arithmatex">\((p\iff q)\iff (p \land q)\lor (\lnot p \land \lnot q)\)</span></li>
+<li>
+<p>替换、代入、子公式</p>
+</li>
+<li>
+<p>代入原理</p>
+</li>
+<li>
+<p>将重言式 A 中的某个命题变元 p 的所有出现都代换为命题公式 B，得到的命题公式依然是重言式</p>
+</li>
+<li>
+<p>替换原理</p>
+</li>
+<li>将命题公式 A 中的子公式 C 的部分出现替换为和 C 逻辑等价的公式 D，得到的新命题公式 B，则 A 和 B 逻辑等价</li>
+</ul>
+</li>
+<li>
+<p>命题真值的判定方法</p>
+</li>
+<li>
+<p>真值表法</p>
+</li>
+<li>
+<p>归谬赋值法</p>
+<ul>
+<li>
+<p>为了证明一个蕴涵式是重言式，必须证明它不可能前件真而后件假。</p>
+</li>
+<li>
+<p>如果在这样的赋值过程中出现了矛盾赋值，即必须给同一个命题变项既赋“真”值又赋“假”值，那么，原假设不成立，因而该蕴涵式是重言式。</p>
+</li>
+<li>
+<p>反之，如果不出现矛盾赋值，则说明存在一组赋值满足前件真而后件假，因而不是重言式。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>命题的自然推理</p>
+<ul>
+<li>
+<p>确定一些推理规则，这些规则具有保真性。即依据这些规则，从真前提只会推出真结论。因此，从所要判定的推理的前提出发，如果依据这些推理规则，能形式地推出预期的结论，这就说明该推理有效。</p>
+</li>
+<li>
+<p>自然推理的主要规则#命题推理 #自然推理</p>
+</li>
+<li>
+<p><span class="arithmatex">\(A\models A\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(A,A\implies B\models B\)</span>蕴涵消去规则<span class="arithmatex">\({\implies}_{-}\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\([A]...B\models A\implies B\)</span>蕴涵引入规则<span class="arithmatex">\({\implies}_{+}\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(A,B\models A\land B\)</span>合取引入规则<span class="arithmatex">\(\land _+\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(A \land B \models A(B)\)</span>合取消去规则<span class="arithmatex">\(\land_-\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(A\models A\lor B\)</span>析取引入规则<span class="arithmatex">\(\lor _+\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(A\lor B,[A]...C,[B]...C \models C\)</span>析取消去规则<span class="arithmatex">\(\lor _-\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\([A]...B\land \lnot B \models \lnot A\)</span>否定引入规则<span class="arithmatex">\(\lnot _+\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\lnot\lnot A \models A\)</span>否定消去规则<span class="arithmatex">\(\lnot _-\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\([A]...B,[B]...A\models A\iff B\)</span>等值引入规则<span class="arithmatex">\({\iff}_{+}\)</span>  </p>
+</li>
+<li>
+<p>蕴涵命题的证明思路<span class="arithmatex">\({P}^N\)</span>推演</p>
+</li>
+<li>
+<p>先假设整个蕴涵命题的前件</p>
+</li>
+<li>
+<p>如果该前件是一个蕴涵式，则继续假设此次一层级蕴涵式的前件，</p>
+</li>
+<li>
+<p>如后件是一个蕴涵式，则继续假设该后件的前件，依此类推</p>
+</li>
+<li>
+<p>每增加一个假设就把该假设向后缩进一个单位。</p>
+</li>
+<li>
+<p>推理规则：自然推理的主要规则#命题推理 #自然推理</p>
+</li>
+<li>
+<p>试证明：<span class="arithmatex">\((A\implies (B\implies C))\implies ((A\implies B)\implies (A \implies C))\)</span></p>
+<ul>
+<li>
+<p>证明：</p>
+</li>
+<li>
+<p>(1)<span class="arithmatex">\(A\implies (B\implies C)\)</span>                        假设</p>
+</li>
+<li>
+<p>(2)<span class="arithmatex">\(A\implies B\)</span>                                          假设</p>
+<ul>
+<li>
+<p>(3)<span class="arithmatex">\(A\)</span>                                                       假设</p>
+</li>
+<li>
+<p>(4)<span class="arithmatex">\(B\)</span>  (2)(3)<span class="arithmatex">\({\implies}_{-}\)</span></p>
+</li>
+<li>
+<p>(5)<span class="arithmatex">\(B\implies C\)</span>(1)(3)<span class="arithmatex">\({\implies}_{-}\)</span> </p>
+</li>
+<li>
+<p>(6)<span class="arithmatex">\(C\)</span>(4)(5)<span class="arithmatex">\({\implies}_{-}\)</span> </p>
+</li>
+<li>
+<p>(7)<span class="arithmatex">\(A\implies C\)</span>(3)(6)<span class="arithmatex">\({\implies}_{+}\)</span> </p>
+</li>
+</ul>
+</li>
+<li>
+<p>(8)<span class="arithmatex">\((A\implies B)\implies (A \implies C)\)</span></p>
+</li>
+<li>
+<p>​                                                                        (2)(7)<span class="arithmatex">\({\implies}_{+}\)</span></p>
+</li>
+<li>
+<p>(9)<span class="arithmatex">\((A\implies (B\implies C))\implies ((A\implies B)\implies (A \implies C))\)</span></p>
+</li>
+<li>
+<p>​                                                                        (1)(9)<span class="arithmatex">\({\implies}_{+}\)</span></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="_4">第三章<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
+<ul>
+<li>
+<p>关系命题</p>
+</li>
+<li>
+<p>定义</p>
+<ul>
+<li>反映事物与事物之间关系或性质的命题。</li>
+</ul>
+</li>
+<li>
+<p>结构</p>
+<ul>
+<li>
+<p>主项：关系命题中表示某种关系的承担者的那些词项。</p>
+</li>
+<li>
+<p>谓项：关系命题中表示对象之间的关系的那个词项。</p>
+</li>
+<li>
+<p>量项：关系命题中表示关系者数量的那个词项。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>关系命题的符号化</p>
+<ul>
+<li>
+<p>甲和乙是一对父子</p>
+</li>
+<li>
+<p><span class="arithmatex">\(aRb\)</span>              (中置法)</p>
+</li>
+<li>
+<p><span class="arithmatex">\(R(a,b)\)</span>       (前置法)</p>
+</li>
+<li>
+<p><span class="arithmatex">\(abR\)</span>              (后置法)</p>
+</li>
+<li>
+<p>有的甲班学生比有的乙班学生学习刻苦</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\exists x \exists y (F (x)\land G(y)\land R (x, y))\)</span></p>
+</li>
+<li>
+<p>所有甲班学生比所有乙班学生学习刻苦</p>
+</li>
+<li><span class="arithmatex">\(\forall x \forall y (F (x)\implies (G (y)  \implies R (x, y)))\)</span></li>
+</ul>
+</li>
+<li>
+<p>二元关系命题的种类：</p>
+<ul>
+<li>
+<p>单称-单称命题：xRy</p>
+</li>
+<li>
+<p>单称-特称命题：xR 有些 y</p>
+</li>
+<li>
+<p>单称-全称命题：xR 所有 y</p>
+</li>
+<li>
+<p>特称-单称命题：有些 xRy</p>
+</li>
+<li>
+<p>特称-特称命题：有些 xR 有些 y</p>
+</li>
+<li>
+<p>特称-全称命题：有些 xR 所有 y</p>
+</li>
+<li>
+<p>全称-单称命题：所有 xRy</p>
+</li>
+<li>
+<p>全称-特称命题：所有 xR 有些 y</p>
+</li>
+<li>
+<p>全称-全称命题：所有 xR 所有 y</p>
+</li>
+<li>
+<p>单称-单称命题被称为“非量化关系命题”，其余的都被叫做“量化关系命题”。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>关系的逻辑特性</p>
+<ul>
+<li>关系的对称性问题</li>
+</ul>
+<p>当一个对象与另一个对象具有某种关系时，另一个对象与这个对象是否也具有这种关系的问题</p>
+<ul>
+<li>
+<p>对称性</p>
+</li>
+<li>
+<p>反对称性</p>
+</li>
+<li>
+<p>非对称性</p>
+</li>
+<li>
+<p>关系的传递性问题</p>
+</li>
+</ul>
+<p>当一个对象甲与另一个对象乙具有某种关系，乙与第三个对象丙也具有此种关系时，对象甲与对象丙是否也具有此种关系的问题。</p>
+<ul>
+<li>
+<p>传递性</p>
+</li>
+<li>
+<p>反传递性</p>
+</li>
+<li>
+<p>非传递性</p>
+</li>
+<li>
+<p>关系的自反性问题</p>
+</li>
+</ul>
+<p>一个对象与自身具有某种关系
+  ​</p>
+<ul>
+<li>
+<p>自反性</p>
+</li>
+<li>
+<p>反自反性</p>
+</li>
+<li>
+<p>非自反性</p>
+</li>
+</ul>
+</li>
+<li>
+<p>关系推理</p>
+<ul>
+<li>
+<p>关系推理是前提中至少一个是关系命题的推理，它是根据前提中“关系”的逻辑特性进行推演的。</p>
+</li>
+<li>
+<p>纯关系推理</p>
+</li>
+<li>
+<p>对称性关系推理
+    根据前提中的关系具有对称性而理进行的推</p>
+</li>
+<li>
+<p>反称性关系推理</p>
+</li>
+<li>
+<p>传递性关系推理</p>
+<ul>
+<li>通过传递关系的推理包括 n 个关系命题，其中的关系都是相同的传递关系，第一个前提与结论具有相同的前关系项，第 n-1 个前提与结论具有相同的后关系项，同时，每个前提的后关系项都是下一个前提的前关系项</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>第四章</p>
+</li>
+<li>
+<p>直言命题及其直接推理</p>
+<ul>
+<li>
+<p>性质命题概述</p>
+</li>
+<li>
+<p>性质命题是直接陈述对象具有或不具有某属性的命题，因此，又叫直言命题。</p>
+</li>
+<li>
+<p>标准式直言命题的构成</p>
+<ul>
+<li>标准式直言命题一般由四个部分组成：首先是量词，其次是主项，再次是联项，最后是谓项。可以记为：量项＋主项＋联项＋谓项。</li>
+</ul>
+</li>
+<li>
+<p>命题的质：针对命题的联项而言的，有肯定和否定之分。</p>
+<ul>
+<li>
+<p>肯定：不管是全部地还是部分地，那么，它的质就是肯定的。因此全称肯定命题和特称肯定命题的质都是肯定的。简写为 A 和 I，就分别来自于拉丁文“<strong><em>A</em></strong>Iff<strong><em>I</em></strong>rmo”，意思是“我肯定”</p>
+</li>
+<li>
+<p>否定：全称否定命题和特称否定命题的质都是否定的。简写为 E 和 O，它们分别来自于拉丁文“n<strong><em>E</em></strong>g<strong><em>O</em></strong>”，意思是“我否定”</p>
+</li>
+</ul>
+</li>
+<li>
+<p>命题的量：针对命题的主项而言的，有全称、特称和单称之分</p>
+</li>
+<li>
+<p>四种基本的性质命题形式</p>
+<ul>
+<li>SAP：全称肯定</li>
+</ul>
+<p>所有 S 都是 P</p>
+<ul>
+<li>SIP：特称肯定</li>
+</ul>
+<p>有 S 是 P</p>
+<ul>
+<li>SEP：全称否定</li>
+</ul>
+<p>所有 S 都不是 P</p>
+<ul>
+<li>SOP：特称否定</li>
+</ul>
+<p>有 S 不是 P</p>
+</li>
+<li>
+<p>A、E、I、O 四种命题之间的真假关系</p>
+<ul>
+<li>
+<p>一个性质命题所表达的内容实际上是其主谓项所反映对象的集合之间的关系。</p>
+</li>
+<li>
+<p>两个概念的外延之间的关系有五种情况。</p>
+</li>
+<li>
+<p>同一、包含、包含于、交叉、全异</p>
+</li>
+<li>
+<p>判断一个性质命题的真假就看命题的主谓项的外延与这五种情况当中的哪一（些）个符合，在相符合的情况该命题是真的。</p>
+</li>
+<li>
+<p>譬如：SAP 为真就是说 S 的全部外延都在 P 的外延之中。从概念的外延之间的关系来看，在全同和真包含于情形下满足这一要求，其他情形都不满足。因此，在 S 和 P 全同，或 S 真包含于 P 时， SAP 为真。</p>
+</li>
+<li>
+<p>A：S 和 P 是全同关系、真包含于关系时为真；其他情形下为假。
+  E：S 和 P 是全异关系时为真；其他情形下为假。
+  I：S 和 P 是全同、真包含、真包含于、交叉关系时为真；其余情形下为假。
+  O：S 和 P 是真包含、交叉和全异关系时为真；其余情形下为假。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>四种基本性质命题的周延性</p>
+<ul>
+<li>
+<p>周延性指的是在某形式的性质命题中，该命题对主项或谓项外延数量的断定情况。</p>
+</li>
+<li>
+<p>如果一个性质命题涉及了某个词项（主项或谓项）所指称的类的全部对象，那么，我们就说该命题使得该词项是周延的。否则，该词项是不周延的。</p>
+</li>
+<li>
+<p>全称时主项周延，否定时谓项周延</p>
+</li>
+</ul>
+</li>
+<li>
+<p>四种基本性质命题之间的真假关系</p>
+<ul>
+<li>
+<p>A 和 E：两者不可同真，但可以同假。（反对关系）</p>
+</li>
+<li>
+<p>A 和 I：A 真则 I 真，A 假时 I 可真可假；但 I 真时 A 可真可假，而 I 假时则 A 必假。（差等关系）</p>
+</li>
+<li>
+<p>A 和 O：两者不可同真也不可同假。 （矛盾关系）</p>
+</li>
+<li>
+<p>E 和 I：两者不可同真也不可同假。（矛盾关系）</p>
+</li>
+<li>
+<p>E 和 O：E 真则 O 真，E 假时 O 可真可假；O 真时，E 可真可假，O 假时则 E 必假。（差等关系）</p>
+</li>
+<li>
+<p>I 和 O：两者可以同真但不可同假。（下反对关系）</p>
+</li>
+<li>
+<p>对当方阵</p>
+</li>
+</ul>
+</li>
+<li>
+<p>命题变形推理#命题推理 </p>
+</li>
+<li>
+<p>定义</p>
+<ul>
+<li>就是通过改变性质命题的联项，或者改变性质命题主谓项的位置，或既改变联项又改变主谓项的位置，从而得出一个新命题作为结论的推理。</li>
+</ul>
+</li>
+<li>
+<p>换质法：通过改变命题的质来进行推理的方法。</p>
+<ul>
+<li>
+<p>规则：</p>
+</li>
+<li>
+<p>只改变作为前提的命题的质</p>
+</li>
+<li>
+<p>结论中的谓项是前提中的谓项的矛盾概念</p>
+</li>
+<li>
+<p><span class="arithmatex">\(SAP\implies SE\bar{P}\)</span></p>
+</li>
+<li><span class="arithmatex">\(SEP\implies SA\bar{P}\)</span></li>
+<li><span class="arithmatex">\(SIP\implies SO\bar{P}\)</span></li>
+<li><span class="arithmatex">\(SOP\implies SI\bar{P}\)</span></li>
+</ul>
+</li>
+<li>
+<p>换位法：通过改变命题主项与谓项的位置来得出一个新命题的推理方法。</p>
+<ul>
+<li>
+<p>规则：</p>
+</li>
+<li>
+<p>只改变前提中主谓项的位置，命题的质不变。</p>
+</li>
+<li>
+<p>原命题中不周延的项结论中也不能周延。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>换位质法：</p>
+<ul>
+<li>
+<p>规则：</p>
+</li>
+<li>
+<p>把换质法和换位法结合起来交替运用的命题变形方法。</p>
+</li>
+<li>
+<p>通常先换质，然后进行换位；换质和换位法交替运用。</p>
+</li>
+<li>
+<p>分别遵守换质法和换位法的规则。</p>
+</li>
+<li>
+<p><span class="arithmatex">\(SAP\implies SE\bar{P}\implies \bar{P}ES\implies \bar{P}A\bar{S}\)</span></p>
+</li>
+<li><span class="arithmatex">\(SEP\implies SA\bar{P}\implies \bar{P}IS\implies \bar{P}O\bar{S}\)</span></li>
+<li><span class="arithmatex">\(SOP\implies SI\bar{P}\implies \bar{P}IS\)</span></li>
+<li><span class="arithmatex">\(SIP\implies PIS \implies PO\bar{S}\text{（换质位无效。不能先换质，但可先换位）}\)</span></li>
+</ul>
+</li>
+<li>
+<p>对当关系推理#命题推理 </p>
+</li>
+<li>
+<p>根据矛盾关系进行的直接推理</p>
+</li>
+<li>
+<p>根据反对关系进行的推理</p>
+</li>
+<li>
+<p>根据下反对关系的推理</p>
+</li>
+<li>
+<p>根据差等关系进行的推理</p>
+</li>
+</ul>
+</li>
+<li>
+<p>三段论</p>
+<ul>
+<li>
+<p>直言三段论是由三个直言命题构成的一种推理形式，并满足下面三个条件：</p>
+</li>
+<li>
+<p>这三个直言命题以且只以三个不同的词项作主项和谓项。</p>
+</li>
+<li>
+<p>每个词项在任意一个命题中至多出现一次，但在这三个直言命题中共出现两次。</p>
+</li>
+<li>
+<p>以其中的两个命题为前提，以第三个命题为结论。</p>
+</li>
+<li>
+<p>前提中出现两次，该词项称为中项，常用 M 表示；结论中的主项称为小项，常用 S 表示；结论中的谓项称为大项，常用 P 表示。包含大项的前提叫做大前提；包含小项的前提叫做小前提。</p>
+</li>
+<li>
+<p>三段论的规则</p>
+</li>
+<li>
+<p>5 条基本规则</p>
+<ul>
+<li>
+<p>规则 1 ：三段论有且只有三个项。
+  违反这一规则的错误称为“四项谬误”</p>
+</li>
+<li>
+<p>规则 2：中项至少在一个前提中周延。
+  违反这条规则的错误称为“中项不周延谬误”</p>
+</li>
+<li>
+<p>规则 3：  前提中不周延的项在结论中也不得周延。
+  违反这一规则的错误称为“大项不当周延”（大项扩张）或“小项不当周延”（小项扩张）。</p>
+</li>
+<li>
+<p>规则 4 ：两否定前提推不出结论。
+  违反这一规则的错误称为“排斥前提谬误”</p>
+</li>
+<li>
+<p>规则 5 ：前提有一否定，当且仅当结论否定。
+  违反这一规则的错误称为“从否定推肯定谬误”</p>
+</li>
+<li>
+<p>（规则 6：两个全称前提得不出特称结论）
+  违反这一规则的错误称为“存在谬误”。属于布尔解释的设定</p>
+</li>
+</ul>
+</li>
+<li>
+<p>2 条导出规则</p>
+<ul>
+<li>
+<p>规则 6 ：两前提不能都是特称的。</p>
+</li>
+<li>
+<p>II：中项不周延【规则 2：中项至少在一个前提中周延。】</p>
+</li>
+<li>
+<p>IO：前提中只有一个项周延，必是中项。而结论是否定的【规则 5 ：前提有一否定，当且仅当结论否定。】，大项周延，违反“前提中不周延的项结论中也不得周延”【规则 3：  前提中不周延的项在结论中也不得周延。】</p>
+</li>
+<li>
+<p>OO：两否定前提推不出结论。【规则 4 ：两否定前提推不出结论。】</p>
+</li>
+<li>
+<p>规则 7 ：如果前提有一特称，则结论特称。</p>
+</li>
+<li>
+<p>AI：两个前提肯定，而其中有一个是特称，于是只能中项是全称命题的主项，其余的主谓项都不能周延，因此，结论只能是特称，否则，违反【规则 3：  前提中不周延的项在结论中也不得周延。】。</p>
+</li>
+<li>
+<p>EI：前提中有一个是否定命题，所以结论必定是否定命题，则大项在结论中周延。根据【规则 3：  前提中不周延的项在结论中也不得周延。】，大项在前提中也应该周延。而 EI 两个前提表明前提中只有两个项周延，其中大项和中项【规则 2：中项至少在一个前提中周延。】都应该周延，所以，小项不周延，因此小项在结论中也不周延，于是结论只能是特称。</p>
+</li>
+<li>
+<p>AO：道理同上。</p>
+</li>
+<li>
+<p>EO：违反【规则 4 ：两否定前提推不出结论。】</p>
+</li>
+</ul>
+</li>
+<li>
+<p>三段论的格</p>
+</li>
+<li>
+<p>格的种类</p>
+<ul>
+<li>第一格</li>
+<li>
+<p>中项 M 在大前提中是主项，在小前提中是谓项。
+    凡绿色植物都是有光合作用的     M     P<br/>
+    ​柳树是绿色植物                                   S     M
+    所以，柳树是有光合作用的。     S     P</p>
+</li>
+<li>
+<p>第二格</p>
+</li>
+<li>
+<p>中项 M 在两个前提中都是谓项。
+    凡马克思主义者都是唯物主义者    P     M
+    某甲不是唯物主义者                             S     M                <br/>
+    ​ 所以，某人不是马克思主义者。   S     P</p>
+</li>
+<li>
+<p>第三格</p>
+</li>
+<li>
+<p>中项 M 在两个前提中都是主项。
+    所有大学教师都是知识分子                  M          P         <br/>
+    有的大学教师是中共党员                       M          S          <br/>
+    所以，有的中共党员是知识分子。   S          P      </p>
+</li>
+<li>
+<p>第四格</p>
+</li>
+<li>中项 M 在大前提中是谓项，在小前提中是主项。
+    所有物理学家都是科学家                P           M        <br/>
+    所有科学家都不是文盲                     M           S        <br/>
+    所以，有的文盲不是物理学家。  S           P       </li>
+</ul>
+</li>
+<li>
+<p>格的特殊规则</p>
+<ul>
+<li>
+<p>第一格的特殊规则</p>
+</li>
+<li>
+<p>小前提必须是肯定命题</p>
+<ul>
+<li>如果小前提是否定命题，大前提必然肯定，否则推不出结论；结论必定否定，于是大项在结论中周延，则大项必须在大前提中周延。如果大项不周延，则违反【规则 3：  前提中不周延的项在结论中也不得周延。】；如果大项在前提中周延，由于第一格中大项是大前提的谓项，大前提必须否定，这样就违反规则【规则 4 ：两否定前提推不出结论。】</li>
+</ul>
+</li>
+<li>
+<p>大前提必须是全称命题</p>
+<ul>
+<li>中项不周延，所以根据【规则 2：中项至少在一个前提中周延。】，大前提必须是全称命题中项才能周延。</li>
+</ul>
+</li>
+<li>
+<p>第二格的特殊规则</p>
+</li>
+<li>
+<p>两前提中必有一个是否定命题</p>
+<ul>
+<li>如果都是肯定命题，由于第二格中，中项是大小前提的谓项，这样就违反了【规则 2：中项至少在一个前提中周延。】。</li>
+</ul>
+</li>
+<li>
+<p>大前提必须是全称命题</p>
+<ul>
+<li>，结论必为否定，则大项在结论中周延，而大项在第二格中是大前提的主项，大项在大前提中周延就要求大前提必须是全称命题。否则犯“大项扩张”的错误【规则 3：  前提中不周延的项在结论中也不得周延。】</li>
+</ul>
+</li>
+<li>
+<p>第三格的特殊规则</p>
+</li>
+<li>
+<p>小前提必须肯定</p>
+<ul>
+<li>如小前提否定，结论必定否定【规则 5 ：前提有一否定，当且仅当结论否定。】，大项在结论中周延；而大项在第三格中是大前提的谓项，大前提必须是否定，否则犯“大项扩张”错误【规则 3：  前提中不周延的项在结论中也不得周延。】；如果大前提否定，则两否定前提推不出结论【规则 4 ：两否定前提推不出结论。】。</li>
+</ul>
+</li>
+<li>
+<p>结论必须是特称</p>
+<ul>
+<li>小项在第三格中是小前提的谓项，据【小前提必须肯定】，所以，它是在结论中也不得周延，否则会犯“小项扩张”的错误【规则 3：  前提中不周延的项在结论中也不得周延。】；而小项在结论中是主项，所以结论必定是特称。</li>
+</ul>
+</li>
+<li>
+<p>第四格的特殊规则</p>
+</li>
+<li>
+<p>如果两个前提中有一个是否定命题，那么，大前提必是全称命题。</p>
+<ul>
+<li>一个前提否定，则结论必定否定【规则 5 ：前提有一否定，当且仅当结论否定。】，于是，大项在结论中周延；大项在第四格中是大前提的主项，它要周延就要求大前提必须全称。否则，就会犯“大项扩张”错误【规则 3：  前提中不周延的项在结论中也不得周延。】。</li>
+</ul>
+</li>
+<li>
+<p>如大前提肯定，则小前提全称。</p>
+<ul>
+<li>在第四格中，中项是大前提的谓项和小前提的主项，如大前提肯定，则中项在大前提中不周延，因此，它必须在小前提中周延，所以小前提必须全称。否则犯“中项两次不周延”的错误【规则 2：中项至少在一个前提中周延。】。</li>
+</ul>
+</li>
+<li>
+<p>如果小前提是肯定命题，结论必须是特称命题。</p>
+<ul>
+<li>在第四格中，小项是小前提的谓项，如小前提肯定，则小项不周延；如结论不是特称，则小项在结论中周延，犯了“小项不当周延”的错误【规则 3：  前提中不周延的项在结论中也不得周延。】。所以，结论必须特称。</li>
+</ul>
+</li>
+<li>
+<p>任何一个前提都不能是特称否定。</p>
+<ul>
+<li>
+<p>大前提特称否定，第四格中，大项在大前提是主项，不周延。【如果两个前提中有一个是否定命题，那么，大前提必是全称命题。】</p>
+</li>
+<li>
+<p>小前提特称否定，第四格中，中项在小前提中是主项，不周延；但中项必须周延一次【规则 2：中项至少在一个前提中周延。】，它是大前提的谓项，因此必须大前提否定；而两否定前提推不出结论【规则 4 ：两否定前提推不出结论。】，因此，小前提不能特称否定。</p>
+</li>
+<li>
+<p>大小前提都是特称否定：两否定前提推不出结论，【规则 4 ：两否定前提推不出结论。】得证。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>结论不能是全称肯定命题</p>
+<ul>
+<li>结论全肯则小项在结论中周延，第四格中，小项在小前提中是谓项，要周延就必须小前提否定【规则 3：  前提中不周延的项在结论中也不得周延。】，而前提中有一个否定，结论必定否定【规则 5 ：前提有一否定，当且仅当结论否定。】。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>格的在认识方面的特点</p>
+<ul>
+<li>第一格在认识方面的特点是：把普遍原理应用于特殊场合。</li>
+</ul>
+<p>（完善的格）</p>
+<ul>
+<li>
+<p>第一格的一般原则：如果某类的一切分子都具有或缺乏某种性质，那么属于该类的任一对象也具有或缺乏这种性质。（“所有和没有的原则”或“全与零的原则”）</p>
+</li>
+<li>
+<p>第二格在认识方面的作用是确立事物之间的区别</p>
+</li>
+<li>
+<p>一般原则：如果某类的分子都具有或缺乏某种性质，那么任何不具有或不缺乏这种性质的对象就不属于该类。（“差异原则”）</p>
+</li>
+<li>
+<p>第三格在认识方面的作用是用一部分事物的例外的情形来否定一条普遍论断。</p>
+</li>
+<li>
+<p>一般原则：如果任何属于某类的对象具有或缺乏某种性质，那么该类有些分子具有或缺乏这种性质，并非该类的一切分子都缺乏或具有这种性质。（结论是肯定的，就叫“例证原则”；结论是否定的，就叫“例外原则”。）</p>
+</li>
+<li>
+<p>第四格不自然。</p>
+</li>
+<li>
+<p>很少被人使用</p>
+</li>
+<li>
+<p>总结：</p>
+</li>
+<li>
+<p>第一格是证明和反驳各种类型的传统直言命题的方法。（审判格）</p>
+</li>
+<li>
+<p>第二格是证明否定命题和反驳肯定命题的方法。（区别格）</p>
+</li>
+<li>
+<p>第三格是证明特称命题和反驳全称命题的方法。（反驳格）</p>
+</li>
+</ul>
+</li>
+<li>
+<p>三段论的式</p>
+</li>
+<li>
+<p>定义</p>
+<ul>
+<li>
+<p>由 A、E、I、O 四种命题在两个前提和一个结论中的不同组合而形成的不同的三段论形式。</p>
+</li>
+<li>
+<p>这样的组合每一个格共有 4×4×4 ＝644×4×4＝644×4×4 ＝644×4×4＝64 种。</p>
+</li>
+<li>
+<p>同样，以其他形式的命题为大前提也有 16 种，共 16×4。</p>
+</li>
+<li>
+<p>四个格共有 64×4＝256 个式。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>有效式</p>
+<ul>
+<li>第一格的有效式：</li>
+<li>
+<p>AAA，AII，EAE，EIO，[AAI]，[EAO]</p>
+</li>
+<li>
+<p>第二格的有效式：</p>
+</li>
+<li>
+<p>AEE，EAE，EIO，AOO，[AEO]，[EAO]</p>
+</li>
+<li>
+<p>第三格的有效式：</p>
+</li>
+<li>
+<p>AAI，AII，EAO，EIO，IAI，OAO</p>
+</li>
+<li>
+<p>第四格的有效式：</p>
+</li>
+<li>
+<p>AAI，AEE，EAO，EIO，IAI，[AEO]</p>
+</li>
+<li>
+<p>说明</p>
+</li>
+<li>
+<p>括号里的是弱式，即本来可以得出全称的，却得出了特称。去掉五个弱式，还剩下 19 个有效式。</p>
+</li>
+<li>
+<p>同一个形式的三段论在不同的格里有效性是不一样的。譬如：AAA 在第一格是有效式，而它在第二格是无效的。因为中项一次也没周延。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>用欧拉图解判定三段论的有效性</p>
+</li>
+<li>
+<p>三段论的省略式</p>
+</li>
+<li>
+<p>形式</p>
+<ul>
+<li>
+<p>省略大前提</p>
+</li>
+<li>
+<p>省略小前提</p>
+</li>
+<li>
+<p>省略结论</p>
+</li>
+</ul>
+</li>
+<li>
+<p>逻辑分析</p>
+<ul>
+<li>
+<p>一个省略式可能有不同的补全方式</p>
+</li>
+<li>
+<p>首先，确定结论是否被省略；</p>
+</li>
+<li>
+<p>其次，当结论没有被省略时，根据结论就可以确定大、小项。 如果大项在省略三段论的前提中没有出现，说明省略的是大前提；如果小项在省略三段论的前提中没有出现，那么省略的就是小前提。</p>
+</li>
+<li>
+<p>最后，把省略部分补充进去，还原为一个完整的三段论。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>复合三段论</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>## 第五章</p>
+<ul>
+<li>
+<p>概述</p>
+<ul>
+<li>谓词逻辑是研究谓词命题和这类命题之间推理关系的科学。又称一阶逻辑，数理逻辑的分支学科</li>
+</ul>
+</li>
+<li>
+<p>原子命题的内部结构</p>
+<ul>
+<li>
+<p>结构</p>
+</li>
+<li>
+<p>谓词</p>
+<ul>
+<li>
+<p>在谓词逻辑中，把刻画个体属性的词项通常称作谓词。</p>
+</li>
+<li>
+<p>一个谓词可以是一个形容词、名词或者动词</p>
+</li>
+<li>
+<p>谓词：它表示属性（性质或关系），通常用大写字母<span class="arithmatex">\(F,G,H\)</span>等表示。（谓词常项、谓词变项）</p>
+</li>
+<li>
+<p>一元谓词：刻画一个个体的属性的谓词。如<span class="arithmatex">\(F(a)\)</span>中的<span class="arithmatex">\(F\)</span>。</p>
+</li>
+<li>
+<p>二元谓词：刻画两个个体相互关系的谓词。譬如，<span class="arithmatex">\(H(b, c)\)</span>中的<span class="arithmatex">\(H\)</span></p>
+</li>
+<li>
+<p>一般地，刻画 n 个个体相互关系的谓词叫 n 元谓词。</p>
+</li>
+<li>
+<p>n 个个体具有某种属性，可以记为<span class="arithmatex">\(F（x_1, … , x_n）\)</span>称为谓词<span class="arithmatex">\(F\)</span>的主目。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>个体词</p>
+<ul>
+<li>
+<p>在谓词逻辑中，通常把指称某特定个体的词项叫个体词</p>
+</li>
+<li>
+<p>个体常项：表示一个确定的个体，通常用<span class="arithmatex">\(a, b, c\)</span>等表示。</p>
+</li>
+<li>
+<p>个体变项：它表示某个个体，但并不确定是哪一个具体的个体，通常用<span class="arithmatex">\(x, y, z\)</span>等表示。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>量词</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(F(a)\)</span>是命题，它有真假；<span class="arithmatex">\(F(x)\)</span>不是命题。</p>
+</li>
+<li>
+<p>使<span class="arithmatex">\(F(x)\)</span>成为命题的途径有两种</p>
+</li>
+<li>
+<p>代入:<span class="arithmatex">\(F(a), F(b)…\)</span></p>
+</li>
+<li>
+<p>量化:<span class="arithmatex">\(\forall xF(x),\exists xF(x)\)</span></p>
+</li>
+<li>
+<p>全称量词断定所有个体都具有相应谓词所表达的属性或关系。通常用符号<span class="arithmatex">\(\forall x\)</span>表示，其含义是对任何个体（事物）来说。</p>
+</li>
+<li>
+<p>存在量词断定存在个体具有相应谓词所表达的属性或关系。通常用符号<span class="arithmatex">\(\exists x\)</span>表示。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>联结词</p>
+</li>
+<li>
+<p>个体域</p>
+</li>
+<li>
+<p>定义：个体变项的取值范围。</p>
+</li>
+<li>
+<p>个体域可根据需要作特殊限制，如不作特殊限制，个体域指全域，即所有能被思考的对象所组成的域。</p>
+</li>
+<li>
+<p>请注意： <span class="arithmatex">\(F(x), \exists xF(x), F(a)\)</span>三者表达的不同含义。</p>
+</li>
+<li>
+<p>量词的辖域</p>
+</li>
+<li>
+<p>在一个谓词逻辑表达式中，量词的约束范围叫量词的辖域</p>
+</li>
+<li>
+<p>约定：紧靠量词的括号内的表达式是该量词的辖域，括号外的不是；如果紧靠量词没有括号，那么紧靠量词的不包含联结词的最短表达式是该量词的辖域，其他则不是。</p>
+</li>
+<li>
+<p>约束个体变项</p>
+</li>
+<li>
+<p>在相关量词的辖域中出现的个体变项，称为该量词约束的个体变项</p>
+</li>
+<li>
+<p>自由个体变项</p>
+</li>
+<li>
+<p>不被量词约束的个体变项称为自由个体变项</p>
+</li>
+<li>
+<p>一阶谓词逻辑</p>
+</li>
+<li>
+<p>谓词是表达对象的性质和关系的。对象的性质和关系统称为属性。</p>
+<ul>
+<li>不仅个体对象有属性，而且，属性也有属性。</li>
+<li>如：“同乡”具有传递性；黑色是庄重的。</li>
+</ul>
+</li>
+<li>
+<p>一阶谓词就是只刻画事物或个体的属性，而不刻画属性的属性的谓词。在一阶谓词的主目中，只出现个体变项而不出现谓词变项。</p>
+</li>
+<li>
+<p>如果对属性进行量化，即当我们说存在某属性，它具有某性质（或者，所有属性具有某性质）时，我们就进入了高阶逻辑。</p>
+</li>
+<li>
+<p>一阶谓词逻辑：就是其中的谓词都是一阶谓词，其中的量词只刻画个体变项的量化。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>谓词逻辑层次上自然语言的符号化</p>
+<ul>
+<li>
+<p>传统直言命题的符号化</p>
+</li>
+<li>
+<p><span class="arithmatex">\(SAP,\ \forall x(T(x)\implies D(x))\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(SIP,\ \ \exists x(T(x)\land D(x))\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(SEP,\ \ \forall x(T(x)\implies \lnot D(x))\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(SOP,\ \ \exists x(T(x)\land \lnot D(x))\)</span></p>
+</li>
+<li>
+<p>原子命题的符号化</p>
+</li>
+<li>
+<p>重叠量化式：包括量词的表达式称为量化式；在一个原子命题的量化式中，如果有两个或两个以上的量词出现，称为重叠量化式。</p>
+</li>
+<li>
+<p>复合命题的符号化</p>
+</li>
+<li>
+<p>推理的符号化</p>
+</li>
+</ul>
+</li>
+<li>
+<p>谓词逻辑的命题形式及其判定</p>
+<ul>
+<li>
+<p>命题形式：包含变项的符号表达式。有时简称公式。</p>
+</li>
+<li>
+<p>变项：命题变项、谓词变项、自由个体变项等。其中约束个体变项不是变项。</p>
+</li>
+<li>
+<p>常项：命题常项、谓词常项、个体常项、逻辑常项（联结词）。</p>
+</li>
+<li>
+<p>真值形式</p>
+</li>
+<li>
+<p>量项的理解，命题形式解释的构造</p>
+</li>
+<li>
+<p>命题形式的解释</p>
+</li>
+<li>
+<p>解释</p>
+<ul>
+<li>从一个命题形式得到命题的一个基本方法。命题形式的一个解释就是用一组常项分别取代命题形式中所有相应变项</li>
+</ul>
+</li>
+<li>
+<p>真值解释</p>
+<ul>
+<li>对真值形式中的命题变项不用具体命题（命题常项）代替，而是赋以真值，因此，又叫“真值赋值”</li>
+</ul>
+</li>
+<li>
+<p>命题形式的类型</p>
+<ul>
+<li>普遍有效式</li>
+<li>
+<p>在所有解释下得到的命题都是真命题。</p>
+</li>
+<li>
+<p>可满足式</p>
+</li>
+<li>
+<p>至少在一种解释下能得到真命题。</p>
+</li>
+<li>
+<p>不可满足式</p>
+</li>
+<li>
+<p>如果在任何一种解释下都不能得到真命题。</p>
+</li>
+<li>
+<p>有限个体域中，普遍有效式的判定可以归约为命题逻辑中重言式的判定问题。即将谓词逻辑中的命题形式等值地转换为命题逻辑中的真值形式。</p>
+</li>
+<li>
+<p>一个全称量化命题形式转换为一个相当于 K 个命题的合取式。</p>
+</li>
+<li>
+<p>一个存在量化命题形式转换为一个相当于 K 个命题的析取式。</p>
+</li>
+<li>
+<p>一个 F（x）式的命题形式可转换为 K 个 F（a）式。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>谓词逻辑的自然推理</p>
+<ul>
+<li>
+<p>命题逻辑自然推理的扩充</p>
+</li>
+<li>
+<p>增加了和量词相关的规则#命题推理</p>
+</li>
+<li>
+<p>全称量词消去规则 <span class="arithmatex">\(\forall _-\)</span></p>
+<p>全称指定（US）</p>
+<ul>
+<li>
+<p>规则</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\cfrac{\forall xF(x)} {F(y)}(US)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\cfrac{\forall xF(x)} {F(c)}(US)\)</span></p>
+</li>
+<li>
+<p>例子</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\forall x \forall yP(x,y)\models \forall yP(x,y)\)</span></p>
+<ul>
+<li>不能替换为公式中的约束出现</li>
+</ul>
+</li>
+<li>
+<p><span class="arithmatex">\(\forall xP(x)\implies Q\;\cancel{\models}\;P(x)\implies Q\)</span></p>
+<ul>
+<li>量词的辖域是整个公式</li>
+</ul>
+</li>
+<li>
+<p>注意</p>
+</li>
+<li>
+<p>不能替换为公式中的约束出现</p>
+</li>
+<li>
+<p>量词的辖域是整个公式</p>
+</li>
+</ul>
+</li>
+<li>
+<p>全称量词引入规则 <span class="arithmatex">\(\forall _+\)</span></p>
+<p>全称推广（UG）</p>
+<ul>
+<li>规则</li>
+<li>
+<p><span class="arithmatex">\(\cfrac{F(x)} {\forall xF(x)}(UG)\)</span></p>
+</li>
+<li>
+<p>例子</p>
+</li>
+<li>
+<p><span class="arithmatex">\(P(x,a)\models \forall xP(x,a)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(P(x)\implies\exists yQ(y)\;\cancel\models \;\forall xP(x)\implies\exists yQ(y)\)</span></p>
+<ul>
+<li>量词的辖域是整个公式</li>
+</ul>
+</li>
+<li>
+<p><span class="arithmatex">\(P(x,a)\;\cancel\models \;\forall yP(x,y)\)</span></p>
+<ul>
+<li>不能替换常量（约束变量）</li>
+</ul>
+</li>
+<li>
+<p>注意</p>
+</li>
+<li>
+<p>不能替换为公式中的约束出现</p>
+</li>
+<li>
+<p>量词的辖域是整个公式</p>
+</li>
+<li>
+<p>不能替换常量（约束变量）</p>
+</li>
+</ul>
+</li>
+<li>
+<p>存在量词消去规则 <span class="arithmatex">\(\exists_-\)</span></p>
+<p>特称指定（ES）</p>
+<ul>
+<li>规则</li>
+<li>
+<p><span class="arithmatex">\(\cfrac{\exists xF(x)} {F(c)}(ES)\)</span></p>
+</li>
+<li>
+<p>例子</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\exists x \exists yP(x,y)\models \exists yP(a,y)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\exists xP(x,a)\;\cancel\models \;P(a,a)\)</span></p>
+<ul>
+<li>要替换为新引入的常量</li>
+</ul>
+</li>
+<li>
+<p><span class="arithmatex">\(\exists xP(x)\implies\exists yQ(y)\;\cancel\models \;P(a)\implies\exists yQ(y)\)</span></p>
+<ul>
+<li>量词的辖域是整个公式</li>
+</ul>
+</li>
+<li>
+<p>注意</p>
+</li>
+<li>
+<p>要替换为新引入的常量</p>
+</li>
+<li>
+<p>量词的辖域是整个公式</p>
+</li>
+</ul>
+</li>
+<li>
+<p>存在量词引入规则 <span class="arithmatex">\(\exists_+\)</span></p>
+<p>特称推广（EG）</p>
+<ul>
+<li>
+<p>规则</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\cfrac{F(c)} {\exists yF(y)}(EG)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\cfrac{F(x)} {\exists yF(y)}(EG)\)</span></p>
+</li>
+<li>
+<p>例子</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\exists x P(x,a)\models \exists y\exists xP(x,y)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\exists xP(x,a)\;\cancel\models \;\exists x\exists xP(x,x)\)</span></p>
+<ul>
+<li>不能替换为公式中的约束出现</li>
+</ul>
+</li>
+<li>
+<p><span class="arithmatex">\(P(a)\implies\exists yQ(y)\;\cancel\models \;\exists xP(x)\implies\exists yQ(y)\)</span></p>
+<ul>
+<li>量词的辖域是整个公式</li>
+</ul>
+</li>
+<li>
+<p>一个特殊的例子</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(\forall x\exists yF(x,y)\qquad\qquad\qquad(P)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\exists yF(x,y)\qquad\qquad\qquad\quad\,(US)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(F(x,c_x)\qquad\qquad\qquad\quad\;\;\;(ES)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\forall xF(x,c_x)\qquad\qquad\qquad\;\;\,(UG)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\exists y\forall xF(x,y)\qquad\qquad\qquad(EG)\)</span></p>
+</li>
+</ul>
+</li>
+<li>
+<p><span class="arithmatex">\(\exists y\forall xF(x,y) ^{\implies}_{\;\cancel{\Longleftarrow}\;} \forall x\exists yF(x,y)\)</span></p>
+<ul>
+<li>
+<p>US+ES 后 ES 引入的常量与 US 引入的变量相关</p>
+</li>
+<li>
+<p>故 US+ES 后不能再对 US 引入的变量使用 UG</p>
+</li>
+</ul>
+</li>
+<li>
+<p>注意</p>
+</li>
+<li>
+<p>不能替换为公式中的约束出现</p>
+</li>
+<li>
+<p>要是新引入的变量符号</p>
+<ul>
+<li>在 US 和 ES 均需要使用的时候，US 不需要是新引入的变量，而 ES 必须是新引入的变量。所以应先 ES，后 US</li>
+</ul>
+</li>
+<li>
+<p>量词的辖域是整个公式</p>
+</li>
+</ul>
+</li>
+<li>
+<p>重要的谓词演算永真式</p>
+<ul>
+<li>
+<p>第一组</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\forall x(A(x)\land B(x))\equiv\forall xA(x)\land\forall xB(x)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\forall xA(x)\lor\forall xB(x) \models \forall x(A(x)\lor B(x))\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\exists x(A(x)\land B(x))\models\exists  xA(x)\land\exists xB(x)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\exists x(A(x)\lor B(x))\equiv\exists xA(x)\lor\exists xB(x)\)</span></p>
+</li>
+<li>
+<p>第二组</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\forall x\forall yA(x,y)\equiv\forall y\forall xA(x,y)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\forall x\forall yA(x,y)\models\exists y\forall xA(x,y)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\exists y\forall xA(x,y)\models\forall x\exists yA(x,y)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\forall x\exists yA(x,y)\models\exists y\exists xA(x,y)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\exists x\exists yA(x,y)\equiv\exists y\exists xA(x,y)\)</span></p>
+</li>
+<li>
+<p>第三组</p>
+</li>
+<li>
+<p><span class="arithmatex">\(\forall x(C\implies A(x))\equiv C\implies\forall xA(x)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\exists x(C\implies A(x))\equiv C\implies\exists  xA(x)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\forall x(A(x)\implies C)\equiv\exists xA(x)\implies C\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\exists x(A(x)\implies C)\equiv\forall xA(x)\implies C\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\forall x(A(x)\implies B(x))\models \forall xA(x)\implies\forall xB(x)\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(\forall x(A(x)\iff B(x))\models \forall xA(x)\iff \forall xB(x)\)</span></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>## 第六章</p>
+<ul>
+<li>
+<p>归纳法的特征</p>
+<ul>
+<li>
+<p>归纳推理</p>
+</li>
+<li>
+<p>定义</p>
+<ul>
+<li>一般说是由个别的事物或现象推出该类事物或现象普遍性规律的推理。</li>
+</ul>
+</li>
+<li>
+<p>特征</p>
+<ul>
+<li>前提与结论之间有或然性的联系是归纳推理的一个十分重要的特征。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>观察、实验与一些整理感性材料的方法</p>
+<ul>
+<li>
+<p>观察与实验</p>
+</li>
+<li>
+<p>在事物或现象的自然状态下，通过感官去认识事物或现象。这就是观察。</p>
+</li>
+<li>
+<p>在控制事物或现象的条件的情形下，通过感官去认识事物或现象。这就是实验。</p>
+</li>
+<li>
+<p>实验相对于观察的优点</p>
+<ul>
+<li>
+<p>实验比观察更容易认识现象之间的因果联系。</p>
+</li>
+<li>
+<p>在实验中，我们可以人为地创造一些在自然状态下不容易或得不到的环境或条件。</p>
+</li>
+<li>
+<p>在实验中，我们可以使一些现象在任意时间任意多次地重复出现，从而便于深入观察。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>在观察与实验中，应该力求避免主观性(“误观察”)与片面性（“未观察”）。</p>
+</li>
+<li>
+<p>比较、分类、分析与综合</p>
+</li>
+<li>
+<p>比较</p>
+<ul>
+<li>
+<p>比较是把一个对象和别的对象加以对照，确定它们的差异点和共同点的逻辑方法。</p>
+</li>
+<li>
+<p>进行比较时应遵守的一些基本要求</p>
+</li>
+<li>
+<p>不要去比较根本没有多少共同属性的对象。</p>
+</li>
+<li>
+<p>必须明确比较标准，按照对象间的某一个共同属性来比较它们。在同一次比较中只能采用一个标准。</p>
+</li>
+<li>
+<p>作为比较标准的那一属性应当是重要的、本质的。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>分类</p>
+<ul>
+<li>根据事物的共同性与差异性，就可以把事物分类。具有相同属性的事物归入一类，具有不同属性的事物归入不同的类。</li>
+</ul>
+</li>
+<li>
+<p>分析与综合</p>
+<ul>
+<li>
+<p>分析是在思想中把对象分解为各个部分或因素，分别加以考察的逻辑方法。</p>
+</li>
+<li>
+<p>有一种分析是把整体分解为它的各个部分。</p>
+</li>
+<li>
+<p>另一种分析是分解出某一事物的各种属性，也就是它自身的性质或它与其他事物的关系。</p>
+</li>
+<li>
+<p>把一个完整的过程划分为若干阶段也是一种分析。</p>
+</li>
+<li>
+<p>综合是在思想中把对象的各个部分或因素结合成为一个统一体加以考察的逻辑方法。</p>
+</li>
+<li>
+<p>解决问题的过程：分析与综合</p>
+</li>
+<li>
+<p>一般来说，思考问题的过程可以分为三个阶段</p>
+<ul>
+<li>
+<p>在粗略的分析基础上进行综合，发现和提出问题</p>
+</li>
+<li>
+<p>进行系统的周密的分析，弄清问题的种种方面</p>
+</li>
+<li>
+<p>综合起来，给以解决的办法</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>简单枚举、完全归纳和科学归纳</p>
+</li>
+<li>
+<p>归纳概括</p>
+<ul>
+<li>从特定经验事实中得到普遍命题的过程</li>
+</ul>
+</li>
+<li>
+<p>简单枚举法</p>
+<ul>
+<li>
+<p>我们观察到某类中许多事物都有某属性，而又没有观察到相反事例，我们就作出结论：某类事物都有某属性。这就是简单枚举法。</p>
+</li>
+<li>
+<p>简单枚举法可以为推断一个因果关系提供有说服力的基础</p>
+</li>
+<li>
+<p>用<span class="arithmatex">\(S\)</span>表示一类事物，用<span class="arithmatex">\(S_1,S_2,…,S_n\)</span>表示<span class="arithmatex">\(S\)</span>类中的个别事物，用 P 表示一个属性。完全归纳法可表示如下</p>
+</li>
+<li>
+<p><span class="arithmatex">\(S_1 是 P\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(S_2 是 P\)</span></p>
+</li>
+<li>
+<p>…………</p>
+</li>
+<li>
+<p><span class="arithmatex">\(S_n 是 P\)</span></p>
+</li>
+<li>
+<p>—————————————————</p>
+</li>
+<li>
+<p><span class="arithmatex">\(所有 S 都是 P\)</span></p>
+</li>
+<li>
+<p>为了提高运用简单枚举法所得结论的可靠性，需要注意以下几点：</p>
+</li>
+<li>
+<p>被考察的对象数量要尽可能多。</p>
+</li>
+<li>
+<p>被考察的对象范围要尽可能地广泛。</p>
+</li>
+<li>
+<p>要注意搜集反面事例。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>完全归纳法</p>
+<ul>
+<li>
+<p>是简单枚举法的极限形式</p>
+</li>
+<li>
+<p>完全归纳法是由某类中每一个事物都具有某属性，推出该类全部事物都具有该属性。</p>
+</li>
+<li>
+<p>用<span class="arithmatex">\(S\)</span>表示一类事物，用<span class="arithmatex">\(S_1,S_2,…,S_n\)</span>表示<span class="arithmatex">\(S\)</span>类中的个别事物，用 P 表示一个属性。完全归纳法可表示如下</p>
+</li>
+<li>
+<p><span class="arithmatex">\(S_1 是 P\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(S_2 是 P\)</span></p>
+</li>
+<li>
+<p>…………</p>
+</li>
+<li>
+<p><span class="arithmatex">\(S_n 是 P\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\((S 类中只有 S_1,S_2,…,S_n)\)</span></p>
+</li>
+<li>
+<p>—————————————————</p>
+</li>
+<li>
+<p><span class="arithmatex">\(所有 S 都是 P\)</span></p>
+</li>
+</ul>
+</li>
+<li>
+<p>科学归纳法</p>
+<ul>
+<li>
+<p>简单枚举法的变化形式</p>
+</li>
+<li>
+<p>科学归纳法又叫科学归纳推理，它是根据观察到的某类事物部分对象<span class="arithmatex">\(S\)</span>与某种属性 P 之间具有因果联系后，根据当时的科学原理和知识状况，去弄清楚<span class="arithmatex">\(S\)</span>和 P 之间是必然联系还是偶然联系。如果得出<span class="arithmatex">\(S\)</span>和 P 之间是必然的联系，则可以推出该类事物<span class="arithmatex">\(S\)</span>都具有某种属性 P 的归纳推理。</p>
+</li>
+<li>
+<p>用<span class="arithmatex">\(S\)</span>表示一类事物，用<span class="arithmatex">\(S_1,S_2,…，S_n\)</span>表示<span class="arithmatex">\(S\)</span>类中的个别事物，用 P 表示一个属性。完全归纳法可表示如下</p>
+</li>
+<li>
+<p><span class="arithmatex">\(S_1 是 P\)</span></p>
+</li>
+<li><span class="arithmatex">\(S_2 是 P\)</span></li>
+<li>…………</li>
+<li>
+<p><span class="arithmatex">\(S_n 是 P\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\((S_1,S_2,…,S_n 是 S 类的部分对象。科学研究表明，他们和 P 之间具有因果联系)\)</span></p>
+</li>
+<li>
+<p>—————————————————</p>
+</li>
+<li>
+<p><span class="arithmatex">\(所有 S 都是 P\)</span></p>
+</li>
+<li>
+<p>提高运用科学归纳法所得结论的可靠性，应注意如下两点</p>
+</li>
+<li>
+<p>前提中被考察的对象在同类事物中应当具有典型性。</p>
+</li>
+<li>
+<p>必须给推理的结论寻找深层理由，即把握现象之间的因果联系。</p>
+</li>
+<li>
+<p>科学归纳法的弊端</p>
+</li>
+<li>
+<p>科学归纳法只能根据已经把握的一部分事物的某些属性进行归纳，无法穷尽同类事物的全部属性，因而作出的结论不是完全可靠的，带有很大的或然性，也可能有同客观事实相矛盾的情况。这种情况一旦出现，原来的结论就会被推翻。</p>
+</li>
+<li>
+<p>类比法</p>
+</li>
+<li>
+<p>我们观察到两个或两类事物在许多属性上都相同，便推出它们在其他属性上也相同。这就是类比法。</p>
+</li>
+<li>
+<p>它是从特殊推向特殊的推理</p>
+</li>
+<li>
+<p>用 A 和 B 分别代表两个或两类不同的事物，用<span class="arithmatex">\(a1,a2,...,an,b\)</span>分别代表几个不同的属性。类比法可用如下表示：</p>
+<ul>
+<li>
+<p><span class="arithmatex">\(A 与 B 有属性 a_1，a_2，...，a_n\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(A 有属性 b\)</span></p>
+</li>
+<li>
+<p>—————————————————</p>
+</li>
+<li>
+<p><span class="arithmatex">\(B 也有属性 b\)</span></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>原因和结果</p>
+<ul>
+<li>
+<p>如果我们知道，一件事情是另一件事情的原因或者结果，我们就能够从原因推理到结果，或者从结果推理到原因。如果原因和结果之间的假定关系是被正确地建立起来的，那么基于那些关系的推理就是十分强有力的。</p>
+</li>
+<li>
+<p>原因的含义：充分条件、必要条件、充分必要条件</p>
+</li>
+<li>
+<p>因果关系</p>
+</li>
+<li>
+<p>因果关系不是存粹逻辑的或者演绎的，因果律只能经验地或者后验地发现。</p>
+</li>
+<li>
+<p>我们能观察到一个事态（C）的一些实例，并且观察到的每个实例都伴随特定现象（P）的一个实例。</p>
+</li>
+<li>
+<p>如何建立一个普遍的因果关系，得到 C 在所有情况下都伴随有 P?</p>
+</li>
+<li>
+<p>求因果联系的五种方法</p>
+</li>
+<li>
+<p>契合法（求同法）</p>
+<ul>
+<li>
+<p>契合法规则：如果在所研究的现象出现的两个或两个以上的场合中，只有一个情况是共同的，那么，这个共同的情况就与所研究的现象之间有因果联系。</p>
+</li>
+<li>
+<p>用 A、B、C、D 与 E 分别代表不同的情况，用 a、b、c、d 与 e 分别代表不同的现象。其中 a 是我们所研究的现象。契合法可以表示为</p>
+</li>
+<li>
+<p>场合（1） A，B，C——a，b，c</p>
+</li>
+<li>
+<p>场合（2） A，B，D——a，b，d</p>
+</li>
+<li>
+<p>场合（3） A，C，E——a，c，e</p>
+</li>
+<li>
+<p>……</p>
+</li>
+<li>
+<hr/>
+</li>
+<li>
+<p>A 与 a 之间有因果联系</p>
+</li>
+<li>
+<p>契合法不是一个很有效的判明因果联系的方法</p>
+</li>
+<li>
+<p>为了提高运用契合法所得结论的可靠性，应注意以下几点：</p>
+</li>
+<li>
+<p>各种场合还有没有其他的共同情况</p>
+</li>
+<li>
+<p>比较的场合要尽可能地多</p>
+</li>
+</ul>
+</li>
+<li>
+<p>差异法</p>
+<ul>
+<li>
+<p>差异法的规则：如果所研究的现象出现的场合与它不出现的场合之间，只有一点不同，即在一个场合中有某个情况出现，而在另一个场合中这个情况不出现，那么，这个情况与所研究的现象之间就有因果联系。</p>
+</li>
+<li>
+<p>差异法可以表示如下：</p>
+</li>
+<li>
+<p>场合（1）A，B，C——a，b，c （正面场合）</p>
+</li>
+<li>
+<p>场合（2）        B，C——       b，c （反面场合）</p>
+</li>
+<li>
+<p>————————————————</p>
+</li>
+<li>
+<p>A 与 a 之间有因果联系</p>
+</li>
+<li>
+<p>差异法比契合法有较大的可靠性。</p>
+</li>
+<li>
+<p>在运用差异法探求现象间因果联系时，以下两个方面是需要注意的：</p>
+</li>
+<li>
+<p>两个比较的场合中有无其他的差异情况。</p>
+</li>
+<li>
+<p>两个场合中唯一不同的情况是被研究现象的整个原因还是部分原因。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>契合差异并用法</p>
+<ul>
+<li>
+<p>契合差异并用法规则：如果在出现所研究的现象的几个场合中，都存在着一个共同情况，而在所研究的现象不出现的几个场合中，都没有这个情况，那么，这个情况与所研究的现象之间就有因果联系。</p>
+</li>
+<li>
+<p>这一方法可以表示为：</p>
+</li>
+<li>
+<p>正面场合</p>
+</li>
+<li>
+<p>A，B，C——a、b、c</p>
+</li>
+<li>
+<p>A，D，E——a、d、e</p>
+</li>
+<li>
+<p>A，F，G——a、f、g</p>
+</li>
+<li>
+<p>反面场合</p>
+</li>
+<li>
+<p>B，M，N——b、m、n</p>
+</li>
+<li>
+<p>D，O，P——d、o、p</p>
+</li>
+<li>
+<p>F，Q，R——f、q、r</p>
+</li>
+<li>
+<p>————————————————————</p>
+</li>
+<li>
+<p>A 与 a 之间有因果联系</p>
+</li>
+<li>
+<p>契合差异并用法的步骤：</p>
+</li>
+<li>
+<p>把所研究的现象出现的那些场合加以比较。</p>
+</li>
+<li>
+<p>把所研究的现象不出现的那些情况加以比较。</p>
+</li>
+<li>
+<p>把前两步比较所得的结果再加以比较。</p>
+</li>
+<li>
+<p>为了提高运用契合差异并用法所得结论的可靠性，以下两点需要注意：</p>
+</li>
+<li>
+<p>构成正负事例组的场合越多，结论的可靠性往往就越高。</p>
+</li>
+<li>
+<p>正、负事例组的各个对应场合，其相似的程度越高，获得结论的可靠性就越大。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>共变法</p>
+<ul>
+<li>
+<p>共变法规则：当其它情况不变时，如果每当某一现象发生一定程度的变化时，另一现象也随之发生一定程度的变化，那么，这两个现象之间有因果联系。</p>
+</li>
+<li>
+<p>设 A1，A2，A3，…是现象 A 的不同状态;a1，a2，a3，…是另一现象 a 的不同状态。共变法可用如下表示：</p>
+</li>
+<li>
+<p>场合（1）A1，B，C——a1、b、c</p>
+</li>
+<li>
+<p>场合（2）A2，B，C——a2、b、c</p>
+</li>
+<li>
+<p>场合（3）A3，B，C——a3、b、c</p>
+</li>
+<li>
+<p>————————————————</p>
+</li>
+<li>
+<p>A 与 a 有因果联系</p>
+</li>
+<li>
+<p>共变法的优点：</p>
+</li>
+<li>
+<p>共变法是从现象变化的数量或程度来判明因果联系的。应用共变法得到的结论有较大的可靠性。</p>
+</li>
+<li>
+<p>有些现象是无法消除的或不易消除的。</p>
+</li>
+<li>
+<p>同向共变和异向共变</p>
+</li>
+<li>
+<p>同向共变：指结果的量随原因的量成正比例关系变化。</p>
+</li>
+<li>
+<p>异向共变：指结果的量随原因的量成反比例变化。</p>
+</li>
+<li>
+<p>为了提高运用共变法所得结论的可靠性，应注意：</p>
+</li>
+<li>
+<p>与被研究对象发生共变的情况是否是唯一的。</p>
+</li>
+<li>
+<p>有些现象之间虽然也存在共变关系，但却不具有因果联系。</p>
+</li>
+<li>
+<p>两个现象之间的共变关系往往是在一定限度之内，超过一定限度，共变现象就会消失或者发生另一种相反的共变。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>剩余法</p>
+<ul>
+<li>
+<p>剩余法规则：如果已知某一复合现象是另一复合现象的原因，同时又知道前一现象中的某一部分是后一现象中的某一部分的原因，那么，前一现象的其余部分与后一现象的其余部分有因果联系。</p>
+</li>
+<li>
+<p>剩余法表示如下：</p>
+</li>
+<li>
+<p>A、B、C、D 是 a、b、c、d 的原因，</p>
+</li>
+<li>
+<p>A 是 a 的原因</p>
+</li>
+<li>
+<p>B 是 b 的原因</p>
+</li>
+<li>
+<p>C 是 c 的原因</p>
+</li>
+<li>
+<p>——————————————————</p>
+</li>
+<li>
+<p>D 与 d 之间有因果联系</p>
+</li>
+<li>
+<p>为了提高有关结论的可靠性，运用剩余法时应注意：</p>
+</li>
+<li>必须首先确定复合现象中的 a、b、c 是由复合情况中的 A、B、C 引起的，并且复合现象中的剩余部分 d 不可能是由情况 A、B、C 中的一个或几个共同作用引起的；否则，就不能断定现象 d 由情况 D 引起。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>假说演绎法</p>
+<ul>
+<li>
+<p>假说的性质</p>
+</li>
+<li>
+<p>假说就是人们根据已有的知识对于所研究的事实或现象作出的初步解释。</p>
+</li>
+<li>
+<p>假说有时是关于一个个别事物或现象的，有时又是关于一类事物或现象的。</p>
+</li>
+<li>
+<p>假说的特征</p>
+</li>
+<li>
+<p>假说是以客观事实和科学知识为依据的。</p>
+</li>
+<li>
+<p>假说具有推测性。</p>
+</li>
+<li>
+<p>假说是人的认识接近客观真理的方式。</p>
+</li>
+<li>
+<p>假说的发展</p>
+</li>
+<li>
+<p>假说的提出</p>
+<ul>
+<li>
+<p>在一定事实材料的基础上，以科学原理为指导，通过思维的加工（主要是应用推理）而做出初步的假定。这就是假说形成的初始阶段。</p>
+</li>
+<li>
+<p>从已经确立的初步假定出发，经过事实材料和科学原理的广泛论证，使初步假定充实成为一个结构稳定的系统。这就是假说形成过程中的完成阶段</p>
+</li>
+<li>
+<p>大致说来，在假说形成的初始阶段里，对若干个设想进行选择，采取下列思维过程：</p>
+</li>
+<li>
+<p>或者 p1 或者 p2 或者 p3；</p>
+</li>
+<li>
+<p>如果 p2，那么 q2；但是非 q2；</p>
+</li>
+<li>
+<p>因此，p2 不成立。</p>
+</li>
+<li>
+<p>如果 P3，那么 q3；但是非 q3；</p>
+</li>
+<li>
+<p>因此，p3 不成立。</p>
+</li>
+<li>
+<p>——————————————</p>
+</li>
+<li>
+<p>p1 成立</p>
+</li>
+</ul>
+</li>
+<li>
+<p>由假说推出结论</p>
+<ul>
+<li>从假说的基本理论观点出发，结合一定的背景知识，推导出一些关于事实的论断。这些论断有的是对已知事实的解释，有的是对未来事实的预言。其中，前者在验证假说方面不及后者有说服力。</li>
+</ul>
+</li>
+<li>
+<p>进行验证</p>
+<ul>
+<li>
+<p>通过各种实践检验从假说基本观点结合背景知识所推出的结论是否真实。如果所推出的结论和和事实相符合，那么，人们一般就认为假说得到了证实。如果推出的结论与事实不相符合，那么，人们一般就认为假说被证伪了。</p>
+</li>
+<li>
+<p>假说的证实推理形式：</p>
+<ul>
+<li>
+<p>如果（p 并且 r），那么 q</p>
+</li>
+<li>
+<p>q</p>
+</li>
+<li>
+<p>————————————</p>
+</li>
+<li>
+<p>p 并且 r</p>
+</li>
+</ul>
+</li>
+<li>
+<p>假说的证伪推理形式：</p>
+<ul>
+<li>
+<p>如果（p 并且 r），那么 q</p>
+</li>
+<li>
+<p>并非 q</p>
+</li>
+<li>
+<p>————————————</p>
+</li>
+<li>
+<p>并非（p 并且 r）</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.tooltips", "content.tabs.link", "content.code.copy", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.78eede0e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.zerolacqua.top/npm/mathjax/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/d3@7/dist/d3.min.js"></script>
+      
+        <script src="https://unpkg.com/markmap-lib@0.15.3/dist/browser/index.js"></script>
+      
+        <script src="https://unpkg.com/markmap-view@0.15.3/dist/browser/index.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4829 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://note.zerolacqua.top/course/Photogrammetry/%E8%A7%A3%E6%9E%90%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/">
+      
+      
+        <link rel="prev" href="../%E6%95%B0%E5%AD%97%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/">
+      
+      
+        <link rel="next" href="../../RS/%E9%81%A5%E6%84%9F%E5%9B%BE%E5%83%8F%E8%A7%A3%E8%AF%91/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.2.3">
+    
+    
+      
+        <title>解析摄影测量 - 丘卡的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0e669242.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="丘卡的笔记本" class="md-header__button md-logo" aria-label="丘卡的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            丘卡的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              解析摄影测量
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ZerolAcqua/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZerolAcqua/note
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../paper/RS/UAV/%E5%9F%BA%E4%BA%8E%E7%89%A9%E6%8E%A2%E9%A3%9E%E8%A1%8C%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%AD%A3%E5%B0%84%E5%BD%B1%E5%83%8F%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C/" class="md-tabs__link">
+          
+  
+    
+  
+  论文
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../%E8%BF%91%E6%99%AF%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-tabs__link">
+          
+  
+    
+  
+  课程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../programming/cpp/modern-cpp-features/" class="md-tabs__link">
+          
+  
+    
+  
+  编程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cs/computer_system/Putting_the_You_in_CPU/" class="md-tabs__link">
+          
+  
+    
+  
+  计算机
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../misc/photogrammetry/%E4%BA%91%E5%8F%B0%E6%97%8B%E8%BD%AC%E8%A7%92%E6%8D%A2%E7%AE%97/" class="md-tabs__link">
+          
+  
+    
+  
+  杂项
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="丘卡的笔记本" class="md-nav__button md-logo" aria-label="丘卡的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    丘卡的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ZerolAcqua/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ZerolAcqua/note
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    论文
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            论文
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            RS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          <label class="md-nav__link" for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UAV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            UAV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/RS/UAV/%E5%9F%BA%E4%BA%8E%E7%89%A9%E6%8E%A2%E9%A3%9E%E8%A1%8C%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%AD%A3%E5%B0%84%E5%BD%B1%E5%83%8F%E5%BF%AB%E9%80%9F%E5%88%B6%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于物探飞行模式的正射影像快速制作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/RS/UAV/%E4%B8%AD%E5%9B%BD%E5%85%89%E5%AD%A6%E5%8D%AB%E6%98%9F%E5%BD%B1%E5%83%8F%E5%8C%B9%E9%85%8D%E8%9E%8D%E5%90%88%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A combined image matching method for Chinese optical satellite imagery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/RS/UAV/%E5%8D%97%E6%9E%81%E6%97%A0%E4%BA%BA%E6%9C%BA%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F%E8%AE%BA%E6%96%87%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    南极无人机摄影测量论文概览
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          <label class="md-nav__link" for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    图像匹配
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            图像匹配
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/image_matching/LBD%E7%BA%BF%E7%89%B9%E5%BE%81%E6%8F%8F%E8%BF%B0%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LBD 线特征描述算法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/image_matching/Sample4Geo_Hard_Negative_Sampling_for_Cross-View_Geo-Localisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sample4Geo: Hard Negative Sampling for Cross-View Geo-Localisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/image_matching/Image_Matching_from_Handcrafted_to_Deep_Features_A_Survey/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    从人工特征到深度特征的图像匹配调查
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SfM
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            SfM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Structure-from-Motion_Revisited/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SfM 回顾（Colmap）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Skeletal_graphs_for_efficient_structure_from_motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    用于高效 SfM 的骨架图
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Structure-and-motion_pipeline_on_a_hierarchical_cluster_tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于分层聚类树的 SfM 
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Improving_the_efficiency_of_hierarchical_structure-and-motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    提高分层 SfM 效率
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Towards_Linear-Time_Incremental_Structure-from-Motion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线性时间的增量式 SfM（VisualSFM）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Modeling_the_World_from_Internet_Photo_Collections/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    通过互联网影像重建世界（Bundler）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Photo_Tourism_Exploring_Photo_Collections_in_3D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    相片旅行：在三维世界中浏览相片
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Building_Rome_in_a_Day/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一天建成罗马
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Efficient_structure_from_motion_for_large-scale_UAV_images_A_review_and_a_comparison_of_SfM_tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大规模无人机影像的高效 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Multicore_Bundle_Adjustment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多核光束法平差
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Efficient_tree-structured_SfM_by_RANSAC_generalized_Procrustes_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于 RANSAC 通用 Procrustes 分析的高效树状 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/Divide_and_Conquer_Efficient_Large_Scale_Structure_from_Motion_Using_Graph_Partitioning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用图分割的分治高效大规模 SfM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../paper/CV/SfM/SfM_on-the-fly%3A_A_robust_near_real-time_SfM_for_spatiotemporally_disordered_high-resolution_imagery_from_multiple_agents/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    实时 SfM：一种面向多智能体时空无序高分辨率影像的鲁棒近实时 SfM 方法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    课程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            课程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    专业相关
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            专业相关
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" checked>
+        
+          <label class="md-nav__link" for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    摄影测量
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            摄影测量
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%BF%91%E6%99%AF%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    近景摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8D%AB%E6%98%9F%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    卫星摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E5%AD%97%E6%91%84%E5%BD%B1%E6%B5%8B%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字摄影测量
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    解析摄影测量
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    解析摄影测量
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    内容整理
+  </a>
+  
+    <nav class="md-nav" aria-label="内容整理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    第一章 绪论
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    第二章 航摄像片投影关系
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    第三章 单张像片解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    第四章 立体观察与像点坐标量测
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    第五章 立体像对解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    第六章 经典解析空中三角测量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    第七章 解析空中三角测量的可靠性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    第八章 现代解析空中三角测量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    考题梳理
+  </a>
+  
+    <nav class="md-nav" aria-label="考题梳理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    填空
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    名词解释
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    简答
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    综合题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    一些总结
+  </a>
+  
+    <nav class="md-nav" aria-label="一些总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    相关方法所需要的地物/像点的数量等比较
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    公式推导
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    计算步骤
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    定义
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2" >
+        
+          <label class="md-nav__link" for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            RS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RS/%E9%81%A5%E6%84%9F%E5%9B%BE%E5%83%8F%E8%A7%A3%E8%AF%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    遥感图像解译
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_3" >
+        
+          <label class="md-nav__link" for="__nav_3_1_3" id="__nav_3_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    测绘
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            测绘
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../geomatics/%E5%A4%A7%E5%9C%B0%E6%B5%8B%E9%87%8F%E5%AD%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    大地测量学
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4" >
+        
+          <label class="md-nav__link" for="__nav_3_1_4" id="__nav_3_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CV
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            CV
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CV/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数字图像处理
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    专业之外
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            专业之外
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            CS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS/%E5%A4%9A%E5%AA%92%E4%BD%93%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    多媒体技术
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CS/%E5%8D%97%E5%A4%A7%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9FPA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    南大计算机系统 PA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    others
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            others
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/%E9%80%BB%E8%BE%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    逻辑学导论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/%E9%9F%B3%E4%B9%90%E6%AC%A3%E8%B5%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    音乐欣赏
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    编程
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            编程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    C++
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            C++
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cpp/modern-cpp-features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    现代 C++ 特性
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cpp/Effective_Modern_C%2B%2B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Effective Modern C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/cpp/head-first-design-pattern/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 实现 Headfirst 设计模式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Rust
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Rust
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/rust/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    准备工作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/rust/Rust%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E8%AF%AD%E8%A8%80/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rust 程序设计语言
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Julia
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Julia
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/julia/%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    准备工作
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/julia/Julia_Data_Science/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Julia Data Science
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Git
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Git
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/git/progit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Progit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programming/python/bibliometrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    文献计量学作业
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            计算机
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    计算机系统
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            计算机系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cs/computer_system/Putting_the_You_in_CPU/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Putting the “You” in CPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    杂项
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            杂项
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    摄影测量
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            摄影测量
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/photogrammetry/%E4%BA%91%E5%8F%B0%E6%97%8B%E8%BD%AC%E8%A7%92%E6%8D%A2%E7%AE%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    云台旋转角换算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    内容整理
+  </a>
+  
+    <nav class="md-nav" aria-label="内容整理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    第一章 绪论
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    第二章 航摄像片投影关系
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    第三章 单张像片解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    第四章 立体观察与像点坐标量测
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    第五章 立体像对解析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    第六章 经典解析空中三角测量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    第七章 解析空中三角测量的可靠性
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    第八章 现代解析空中三角测量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    考题梳理
+  </a>
+  
+    <nav class="md-nav" aria-label="考题梳理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    填空
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    名词解释
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    简答
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    综合题
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    一些总结
+  </a>
+  
+    <nav class="md-nav" aria-label="一些总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    相关方法所需要的地物/像点的数量等比较
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    公式推导
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    计算步骤
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    定义
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">解析摄影测量<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<h2 id="_2">内容整理<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<h3 id="_3">第一章 绪论<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<ul>
+<li>定义：摄影测量学(Photogrammetry)是利用光学摄影机获取的像片，研究和确定被摄物体的形状、大小、位置、特性及其相互关系的一门学科</li>
+<li>过程</li>
+<li>分类<ul>
+<li>距离：<ul>
+<li>航天摄影测量</li>
+<li>航空摄影测量</li>
+<li>地面摄影测量</li>
+<li>近景摄影测量</li>
+<li>显微摄影测量</li>
+</ul>
+</li>
+<li>用途：<ul>
+<li>地形摄影测量</li>
+<li>非地形摄影测量</li>
+</ul>
+</li>
+<li>处理方法：<ul>
+<li>模拟摄影测量</li>
+<li>解析摄影测量</li>
+<li>数字摄影测量</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>任务<ul>
+<li>where?what?what change?<ul>
+<li>地形测量领域<ul>
+<li>各种比例尺的地形图、专题图、特种地图、正射影像地图、景观图</li>
+<li>建立各种数据库</li>
+<li>提供地理信息系统和土地信息系统等所需要的基础数据</li>
+</ul>
+</li>
+<li>非地形测量领域<ul>
+<li>生物医学</li>
+<li>公安侦破</li>
+<li>古文物</li>
+<li>古建筑</li>
+<li>变形监测</li>
+<li>军事侦察</li>
+<li>矿山工程</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>特点<ul>
+<li>无需接触物体本身而获得被摄物体的信息</li>
+<li>由二维影像重建三维目标</li>
+<li>面采集数据方式</li>
+<li>同时提取物体的几何（语义）与物理属性（非语义）</li>
+</ul>
+</li>
+<li>作业流程</li>
+</ul>
+<h3 id="_4">第二章 航摄像片投影关系<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
+<ul>
+<li>航空摄影要求<ul>
+<li>航空摄影<ul>
+<li>利用安装在航空遥感平台上的航摄仪从空中一定角度对地面进行摄影</li>
+<li>像片主距<ul>
+<li>航摄仪焦距：物镜节点到焦点的距离</li>
+<li>像片主距：物镜后节点到像平面的距离<ul>
+<li>长焦距：焦距&gt;255mm</li>
+<li>中焦距：焦距＝102～255mm</li>
+<li>短焦距：焦距&lt;102mm</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>像场角<ul>
+<li>像场：物镜焦面上中央成像清晰的范围</li>
+<li>像场角：像场直径对物镜后节点的夹角<ul>
+<li>常角：视场角&lt;75°</li>
+<li>宽角：视场角＝75°~100°</li>
+<li>特宽角：视场角&gt;100°</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>有光学框标和机械框标的航摄像片为量测像片</li>
+</ul>
+</li>
+<li>航空摄影基本要求<ul>
+<li>摄影瞬间摄影机的主光轴近似与地面垂直偏离铅垂线的夹角小于 3°，夹角为像片倾角</li>
+<li>沿航线方向相邻两张像片应有 60%左右的航向重叠，相邻航线间的像片应有 30%左右的旁向重叠<ul>
+<li>航向重叠度<ul>
+<li><span class="arithmatex">\(p_x=\dfrac{l_x}{L_x}\times100\%\)</span></li>
+<li><span class="arithmatex">\(p_x^\prime=p_x+\dfrac{(1-p_x)\cdot \Delta h}{H_相}\)</span></li>
+<li>应达到 56%~65%，最小应有 50%</li>
+</ul>
+</li>
+<li>旁向重叠度<ul>
+<li><span class="arithmatex">\(q_y=\dfrac{l_y}{L_y}\times100\%\)</span></li>
+<li><span class="arithmatex">\(q_y^\prime=q_y+\dfrac{(1-q_y)\cdot \Delta h}{H_相}\)</span></li>
+<li>应达到 30%~35%</li>
+</ul>
+</li>
+<li>摄影基线：航向相邻两个摄影站之间的距离称为摄影基线</li>
+<li>摄影比例尺：视摄影像片水平、地面取平均高程时，像片上的线段 l 与地面上相应的水平距 L 之比称为摄影比例尺<ul>
+<li><span class="arithmatex">\(\dfrac{1}{m}=\dfrac{1}{m}=\dfrac{f}{H}\)</span></li>
+<li><span class="arithmatex">\(H_相=m\cdot f\)</span></li>
+<li><span class="arithmatex">\(H_绝=H_相+h_基\)</span><ul>
+<li><span class="arithmatex">\(h_基=\dfrac{\overline h_高+\overline h_低}{2}\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>航线弯曲度<ul>
+<li>把一条航线的航摄像片根据地物影像拼接起来，各张像片的主点连线不在一条直线上，而呈现为弯弯曲曲的折线，称为航线弯曲</li>
+<li>航线弯曲度：航线最大弯曲矢量与航线长度之比的百分数。要求航线弯曲度&lt;3%</li>
+</ul>
+</li>
+<li>像片旋角<ul>
+<li>一张像片上相邻主点连线与同方向框标连线间的夹角。要求像片旋角&lt;6°</li>
+<li>像片旋角过大会减少立体像对的有效范围</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>航摄像片特性<ul>
+<li>投影方式<ul>
+<li>投影：用一组假想的直线将物体向几何面投射<ul>
+<li>投影射线:投影的直线</li>
+<li>投影平面:投影的几何面</li>
+</ul>
+</li>
+<li>投影射线会聚于一点的投影称为中心投影</li>
+<li>投影射线平行某一固定方向的投影称为平行投影<ul>
+<li>航摄像片为中心投影，地形图为正射投影</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>地图的特点<ul>
+<li>地形图的特点<ul>
+<li>图上任意两点间的距离与相应地面点的水平距离之比为一常数，等于图比例尺</li>
+<li>图上任意一点引画的两条方向线间的夹角等于地面上对应的水平角</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>航摄影像的特点<ul>
+<li>当像片倾斜、地形起伏时，地面点在航摄像片上的构像相对于理想情况下构像所产生的位置差异称像点位移
+    "也称左边的叫像点位移，右边的叫投影差​"</li>
+<li>航摄像片与地形图的区别<ul>
+<li>投影方式：地图为正射投影，航摄像片为中心投影</li>
+<li>比例尺：地图有统一比例尺，航摄像片的比例尺因点而异</li>
+<li>表示方法：地图为线划图，航摄像片为影像</li>
+<li>表示内容：地图需要综合取舍，航摄像片是所见即所得</li>
+<li>几何差异：航摄像片可组成像对立体观察，地图无法看立体</li>
+</ul>
+</li>
+<li>摄影测量的任务之一：把地物按中心投影规律获取的摄影比例尺航摄像片转换成以测图比例尺表示的正射投影地形图</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>中心投影成像<ul>
+<li>航片的重要点线面<ul>
+<li>航片的重要点线面<ul>
+<li>点<ul>
+<li>摄影中心 <span class="arithmatex">\(S\)</span></li>
+<li>像主点 <span class="arithmatex">\(o\)</span></li>
+<li>地主点 <span class="arithmatex">\(O\)</span></li>
+<li>像底点 <span class="arithmatex">\(n\)</span></li>
+<li>地底点 <span class="arithmatex">\(N\)</span></li>
+<li>等角点 <span class="arithmatex">\(c\)</span></li>
+<li>地面等角点 <span class="arithmatex">\(C\)</span></li>
+<li>主合点 <span class="arithmatex">\(i\)</span></li>
+<li>主遁点 <span class="arithmatex">\(J\)</span></li>
+</ul>
+</li>
+<li>线<ul>
+<li>迹线 <span class="arithmatex">\(TT\)</span></li>
+<li>主光线 <span class="arithmatex">\(SoO\)</span></li>
+<li>主垂线 <span class="arithmatex">\(SnN\)</span></li>
+<li>摄影方向线 <span class="arithmatex">\(VV\)</span></li>
+<li>主纵线 <span class="arithmatex">\(vv\)</span></li>
+<li>等角线 <span class="arithmatex">\(ScC\)</span></li>
+<li>主合线 <span class="arithmatex">\(h_ih_i\)</span></li>
+<li>主横线 <span class="arithmatex">\(h_oh_o\)</span></li>
+<li>等比线 <span class="arithmatex">\(h_ch_c\)</span></li>
+</ul>
+</li>
+<li>面<ul>
+<li>地面 <span class="arithmatex">\(E\)</span></li>
+<li>像片面 <span class="arithmatex">\(P\)</span></li>
+<li>主垂面 <span class="arithmatex">\(W\)</span></li>
+<li>真水平面 <span class="arithmatex">\(E_s\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>重要点线面的数学关系<ul>
+<li><span class="arithmatex">\(on=f\cdot \tan\alpha\)</span></li>
+<li><span class="arithmatex">\(oc=f\cdot \tan\frac{\alpha}{2}\)</span></li>
+<li><span class="arithmatex">\(oi=f\cdot \cot\alpha\)</span></li>
+<li><span class="arithmatex">\(ON=H\cdot \tan \alpha\)</span></li>
+<li><span class="arithmatex">\(CN=H\cdot \tan \frac{\alpha}{2}\)</span></li>
+<li><span class="arithmatex">\(Si=ic=\dfrac{f}{\sin\alpha}\)</span></li>
+<li><span class="arithmatex">\(SJ=iv=\dfrac{H}{\sin \alpha}\)</span></li>
+</ul>
+</li>
+<li>重要点线的特征<ul>
+<li>像底点特性：铅垂线在像平面上的构像位于以像底点 <span class="arithmatex">\(n\)</span> 为辐射中心的辐射线上</li>
+<li>等角点特性：在倾斜像片和水平地面上，由等角点 <span class="arithmatex">\(c\)</span> 和 <span class="arithmatex">\(C\)</span> 所引出的一对透视对应线无方向偏差，保持方向角相等<ul>
+<li>在倾斜像片上以等角点 <span class="arithmatex">\(c\)</span> 为顶点量测的某一角度可用于代替在地面用 <span class="arithmatex">\(C\)</span> 为测站实测的水平角</li>
+</ul>
+</li>
+<li>等比线特性<ul>
+<li>等比线的构像比例尺等于水平像片上的摄影比例尺，不受像片倾斜影响</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>透视变换作图方法<ul>
+<li>将空间点、线作中心投影，在投影平面上得到一一对应的点、线，这种经中心投影所取得的一一对应投影关系称之为透视变换</li>
+<li>透视变换的特性<ul>
+<li>同素性：几何元素的种类不发生变化</li>
+<li>互换性：像与物互为投影</li>
+<li>结合性：直线的交点投影仍为直线的交点</li>
+</ul>
+</li>
+<li>中心投影作图</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_5">第三章 单张像片解析<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
+<ul>
+<li>摄影测量常用坐标系<ul>
+<li>像平面直角坐标系<ul>
+<li>框标坐标系</li>
+<li>像主点坐标系</li>
+<li>主纵线坐标系</li>
+</ul>
+</li>
+<li>像空间直角坐标系</li>
+<li>大地测量坐标系</li>
+<li>像空间辅助坐标系</li>
+<li>地面摄影测量坐标系</li>
+</ul>
+</li>
+<li>航摄影像的方位元素<ul>
+<li>确定摄影时投影中心、像片与地面三者之间相互位置关系的必要参数</li>
+<li>内方位元素 <span class="arithmatex">\((x_0,y_0,f)\)</span><ul>
+<li>确定摄影物镜后节点与像片之间相互位置关系的参数</li>
+</ul>
+</li>
+<li>外方位元素 <span class="arithmatex">\((X_S,Y_S,Z_S，R_{3\times 3})\)</span><ul>
+<li>确定摄影瞬间像片在地面直角坐标系中空间位置和姿态的参数</li>
+<li>外方位线元素 <span class="arithmatex">\((X_S,Y_S,Z_S)\)</span><ul>
+<li>描述摄影中心在地面空间直角坐标系中的位置</li>
+</ul>
+</li>
+<li>外方位角元素<ul>
+<li>描述像片在摄影瞬间的空间姿态</li>
+<li>可以用转角系统描述<ul>
+<li>以 Y 轴为主轴的 <span class="arithmatex">\(\phi-\omega-\kappa\)</span> 转角系统</li>
+<li>以 X 轴为主轴的 <span class="arithmatex">\(\omega \prime-\phi\prime-\kappa\prime\)</span> 转角系统</li>
+<li>以 Z 轴为主轴的 <span class="arithmatex">\(A -\alpha-\kappa _v\)</span> 转角系统</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>像空间直角坐标变换<ul>
+<li>平面直角坐标变换<ul>
+<li><span class="arithmatex">\(\begin{bmatrix} x\\ y \end{bmatrix}=\begin{bmatrix}\cos\alpha &amp; -\sin\alpha\\\sin\alpha &amp;\cos \alpha\end{bmatrix}\begin{bmatrix} x\prime\\ y\prime \end{bmatrix}\)</span></li>
+</ul>
+</li>
+<li>像空间与像空间辅助坐标系的坐标变换<ul>
+<li>以 <span class="arithmatex">\(Y\)</span> 轴为主轴的 <span class="arithmatex">\(\phi-\omega-\kappa\)</span> 转角系统<ul>
+<li><span class="arithmatex">\(\begin{bmatrix} X\\ Y\\Z\end{bmatrix}=R_\varphi R_\omega R_\kappa \begin{bmatrix} x\\ y\\ z \end{bmatrix}=R\begin{bmatrix} x\\ y\\ z \end{bmatrix}\)</span></li>
+<li>
+<div class="arithmatex">\[R=R_\varphi R_\omega R_\kappa =\begin{bmatrix}\cos\varphi &amp; 0&amp;-\sin\varphi\\0&amp;1&amp;0\\\sin\varphi &amp;0&amp;\cos \varphi\end{bmatrix}\begin{bmatrix}1&amp;0&amp;0\\0&amp;\cos\omega &amp;-\sin\omega\\0&amp;\sin\omega &amp;\cos \omega\end{bmatrix}\begin{bmatrix}\cos\kappa&amp;-\sin\kappa&amp;0\\\sin\kappa&amp;\cos \kappa&amp;0\\0&amp;0&amp;1\end{bmatrix}\]</div>
+</li>
+</ul>
+</li>
+<li>以 <span class="arithmatex">\(X\)</span> 轴为主轴的 <span class="arithmatex">\(\omega \prime-\phi \prime-\kappa\prime\)</span> 转角系统<ul>
+<li><span class="arithmatex">\(\begin{bmatrix} X\\ Y\\Z\end{bmatrix}=R_\omega \prime R_\varphi \prime R_\kappa  \prime\begin{bmatrix} x\\ y\\ z \end{bmatrix}=R\begin{bmatrix} x\\ y\\ z \end{bmatrix}\)</span></li>
+</ul>
+</li>
+<li>以 <span class="arithmatex">\(Z\)</span> 轴为主轴的 <span class="arithmatex">\(A -\alpha-\kappa _v\)</span> 转角系统<ul>
+<li><span class="arithmatex">\(\begin{bmatrix} X\\ Y\\Z\end{bmatrix}=R_A R_\alpha  R_{\kappa _v}\begin{bmatrix} x\\ y\\ z \end{bmatrix}=R\begin{bmatrix} x\\ y\\ z \end{bmatrix}\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>正交变换矩阵的特性<ul>
+<li>矩阵只有三个独立参数</li>
+<li>逆矩阵为其转置矩阵</li>
+<li>矩阵中的每一个元素等于其代数余子式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>共线条件方程<ul>
+<li>表示摄影中心 <span class="arithmatex">\(S\)</span> 、像点 <span class="arithmatex">\(a\)</span> 及其对应物点 A 三者位于一条直线的数学方程<ul>
+<li><span class="arithmatex">\(\begin{bmatrix} X\\ Y\\Z\end{bmatrix}=\dfrac{1}{\lambda}\begin{bmatrix} X_A-X_S\\ Y_A-Y_S\\Z_A-Z_S\end{bmatrix}   \begin{bmatrix} X\\ Y\\Z\end{bmatrix}=R\begin{bmatrix}x\\y\\-f\end{bmatrix}=\begin{bmatrix}a_1&amp;a_2&amp;a_3\\b_1&amp;b_2&amp;b_3\\c_1&amp;c_2&amp;c_3\end{bmatrix}\begin{bmatrix}x\\y\\-f\end{bmatrix}\)</span></li>
+<li><span class="arithmatex">\(x=-f\dfrac{a_1(X_A-X_S)+b_1(Y_A-Y_S)+c_1(Z_A-Z_S)}{a_3(X_A-X_S)+b_3(Y_A-Y_S)+c_3(Z_A-Z_S)}\)</span>
+<span class="arithmatex">\(y=-f\dfrac{a_2(X_A-X_S)+b_2(Y_A-Y_S)+c_2(Z_A-Z_S)}{a_3(X_A-X_S)+b_3(Y_A-Y_S)+c_3(Z_A-Z_S)}\)</span></li>
+</ul>
+</li>
+<li>倾斜像片与水平像片的坐标关系<ul>
+<li>倾斜像片<ul>
+<li><span class="arithmatex">\(\begin{bmatrix} X_A-X_S\\ Y_A-Y_S\\Z_A-Z_S\end{bmatrix}=\lambda R\begin{bmatrix}x\\y\\-f\end{bmatrix}=\lambda \begin{bmatrix}a_1&amp;a_2&amp;a_3\\b_1&amp;b_2&amp;b_3\\c_1&amp;c_2&amp;c_3\end{bmatrix}\begin{bmatrix}x\\y\\-f\end{bmatrix}\)</span></li>
+</ul>
+</li>
+<li>水平像片<ul>
+<li><span class="arithmatex">\(\begin{bmatrix} X_A-X_S\\ Y_A-Y_S\\Z_A-Z_S\end{bmatrix}=\lambda R_0\begin{bmatrix}x_t\\y_t\\-f\end{bmatrix}=\lambda \begin{bmatrix}x_t\\y_t\\-f\end{bmatrix}\)</span></li>
+</ul>
+</li>
+<li>推得<ul>
+<li><span class="arithmatex">\(x_t=-f\dfrac{a_1x+a_2y-a_3f}{c_1x+c_2y-c_3f}\\y_t=-f\dfrac{b_1x+b_2y-b_3f}{c_1x+c_2y-c_3f}\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>共线条件方程的应用<ul>
+<li>求像底点的坐标<ul>
+<li><span class="arithmatex">\(x_n=-f\dfrac{c_1}{c_3}\\y_n=-f\dfrac{c_2}{c_3}\)</span></li>
+</ul>
+</li>
+<li>单像空间后方交会</li>
+<li>摄影测量投影基础</li>
+<li>航空影像模拟仿真</li>
+<li>光束法平差的函数模型</li>
+<li>利用 DEM 制作数字正射影像</li>
+<li>利用 DEM 进行单张像片测图</li>
+</ul>
+</li>
+<li>共线方程线性化<ul>
+<li>
+<div class="arithmatex">\[\nu_x = \dfrac {\partial x}{\partial \varphi }\varDelta \varphi+\dfrac {\partial x}{\partial \omega }\varDelta \omega  +\dfrac {\partial x}{\partial \kappa}\varDelta \kappa+\dfrac {\partial x}{\partial X_S}\varDelta X_S+\dfrac {\partial x}{\partial Y_S}\varDelta Y_S+\dfrac {\partial x}{\partial Z_S}\varDelta Z_S+\dfrac {\partial x}{\partial X}\varDelta X+\dfrac {\partial x}{\partial Y}\varDelta Y +\dfrac {\partial x}{\partial Z}\varDelta Z+\dfrac {\partial x}{\partial x_0}\varDelta x_0+\dfrac {\partial x}{\partial y_0}\varDelta y_0+\dfrac {\partial x}{\partial f}\varDelta f+x^0-x\\\nu_y = \dfrac {\partial y}{\partial \varphi }\varDelta \varphi+\dfrac {\partial y}{\partial \omega }\varDelta \omega +\dfrac {\partial y}{\partial \kappa}\varDelta \kappa+\dfrac {\partial y}{\partial X_S}\varDelta X_S+\dfrac {\partial y}{\partial Y_S}\varDelta Y_S+\dfrac {\partial y}{\partial Z_S}\varDelta Z_S+\dfrac {\partial y}{\partial X}\varDelta X+\dfrac {\partial y}{\partial Y}\varDelta Y+\dfrac {\partial y}{\partial Z}\varDelta Z+\dfrac {\partial y}{\partial x_0}\varDelta x_0 +\dfrac {\partial y}{\partial y_0}\varDelta y_0 +\dfrac {\partial y}{\partial f}\varDelta f+y^0-y\]</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>单片空间后方交会<ul>
+<li>根据影像覆盖范围内一定数量的分布合理的地面控制点（已知其像点和地面点的坐标)，利用共线条件方程求解影像外方位元素</li>
+<li>
+<div class="arithmatex">\[x-x_0=-f\dfrac{a_1(X_A-X_S)+b_1(Y_A-Y_S)+c_1(Z_A-Z_S)}{a_3(X_A-X_S)+b_3(Y_A-Y_S)+c_3(Z_A-Z_S)}=-f\dfrac{\overline{X}}{\overline{Z}}\\y-y_0=-f\dfrac{a_2(X_A-X_S)+b_2(Y_A-Y_S)+c_2(Z_A-Z_S)}{a_3(X_A-X_S)+b_3(Y_A-Y_S)+c_3(Z_A-Z_S)}=-f\dfrac{\overline{Y}}{\overline{Z}}\]</div>
+</li>
+<li>角元素 <span class="arithmatex">\(\varphi\)</span> <span class="arithmatex">\(\kappa\)</span> 求导</li>
+<li>计算步骤<ul>
+<li>获取已知数据 <span class="arithmatex">\(m\)</span>，<span class="arithmatex">\(x_0\)</span>，<span class="arithmatex">\(y_0\)</span>，<span class="arithmatex">\(f\)</span> ， <span class="arithmatex">\(X_{tp}\)</span>， <span class="arithmatex">\(Y_{tp}\)</span>， <span class="arithmatex">\(Z_{tp}\)</span></li>
+<li>量测控制点的像平面坐标 <span class="arithmatex">\(x\)</span>，<span class="arithmatex">\(y\)</span></li>
+<li>确定未知数的初始值 <span class="arithmatex">\(X_s^0\)</span> ，<span class="arithmatex">\(Y_s^0\)</span> ，<span class="arithmatex">\(Z_s^0\)</span>，<span class="arithmatex">\(\varphi^0\)</span> ，<span class="arithmatex">\(\omega^0\)</span> ，<span class="arithmatex">\(\kappa^0\)</span> 形成误差方程式并法化</li>
+<li>解求外方位元素改正数</li>
+<li>检查迭代是否收敛(检查角元素的改正数是否&lt; 0.1'=3.0e^{-5})</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>像点位移与方向偏差<ul>
+<li>像点位移：当像片倾斜、地形起伏时，地面点在航摄像片上的构像相对于理想情况下构像所产生的位置差异称为像点位移</li>
+<li>方向偏差：从航摄像片上某点作出的方向线与地面对应点所画出的方向线的方位角不相等，这种差异称之为方向偏差</li>
+<li>像片倾斜<ul>
+<li>倾斜与水平像片的坐标关系<ul>
+<li><span class="arithmatex">\(x_t=-f\dfrac{a_1x+a_2y-a_3f}{c_1x+c_2y-c_3f}\\y_t=-f\dfrac{b_1x+b_2y-b_3f}{c_1x+c_2y-c_3f}\)</span></li>
+<li>当取像片主纵线为 y 轴、摄影方向线为 Y 轴，且转角系统为<span class="arithmatex">\(A-\alpha-\kappa\)</span> 时，有 <span class="arithmatex">\(A=\kappa_v=0\)</span></li>
+<li><span class="arithmatex">\(R=R_A R_\alpha R_{\kappa_v}=\begin{bmatrix}1&amp;0&amp;0\\0&amp;\cos\alpha&amp;-\sin\alpha\\0&amp;\sin\alpha&amp;\cos\alpha\end{bmatrix}=\begin{bmatrix}a_1&amp;a_2&amp;a_3\\b_1&amp;b_2&amp;b_3\\c_1&amp;c_2&amp;c_3\end{bmatrix}\)</span></li>
+</ul>
+</li>
+<li>像片倾斜引起的像点位移<ul>
+<li><span class="arithmatex">\(\delta\approx-\dfrac{r_a^2}{f}\sin\alpha\sin\beta\)</span><ul>
+<li>像点位移 <span class="arithmatex">\(\delta_a\)</span> 出现在以等角点为中心的辐射线上，关于等角点对称的两个像点的 <span class="arithmatex">\(\delta_a\)</span> 大小相等、方向相反</li>
+<li>等比线上 <span class="arithmatex">\(\delta_a=0\)</span> ，主纵线上 <span class="arithmatex">\(\delta_a\)</span> 绝对值最大</li>
+<li>等比线将影像分为上下两部分，上半部分影像线段长度短于水平像片相应线段长度，影像比例尺小于等比线影像比例尺;下半部分影像线段长度长于水平像片相应线段长度，影像比例尺大于等比线影像比例尺</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>像片倾斜引起的方向偏差<ul>
+<li>过等角点 <span class="arithmatex">\(c\)</span> 在倾斜像片和水平像片上分别引绘的同名地物点的方向角相等，即无方向偏差</li>
+<li><span class="arithmatex">\(\tan\beta_0=\tan\beta\)</span><ul>
+<li>以等角点<span class="arithmatex">\(c\)</span>为顶点 的辐射线无 <span class="arithmatex">\(\varepsilon_\alpha\)</span></li>
+<li>过等角点<span class="arithmatex">\(c\)</span>的直线上任意两点的连线无 <span class="arithmatex">\(\varepsilon_\alpha\)</span></li>
+<li>等比线上任意两点的连线无 <span class="arithmatex">\(\varepsilon_\alpha\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>地形起伏<ul>
+<li>地形起伏引起的像点位移<ul>
+<li><span class="arithmatex">\(\delta_h\approx\dfrac{hr_b}{H}(1-\dfrac{r_b}{2f}\sin2\alpha\sin2\beta)a\)</span><ul>
+<li>当 <span class="arithmatex">\(h\)</span> 为正时， <span class="arithmatex">\(\delta_h\)</span> 为正，位移背向像底点；当 h 为负时， <span class="arithmatex">\(\delta_h\)</span> 为负，位移朝向像底点</li>
+<li>像底点处 <span class="arithmatex">\(\delta_h=0\)</span></li>
+<li>水平像片上 <span class="arithmatex">\(\delta_h=\dfrac{hr_b}{H}\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>地形起伏引起的方向偏差<ul>
+<li>以像底点为顶点的辐射线上无 <span class="arithmatex">\(\varepsilon_h\)</span></li>
+<li>过像底点的直线上任意两点的连线无 <span class="arithmatex">\(\varepsilon_h\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>总体说来，当地面不水平，像片有倾斜时，从像片上的任何点作出的方向线均存在方向偏差</li>
+</ul>
+</li>
+<li>航摄像片的比例尺<ul>
+<li><span class="arithmatex">\(\dfrac{1}{m}=\dfrac{l}{L}=\dfrac{f}{H}\)</span></li>
+<li>因地面不水平，像片有倾斜，影像上的任何像点均存在像点位移，所以航摄像片上很难找到影像比例尺完全相同的部分</li>
+<li>像片比例尺一般只作为航摄计划而设计的摄影比例尺</li>
+<li>地形摄影测量的任务就是要将没有统一比例尺的航摄像片变换成固定比例尺的地形图</li>
+</ul>
+</li>
+</ul>
+<h3 id="_6">第四章 立体观察与像点坐标量测<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
+<ul>
+<li>人造立体视觉<ul>
+<li>人眼的感知过程<ul>
+<li>来自物体的光刺激视网膜的杆状和锥状细胞（物理过程）使其感光（生理过程），通过视神经纤维传至大脑视觉中心，经记忆加入已有的概念与经验（心理过程），从而形成感知</li>
+</ul>
+</li>
+<li>人造立体视觉的效果<ul>
+<li>正立体</li>
+<li>反立体</li>
+<li>零立体</li>
+</ul>
+</li>
+<li>人造立体视觉的条件<ul>
+<li>立体像对（分别在左右两个位置对同一物体拍摄的影像）</li>
+<li>分像条件（两眼分别地只看一张影像）</li>
+<li>两影像上相同景物（同名像点）的连线与眼基线应大致平行（间距小于眼基距）</li>
+<li>两影像的比例尺应相近（差别&lt;15％）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>像对的立体观察<ul>
+<li>立体镜观察法<ul>
+<li>桥式立体镜</li>
+<li>反光立体镜</li>
+</ul>
+</li>
+<li>叠映影像立体观察法<ul>
+<li>互补色法</li>
+<li>光闸法</li>
+<li>偏振光法</li>
+<li>液晶闪闭法</li>
+</ul>
+</li>
+<li>双目镜观测光路的立体观察法</li>
+</ul>
+</li>
+<li>像点坐标量测及系统误差改正<ul>
+<li>坐标量测的原理<ul>
+<li>单测标立体量测原理</li>
+<li>双测标立体量测原理</li>
+</ul>
+</li>
+<li>立体坐标量测仪</li>
+<li>像片解析内定向<ul>
+<li>正形变换<ul>
+<li><span class="arithmatex">\(x\prime=a_0+a_1x-a_2y\\y\prime=b_0+a_2x+a_1y\)</span></li>
+</ul>
+</li>
+<li>仿射变换<ul>
+<li><span class="arithmatex">\(x\prime=a_0+a_1x+a_2y\\y\prime=b_0+b_1x+b_2y\)</span></li>
+</ul>
+</li>
+<li>双线性变换<ul>
+<li><span class="arithmatex">\(x\prime=a_0+a_1x+a_2y+a_3xy\\y\prime=b_0+b_1x+b_2y+b_3xy\)</span></li>
+</ul>
+</li>
+<li>步骤<ul>
+<li>获取框标点的理论坐标</li>
+<li>选用合适的变换模型</li>
+<li>建立误差方程 <span class="arithmatex">\(\nu=Ax-l\)</span></li>
+<li>构建法方程并解算 <span class="arithmatex">\(x=(A^TA)^{-1}(A^Tl)\)</span></li>
+<li>由变换参数计算像点坐标</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>像片系统误差源<ul>
+<li>摄影机的系统误差</li>
+<li>底片变形</li>
+<li>运载平台带来的系统误差</li>
+<li>大气折光误差</li>
+<li>地球曲率的影响</li>
+<li>摄影处理与底片复制中的系统误差</li>
+<li>观测系统误差</li>
+</ul>
+</li>
+<li>像片系统误差预改正<ul>
+<li>四个框标位于像片的四个角隅时可用仿射变换<ul>
+<li><span class="arithmatex">\(x\prime=a_0+a_1x+a_2y\\y\prime=b_0+b_1x+b_2y\)</span></li>
+</ul>
+</li>
+<li>四个框标位于像片的中央时可用比例缩放<ul>
+<li><span class="arithmatex">\(x\prime=x\dfrac{L_x}{l_x}\\y\prime=y\dfrac{L_y}{l_y}\)</span></li>
+</ul>
+</li>
+<li>摄影机鉴定时提供物镜畸变差参数时<ul>
+<li><span class="arithmatex">\(\varDelta x=-\dfrac{x\prime}{r}(k_0+k_1r^2+k_2r^4)\\\varDelta y=-\dfrac{y\prime}{r}(k_0+k_1r^2+k_2r^4)\)</span></li>
+</ul>
+</li>
+<li>摄影机鉴定时提供各向径物镜畸变差值时<ul>
+<li><span class="arithmatex">\(\varDelta r=\dfrac{(r_2-r)\varDelta r_1+(r_1-r)\varDelta r_2}{r_2-r_1}\\\varDelta x=\dfrac{\varDelta r}{r}x\prime\\\varDelta y=\dfrac{\varDelta r}{r}y\prime\)</span></li>
+</ul>
+</li>
+<li>大气折光引起像点在径向的变形<ul>
+<li><span class="arithmatex">\(\varDelta r= -(f+\dfrac{r^2}{f})r_f \\其中 r_f=\dfrac{n_0-n_H}{n_0+n_H}\cdot\dfrac{r}{f}\)</span></li>
+</ul>
+</li>
+<li>大气折光引起像点在坐标向的变形<ul>
+<li><span class="arithmatex">\(dx=\dfrac{x\prime}{r}\varDelta r\\dy=\dfrac{y\prime}{r}\varDelta r\)</span></li>
+</ul>
+</li>
+<li>地球曲率引起像点在径向的变形<ul>
+<li><span class="arithmatex">\(\delta=\dfrac{H}{2Rf^2}r^3\)</span></li>
+</ul>
+</li>
+<li>地球曲率引起像点在坐标向的变形<ul>
+<li><span class="arithmatex">\(\delta x=\dfrac{x\prime}{r}\delta\\\delta y=\dfrac{y\prime}{r}\delta\)</span></li>
+</ul>
+</li>
+<li>内定向并经系统误差预改正后的像点坐标<ul>
+<li><span class="arithmatex">\(x=x\prime+\varDelta x +dx+\delta x\\y=y\prime+\varDelta y+dy+\delta y\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_7">第五章 立体像对解析<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
+<ul>
+<li>立体像对的前方交会<ul>
+<li>立体像对的点线面<ul>
+<li>同名像点：同名光线在左右像片上的构像</li>
+<li>同名光线：同一地面点发出的两条光线</li>
+<li>摄影基线：相邻两摄站的连线</li>
+<li>同名核线：核面与左右像片面的交线</li>
+<li>核面：摄影基线与某一地面点组成的平面</li>
+</ul>
+</li>
+<li>立体像对的分类<ul>
+<li>理想像对</li>
+<li>正直像对</li>
+<li>竖直像对</li>
+</ul>
+</li>
+<li>立体像对的前方交会<ul>
+<li>已知立体像对中的两张像片的内、外方位元素，由像点坐标来确定相应地面点在物方空间坐标系下的坐标</li>
+<li>点投影系数法<ul>
+<li>理想像对前方交会</li>
+<li>步骤<ul>
+<li>获取已知数据 <span class="arithmatex">\(x_0,y_0,f,X_{S1},Y_{S1},Z_{S1},\varphi_1,\omega_1,\kappa_1,X_{S2},Y_{S2},Z_{S2},\varphi_2,\omega_2,\kappa_2\)</span></li>
+<li>量测像点坐标 <span class="arithmatex">\((x_1,y_1),(x_2,y_2)\)</span></li>
+<li>由外方位线元素计算基线分量 <span class="arithmatex">\(B_X,B_Y,B_Z\)</span></li>
+<li>由外方位元素计算像空间辅助坐标 <span class="arithmatex">\((X_1,Y_1,Z_1),(X_2,Y_2,Z_2)\)</span></li>
+<li>计算点投影系数 <span class="arithmatex">\(N_1,N_2\)</span></li>
+<li>计算地面坐标 <span class="arithmatex">\((X_A,Y_A,Z_A)\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>共线方程严密解法<ul>
+<li>
+<div class="arithmatex">\[v_x=\dfrac{\partial x}{\partial X}\Delta X+\dfrac{\partial x}{\partial Y}\Delta Y+\dfrac{\partial x}{\partial Z}\Delta Z-(x-x^0)\\v_y=\dfrac{\partial y}{\partial X}\Delta X+\dfrac{\partial y}{\partial Y}\Delta Y+\dfrac{\partial y}{\partial Z}\Delta Z-(y-y^0)\]</div>
+</li>
+<li>竖直摄影情况下，可取 <span class="arithmatex">\(\varphi=\omega=0\)</span> ,则<ul>
+<li>
+<div class="arithmatex">\[a_{11}=\dfrac{f}{H}\cos\kappa\\a_{12}=\dfrac{f}{H}\sin\kappa\\a_{13}=\dfrac{x}{H}\\a_{21}=-\dfrac{f}{H}\sin\kappa\\a_{22}=+\dfrac{f}{H}\cos\kappa\\a_{23}=+\dfrac{y}{H}\]</div>
+</li>
+</ul>
+</li>
+<li>步骤<ul>
+<li>获取已知数据 <span class="arithmatex">\(x_0,y_0,f,X_{S1},Y_{S1},Z_{S1},\varphi_1,\omega_1,\kappa_1,X_{S2},Y_{S2},Z_{S2},\varphi_2,\omega_2,\kappa_2\)</span></li>
+<li>量测像点坐标 <span class="arithmatex">\((x_1,y_1),(x_2,y_2)\)</span></li>
+<li>给定地面坐标的初始值 <span class="arithmatex">\((X^0,Y^0,Z^0)\)</span></li>
+<li>形成误差方程 <span class="arithmatex">\(a_{11},a_{12},a_{13},a_{21},a_{22},a_{23}\)</span> 及常数项</li>
+<li>建立法方程并求解地面坐标近似值增量 <span class="arithmatex">\(\varDelta X,\varDelta Y,\varDelta Z\)</span></li>
+<li>计算地面坐标 <span class="arithmatex">\((X^0+\varDelta X,Y^0+\varDelta Y,Z^0+\varDelta Z)\)</span></li>
+<li>判断迭代是否收敛</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>两种方法的比较</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>解析相对定向<ul>
+<li>利用立体像对同名光线对对相交的几何关系，根据量测的像点坐标，以解析计算的方法求解两张影像相对方位元素的过程，称之为解析相对定向</li>
+<li>相对定向元素<ul>
+<li>像片外方位元素
+  "描述立体像对中两张影像相对位置和姿态关系的参数"</li>
+<li>连续法相对定向元素<ul>
+<li>以左像空间坐标系为基础，右像相对于左影像的相对方位元素</li>
+<li><span class="arithmatex">\(B_Y,B_Z,\varphi,\omega,\kappa\)</span></li>
+</ul>
+</li>
+<li>单独法相对定向元素<ul>
+<li>在以左摄影中心为原点、左主核面为 XZ 平面、摄影基线为 X 轴的右手空间直角坐标系中，左右影像的相对方位元素</li>
+<li><span class="arithmatex">\(\varphi _1,\kappa_1,\varphi_2,\omega_2,\kappa_2\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>共面条件方程                    -</li>
+<li>连续法相对定向<ul>
+<li>常数项的几何意义
+  "<span class="arithmatex">\(Q=N_1Y_1-(N_2Y_2+B_y)\)</span>"<ul>
+<li>Q 为定向点的模型上下视差</li>
+<li>当一个立体像对完成 相对定向时，Q=0</li>
+<li>当一个立体像对未完成相对定向时，同名光线不相交，Q\neq0</li>
+</ul>
+</li>
+<li>相对定向过程<ul>
+<li>获取影像内方位元素 <span class="arithmatex">\(x_0,y_0,f\)</span></li>
+<li>量测像点坐标 <span class="arithmatex">\((x_1,y_1),(x_2,y_2)\)</span>,</li>
+<li>假定摄影基线 <span class="arithmatex">\(B_x=x_1-x_2\)</span></li>
+<li>设定相对定向元素计算的初值 <span class="arithmatex">\(\mu=\nu=\varphi=\omega=\kappa=0\)</span></li>
+<li>由相对定向元素计算像空间辅助坐标 <span class="arithmatex">\((X_1,Y_1,Z_1),(X_2,Y_2,Z_2)\)</span></li>
+<li>逐点计算误差方程式的系数和常数项，并法化</li>
+<li>求相对定向元素增量 <span class="arithmatex">\(\varDelta \mu,\varDelta\nu,\varDelta\varphi,\varDelta\omega,\varDelta\kappa\)</span></li>
+<li>求相对定向元素新值</li>
+<li>判断迭代是否收敛（限差 <span class="arithmatex">\(0.1'=3\times10^{-5}\)</span> ）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>单独法相对定向<ul>
+<li>常数项的几何意义
+  "<span class="arithmatex">\(q=y_{t_1}-y_{t_2}\)</span>"<ul>
+<li><span class="arithmatex">\(q\)</span> 相同于像空间辅助坐标系中一个理想像对上同名像点的上下视差</li>
+<li>当一个立体像对完成相对定向时，<span class="arithmatex">\(q=0\)</span></li>
+<li>当一个立体像对未完成相对定向时，同名光线不相交，<span class="arithmatex">\(q\neq0\)</span></li>
+</ul>
+</li>
+<li>相对定向过程<ul>
+<li>获取影像内方位元素 <span class="arithmatex">\(x_0,y_0,f\)</span></li>
+<li>量测像点坐标 <span class="arithmatex">\((x_1,y_1),(x_2,y_2)\)</span>,</li>
+<li>假定摄影基线 <span class="arithmatex">\(B_x=x_1-x_2\)</span></li>
+<li>设定相对定向元素计算的初值<span class="arithmatex">\(\varphi_1=\kappa_1=\varphi_2=\omega_2=\kappa_2=0\)</span></li>
+<li>由相对定向元素计算像空间辅助坐标 <span class="arithmatex">\((X_1,Y_1,Z_1),(X_2,Y_2,Z_2)\)</span></li>
+<li>逐点计算误差方程式的系数和常数项，并法化</li>
+<li>求相对定向元素增量 <span class="arithmatex">\(\varDelta \varphi_1,\varDelta\kappa_1,\varDelta\varphi_2,\varDelta\omega_2,\varDelta\kappa_2\)</span></li>
+<li>求相对定向元素新值</li>
+<li>判断迭代是否收敛（限差 <span class="arithmatex">\(0.1'=3\times10^{-5}\)</span> ）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>带模型连接条件的连续法相对定向</li>
+</ul>
+</li>
+<li>单元模型的绝对定向<ul>
+<li>定义：将相对定向建立的立体模型进行缩放、旋转和平移，使其达到绝对位置的过程</li>
+<li>绝对定向元素<ul>
+<li>描述立体模型在摄影瞬间的绝对位置和姿态的参数</li>
+<li>包括 <span class="arithmatex">\(\lambda,X_0,Y_0,Z_0,\Phi,\Omega,K\)</span></li>
+</ul>
+</li>
+<li>三维空间相似变换方程</li>
+<li>三维空间相似变换原理<ul>
+<li>相关推导<ul>
+<li>量测 2 个平高控制点和 1 个高程以上的控制点可以按最小二乘平差原理求解绝对定向元素</li>
+</ul>
+</li>
+<li>立体模型绝对定向步骤<ul>
+<li>获取控制点的两套坐标 <span class="arithmatex">\((X_p,Y_p,Z_p),(X_{tp},Y_{tp},Z_{tp})\)</span></li>
+<li>给定相似变换参数的初值 <span class="arithmatex">\(\lambda=1,\Phi=\Omega=K=0,X_0,Y_0,Z_0\)</span></li>
+<li>计算重心化坐标</li>
+<li>计算误差方程式的系数和常数项</li>
+<li>解法方程得相似变换参数改正数 <span class="arithmatex">\(\Delta\lambda,\Delta\Phi,\Delta\Omega,\Delta K,\Delta X_0,\Delta Y_0,\Delta Z_0\)</span></li>
+<li>计算相似变换参数的新值</li>
+<li>判断迭代是否收敛（限差 <span class="arithmatex">\(0.1^′=3\times10^{-5}\)</span> ）</li>
+<li>利用求得的相似变换参数计算所有地面点的三维空间坐标</li>
+</ul>
+</li>
+<li>正变换</li>
+<li>逆变换</li>
+<li>物空间坐标近似变换（高程）</li>
+<li>重心化坐标计算<ul>
+<li>公式</li>
+<li>目的<ul>
+<li>减少模型点坐标在计算过程中的有效位数，以保证计算的精度。</li>
+<li>使法方程的系数简化，个别项数值变为 0，以提高计算速度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>立体模型绝对定向误差方程</li>
+<li>地面坐标计算</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>双像解析摄影测量<ul>
+<li>空间后交-前方交会解法<ul>
+<li>可以用空间后交-前方交会解法，不能用相对-绝对定向解法</li>
+</ul>
+</li>
+<li>相对定向-绝对定向解法<ul>
+<li>可以用相对-绝对定向解法，不能用空间后交-前方交会解法</li>
+</ul>
+</li>
+<li>一步定向解法<ul>
+<li>技巧<ul>
+<li>逐点法化</li>
+<li>改化法方程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>三种方法的比较</li>
+</ul>
+</li>
+</ul>
+<h3 id="_8">第六章 经典解析空中三角测量<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
+<ul>
+<li>解析空中三角测量<ul>
+<li>定义<ul>
+<li>采用计算方法，根据航摄像片上所量测的像点坐标和必要的用以确定平差基准的非摄影测量信息测定所摄目标特征点的物方空间坐标，称之为解析空中三角测量。又称摄影测量加密、电算加密</li>
+</ul>
+</li>
+<li>意义<ul>
+<li>不触及被量测目标即可测定其几何位置</li>
+<li>可以快速地大规模同时进行点位测定，以节省野外测量工作量</li>
+<li>不受通视条件限制</li>
+<li>摄影测量区域网平差时，加密区域内部精度均匀,且不受区域大小的限制</li>
+</ul>
+</li>
+<li>目的<ul>
+<li>为 3D 产品生产提供定向控制点和影像定向参数</li>
+<li>可进行三、四等或等外大地测量的点位测定</li>
+<li>高精度测定大范围的界址点的统一坐标</li>
+<li>单元模型中巨量地物点坐标的快速计算</li>
+<li>近景摄影测量、非地形摄影测量及遥感的解析计算</li>
+</ul>
+</li>
+<li>分类<ul>
+<li>按数学模型<ul>
+<li>航带法<ul>
+<li>定义：把许多立体像对构成的单个模型连结成一个航带模型，将航带模型视为单元模型进行绝对定向，以多项式模型作为平差的基础方程，通过消除航带模型中累积的系统误差，将航带模型整体纳入到测图坐标系中，从而确定加密点的地面坐标</li>
+</ul>
+</li>
+<li>独立模型法<ul>
+<li>定义：以立体像对构建单元模型，将单个模型视为刚体，以三维空间相似变换方程作为平差的基础方程，利用模型内的地面控制点和模型间的公共连接点进行平移、旋转和缩放，将各单元模型整体地纳入到测图坐标系中，从而确定加密点的地面坐标</li>
+</ul>
+</li>
+<li>光线束法<ul>
+<li>定义：以一张像片组成的一束光线作为一个平差单元，以中心投影的共线方程作为平差的基础方程，通过各光线束在空间的旋转和平移，使像片之间的公共光线实现最佳的交会，将整个区域纳入到控制点所在的坐标系中，从而确定加密点的地面坐标和像片的外方位元素</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>按平差范围<ul>
+<li>单模型法</li>
+<li>单航带法</li>
+<li>区域网法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>解析空中三角测量的信息<ul>
+<li>摄影测量信息：量测的像点坐标</li>
+<li>非摄影测量信息：像控点的地面坐标<ul>
+<li>大地测量观测值<ul>
+<li>距离</li>
+<li>角度</li>
+<li>天文经纬度</li>
+<li>局部坐标</li>
+</ul>
+</li>
+<li>像片外方位元素<ul>
+<li>高差仪记录</li>
+<li>摄站坐标</li>
+<li>像片姿态</li>
+<li>摄站坐标差</li>
+</ul>
+</li>
+<li>相对控制条件<ul>
+<li>湖面等高</li>
+<li>平面</li>
+<li>圆周</li>
+<li>共线</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>影像连接点<ul>
+<li>影像连接点的设置</li>
+<li>影像连接点类型<ul>
+<li>明显地物点</li>
+<li>人工标志点</li>
+<li>仪器转刺点</li>
+<li>影像匹配点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>航带法空中三角测量<ul>
+<li>航带法空中三角测量的基本思想<ul>
+<li>把许多立体像对构成的单个模型连结成一个航带模型，将航带模型视为单元模型进行概略绝对定向，通过消除航带模型中累积的系统误差，将航带模型整体纳入到测图坐标系中，从而确定加密点的地面三维坐标</li>
+</ul>
+</li>
+<li>航带法空中三角测量的作业流程<ul>
+<li>像点坐标量测</li>
+<li>立体像对的相对定向</li>
+<li>模型连接构建自由航带网<ul>
+<li>单独法相对定向构建自由航带网</li>
+<li>连续法相对定向构建自由航带网</li>
+<li>带模型连接条件相对定向构建自由航带网</li>
+</ul>
+</li>
+<li>自由航带网概略绝对定向<ul>
+<li>获取控制点的地面摄影测量坐标 <span class="arithmatex">\(X_{tp},Y_{tp},Z_{tp}\)</span></li>
+<li>计算重心化坐标</li>
+<li>求相似变换参数</li>
+<li>计算各模型点的地面摄影测量坐标</li>
+</ul>
+</li>
+<li>航带模型非线性改正<ul>
+<li>二次多项式法</li>
+<li>二次正形变换多项式</li>
+<li>建立误差方程</li>
+</ul>
+</li>
+<li>加密点地面坐标计算</li>
+</ul>
+</li>
+<li>航带法区域网平差<ul>
+<li>基本思想<ul>
+<li>将单航线构成自由航带网</li>
+<li>利用本航带的控制点及与上一航带的公共点进行三维空间相似变换，将整区各航线纳入统一的坐标系中</li>
+<li>同时解求各航带非线性变形改正参数</li>
+<li>计算各加密点地面坐标</li>
+</ul>
+</li>
+<li>重心化坐标计算</li>
+<li>误差方程的建立
+    "观测值数：16 + 8 + 14 + 8 + 16 = 62 第一条航线：五个控制点【1、2、9、17、18】* 3 + 一个高程点的高程【10】= 16 一二航线连接：两个未知点【6、14】* 3 + 一个高程点未知平面坐标【10】* 2 =8 第二条航线：四个控制点【2、3、18、19】* 3 + 两个高程点的高程【10、11】= 14 二三航线连接：两个未知点【7、15】* 3 + 一个高程点未知平面坐标 【11】* 2 =8 第三条航线：五个控制点【3、4、12、19、20】* 3 + 一个高程点的高程【11】= 16 必要观测数【参见：航带模型非线性改正】：45/33 二次多项式法：( 5 + 5 + 5 ) * 3 = 45 二次正形变换多项式：( 6 + 5 ) * 3 = 33 多余观测数：17/2962 - 45 或 33 = 17 或 29"
+    "类似分块矩阵的高斯消元，先行阶梯化，再求解​"</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>光束法空中三角测量<ul>
+<li>基本思想<ul>
+<li>以一张像片组成的一束光线作为一个平差单元，以中心投影的共线方程作为平差的基础方程，通过各光线束在空间的旋转和平移，使像片之间的公共光线实现最佳的交会，将整个区域最佳地纳入到控制点坐标系中，从而确定加密点的地面坐标和像片的外方位元素</li>
+</ul>
+</li>
+<li>双像解析中的一步定向解法</li>
+<li>作业流程<ul>
+<li>获取像片内方位元素、像点坐标和地面控制点坐标</li>
+<li>获取像片外方位元素和加密点地面坐标的近似值<ul>
+<li>将每个立体像对进行相对定向和模型连接构建自由航带网，利用航带中的控制点及相邻航线间的公共连接点对航带网进行概略绝对定向，以求得加密点的地面坐标和每张像片的 6 个外方位元素，将其作为未知数的初始值</li>
+</ul>
+</li>
+<li>逐点建立误差方程式并法化<ul>
+<li>误差方程矩阵形式
+        - 观测值
+          - 6 张位于航线始末位置的像片，有 6 个像点；9 张位于航线中的像片，有 9 个像点；每个像点在一个像片上有 x,y 两个坐标
+      " <span class="arithmatex">\((6\times6+9\times9)\times2=234\)</span> "
+        - 未知数个数
+          - 15 张像片的 6 个外方位元素，23 个点的（x,y,z）坐标，2 个点的高程
+      " <span class="arithmatex">\(15\times6+23\times3+2\times2=163\)</span> ​"
+        - 多余观测数</li>
+<li>逐点法化</li>
+</ul>
+</li>
+<li>建立改化法方程式
+  "消除一类未知数后所得的法方程"<ul>
+<li>改化法方程系数阵<ul>
+<li>带宽：主对角线到任意一行最远处的非零元素间所包含的未知数个数</li>
+<li>垂直航向排列时的带宽<ul>
+<li><span class="arithmatex">\(m=(2N+2)\times6\)</span> ，<span class="arithmatex">\(N\)</span> 为航线数</li>
+</ul>
+</li>
+<li>沿航向排列的带宽<ul>
+<li><span class="arithmatex">\(m=(n+3)\times6\)</span> ，<span class="arithmatex">\(n\)</span> 为航线中的像片数</li>
+</ul>
+</li>
+<li>当 <span class="arithmatex">\(n&gt;2N-1\)</span> 时，垂直于航向编排像片次序可获得最小带宽，对解法方程有利</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>采用循环分块法求解改化法方程得像片外方位元素<ul>
+<li>直接解法（在航带法中适用）</li>
+<li>循环分块解法<ul>
+<li>分块</li>
+<li>边法化边消元</li>
+</ul>
+</li>
+<li>计算加密点的三维空间坐标</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>自检校光束法区域网平差<ul>
+<li>在共线条件方程中，利用若干附加参数来描述系统误差模型，在区域网平差的同时解求这些附加参数，以自动测定和消除系统误差</li>
+<li>系统误差是像片坐标的函数<ul>
+<li><span class="arithmatex">\(\Delta x=f_x(x,y)\\\Delta y=f_y(x,y)\)</span></li>
+<li><span class="arithmatex">\(\Delta x=g_x(r,\theta)\\\Delta y=g_y(r,\theta)\)</span></li>
+<li>Brown 博士提出的带有明确物理意义的 21 参数系统误差补偿模型</li>
+<li>Ebner 教授提出的 12 参数正交多项式模型</li>
+<li>Bauer 提出的 3 参数模型</li>
+</ul>
+</li>
+<li>1980 年第 4 届 ISP 大会的总结<ul>
+<li>精度平均提高 20%~30%，但有较大的波动</li>
+<li>自检校平差比试验场检校的结果好，但差别不大</li>
+<li>找不出哪一个参数组比其他的都好</li>
+</ul>
+</li>
+<li>误差方程</li>
+<li>V_2 是控制点的改正数，<span class="arithmatex">\(P_1\)</span>一般看作单位阵，<span class="arithmatex">\(V_3\)</span>是虚拟观测方程</li>
+<li>镶边带状矩阵<ul>
+<li>边法化边消元循环分块解法</li>
+</ul>
+</li>
+<li>解析空中三角测量的精度</li>
+<li>光束法与航带法的比较</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_9">第七章 解析空中三角测量的可靠性<a class="headerlink" href="#_9" title="Permanent link">¶</a></h3>
+<ul>
+<li>可靠性的基本概念<ul>
+<li>前方交会测量中的三种情况<ul>
+<li>粗差不可发现</li>
+<li>粗差可发现但不可定位</li>
+<li>粗差可定位</li>
+</ul>
+</li>
+<li>主要任务<ul>
+<li>从理论上研究平差系统可发现、可区分不同模型误差的能力（内部可靠性）</li>
+<li>从理论上研究不可发现的模型误差对平差结果的影响（外部可靠性）</li>
+<li>从实用上寻求在平差过程中自动发现和区分模型误差以及确定模型误差位置的方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>可靠性的基本理论<ul>
+<li>误差与残差的关系<ul>
+<li><span class="arithmatex">\(Q_{XX}\)</span> 称为精度矩阵，<span class="arithmatex">\(Q_{VV}P\)</span> 称为可靠性矩阵</li>
+<li>可靠性矩阵 <span class="arithmatex">\(Q_{VV}P\)</span> 的特性<ul>
+<li>幂等矩阵<ul>
+<li><span class="arithmatex">\((Q_{VV}P)^2=Q_{VV}P\)</span></li>
+</ul>
+</li>
+<li>平差系统的多余观测数等于矩阵的迹<ul>
+<li><span class="arithmatex">\(tr(Q_{VV}P)=r\)</span></li>
+</ul>
+</li>
+<li>第 i 个对角线元素称之为第 i 个观测值的多余观测分量</li>
+<li>为降秩方阵<ul>
+<li><span class="arithmatex">\(rank(Q_{VV}P)=r&lt;n\)</span></li>
+</ul>
+</li>
+<li>残差的中误差<ul>
+<li><span class="arithmatex">\(\sigma_{v_i}=\sqrt{r_i}\sigma_{l_i}\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据观测法<ul>
+<li>若观测值中只存在一个粗差，且已知\sigma_0 观测值互不相关，则其标准化残差为<ul>
+<li><span class="arithmatex">\(w_i=\dfrac{v_i}{\sigma_0\sqrt{q_{v_{ii}}}}\)</span></li>
+<li>若观测值 <span class="arithmatex">\(l_i\)</span> 不存在粗差，则 <span class="arithmatex">\(w_i\)</span> 服从正态分布</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>粗差的检测与定位<ul>
+<li>粗差定位的基本概念<ul>
+<li>在平差过程中自动地发现粗差的存在并正确地指出粗差的位置，从而将它从平差中剔除</li>
+</ul>
+</li>
+<li>粗差定位的方法分类<ul>
+<li>将粗差视为函数模型的一部分</li>
+<li>将粗差视为随机模型的一部分</li>
+</ul>
+</li>
+<li>假设检验<ul>
+<li>零假设和备选假设</li>
+<li>接受域与拒绝域</li>
+</ul>
+</li>
+<li>基本理论</li>
+<li>内部可靠性</li>
+<li>外部可靠性</li>
+<li>粗差检测方法<ul>
+<li>粗差归入函数模型的检测方法<ul>
+<li>根据观测什残差的统计特性，检验其异常程度<ul>
+<li>向前选择法</li>
+<li>向后选择法</li>
+<li>向前-向后选择法</li>
+</ul>
+</li>
+<li>数据探测法</li>
+</ul>
+</li>
+<li>将粗差视为随机模型的一部分<ul>
+<li>将粗差视为来自期望为零、方差很大的正态母体之子样。通过最小二乘平差的验后方差估计求出观测值的验后方差，然后根据经典的权与观测值的方差成反比的定义给予它一个相应小的权进行下一次迭代平差，以实现粗差定位</li>
+<li>选权迭代法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_10">第八章 现代解析空中三角测量<a class="headerlink" href="#_10" title="Permanent link">¶</a></h3>
+<ul>
+<li>加密方法回顾<ul>
+<li>加密流程<ul>
+<li>航空摄影</li>
+<li>像控点联测</li>
+<li>像片量测</li>
+<li>区域网平差</li>
+</ul>
+</li>
+<li>加密方法的联系</li>
+<li>航带法空中三角测量<ul>
+<li>定义<ul>
+<li>把许多立体像对构成的单个模型连结成一个航带模型，将航带模型视为单元模型进行绝对定向，以多项式模型作为平差的基础方程，通过消除航带模型中累积的系统误差，将航带模型整体纳入到测图坐标系中，从而确定加密点的地面坐标。</li>
+</ul>
+</li>
+<li>原理图</li>
+<li>作业流程</li>
+</ul>
+</li>
+<li>独立模型法空中三角测量<ul>
+<li>定义<ul>
+<li>以立体像对构建单元模型，将单个模型视为刚体，以三维空间相似变换方程作为平差的基础方程，利用模型内的地面控制点和模型间的公共连接点进行平移、旋转和缩放，将各单元模型整体纳入到测图坐标系中，从而确定加密点的地面坐标。</li>
+</ul>
+</li>
+<li>原理图</li>
+<li>作业流程</li>
+</ul>
+</li>
+<li>光束法空中三角测量<ul>
+<li>定义<ul>
+<li>以一张像片组成的一束光线作为一个平差单元，以中心投影的共线方程作为平差的基础方程，通过各光线束在空间的旋转和平移，使像片之间的公共光线实现最佳的交会，将整个区域最佳地纳入到控制点坐标系中，从而确定加密点的地面坐标和像片的外方位元素。</li>
+</ul>
+</li>
+<li>原理图</li>
+<li>作业流程</li>
+</ul>
+</li>
+<li>三种加密方法的比较</li>
+</ul>
+</li>
+<li>联合平差<ul>
+<li>基本概念<ul>
+<li>将原始的大地测量观测值、一般控制信息和/或相对控制条件与摄影测量观测值一起进行区域网平差，以取代地面控制点</li>
+</ul>
+</li>
+<li>距离误差方程</li>
+<li>联合平差的法方程</li>
+<li>联合平差中法方程的构建</li>
+</ul>
+</li>
+<li>GNSS 辅助空中三角测量<ul>
+<li>问题提出<ul>
+<li>难以到达的高山、沙漠、千岛湖</li>
+<li>难以通行或穿越的沼泽地、原始森林</li>
+<li>难以施测的岛礁</li>
+<li>难以逾越的国防边境线</li>
+</ul>
+</li>
+<li>定义<ul>
+<li>利用安装在航摄飞机上与航摄仪相连的 GNSS 接收机连续观测 GNSS 卫星信号、获取航空摄影瞬间航摄仪快门开启脉冲，经 GNSS 波相位测量定位技术的离线数据后处理获取航摄仪曝光时刻摄站的三维坐标，然后将其视为带权观测值引入摄影测量区域网平差中，经采用统一的数学模型来整体确定地面目标点位和像片外方位元素，并对其质量进行评定的理论、技术和方法。</li>
+</ul>
+</li>
+<li>测量流程</li>
+<li>GNSS 辅助航空摄影系统<ul>
+<li>硬件解决<ul>
+<li>天线要求<ul>
+<li>低温、高速、动态</li>
+<li>不能在机厢内或机底</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>软件解决</li>
+</ul>
+</li>
+<li>GNSS 辅助航空摄影<ul>
+<li>坐标解求</li>
+<li>投影中心与 GNSS 天线相位中心的几何关系</li>
+<li>GNSS 摄站坐标误差方程</li>
+<li>GNSS 辅助光束法区域网平差</li>
+<li>GNSS 辅助空中三角测量<ul>
+<li>对地面点的要求
+"即构架航线可以替代两排的高程控制点"</li>
+</ul>
+</li>
+<li>GNSS 辅助光束法区域网平差总结<ul>
+<li>误差方程是在自检校光束法区域网平差基础上顾及投影中心与机载 GNSS 天线相位中心几何关系所得的一个基础方程</li>
+<li>法方程仍为镶边带状矩阵，但边宽加大了，而其良好的稀疏带状结构并没有被破坏。因此可用传统的边法化边消元的循环分块解法求解</li>
+<li>测区两端必须要布设足够的地面控制点或采用特殊的像片覆盖图</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>POS 航空摄影测量<ul>
+<li>POS 系统</li>
+<li>POS 航空摄影系统偏心</li>
+<li>POS 航空摄影测量流程</li>
+<li>POS 系统检校<ul>
+<li>检校场检校</li>
+<li>测区中检校</li>
+</ul>
+</li>
+<li>POS 直接定位
+    "精度不行"<ul>
+<li>单模型点投影系数法</li>
+<li>多片最小二乘平差法</li>
+</ul>
+</li>
+<li>POS 辅助空中三角测量<ul>
+<li>定义<ul>
+<li>利用安装于飞机上与航摄仪相连接的 POS 系统连续观测 GPS 卫星信号、同时测定航空摄影瞬间航摄仪的位置和姿态，经 GPS 载波相位测量动态定位技术的离线数据后处理获取航摄仪曝光时刻摄站的三维坐标及影像的姿态角，然后将其视为带权观测值引入摄影测量区域网平差中，经采用统一的数学模型来整体确定地面目标点位和像片外方位元素，并对其质量进行评定的理论、技术和方法。</li>
+</ul>
+</li>
+<li>GNSS 天线相位中心的几何关系和误差方程<ul>
+<li>几何关系</li>
+<li>摄站坐标误差方程</li>
+</ul>
+</li>
+<li>POS 质心的几何关系和误差方程<ul>
+<li>几何关系</li>
+<li>误差方程</li>
+</ul>
+</li>
+<li>POS 辅助光束法区域网平差<ul>
+<li>法方程系数</li>
+</ul>
+</li>
+<li>POS 辅助空中三角测量<ul>
+<li>只需要四角的四个平高控制点，不需要加飞构架航线或两排高程控制点</li>
+</ul>
+</li>
+<li>注意<ul>
+<li>由于姿态误差的累积，一条航线飞行时间要小于 45 分钟</li>
+<li>加装 POS 系统精度提高并不显著，注意考虑经济问题</li>
+<li>POS 系统辅助的空中三角测量，不必再通过绝对概略定向获取初始值（因为外方位元素的初始值都有了，可以计算地面点坐标的初始值）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="_11">考题梳理<a class="headerlink" href="#_11" title="Permanent link">¶</a></h2>
+<h3 id="_12">填空<a class="headerlink" href="#_12" title="Permanent link">¶</a></h3>
+<ul>
+<li>▶▶▶▶▶摄影测量中常用的坐标系有：像平面直角坐标系、像空间直角坐标系、像空间辅助坐标系、地面摄影测量坐标系、地面测量坐标系</li>
+<li>▶▶解求单张像片的外方位元素最少需要 3 个平高控制点</li>
+<li>▶▶GPS 辅助空中三角测量的作用是大量减少甚至完全免除地面控制点，缩短成图周期，提高生产效率，降低生产成本</li>
+<li>▶▶▶两个空间直角坐标系间的坐标变换至少需要 2 个平高和一个高程地面控制点。</li>
+<li>▶▶摄影测量加密按平差范围可分单模型、单航带和区域网三种方法。</li>
+<li>▶▶摄影测量的发展经历了模拟摄影测量、解析摄影测量、数字摄影测量三个阶段。</li>
+<li>恢复立体像对左右像片的相互位置关系依据的是共面条件方程。</li>
+<li>法方程消元的通式为 <span class="arithmatex">\(N_{i+1,i+1}^\prime=N_{i+1,i+1}-N^T_{i,i+1}{N_{i,i}^\prime}^{-1}N_{i,i+1}\)</span></li>
+<li>▶▶表示航摄像片的外方位角元素可以采用以 <span class="arithmatex">\(Y\)</span> 轴为主轴的 <span class="arithmatex">\(\varphi-\omega-\kappa\)</span> 、以 <span class="arithmatex">\(X\)</span> 轴为主轴的 <span class="arithmatex">\(\omega^\prime-\varphi^\prime-\kappa^\prime\)</span> 、以 <span class="arithmatex">\(Z\)</span> 轴为主轴的 <span class="arithmatex">\(A-\alpha-\kappa_v\)</span> 三种转角系统。</li>
+<li>航摄像片是所覆盖地物的中心投影。</li>
+<li>▶▶▶摄影测量加密按数学模型可分为航带法、独立模型法和光束法三种方法。</li>
+<li>从航摄像片上量测的像点坐标可能带有摄影材料变形、摄影机物镜畸变、大气折光误差和地球曲率误差四种系统误差。</li>
+<li>▶▶▶要将地物点在摄测测量坐标系中的模型坐标转换到地面摄影测量坐标系，最少需要 2 个平高和一个高程地面控制点。</li>
+<li>▶▶带状法方程系数矩阵的带宽是指法方程系数矩阵中主对角线元素起沿某一行到最远处的非零元素间所包含的未知数个数。</li>
+<li>▶▶▶▶▶▶人眼观察两幅影像能产生立体视觉的基本条件是在不同摄站获取的具有一定重叠的两幅影像、观察时每只眼睛只能看一张像片、两幅影像的摄影比例尺尽量一致和两幅影像上相同地物的连线与眼基线尽量平行。</li>
+<li>▶▶中心投影的共线条件方程表达了摄影中心、像点和对应地物点三点位于同一直线的几何关系，利用其解求单张像片 6 个外方位元素的方法称为单片空间后方交会，最少需要 3 个平高地面控制点</li>
+<li>▶▶摄影测量中，为了恢复立体像对两张像片之间的相互位置关系，可以根据左右像片上的同名像点位于同一核面的几何条件，采用相对定向方法来实现，最少需要量测 5 对同名像点</li>
+<li>▶▶摄影测量的发展经历了模拟摄影测量、解析摄影测量、数字摄影测量三个阶段。</li>
+<li>▶▶▶▶矩阵 <span class="arithmatex">\(Q_{vv}P\)</span> 主要用于研究观测值的可靠性，其秩等于平差系统的多余观测数</li>
+<li>▶▶▶▶▶摄影测量中常用的坐标系有：像平面坐标系、像空间坐标系、像空间辅助坐标、地面摄影测量坐标、大地测量坐标</li>
+<li>▶▶空间坐标变换中的正交变换矩阵的 9 个元素中只有 3 个独立元素</li>
+<li>▶▶▶摄影测量加密按数学模型可分为航带法、独立模型法和光束法三种</li>
+<li>航摄像片为中心投影，地形图是正射投影</li>
+<li>▶▶摄影测量中，恢复影像空中姿态的方法有单片空间后方交会、先相对定向再绝对定向、POS 系统直接获取外方位元素。影像角元素的表示可采用以 <span class="arithmatex">\(Y\)</span> 轴为主轴的 <span class="arithmatex">\(\varphi-\omega-\kappa\)</span> 转角系统、以 <span class="arithmatex">\(X\)</span> 轴为主轴的 <span class="arithmatex">\(\omega^\prime-\varphi^\prime-\kappa^\prime\)</span> 转角系统、以 <span class="arithmatex">\(Z\)</span> 轴为主轴的 <span class="arithmatex">\(A-\alpha-\kappa_v\)</span> 转角系统。</li>
+<li>▶▶▶▶▶▶利用航摄像片进行立体观察的条件是从两个摄站对同一物体拍摄的立体像对、一只眼睛只看一张像片和眼基线与摄影基线大致平行</li>
+<li>▶▶▶▶矩阵 <span class="arithmatex">\(Q_{vv}P\)</span> 的秩等于平差系统的多余观测数</li>
+<li>▶▶▶▶▶摄影测量中常用的坐标系有像平面坐标系、像空间坐标系、像空间辅助坐标系、地面摄影测量坐标系、地面测量坐标系。</li>
+<li>▶▶GPS 辅助空中三角测量的目的是大大减少摄影测量加密所需的地面控制点数</li>
+<li>摄影基线与任一物方点所作的平面称为核面</li>
+<li>▶▶▶▶▶▶生理视差是人眼分辨物体远近的根源，通过双眼观察立体像对所构成的立体模型称为视模型</li>
+<li>航摄仪主距选择时，需考虑像片上的投影差大小以及基高比对高程测定精度的影响</li>
+<li>带模型连接条件的连续法相对定向过程，需顾及前后模型之间的公共连接点坐标相等的条件，使得前后模型比例尺相同，此时相对定向元素个数共 6 个，分别 <span class="arithmatex">\(B_x,B_y,B_z,\varphi,\omega,\kappa\)</span></li>
+<li>▶▶▶▶可靠性矩阵 <span class="arithmatex">\(Q_{vv}P\)</span> 反映观测值误差与观测值改正数的关系；观测值的改正数最大时并不意味其包含粗差，这种现象反映出误差发生转移；精度矩阵 Q_{xx}主要用于评定未知数的求解理论精度</li>
+<li>解析空中三角测量的信息主要包括三类。分别指摄影测量信息、非摄影测量信息和相对控制条件</li>
+<li>航带模型非线性改正的目的是解决航带模型的系统变形，主要原因是自由航带网构建中的误差累积</li>
+<li>▶▶POS 辅助光束法平差中，系统误差主要是指 IMU 视准轴误差和 GPS 动态定位的系统漂移误差</li>
+<li>双像解析定位的三种方法分别指空间后交-前方交会方法、相对定向-绝对定向方法和一步定向解法。其中，一步定向解法定位精度最高</li>
+<li>▶▶▶▶▶摄影测量常用的像方坐标系有三种类型，分别是像平面坐标系、像空间坐标系和像空间辅助坐标系。</li>
+<li>▶▶解析相对定向依据的数学方程是共面条件方程。相对定向完成的标志是上下视差为 0，最少需要 5 对同名点</li>
+<li>▶▶▶解析绝对定向至少需要 2 个平高控制点和 1 个高程控制点</li>
+<li>▶▶▶▶可靠性矩阵 <span class="arithmatex">\(Q_{vv}P\)</span> 是降秩矩阵，其秩等于平差系统的多余观测数</li>
+<li>航摄像片是地面景物的中心投影。由于像片倾斜和地面起伏两个主要原因导致影像上几何图形与实际地面上的几何图形通常是不相似的</li>
+<li>▶▶POS 系统可用于直接测定动态目标的位置和姿态。若将 POS 数据用于直接传感器定位，除需要测定 GPS 天线相位中心与相机投影中心三个偏心分量外，还必须对 IMU 与相机坐标轴之间的视准轴误差进行校正</li>
+<li>▶▶空间直角坐标变换的正交变换矩阵中只有 3 个独立元素</li>
+<li>▶▶▶摄影测量加密按数学模型可分为航带法、独立模型法和光束法三种类型</li>
+<li>带模型连接条件的连续法相对定向元素有 6 个分别为 <span class="arithmatex">\(u(\mu??),v,\varphi,\omega,\kappa,\lambda\)</span></li>
+<li>▶▶▶▶▶摄影测量常用的坐标系为像平面直角坐标系、像空间直角坐标系、像空间辅助坐标系、地面摄影测量坐标系、地面测量坐标系。</li>
+<li>粗差是人为等因素引起的误差，它具有偶然性，但在数值上比偶然误差大得多。</li>
+<li>习惯上称由大地测量坐标系到地面摄影测量坐标系的变换为正变换。</li>
+<li>▶▶▶▶内部可靠性描述平差系统可发现、区分不同模型误差的能力。</li>
+<li>▶▶▶▶▶▶双眼观察立体像对所构成的立体模型称为立体视模型</li>
+<li>航带法区域网平差的观测值为重心化摄测坐标，平差单元为航带模型；光束法区域网平差的观测值为像点坐标，平差单元为单张像片。</li>
+</ul>
+<h3 id="_13">名词解释<a class="headerlink" href="#_13" title="Permanent link">¶</a></h3>
+<ul>
+<li>▶▶▶▶内部可靠性：一定假设下平差系统所能发现的模型误差的最小值。</li>
+<li>▶▶▶▶绝对定向元素：确定模型在地面空间坐标系中的绝对位置和姿态的参数</li>
+<li>像主点：相机主光轴与像平面的交点。</li>
+<li>▶▶带状法方程系数的带宽：带状法方程系数矩阵的主对角线元素沿某行（列）到最远非零元素间所包含未知数的个数。</li>
+<li>▶▶自检校光束法区域网平差：选用若干附加参数构成系统误差模型，在光束法区域网平差中同时解求这些附加参数，从而在平差过程中自行检定和消除系统误差影响的区域网平差。</li>
+<li>▶▶▶▶内部可靠性：一定假设下平差系统所能发现的模型误差的最小值。</li>
+<li>解析相对定向：根据摄影时同名光线位于一个核面的条件，利用共面条件方程解算立体像对中两张像片的相互关系参数，使同名光线对对相交</li>
+<li>▶▶GPS 辅助空中三角测量：利用载波相位差分 GPS 动态定位技术获取摄影时刻摄影中心的三维坐标，将其作为带权观测值引入摄影测量区域网平差中，整体确定物方点坐标和像片外方位元素并对其质量进行评定的理论和方法。</li>
+<li>▶▶▶主合点：地面上一组平行于摄影方向线的光束在像片上的构像。</li>
+<li>▶▶单片空间后方交会：在单张像片上，利用一定数量的地面控制点及其对应的像点坐标，根据共线条件方程求解像片的 6 个外方位元素。</li>
+<li>影像核线：立体像对中，同名光线与摄影基线所组成核面与左右像片的交线</li>
+<li>▶▶▶▶内部可靠性：一定假设条件下，平差系统所能发现的模型误差的下界值</li>
+<li>▶▶▶▶▶▶人造立体视觉：人眼观察立体像对获得立体视觉的效应。人造立体视觉需要满足 4 个条件：在不同摄站获取具有一定重叠度的两张影像；一只眼睛只能看一张像片；两张像片上同名点的连线大致与眼基线平行；两张像片的摄影比例尺相差不大，一般不超过 15%</li>
+<li>▶▶▶▶单模型绝对定向：相对定向所构建的立体模型经平移、缩放、旋转后纳入到地面坐标系中的过程</li>
+<li>▶▶GPS 辅助空中三角测量：将基于载波相位观测值的动态 GPS 定位技术获取的摄影中心曝光时刻的三维坐标作为带权观测值，引入光束法区域网平差中，整体求解影像外方位元素和加密点的地面坐标，并对其质量进行评定的理论和方法。</li>
+<li>▶▶▶主合点：地面上一组平行于摄影方向线的直线在像片上构像的交点。</li>
+<li>▶▶单片空间后方交会：利用单张影像覆盖范围内一定数量的地面控制点与其对应的像点，根据共线条件方程反求影像外方位元素的方法。</li>
+<li>相对定向元素：恢复相邻像片间摄影光束相互位置关系的参数</li>
+<li>▶▶外部可靠性：一定显著性水平和检验功效下，平差系统不能发现的模型误差对平差结果的影响</li>
+<li>▶▶自检校光束法区域网平差：将若干附加参数的构成系统误差模型与光束法区域网平差模型组成基础误差方程组，在解求影像定向参数与加密点坐标未知数的同时解求这些附加参数，从而在平差过程中自检定和消除系统误差的摄影测量区域网平差方法。</li>
+<li>边法化边消元：在光束法平差中，当与某一物方点相差的所有误差方程建立后，立即形成法方程并消去该物点的坐标未知数，仅保留相关的像片外方位元素的法方程形成过程。</li>
+<li>中心投影：投影射线会聚于一点的投影。</li>
+<li>像点位移：地面点在地面水平的水平像片上的构像与地面有起伏是或倾斜像片上构像的点位差异。</li>
+<li>▶▶▶▶单元模型的绝对定向：利用适量的地面控制点，对单元模型进行三维空间相似变换，将其纳入指定坐标系的计算方法</li>
+<li>共面条件：过摄影基线及任一物点构成的平面中，同名光线与摄影基线共面</li>
+<li>▶▶外部可靠性：一定假设条件下，平差系统不能发现的模型误差对平差结果的影响</li>
+<li>▶▶POS 辅助空中三角测量：将 POS 系统所获取的六个外方位元素作为带权观测值，和像点坐标观测值一并进行光束法区域网联合平差，同时解求加密点坐标和精确外方位元素，并对其质量进行评定的理论和方法。</li>
+<li>▶▶▶▶▶▶人造立体视觉：人眼观察立体像对获得立体视觉的效应。人造立体视觉需要满足 4 个条件：在不同摄站获取具有一定重叠度的两张影像；一只眼睛只能看一张像片；两张像片上同名点的连线大致与眼基线平行；两张像片的摄影比例尺相差不大，一般不超过 15%</li>
+<li>▶▶▶主合点：地面上一组平行于摄影方向线的光束在像片上的构像。（或过摄影中心的真水平面与主纵线的交点。）</li>
+<li>▶▶改化法方程：采用矩阵运算消去法方程中的一类或几类未知数，而只保留某一类未知数的法方程。</li>
+<li>▶▶▶▶绝对定向：将相对定向构建的立体模型经平移、缩放、旋转后纳入到地面坐标系中的过程。绝对定向解算 7 个参数：<span class="arithmatex">\(\lambda,X_0,Y_0,Z_0,\Phi,\Omega,K\)</span></li>
+<li>空间前方交会：已知立体像对中两张像片的内、外方位元素和像点坐标，确定相应地面点在物方空间坐标系中坐标的方法。</li>
+<li>▶▶POS 辅助空中三角测量：将 POS(GPS/IMU)数据视为带权观测值引摄影测量区域网平差，整体解算地面目标点坐标和像片方位元素，并对其质量进行评定的理论、技术和方法。</li>
+<li>▶▶改化法方程：消除一类未知数后所得的法方程</li>
+</ul>
+<h3 id="_14">简答<a class="headerlink" href="#_14" title="Permanent link">¶</a></h3>
+<ul>
+<li>▶▶▶推导摄影中心点，像点与其对应物点三点位于一条直线上的共线条件方程，并简要叙述其在摄影测量中的主要用途（共线条件方程                    - ）<ul>
+<li>公式推导示意图</li>
+<li>共线条件方程的主要用途<ul>
+<li>单片后方交会和立体模型的空间前方交会</li>
+<li>求像底点的坐标</li>
+<li>光束法平差中的基本方程</li>
+<li>解析测图仪中的数字投影器</li>
+<li>航空摄影模拟</li>
+<li>利用 DEM 进行单张像片测图</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>▶▶▶旋转系统</li>
+<li>▶▶像片外方位元素的作用<ul>
+<li>像片外方位元素可用于恢复摄影瞬间像片在物方空间坐标系中的位置和姿态</li>
+</ul>
+</li>
+<li>▶▶▶▶POS 系统相关<ul>
+<li>如何利用 POS 系统快速确定地面的三维坐标（简述基本思想和具体解算过程）<ul>
+<li>由 POS 系统获得像片的 6 个外方位元素。当没有地面控制点时，直接利用同名点前方交会，获得地面点坐标；当有控制点时，先利用共线方程对 POS 系统获得的像片外方位元素进行检校，消除系统误差，然后利用同名像点前方交会可获得地面坐标。具体解算过程如下:<ul>
+<li>同名像点识别，量测像点坐标 <span class="arithmatex">\(x_1,y_1,x_2,y_2\)</span> ；由 POS 系统获得的像片外方位线元素计算基线分量 <span class="arithmatex">\(B_X, B_Y,B_Z\)</span></li>
+<li>由 POS 系统获得的像片外方位角元素计算像空间辅助坐标 <span class="arithmatex">\(X_1,Y_1,Z_1,X_2,Y_2,Z_2\)</span> ；计算点投影系数 <span class="arithmatex">\(N_1,N_2\)</span> ；计算地面坐标 <span class="arithmatex">\(X_A,Y_A,Z_A\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>在城市建设规划中，发现某居民区新增了大量的建筑物，为了及时更新该地区的地籍图，利用配有 POS 系统的数字航摄仪获取了一个立体像对，请问如何用最快速的方法将新建房屋加入地籍管理数据库中？在 POS 系统提供的像片外方位元素无误差的情况下，简要叙述其基本思想并绘出作业流程图。</li>
+<li>今利用带 POS 系统的数字航摄仪定点拍摄了一立体像对，试问如何快速确定感兴趣点的地面三维坐标？在 POS 系统提供的影像外方位元素无误差的情况下，简要叙述其计算过程。</li>
+<li>利用带 POS 系统的航摄仪拍摄了某一房屋一个立体像对，试问如何快速确定房屋的地理位置？在 POS 系统提供的影像外方位元素无误差的情况下，简要叙述其计算过程。</li>
+</ul>
+</li>
+<li>今在航高 H 处利用主距为 f 的航摄仪拍得一张理想的航摄像片，试导出像片上的像点坐标与其对应物点坐标间的关系式，并说明式中各符号的物理意义<ul>
+<li>示意图</li>
+</ul>
+</li>
+<li>设在航高 <span class="arithmatex">\(H\)</span> 处利用主距为 <span class="arithmatex">\(f\)</span> 的航摄仪对同一地物拍得一张理想的和一张倾斜的航摄像片，试推导某地物点在两张像片上构像的像平面坐标间的几何关系，并详细说明式中各符号的意义<ul>
+<li>倾斜像片与水平像片的坐标关系（共线条件方程）<ul>
+<li>倾斜像片<ul>
+<li><span class="arithmatex">\(\begin{bmatrix} X_A-X_S\\ Y_A-Y_S\\Z_A-Z_S\end{bmatrix}=\lambda R\begin{bmatrix}x\\y\\-f\end{bmatrix}=\lambda \begin{bmatrix}a_1&amp;a_2&amp;a_3\\b_1&amp;b_2&amp;b_3\\c_1&amp;c_2&amp;c_3\end{bmatrix}\begin{bmatrix}x\\y\\-f\end{bmatrix}\)</span></li>
+</ul>
+</li>
+<li>水平像片<ul>
+<li><span class="arithmatex">\(\begin{bmatrix} X_A-X_S\\ Y_A-Y_S\\Z_A-Z_S\end{bmatrix}=\lambda_t R_0\begin{bmatrix}x_t\\y_t\\-f\end{bmatrix}=\lambda_t \begin{bmatrix}x_t\\y_t\\-f\end{bmatrix}\)</span></li>
+</ul>
+</li>
+<li>推得<ul>
+<li><span class="arithmatex">\(x_t=-f\dfrac{a_1x+a_2y-a_3f}{c_1x+c_2y-c_3f}\\y_t=-f\dfrac{b_1x+b_2y-b_3f}{c_1x+c_2y-c_3f}\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>▶▶投影作图（中心投影作图）<ul>
+<li>如图，已知物空间上的一点 A 高出平均高程面 <span class="arithmatex">\(E\)</span> 为 <span class="arithmatex">\(h\)</span> ，若航摄仪在 <span class="arithmatex">\(S\)</span> 处对其进行摄影，则在像片 <span class="arithmatex">\(P\)</span> 上会产生投影差 <span class="arithmatex">\(\delta_h\)</span> ，请在图中表示 <span class="arithmatex">\(\delta_h\)</span></li>
+<li>已知物空间上的一点 <span class="arithmatex">\(A\)</span> ，若航摄仪在 <span class="arithmatex">\(S\)</span> 处对其分别拍摄了一张倾斜像片 P 和一张水平像片 <span class="arithmatex">\(P^0\)</span> ， <span class="arithmatex">\(y\)</span> 和 <span class="arithmatex">\(y^0\)</span> 分别为 <span class="arithmatex">\(P\)</span> 和 <span class="arithmatex">\(P^0\)</span> 的主纵线，请在图中标出由于像片倾斜所引起的 <span class="arithmatex">\(A\)</span> 点的像点位移 <span class="arithmatex">\(\delta_a\)</span> 像片倾斜引起的像点位移</li>
+</ul>
+</li>
+<li>简述数据探测法检测定位粗差的主要过程<ul>
+<li>按解算主题要求，形成误差方程并法化，解法方程得到观测值残差</li>
+<li>构造观测值的标准化残差统计检验量</li>
+<li>给定显著性水平，确定统计检验量的阈值</li>
+<li>假设检验，若观测值不存在粗差，则统计检验量落在接受域内；否则，统计检验量落在拒绝域内，由此确定粗差观测值</li>
+</ul>
+</li>
+<li>根据像点坐标计算地面点坐标的坐标变换公式如式（1）；以 Y 轴为主轴的正交变换矩阵如式（2），试推导 <span class="arithmatex">\(\dfrac{\partial X}{\partial \omega}\)</span></li>
+<li>如图所示， <span class="arithmatex">\(P_1,P_2\)</span> 为一个立体像对， <span class="arithmatex">\(a_1,a_2\)</span> 为同名像点，写出描述 <span class="arithmatex">\(S_1,a_1\)</span> 和 <span class="arithmatex">\(A\)</span> 几何关系的方程，详细说明各符号的意义，并简述确定物方点 <span class="arithmatex">\(A\)</span> 坐标的方法<ul>
+<li>共线条件方程</li>
+<li>一步定向法</li>
+</ul>
+</li>
+<li>对单个立体像对进行目标定位可采用哪几种方法？简述其计算过程，并比较各自的优缺点</li>
+<li>实际航空摄影时，获取的航摄像片不具有地形图的特征简要叙述其原因。航摄像片与地形图的区别<ul>
+<li>地图有统一的比例尺，航片无统一比例尺</li>
+<li>地图为线划图、需要综合取舍，航片为影像图</li>
+<li>地图属于正射投影，地图上无方向偏差</li>
+<li>航摄像片属中心投影成像，航片上有像点位移和方向偏差</li>
+</ul>
+</li>
+<li>试述航带法和光束法空中三角测量的基本思想</li>
+<li>外方位元素的获取方法<ul>
+<li>空间后方交会</li>
+<li>光束法空中三角测量</li>
+<li>POS 系统直接获取</li>
+</ul>
+</li>
+<li>什么是透视变换？试画出物面上一点 A 在像面上的成像 <span class="arithmatex">\(a\)</span> ,并写出表达物点与像点共线的条件方程<ul>
+<li>将空间点、线作中心投影，在投影平面 P 上得到一一对应的点、线，这种经中心投影取得的一一对应投影关系称为透视变换</li>
+<li>作图</li>
+<li>共线方程</li>
+</ul>
+</li>
+</ul>
+<h3 id="_15">综合题<a class="headerlink" href="#_15" title="Permanent link">¶</a></h3>
+<ul>
+<li>计算观测值个数、未知数个数以及多余观测数</li>
+<li>改化法方程系数阵（计算最小带宽）<ul>
+<li>带宽：主对角线到任意一行最远处的非零元素间所包含的未知数个数</li>
+<li>垂直航向排列时的带宽<ul>
+<li><span class="arithmatex">\(m=(2N+2)\times6\)</span> ， <span class="arithmatex">\(N\)</span> 为航线数</li>
+</ul>
+</li>
+<li>沿航向排列的带宽<ul>
+<li><span class="arithmatex">\(m=(n+3)\times6\)</span> ， <span class="arithmatex">\(n\)</span> 为航线中的像片数</li>
+</ul>
+</li>
+<li>当 <span class="arithmatex">\(n&gt;2N-1\)</span> 时，垂直于航向编排像片次序可获得最小带宽，对解法方程有利</li>
+</ul>
+</li>
+<li>画改化法方程系数阵结构</li>
+</ul>
+<h2 id="_16">一些总结<a class="headerlink" href="#_16" title="Permanent link">¶</a></h2>
+<h3 id="_17">相关方法所需要的地物/像点的数量等比较<a class="headerlink" href="#_17" title="Permanent link">¶</a></h3>
+<ul>
+<li>单片空间后方交会<ul>
+<li>解求单张像片的外方位元素最少需要 3 个平高控制点</li>
+<li>根据共线方程，1 个平高控制点对应像点可列 2 个方程，外方位元素共 6 个，所以需要 3 个平高控制点</li>
+</ul>
+</li>
+<li>立体像对的前方交会<ul>
+<li>已知像片的方位元素的前提下，解求地面点坐标最少需要该点在像片上的 2 个像点的坐标</li>
+<li>根据共线方程，1 个像点和对应地物点只能列出 2 个方程，而有 3 个未知元素，需要列 3 个方程，因此至少要 2 个像点坐标</li>
+</ul>
+</li>
+<li>解析相对定向<ul>
+<li>解析相对定向需要量测 5 对以上同名像点</li>
+<li>由相对定向的定义，需要求解 5 个相对定向参数。<ul>
+<li>对于连续法相对定向，以 <span class="arithmatex">\(Q\)</span> （模型坐标上下视差）为观测值；对单独法相对定向，以 <span class="arithmatex">\(q\)</span> （像空间辅助坐标系中理想像对上同名像点的上下视差）为观测值。</li>
+<li>每对同名像点，可列一个误差方程。故需要 5 个以上的同名像点</li>
+</ul>
+</li>
+<li>注意解析相对定向不需要知道地面点的坐标，只需要同名像点坐标</li>
+</ul>
+</li>
+<li>带模型连接条件的连续法相对定向<ul>
+<li>需要 3 个以上的模型连接点求解相对定向元素</li>
+<li>模型连接条件下，相对定向元素多了一个比例参数，所以有 6 个未知数。1 个模型连接点可列 2 个方程（上下视差、左右视差方程）。所以至少要 3 个模型连接点</li>
+</ul>
+</li>
+<li>三维空间相似变换（绝对定向）<ul>
+<li>要将地物点在摄测测量坐标系中的模型坐标转换到地面摄影测量坐标系，最少需要 2 个平高和 1 个高程地面控制点。</li>
+<li>三维空间相似变换有 7 个参数，需要 7 个已知元素</li>
+</ul>
+</li>
+<li>双像解析摄影测量<ul>
+<li>空间后交-前方交会解法<ul>
+<li>单片空间后方交会<ul>
+<li>解求单张像片的外方位元素最少需要 3 个平高控制点</li>
+<li>根据共线方程，1 个平高控制点对应像点可列 2 个方程，外方位元素共 6 个，所以需要 3 个平高控制点</li>
+</ul>
+</li>
+<li>立体像对的前方交会（共线方程严密解法）<ul>
+<li>已知像片的方位元素的前提下，解求地面点坐标最少需要该点在像片上的 2 个像点的坐标</li>
+<li>根据共线方程，1 个像点和对应地物点只能列出 2 个方程，而有 3 个未知元素，需要列 3 个方程，因此至少要 2 个像点坐标</li>
+</ul>
+</li>
+<li>要求每个像片都要至少有 3 个平高点，这样才能求出每张像片的外方位元素（内方位元素一般默认已知），然后再前方交会出坐标</li>
+</ul>
+</li>
+<li>相对定向-绝对定向解法<ul>
+<li>解析相对定向<ul>
+<li>解析相对定向需要量测 5 对以上同名像点</li>
+<li>由相对定向的定义，需要求解 5 个相对定向参数。<ul>
+<li>对于连续法相对定向，以 <span class="arithmatex">\(Q\)</span> （模型坐标上下视差）为观测值；对单独法相对定向，以 <span class="arithmatex">\(q\)</span> （像空间辅助坐标系中理想像对上同名像点的上下视差）为观测值。</li>
+<li>每对同名像点，可列一个误差方程。故需要 5 个以上的同名像点</li>
+</ul>
+</li>
+<li>注意解析相对定向不需要知道地面点的坐标，只需要同名像点坐标</li>
+</ul>
+</li>
+<li>三维空间相似变换（绝对定向）<ul>
+<li>要将地物点在摄测测量坐标系中的模型坐标转换到地面摄影测量坐标系，最少需要 2 个平高和 1 个高程地面控制点。</li>
+<li>三维空间相似变换有 7 个参数，需要 7 个已知元素</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一步定向解法<ul>
+<li>至少需要 2 个平高 1 个高程。</li>
+</ul>
+</li>
+<li>双像解析摄影测量中的这三种方法，待求点必须是重叠区域的。一步定向法中尤其要注意，列立方程时单片上的待求点不需考虑。</li>
+</ul>
+</li>
+<li>模型连接构建自由航带网<ul>
+<li>单独法相对定向构建自由航带网<ul>
+<li>有 4 个未知参数（尺度 <span class="arithmatex">\(\lambda\)</span> 和旋转矩阵 R），每个模型连接点可以列 3 个方程，理论上只需要 2 个模型连接点，实际上一般有 3 个连接点。</li>
+</ul>
+</li>
+<li>连续法相对定向构建自由航带网<ul>
+<li>要求 1 个归化系数，每个模型连接点可以列 1 个方程，理论上只需要 1 个连接点，实际上是 3 个连接点计算归化系数，然后求平均。</li>
+</ul>
+</li>
+<li>带模型连接条件相对定向构建自由航带网</li>
+</ul>
+</li>
+<li>解析空中三角测量<ul>
+<li>航带法区域网平差<ul>
+<li>航线图</li>
+<li>观测值数：<span class="arithmatex">\(16 + 8 + 14 + 8 + 16 = 62\)</span><ul>
+<li>第一条航线<ul>
+<li>五个控制点【1、2、9、17、18】 + 一个高程点的高程【10】</li>
+<li><span class="arithmatex">\(5\times3+1\times 1=16\)</span></li>
+</ul>
+</li>
+<li>一二航线连接<ul>
+<li>两个未知点【6、14】 + 一个高程点未知平面坐标【10】</li>
+<li><span class="arithmatex">\(2\times3+2\times 1=8\)</span></li>
+</ul>
+</li>
+<li>第二条航线<ul>
+<li>四个控制点【2、3、18、19】 + 两个高程点的高程【10、11】</li>
+<li><span class="arithmatex">\(4\times3+2\times 1=14\)</span></li>
+</ul>
+</li>
+<li>二三航线连接<ul>
+<li>两个未知点【7、15】+ 一个高程点未知平面坐标 【11】</li>
+<li><span class="arithmatex">\(2\times3+2\times 1=8\)</span></li>
+</ul>
+</li>
+<li>第三条航线：<ul>
+<li>五个控制点【3、4、12、19、20】+ 一个高程点的高程【11】</li>
+<li><span class="arithmatex">\(5\times3+1\times 1=16\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>必要观测数【参见：航带模型非线性改正】：45/33<ul>
+<li>二次多项式法：<span class="arithmatex">\(( 5 + 5 + 5 ) \times3 = 45\)</span></li>
+<li>二次正形变换多项式：<span class="arithmatex">\(( 6 + 5 ) \times 3 = 33\)</span></li>
+</ul>
+</li>
+<li>多余观测数：17/29<ul>
+<li><span class="arithmatex">\(62 - 45 = 17\)</span></li>
+<li><span class="arithmatex">\(62 - 33 = 29\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>光束法空中三角测量<ul>
+<li>航线图</li>
+<li>观测值<ul>
+<li>6 张位于航线始末位置的像片，有 6 个像点；9 张位于航线中的像片，有 9 个像点；每个像点在一个像片上有 x,y 两个坐标</li>
+<li><span class="arithmatex">\((6\times6+9\times9)\times2=234\)</span></li>
+</ul>
+</li>
+<li>未知数个数<ul>
+<li>15 张像片的 6 个外方位元素，23 个点的 <span class="arithmatex">\((x,y,z)\)</span> 坐标，2 个点的高程</li>
+<li><span class="arithmatex">\(15\times6+23\times3+2\times2=163​\)</span></li>
+</ul>
+</li>
+<li>多余观测数</li>
+</ul>
+</li>
+<li>三种区域网平差方法的比较<ul>
+<li>航带法区域网平差<ul>
+<li>数学模型：航带坐标的非线性多项式改正公式</li>
+<li>观测值：自由航带中各点的摄影测量坐标</li>
+<li>平差单元：航带</li>
+<li>未知数：各航带的多项式改正系数</li>
+<li>特点：未知数少，解算方便快速，但精度不高</li>
+</ul>
+</li>
+<li>独立模型法<ul>
+<li>数学模型：单元模型的空间相似变换公式</li>
+<li>观测值：计算或量测的模型坐标</li>
+<li>平差单元：独立模型</li>
+<li>未知数：各模型空间相似变换的 7 个参数，以及加密点的地面坐标</li>
+<li>特点：未知数比航带法多得多，但如采用平高分求的办法，其解算所占用的内存和计算时间比光束法少得多。是一种相当严密的平差方法。如能顾及模型坐标间的相差特性，独立模型法在理论上与光束法同样严密。</li>
+</ul>
+</li>
+<li>光束法<ul>
+<li>数学模型：共线条件方程</li>
+<li>观测值：像点坐标</li>
+<li>平差单元：单个光束</li>
+<li>未知数：各影像的外方位元素，加密点的地面坐标</li>
+<li>特点：它是最严密的一步解法，便于引入非摄影测量观测值。需要初始值，未知数多、计算量大，计算慢，不能进行平高分求</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_18">公式推导<a class="headerlink" href="#_18" title="Permanent link">¶</a></h3>
+<ul>
+<li>共线条件方程<ul>
+<li>原本的公式</li>
+<li>单像空间后方交会<ul>
+<li>求导技巧</li>
+<li>用 <span class="arithmatex">\(\overline{X},\overline{Y},\overline{Z}\)</span> 简化公式，并记住 <span class="arithmatex">\(\overline{X},\overline{Y},\overline{Z}\)</span> 和 <span class="arithmatex">\(X-X_s,Y-Y_s,Z-Z_s\)</span> 的关系</li>
+<li>垂直摄影情况下的省略</li>
+</ul>
+</li>
+<li>立体像对前方交会<ul>
+<li>太简单不需要贴公式</li>
+<li>只要记得用 <span class="arithmatex">\(\overline{X},\overline{Y},\overline{Z}\)</span> 简化公式就好</li>
+<li>垂直摄影的公式简化</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>共面条件方程<ul>
+<li>相对定向<ul>
+<li>连续法相对定向<ul>
+<li>这个是对 R 求导，后方交会是对 R^T 求导</li>
+</ul>
+</li>
+<li>单独法相对定向<ul>
+<li>求导技巧和连续法的是一样的</li>
+</ul>
+</li>
+<li>带模型连接条件的连续法相对定向原理<ul>
+<li>麻烦（</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>三维空间相似变换<ul>
+<li>注意其中的一个简化<ul>
+<li><span class="arithmatex">\(R\begin{bmatrix} X_p\\ Y_p\\Z_p\end{bmatrix}=\begin{bmatrix} X^\prime\\ Y^\prime\\Z^\prime\end{bmatrix}\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_19">计算步骤<a class="headerlink" href="#_19" title="Permanent link">¶</a></h3>
+<ul>
+<li>单像空间后方交会<ul>
+<li>获取已知数据 <span class="arithmatex">\(m，x_0，y_0，f ， X_{tp}， Y_{tp}， Z_{tp}\)</span></li>
+<li>量测控制点的像平面坐标 <span class="arithmatex">\(x\)</span>，<span class="arithmatex">\(y\)</span></li>
+<li>确定未知数的初始值 <span class="arithmatex">\(X_s^0\)</span>， <span class="arithmatex">\(Y_s^0\)</span>，<span class="arithmatex">\(Z_s^0\)</span>，<span class="arithmatex">\(\varphi^0\)</span> ，<span class="arithmatex">\(\omega^0\)</span>，<span class="arithmatex">\(\kappa^0\)</span> 形成误差方程式并法化</li>
+<li>解求外方位元素改正数</li>
+<li>检查迭代是否收敛（检查角元素的改正数是否 <span class="arithmatex">\(&lt; 0.1'=3.0e^{-5}\)</span> ）</li>
+</ul>
+</li>
+<li>解析内定向<ul>
+<li>获取框标点的理论坐标</li>
+<li>选用合适的变换模型</li>
+<li>建立误差方程 <span class="arithmatex">\(\nu=Ax-l\)</span></li>
+<li>构建法方程并解算 <span class="arithmatex">\(x=(A^TA)^{-1}(A^Tl)\)</span></li>
+<li>由变换参数计算像点坐标</li>
+</ul>
+</li>
+<li>立体像对前方交会<ul>
+<li>点投影系数法<ul>
+<li>获取已知数据 <span class="arithmatex">\(x_0,y_0,f,X_{S1},Y_{S1},Z_{S1},\varphi_1,\omega_1,\kappa_1,X_{S2},Y_{S2},Z_{S2},\varphi_2,\omega_2,\kappa_2\)</span></li>
+<li>量测像点坐标 <span class="arithmatex">\((x_1,y_1),(x_2,y_2)\)</span></li>
+<li>由外方位线元素计算基线分量 <span class="arithmatex">\(B_X,B_Y,B_Z\)</span></li>
+<li>由外方位元素计算像空间辅助坐标 <span class="arithmatex">\((X_1,Y_1,Z_1),(X_2,Y_2,Z_2)\)</span></li>
+<li>计算点投影系数 <span class="arithmatex">\(N_1,N_2\)</span></li>
+<li>计算地面坐标 <span class="arithmatex">\((X_A,Y_A,Z_A)\)</span></li>
+</ul>
+</li>
+<li>共线方程严密解法<ul>
+<li>获取已知数据 <span class="arithmatex">\(x_0,y_0,f,X_{S1},Y_{S1},Z_{S1},\varphi_1,\omega_1,\kappa_1,X_{S2},Y_{S2},Z_{S2},\varphi_2,\omega_2,\kappa_2\)</span></li>
+<li>量测像点坐标 <span class="arithmatex">\((x_1,y_1),(x_2,y_2)\)</span> </li>
+<li>给定地面坐标的初始值 <span class="arithmatex">\((X^0,Y^0,Z^0)\)</span></li>
+<li>形成误差方程 <span class="arithmatex">\(a_{11},a_{12},a_{13},a_{21},a_{22},a_{23}\)</span> 及常数项</li>
+<li>建立法方程并求解地面坐标近似值增量 <span class="arithmatex">\(\varDelta X,\varDelta Y,\varDelta Z\)</span></li>
+<li>计算地面坐标 <span class="arithmatex">\((X^0+\varDelta X,Y^0+\varDelta Y,Z^0+\varDelta Z)\)</span></li>
+<li>判断迭代是否收敛</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>相对定向<ul>
+<li>连续法相对定向<ul>
+<li>获取影像内方位元素 <span class="arithmatex">\(x_0,y_0,f\)</span></li>
+<li>量测像点坐标 <span class="arithmatex">\((x_1,y_1),(x_2,y_2)\)</span>,</li>
+<li>假定摄影基线 <span class="arithmatex">\(B_x=x_1-x_2\)</span></li>
+<li>设定相对定向元素计算的初值 <span class="arithmatex">\(\mu=\nu=\varphi=\omega=\kappa=0\)</span></li>
+<li>由相对定向元素计算像空间辅助坐标 <span class="arithmatex">\((X_1,Y_1,Z_1),(X_2,Y_2,Z_2)\)</span></li>
+<li>逐点计算误差方程式的系数和常数项，并法化</li>
+<li>求相对定向元素增量 <span class="arithmatex">\(\varDelta \mu,\varDelta\nu,\varDelta\varphi,\varDelta\omega,\varDelta\kappa\)</span></li>
+<li>求相对定向元素新值</li>
+<li>判断迭代是否收敛（限差 <span class="arithmatex">\(0.1'=3\times10^{-5}\)</span> ）</li>
+</ul>
+</li>
+<li>单独法相对定向<ul>
+<li>获取影像内方位元素 <span class="arithmatex">\(x_0,y_0,f\)</span></li>
+<li>量测像点坐标 <span class="arithmatex">\((x_1,y_1),(x_2,y_2)\)</span>,</li>
+<li>假定摄影基线 <span class="arithmatex">\(B_x=x_1-x_2\)</span></li>
+<li>设定相对定向元素计算的初值<span class="arithmatex">\(\varphi_1=\kappa_1=\varphi_2=\omega_2=\kappa_2=0\)</span></li>
+<li>由相对定向元素计算像空间辅助坐标 <span class="arithmatex">\((X_1,Y_1,Z_1),(X_2,Y_2,Z_2)\)</span></li>
+<li>逐点计算误差方程式的系数和常数项，并法化</li>
+<li>求相对定向元素增量 <span class="arithmatex">\(\varDelta \varphi_1,\varDelta\kappa_1,\varDelta\varphi_2,\varDelta\omega_2,\varDelta\kappa_2\)</span></li>
+<li>求相对定向元素新值</li>
+<li>判断迭代是否收敛（限差 <span class="arithmatex">\(0.1'=3\times10^{-5}\)</span> ）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>三维空间相似变换<ul>
+<li>获取控制点的两套坐标 <span class="arithmatex">\((X_p,Y_p,Z_p),(X_{tp},Y_{tp},Z_{tp})\)</span></li>
+<li>给定相似变换参数的初值 <span class="arithmatex">\(\lambda=1,\Phi=\Omega=K=0,X_0,Y_0,Z_0\)</span></li>
+<li>计算重心化坐标</li>
+<li>计算误差方程式的系数和常数项</li>
+<li>解法方程得相似变换参数改正数 <span class="arithmatex">\(\Delta\lambda,\Delta\Phi,\Delta\Omega,\Delta K,\Delta X_0,\Delta Y_0,\Delta Z_0\)</span></li>
+<li>计算相似变换参数的新值</li>
+<li>判断迭代是否收敛（限差 <span class="arithmatex">\(0.1^′=3\times10^{-5}\)</span> ）</li>
+<li>利用求得的相似变换参数计算所有地面点的三维空间坐标</li>
+</ul>
+</li>
+<li>解析空中三角测量<ul>
+<li>航带法空中三角测量<ul>
+<li>像点坐标量测</li>
+<li>立体像对的相对定向</li>
+<li>模型连接构建自由航带网<ul>
+<li>单独法相对定向构建自由航带网</li>
+<li>连续法相对定向构建自由航带网</li>
+<li>带模型连接条件相对定向构建自由航带网</li>
+</ul>
+</li>
+<li>自由航带网概略绝对定向<ul>
+<li>获取控制点的地面摄影测量坐标 <span class="arithmatex">\(X_{tp},Y_{tp},Z_{tp}\)</span></li>
+<li>计算重心化坐标</li>
+<li>求相似变换参数</li>
+<li>计算各模型点的地面摄影测量坐标</li>
+</ul>
+</li>
+<li>航带模型非线性改正<ul>
+<li>二次多项式法</li>
+<li>二次正形变换多项式</li>
+<li>建立误差方程</li>
+</ul>
+</li>
+<li>加密点地面坐标计算</li>
+</ul>
+</li>
+<li>光束法空中三角测量<ul>
+<li>获取像片内方位元素、像点坐标和地面控制点坐标</li>
+<li>获取像片外方位元素和加密点地面坐标的近似值<ul>
+<li>将每个立体像对进行相对定向和模型连接构建自由航带网，利用航带中的控制点及相邻航线间的公共连接点对航带网进行概略绝对定向，以求得加密点的地面坐标和每张像片的 6 个外方位元素，将其作为未知数的初始值</li>
+</ul>
+</li>
+<li>逐点建立误差方程式并法化<ul>
+<li>误差方程矩阵形式</li>
+<li>逐点法化</li>
+</ul>
+</li>
+<li>建立改化法方程式
+  "消除一类未知数后所得的法方程"<ul>
+<li>改化法方程系数阵<ul>
+<li>带宽：主对角线到任意一行最远处的非零元素间所包含的未知数个数</li>
+<li>垂直航向排列时的带宽<ul>
+<li><span class="arithmatex">\(m=(2N+2)\times6\)</span> ， <span class="arithmatex">\(N\)</span> 为航线数</li>
+</ul>
+</li>
+<li>沿航向排列的带宽<ul>
+<li><span class="arithmatex">\(m=(n+3)\times6\)</span> ， <span class="arithmatex">\(n\)</span> 为航线中的像片数</li>
+</ul>
+</li>
+<li>当 <span class="arithmatex">\(n&gt;2N-1\)</span> 时，垂直于航向编排像片次序可获得最小带宽，对解法方程有利</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>采用循环分块法求解改化法方程得像片外方位元素<ul>
+<li>直接解法（在航带法中适用）</li>
+<li>循环分块解法<ul>
+<li>分块</li>
+<li>边法化边消元</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>计算加密点的三维空间坐标</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_20">定义<a class="headerlink" href="#_20" title="Permanent link">¶</a></h3>
+<ul>
+<li>摄影测量学<ul>
+<li>摄影测量学 (Photogrammetry) 是利用光学摄影机获取的像片，研究和确定被摄物体的形状、大小、位置、特性及其相互关系的一门学科</li>
+</ul>
+</li>
+<li>影像的方位元素<ul>
+<li>确定摄影时投影中心、像片与地面三者之间相互位置关系的必要参数</li>
+<li>内方位元素 <span class="arithmatex">\((x_0,y_0,f)\)</span><ul>
+<li>确定摄影物镜后节点与像片之间相互位置关系的参数</li>
+</ul>
+</li>
+<li>外方位元素 <span class="arithmatex">\((X_S,Y_S,Z_S，R_{3\times 3})\)</span><ul>
+<li>确定摄影瞬间像片在地面直角坐标系中空间位置和姿态的参数</li>
+<li>外方位线元素 <span class="arithmatex">\((X_S,Y_S,Z_S)\)</span><ul>
+<li>描述摄影中心在地面空间直角坐标系中的位置</li>
+</ul>
+</li>
+<li>外方位角元素<ul>
+<li>描述像片在摄影瞬间的空间姿态</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>共线条件方程<ul>
+<li>表示摄影中心 <span class="arithmatex">\(S\)</span> 、像点 <span class="arithmatex">\(a\)</span> 及其对应物点 <span class="arithmatex">\(A\)</span> 三者位于一条直线的数学方程</li>
+</ul>
+</li>
+<li>单片空间后方交会<ul>
+<li>根据影像覆盖范围内一定数量的分布合理的地面控制点（已知其像点和地面点的坐标)，利用共线条件方程求解影像外方位元素</li>
+</ul>
+</li>
+<li>像点位移<ul>
+<li>当像片倾斜、地形起伏时，地面点在航摄像片上的构像相对于理想情况下构像所产生的位置差异称为像点位移</li>
+</ul>
+</li>
+<li>方向偏差<ul>
+<li>从航摄像片上某点作出的方向线与地面对应点所画出的方向线的方位角不相等，这种差异称之为方向偏差</li>
+</ul>
+</li>
+<li>立体像对的前方交会<ul>
+<li>已知立体像对中的两张像片的内、外方位元素，由像点坐标来确定相应地面点在物方空间坐标系下的坐标</li>
+</ul>
+</li>
+<li>解析相对定向<ul>
+<li>利用立体像对同名光线对对相交的几何关系，根据量测的像点坐标，以解析计算的方法求解两张影像相对方位元素的过程，称之为解析相对定向</li>
+<li>相对定向元素<ul>
+<li>描述立体像对中两张影像相对位置和姿态关系的参数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>单元模型的绝对定向<ul>
+<li>将相对定向建立的立体模型进行缩放、旋转和平移，使其达到绝对位置的过程</li>
+<li>绝对定向元素<ul>
+<li>描述立体模型在摄影瞬间的绝对位置和姿态的参数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>解析空中三角测量<ul>
+<li>定义<ul>
+<li>采用计算方法，根据航摄像片上所量测的像点坐标和必要的用以确定平差基准的非摄影测量信息测定所摄目标特征点的物方空间坐标，称之为解析空中三角测量。又称摄影测量加密、电算加密</li>
+</ul>
+</li>
+<li>意义<ul>
+<li>不触及被量测目标即可测定其几何位置</li>
+<li>可以快速地大规模同时进行点位测定，以节省野外测量工作量</li>
+<li>不受通视条件限制</li>
+<li>摄影测量区域网平差时，加密区域内部精度均匀,且不受区域大小的限制</li>
+</ul>
+</li>
+<li>目的<ul>
+<li>为 3D 产品生产提供定向控制点和影像定向参数</li>
+<li>可进行三、四等或等外大地测量的点位测定</li>
+<li>高精度测定大范围的界址点的统一坐标</li>
+<li>单元模型中巨量地物点坐标的快速计算</li>
+<li>近景摄影测量、非地形摄影测量及遥感的解析计算</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>航带法空中三角测量<ul>
+<li>把许多立体像对构成的单个模型连结成一个航带模型，将航带模型视为单元模型进行概略绝对定向，通过消除航带模型中累积的系统误差，将航带模型整体纳入到测图坐标系中，从而确定加密点的地面三维坐标</li>
+</ul>
+</li>
+<li>独立模型法空中三角测量<ul>
+<li>以立体像对构建单元模型，将单个模型视为刚体，以三维空间相似变换方程作为平差的基础方程，利用模型内的地面控制点和模型间的公共连接点进行平移、旋转和缩放，将各单元模型整体纳入到测图坐标系中，从而确定加密点的地面坐标。</li>
+</ul>
+</li>
+<li>光束法空中三角测量<ul>
+<li>以一张像片组成的一束光线作为一个平差单元，以中心投影的共线方程作为平差的基础方程，通过各光线束在空间的旋转和平移，使像片之间的公共光线实现最佳的交会，将整个区域最佳地纳入到控制点坐标系中，从而确定加密点的地面坐标和像片的外方位元素</li>
+</ul>
+</li>
+<li>自检校光束法区域网平差<ul>
+<li>在共线条件方程中，利用若干附加参数来描述系统误差模型，在区域网平差的同时解求这些附加参数，以自动测定和消除系统误差</li>
+</ul>
+</li>
+<li>联合平差<ul>
+<li>将原始的大地测量观测值、一般控制信息和/或相对控制条件与摄影测量观测值一起进行区域网平差，以取代地面控制点</li>
+</ul>
+</li>
+<li>GNSS 辅助空中三角测量<ul>
+<li>利用安装在航摄飞机上与航摄仪相连的 GNSS 接收机连续观测 GNSS 卫星信号、获取航空摄影瞬间航摄仪快门开启脉冲，经 GNSS 波相位测量定位技术的离线数据后处理获取航摄仪曝光时刻摄站的三维坐标，然后将其视为带权观测值引入摄影测量区域网平差中，经采用统一的数学模型来整体确定地面目标点位和像片外方位元素，并对其质量进行评定的理论、技术和方法。</li>
+</ul>
+</li>
+<li>POS 辅助空中三角测量<ul>
+<li>利用安装于飞机上与航摄仪相连接的 POS 系统连续观测 GPS 卫星信号、同时测定航空摄影瞬间航摄仪的位置和姿态，经 GPS 载波相位测量动态定位技术的离线数据后处理获取航摄仪曝光时刻摄站的三维坐标及影像的姿态角，然后将其视为带权观测值引入摄影测量区域网平差中，经采用统一的数学模型来整体确定地面目标点位和像片外方位元素，并对其质量进行评定的理论、技术和方法。</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.tooltips", "content.tabs.link", "content.code.copy", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.78eede0e.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.zerolacqua.top/npm/mathjax/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/d3@7/dist/d3.min.js"></script>
+      
+        <script src="https://unpkg.com/markmap-lib@0.15.3/dist/browser/index.js"></script>
+      
+        <script src="https://unpkg.com/markmap-view@0.15.3/dist/browser/index.js"></script>
+      
+    
+  </body>
+</html>
