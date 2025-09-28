@@ -1,5 +1,5 @@
 ---
-status: new
+
 ---
 
 # Putting the “You” in CPU

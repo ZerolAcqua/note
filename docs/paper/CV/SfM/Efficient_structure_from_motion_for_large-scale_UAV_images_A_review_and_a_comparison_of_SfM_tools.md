@@ -1,6 +1,5 @@
 ---
 title: 'Efficient structure from motion for large-scale UAV images: A review and a comparison of SfM tools'
-status: new
 ---
 
 !!! info "论文链接"

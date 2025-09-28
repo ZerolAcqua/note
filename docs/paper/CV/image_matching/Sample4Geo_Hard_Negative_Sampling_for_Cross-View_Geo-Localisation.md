@@ -1,5 +1,4 @@
 ---
-status: new
 ---
 
 # Sample4Geo: Hard Negative Sampling for Cross-View Geo-Localisation

@@ -1,6 +1,5 @@
 ---
 title: Efficient tree-structured SfM by RANSAC generalized Procrustes analysis
-status: new
 ---
 
 # Efficient tree-structured SfM by RANSAC generalized Procrustes analysis

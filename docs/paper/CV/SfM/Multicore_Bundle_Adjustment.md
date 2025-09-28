@@ -1,7 +1,6 @@
 ---
 title: Multicore Bundle Adjustment
 date: 2023-10-07 16:11:56
-status: new
 ---
 
 # Multicore Bundle Adjustment
