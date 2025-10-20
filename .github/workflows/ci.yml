@@ -25,6 +25,7 @@ jobs:
       - run: pip install -r requirements.txt
       - run: mkdocs gh-deploy --force
   Sync:
+    if: false
     needs: deploy
     runs-on: ubuntu-latest
     steps:
