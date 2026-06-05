@@ -111,7 +111,7 @@ extra_javascript:
 
   # 使用 mathjax
   # - javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  # - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.zerolacqua.top/npm/mathjax/es5/tex-mml-chtml.js
 
   # 使用 markmap
