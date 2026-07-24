@@ -1,0 +1,30 @@
+@font-face {
+	font-family: 'ZCOOL KuaiLe';
+	src: url('https://cdn.zerolacqua.top/fonts/zcool-happy.ttf');
+}
+
+/* :root {
+	--md-text-font: 'ZCOOL KuaiLe';
+}
+
+.md-container {
+	--md-text-font: 'Noto Serif Simplified Chinese';
+} */
+
+
+.md-typeset h1 {
+	font-family: 'ZCOOL KuaiLe';
+}
+
+nav {
+	font-family: 'ZCOOL KuaiLe';
+}
+
+.md-search__input {
+	font-family: 'ZCOOL KuaiLe';
+
+}
+
+/* code{
+    font-family: 'Consolas';
+} */
